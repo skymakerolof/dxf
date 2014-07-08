@@ -8,7 +8,7 @@ describe('polylines', function() {
 
 
   it('can parsed from a string', function() {
-    var parser = dxf.create();
+    var parser = dxf.createParser();
 
     var entities = [];
     parser.on('lwpolyline', function(entity) {
@@ -25,7 +25,7 @@ describe('polylines', function() {
 describe('lines', function() {
 
   it('can parsed from a string', function() {
-    var parser = dxf.create();
+    var parser = dxf.createParser();
 
     var entities = [];
     parser.on('line', function(entity) {
@@ -42,7 +42,7 @@ describe('lines', function() {
 describe('circles', function() {
 
   it('can parsed from a string', function() {
-    var parser = dxf.create();
+    var parser = dxf.createParser();
 
     var entities = [];
     parser.on('circle', function(entity) {
