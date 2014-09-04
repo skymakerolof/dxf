@@ -4,6 +4,9 @@ DXF parser for node/browser. Not complete at this point but lines, circles and l
 
 ## Running
 
-Look at ```example.js``` in the ```examples/``` directory for an example.
+Look at ```example.js``` in the ```examples/``` directory for an example:
+
+    examples$ node example.js
+
 
 
