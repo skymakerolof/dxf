@@ -48,3 +48,15 @@ and then run npm install twice (first with `mocha` and `grunt`, second time for 
 - `npm` is package manager which allows downloading more packages for `nodejs`
 - `mocha` is testing framework (this tool allows you veryfing that every parser works as expected for various `.dxf`)
 - `grunt` is tool allowing you, in between, making building process less effort-consuming (e.g. when file is changed, it automatically re-executes processes)
+
+
+## DXF in the browser
+
+It is possible to build this module with [Browserify](http://browserify.org/)
+`browserify lib --outfile lib/dxf-browser.js`
+
+## toSVG
+
+There is now a toSVG method, simply give a list of layers that you want to convert to an SVG and anything that can and has been implemented with a toSVG method will be turned into SVG data.
+
+Will return a string.
