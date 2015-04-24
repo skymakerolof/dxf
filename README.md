@@ -53,10 +53,25 @@ and then run npm install twice (first with `mocha` and `grunt`, second time for 
 ## DXF in the browser
 
 It is possible to build this module with [Browserify](http://browserify.org/)
-`browserify lib --outfile lib/dxf-browser.js`
+Assuming your current working directory is the repo root and you want to expose it globally.
+`browserify dxf/lib --outfile dxf.js -s dxf`
 
-## toSVG
+If you don't want to pollute the global namespace dont' use `-s dxf`
+
+A way to prepare script every 1sec useful when developing.
+`watch -n1  'browserify dxf/lib --outfile dxf.js -s dxf'`
+
+## SVG Functions
+
+Usage: collector.toSVG('Layer1, Layer2 etc..')
+You can use '*' for all layers.
+
+### toSVG
 
 There is now a toSVG method, simply give a list of layers that you want to convert to an SVG and anything that can and has been implemented with a toSVG method will be turned into SVG data.
 
 Will return a string.
+
+## toSVGPath
+
+Converts the elements that can be converted into SVG path into a single text string path.
