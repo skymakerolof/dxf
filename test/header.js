@@ -6,7 +6,7 @@ var floorPlan1 = fs.readFileSync(__dirname + '/../examples/floorplan1.dxf', 'utf
 
 describe('header', function() {
 
-  it.only('can parsed from a string', function() {
+  it('can parsed from a string', function() {
     var parser = dxf.createParser();
 
     var header;
