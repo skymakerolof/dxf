@@ -1,0 +1,17 @@
+{
+  "esnext": true,
+  "fileExtensions": [ ".js", "jscs" ],
+  "requireParenthesesAroundIIFE": true,
+  "maximumLineLength": 100,
+  "validateLineBreaks": "LF",
+  "validateIndentation": 2,
+  "disallowMultipleVarDecl": true,
+  "disallowKeywords": ["with"],
+  "disallowImplicitTypeConversion": ["string"],
+  "disallowMixedSpacesAndTabs": true,
+  "safeContextKeyword": "_this",
+  "requireSpaceAfterLineComment": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpaceBetweenArguments": true,
+  "excludeFiles": []
+}
