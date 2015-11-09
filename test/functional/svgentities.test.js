@@ -12,7 +12,7 @@ function createTest(type) {
 
     parser.parseString(dxfString);
 
-    var svg = dxf.toSVG(collector, '0');
+    var svg = dxf.toSVG(collector);
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   };
 }
@@ -23,5 +23,8 @@ describe.only('svg entities', function() {
   it('polylines', createTest('polylines'));
   it('circlesellipsesarcs', createTest('circlesellipsesarcs'));
   it('splines', createTest('splines'));
+  it('texts', createTest('texts'));
+  it('hatches', createTest('hatches'));
+  it('layers', createTest('layers'));
 
 });

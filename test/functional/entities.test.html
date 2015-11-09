@@ -12,6 +12,9 @@
         width: 800px;
         margin: 0px auto;
       }
+      th {
+        font-weight: normal;
+      }
       td {
         width: 50%;
         padding: 20px;
@@ -25,22 +28,41 @@
   </head>
   <body>
     <table>
-      <tr><th>expected</th><th>actual</th></tr>
+      <tr><th>EXPECTED</th><th>ACTUAL</th></tr>
+      <tr><td colspan="2">lines</td></tr>
       <tr>
         <td><img src="../resources/lines.svg"></td>
         <td><img src="./output/lines.output.svg"></td>
       </tr>
+      <tr><td colspan="2">circles, ellipses, arcs</td></tr>
       <tr>
         <td><img src="../resources/circlesellipsesarcs.svg"></td>
         <td><img src="./output/circlesellipsesarcs.output.svg"></td>
       </tr>
+      <tr><td colspan="2">polylines</td></tr>
       <tr>
         <td><img src="../resources/polylines.svg"></td>
         <td><img src="./output/polylines.output.svg"></td>
       </tr>
+      <tr><td colspan="2">splines</td></tr>
       <tr>
         <td><img src="../resources/splines.svg"></td>
         <td><img src="./output/splines.output.svg"></td>
+      </tr>
+      <tr><td colspan="2">texts</td></tr>
+      <tr>
+        <td><img src="../resources/texts.svg"></td>
+        <td><img src="./output/texts.output.svg"></td>
+      </tr>
+      <tr><td colspan="2">hatches</td></tr>
+      <tr>
+        <td><img src="../resources/hatches.svg"></td>
+        <td><img src="./output/hatches.output.svg"></td>
+      </tr>
+      <tr><td colspan="2">layers</td></tr>
+      <tr>
+        <td><img src="../resources/layers.svg"></td>
+        <td><img src="./output/layers.output.svg"></td>
       </tr>
     </table>
   </body>
