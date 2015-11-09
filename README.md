@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bjnortier/dxf.png?branch=master)](https://travis-ci.org/bjnortier/dxf)
+
 # dxf
 
 DXF parser for node/browser. Not complete at this point but lines, circles and lwpolylines are supported.
@@ -22,14 +24,14 @@ In order to develop your own types you might follow this procedure:
 * create new parser in similar manner like `circle.js` is
 * look at some examples in `test/entities.js`, then create new entries in `bdd unit-testing syntax` (`describe` and `it`) **note that your parsers have to be declared in `lib/index.js` (just follow _like a monkey_ the pattern with `circles` and other types)**
 * install appropriate tools with following commands:
-    * Ubuntu: 
+    * Ubuntu:
 	```
 	which nodejs npm || sudo apt-get install nodejs npm            # install nodejs npm is does not exist in the system
 	sudo npm install -g mocha grunt                                # install *globally* mocha and grunt
 	ls lib/handlers && npm install || echo cd to dxf project first # this installs packages required by this `dxf` parser listed in `package.json`
                                                                    # this line is only for easier copy&paste
 	```
-	**Tip:** on Linux, it is better to have `gruntfile.js` named `Gruntfile.js`: 
+	**Tip:** on Linux, it is better to have `gruntfile.js` named `Gruntfile.js`:
 	```
 	mv gruntfile.js Gruntfile.js
 	```
