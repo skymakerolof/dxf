@@ -24,7 +24,8 @@ describe.only('svg entities', function() {
   it('circlesellipsesarcs', createTest('circlesellipsesarcs'));
   it('splines', createTest('splines'));
   it('texts', createTest('texts'));
-  it('hatches', createTest('hatches'));
   it('layers', createTest('layers'));
+  it('dimensions', createTest('dimensions'));
+  it('hatches', createTest('hatches'));
 
 });
