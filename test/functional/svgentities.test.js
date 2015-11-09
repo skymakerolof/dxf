@@ -12,7 +12,7 @@ function createTest(type) {
 
     parser.parseString(dxfString);
 
-    var svg = collector.toSVG('0');
+    var svg = dxf.toSVG(collector, '0');
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   };
 }
