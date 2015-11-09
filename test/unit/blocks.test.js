@@ -1,8 +1,8 @@
 var fs = require('fs');
 var assert = require('chai').assert;
 
-var dxf = require('..');
-var floorPlan1 = fs.readFileSync(__dirname + '/../examples/floorplan1.dxf', 'utf-8');
+var dxf = require('../..');
+var floorPlan1 = fs.readFileSync(__dirname + '/../resources/floorplan.dxf', 'utf-8');
 
 describe('blocks', function() {
 
@@ -13,7 +13,6 @@ describe('blocks', function() {
     parser.on('block', function(block) {
       blocks.push(block);
     });
-
     parser.parseString(floorPlan1);
 
     assert.equal(blocks.length, 147);

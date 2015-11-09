@@ -6,7 +6,8 @@ var jscsStylish = require('gulp-jscs-stylish');
 var mocha = require('gulp-mocha');
 
 var srcFiles = path.join('lib', '**', '*.js');
-var unitTestFiles = path.join('test', '**', '*.test.js');
+var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
+var functionalTestFiles = path.join('test', 'functional', '**', '*.test.js');
 
 // ----- Individual Tasks -----
 
@@ -32,13 +33,19 @@ gulp.task('unit', function() {
     .pipe(mocha({}));
 });
 
+gulp.task('functional', function() {
+  return gulp.src(functionalTestFiles)
+    .pipe(mocha({}));
+});
+
 // ----- Aggregate Tasks -----
 
-gulp.task('test', ['jshint', 'jscs', 'unit']);
+gulp.task('test', ['jshint', 'jscs', 'unit', 'functional']);
 
 gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
-  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
+  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
+  gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'functional']);
 });

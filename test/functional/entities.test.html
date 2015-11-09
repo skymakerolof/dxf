@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SVG Entities Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+      body {
+        font-family: Helvetica, Sans;
+      }
+      table {
+        width: 800px;
+        margin: 0px auto;
+      }
+      td {
+        width: 50%;
+        padding: 20px;
+      }
+      @media screen and (max-width: 800px) {
+        table {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr><th>expected</th><th>actual</th></tr>
+      <tr>
+        <td><img src="../resources/lines.svg"></td>
+        <td><img src="./output/lines.output.svg"></td>
+      </tr>
+      <tr>
+        <td><img src="../resources/circlesellipsesarcs.svg"></td>
+        <td><img src="./output/circlesellipsesarcs.output.svg"></td>
+      </tr>
+      <tr>
+        <td><img src="../resources/polylines.svg"></td>
+        <td><img src="./output/polylines.output.svg"></td>
+      </tr>
+      <tr>
+        <td><img src="../resources/splines.svg"></td>
+        <td><img src="./output/splines.output.svg"></td>
+      </tr>
+    </table>
+  </body>
+</html>
