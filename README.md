@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bjnortier/dxf.png?branch=master)](https://travis-ci.org/bjnortier/dxf)
+[![Build Status](https://travis-ci.org/bjnortier/dxf.svg?branch=master)](https://travis-ci.org/bjnortier/dxf)
 
 # dxf
 
