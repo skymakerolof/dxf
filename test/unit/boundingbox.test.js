@@ -13,7 +13,7 @@ describe('BoundingBox', function() {
     assert.equal(bb.bottom, Infinity);
   });
 
-  it('can expand', function() {
+  it('can expand by a point', function() {
     var bb = new BB();
 
     bb.expandByPoint(10, 30);
@@ -46,6 +46,22 @@ describe('BoundingBox', function() {
 
     assert.equal(bb.width, 22);
     assert.equal(bb.height, 39);
+  });
+
+  it('can expand by a box', function() {
+    var bb1 = new BB();
+    bb1.expandByPoint(10, 20);
+    bb1.expandByPoint(15, 27);
+
+    var bb2 = new BB();
+    bb2.expandByPoint(19, -7);
+
+    bb1.expandByBox(bb2);
+
+    assert.equal(bb1.left, 10);
+    assert.equal(bb1.right, 19);
+    assert.equal(bb1.top, 27);
+    assert.equal(bb1.bottom, -7);
   });
 
   it('can expand by a translated box', function() {
