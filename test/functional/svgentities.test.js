@@ -19,14 +19,14 @@ function createTest(type) {
 
 describe.only('svg entities', function() {
 
-  // createTest('lines');
-  // createTest('polylines');
-  // createTest('circlesellipsesarcs');
-  // createTest('splines');
-  // createTest('texts');
-  // createTest('dimensions');
-  // createTest('layers');
+  createTest('lines');
+  createTest('polylines');
+  createTest('circlesellipsesarcs');
+  createTest('splines');
+  createTest('texts');
+  createTest('dimensions');
+  createTest('layers');
   createTest('blocks');
-  // createTest('hatches');
+  createTest('hatches');
 
 });
