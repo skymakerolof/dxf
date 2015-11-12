@@ -22,7 +22,7 @@ describe('svg entities', function() {
   // createTest('lines');
   // createTest('polylines');
   createTest('circlesellipsesarcs');
-  // createTest('splines');
+  createTest('splines');
   // createTest('texts');
   // createTest('dimensions');
   // createTest('layers');

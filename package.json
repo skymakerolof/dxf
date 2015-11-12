@@ -31,6 +31,7 @@
     "mocha": "^2.3.3"
   },
   "dependencies": {
+    "b-spline": "^1.0.5",
     "pretty-data": "^0.40.0"
   }
 }
