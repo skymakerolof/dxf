@@ -2,7 +2,7 @@ var fs = require('fs');
 var assert = require('chai').assert;
 
 var dxf = require('../..');
-var floorPlan1 = fs.readFileSync(__dirname + '/../resources/floorplan.dxf', 'utf-8');
+var dxfContents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
 
 describe('blocks', function() {
 
@@ -13,9 +13,9 @@ describe('blocks', function() {
     parser.on('block', function(block) {
       blocks.push(block);
     });
-    parser.parseString(floorPlan1);
+    parser.parseString(dxfContents);
 
-    assert.equal(blocks.length, 147);
+    assert.equal(blocks.length, 3);
   });
 
 });

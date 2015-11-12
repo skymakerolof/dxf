@@ -33,7 +33,7 @@ gulp.task('unit', function() {
     .pipe(mocha({}));
 });
 
-gulp.task('functional', function() {
+gulp.task('functional', ['unit'], function() {
   return gulp.src(functionalTestFiles)
     .pipe(mocha({}));
 });

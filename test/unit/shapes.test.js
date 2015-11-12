@@ -2,7 +2,6 @@ var fs = require('fs');
 var assert = require('chai').assert;
 
 var dxf = require('../..');
-var floorPlan = fs.readFileSync(__dirname + '/../resources/floorplan.dxf', 'utf-8');
 
 describe('shapes', function() {
 
@@ -16,9 +15,10 @@ describe('shapes', function() {
         entities.push(entity);
       });
 
-      parser.parseString(floorPlan);
+      parser.parseString(fs.readFileSync(
+        __dirname + '/../resources/polylines.dxf', 'utf-8'));
 
-      assert.equal(entities.length, 124);
+      assert.equal(entities.length, 2);
     });
 
   });
@@ -33,9 +33,10 @@ describe('shapes', function() {
         entities.push(entity);
       });
 
-      parser.parseString(floorPlan);
+      parser.parseString(fs.readFileSync(
+        __dirname + '/../resources/lines.dxf', 'utf-8'));
 
-      assert.equal(entities.length, 624);
+      assert.equal(entities.length, 11);
     });
 
   });
@@ -50,9 +51,9 @@ describe('shapes', function() {
         entities.push(entity);
       });
 
-      parser.parseString(floorPlan);
-
-      assert.equal(entities.length, 9);
+      parser.parseString(fs.readFileSync(
+        __dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8'));
+      assert.equal(entities.length, 1);
     });
 
   });
