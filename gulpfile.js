@@ -7,7 +7,7 @@ var mocha = require('gulp-mocha');
 
 var srcFiles = path.join('lib', '**', '*.js');
 var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
-var functionalTestFiles = path.join('test', 'functional', '**', '*.test.js');
+var functionalTestFiles = path.join('test', 'functional', '*.test.js');
 
 // ----- Individual Tasks -----
 
@@ -46,6 +46,7 @@ gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
   gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
+  // gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'functional']);
 });

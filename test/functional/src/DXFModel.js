@@ -11,8 +11,7 @@ class DXFModel extends Model {
     var parser = dxf.createParser();
     var collector = dxf.createCollector(parser);
     parser.parseString(contents);
-    var polylines = dxf.toPolylines(collector);
-    console.log(polylines);
+    this.polylines = dxf.toPolylines(collector);
   }
 
 }
