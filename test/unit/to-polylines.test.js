@@ -4,13 +4,14 @@ var assert = require('chai').assert;
 var dxf = require('../..');
 var toPolylines = dxf.toPolylines;
 
-describe.only('Polylines', function() {
+describe('Interpolation', function() {
 
   it('can be created for line entities', function() {
     var parser = dxf.createParser();
 
     var collector = dxf.createCollector(parser);
-    parser.parseString(fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8'));
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8'));
 
     var lines = toPolylines(collector);
     assert.equal(lines.length, 11);
@@ -21,7 +22,8 @@ describe.only('Polylines', function() {
     var parser = dxf.createParser();
 
     var collector = dxf.createCollector(parser);
-    parser.parseString(fs.readFileSync(__dirname + '/../resources/lwpolylines.dxf', 'utf-8'));
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/lwpolylines.dxf', 'utf-8'));
 
     var lines = toPolylines(collector);
     assert.equal(lines.length, 2);
@@ -43,6 +45,36 @@ describe.only('Polylines', function() {
         20,
       ],
     ]);
+  });
+
+  it('can be created for circles, ellipses and arcs', function() {
+    var parser = dxf.createParser();
+
+    var collector = dxf.createCollector(parser);
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8'));
+
+    var lines = toPolylines(collector);
+    assert.equal(lines.length, 5);
+    assert.deepEqual(lines[0].length, 73);
+    assert.deepEqual(lines[1].length, 73);
+    assert.deepEqual(lines[2].length, 39);
+    assert.deepEqual(lines[3].length, 40);
+    assert.deepEqual(lines[4].length, 18);
+  });
+
+  it.only('can be created for splines', function() {
+    var parser = dxf.createParser();
+
+    var collector = dxf.createCollector(parser);
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/splines.dxf', 'utf-8'));
+
+    var lines = toPolylines(collector);
+    assert.equal(lines.length, 3);
+    assert.deepEqual(lines[0].length, 100);
+    assert.deepEqual(lines[1].length, 100);
+    assert.deepEqual(lines[2].length, 100);
   });
 
 });

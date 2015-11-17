@@ -16,7 +16,7 @@ describe('shapes', function() {
       });
 
       parser.parseString(fs.readFileSync(
-        __dirname + '/../resources/polylines.dxf', 'utf-8'));
+        __dirname + '/../resources/lwpolylines.dxf', 'utf-8'));
 
       assert.equal(entities.length, 2);
     });
