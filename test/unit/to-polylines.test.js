@@ -63,7 +63,7 @@ describe('Interpolation', function() {
     assert.deepEqual(lines[4].length, 18);
   });
 
-  it.only('can be created for splines', function() {
+  it('can be created for splines', function() {
     var parser = dxf.createParser();
 
     var collector = dxf.createCollector(parser);
@@ -75,6 +75,33 @@ describe('Interpolation', function() {
     assert.deepEqual(lines[0].length, 100);
     assert.deepEqual(lines[1].length, 100);
     assert.deepEqual(lines[2].length, 100);
+  });
+
+  it('can be created for layers', function() {
+    var parser = dxf.createParser();
+
+    var collector = dxf.createCollector(parser);
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/layers.dxf', 'utf-8'));
+
+    var lines = toPolylines(collector);
+    assert.equal(lines.length, 9);
+  });
+
+  it.only('can be created for blocks', function() {
+    var parser = dxf.createParser();
+
+    var collector = dxf.createCollector(parser);
+    parser.parseString(
+      fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8'));
+
+    var lines = toPolylines(collector);
+    assert.equal(lines.length, 5);
+    assert.equal(lines[0].length, 2);
+    assert.equal(lines[1].length, 2);
+    assert.equal(lines[2].length, 2);
+    assert.equal(lines[3].length, 2);
+    assert.equal(lines[4].length, 73);
   });
 
 });
