@@ -1,3 +1,6 @@
 node_modules/
 test/functional/output/*.output.svg
+test/functional/lib/
 .DS_Store
+*~
+#*
