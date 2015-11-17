@@ -88,7 +88,7 @@ describe('Interpolation', function() {
     assert.equal(lines.length, 9);
   });
 
-  it.only('can be created for blocks', function() {
+  it('can be created for blocks', function() {
     var parser = dxf.createParser();
 
     var collector = dxf.createCollector(parser);
@@ -96,7 +96,7 @@ describe('Interpolation', function() {
       fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8'));
 
     var lines = toPolylines(collector);
-    assert.equal(lines.length, 5);
+    assert.equal(lines.length, 10);
     assert.equal(lines[0].length, 2);
     assert.equal(lines[1].length, 2);
     assert.equal(lines[2].length, 2);
