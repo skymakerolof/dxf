@@ -9,10 +9,9 @@ function createTest(type) {
 
     var parser = dxf.createParser();
     var collector = dxf.createCollector(parser);
-
     parser.parseString(dxfString);
-
-    var svg = dxf.toSVG(collector);
+    var interpolated = dxf.interpolate(collector);
+    var svg = dxf.toSVG(interpolated);
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   });
 }
@@ -21,12 +20,12 @@ describe('svg entities', function() {
 
   createTest('lines');
   createTest('lwpolylines');
-  // createTest('circlesellipsesarcs');
-  // createTest('splines');
-  // createTest('texts');
-  // createTest('dimensions');
-  // createTest('layers');
-  // createTest('blocks');
-  // createTest('hatches');
+  createTest('circlesellipsesarcs');
+  createTest('splines');
+  createTest('texts');
+  createTest('dimensions');
+  createTest('layers');
+  createTest('blocks');
+  createTest('hatches');
 
 });
