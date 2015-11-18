@@ -1,8 +1,8 @@
 var fs = require('fs');
 var assert = require('chai').assert;
 
-var dxf = require('..');
-var floorPlan1 = fs.readFileSync(__dirname + '/../examples/floorplan1.dxf', 'utf-8');
+var dxf = require('../..');
+var dfxContents = fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8');
 
 describe('header', function() {
 
@@ -14,17 +14,17 @@ describe('header', function() {
       header = h;
     });
 
-    parser.parseString(floorPlan1);
+    parser.parseString(dfxContents);
 
     assert.deepEqual(header, {
       "extMin": {
-        "x": -724.9812134527413,
-        "y": -522.2677920555756,
+        "x": 0,
+        "y": 0,
         "z": 0,
       },
       "extMax": {
-        "x": 239.4172364631111,
-        "y": 416.2792808352739,
+        "x": 100,
+        "y": 99.2820323027551,
         "z": 0
       },
     });

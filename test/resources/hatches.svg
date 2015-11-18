@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%"
+ viewBox="0 0 1000 1000"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>Qt SVG Document</title>
+<desc>Generated with Qt</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M0,0 L1000,0 L1000,1000 L0,1000 L0,0"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M975.5,999 C975.5,999.276 975.276,999.5 975,999.5 C974.724,999.5 974.5,999.276 974.5,999 C974.5,998.724 974.724,998.5 975,998.5 C975.276,998.5 975.5,998.724 975.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="975,999 999,975 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="933,999 999,933 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M890.5,999 C890.5,999.276 890.276,999.5 890,999.5 C889.724,999.5 889.5,999.276 889.5,999 C889.5,998.724 889.724,998.5 890,998.5 C890.276,998.5 890.5,998.724 890.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="890,999 999,890 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M848.5,999 C848.5,999.276 848.276,999.5 848,999.5 C847.724,999.5 847.5,999.276 847.5,999 C847.5,998.724 847.724,998.5 848,998.5 C848.276,998.5 848.5,998.724 848.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="848,999 999,848 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M805.5,999 C805.5,999.276 805.276,999.5 805,999.5 C804.724,999.5 804.5,999.276 804.5,999 C804.5,998.724 804.724,998.5 805,998.5 C805.276,998.5 805.5,998.724 805.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="805,999 999,805 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="763,999 999,763 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M721.5,999 C721.5,999.276 721.276,999.5 721,999.5 C720.724,999.5 720.5,999.276 720.5,999 C720.5,998.724 720.724,998.5 721,998.5 C721.276,998.5 721.5,998.724 721.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="721,999 999,721 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M678.5,999 C678.5,999.276 678.276,999.5 678,999.5 C677.724,999.5 677.5,999.276 677.5,999 C677.5,998.724 677.724,998.5 678,998.5 C678.276,998.5 678.5,998.724 678.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="678,999 999,678 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M636.5,999 C636.5,999.276 636.276,999.5 636,999.5 C635.724,999.5 635.5,999.276 635.5,999 C635.5,998.724 635.724,998.5 636,998.5 C636.276,998.5 636.5,998.724 636.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="636,999 999,636 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M594.5,999 C594.5,999.276 594.276,999.5 594,999.5 C593.724,999.5 593.5,999.276 593.5,999 C593.5,998.724 593.724,998.5 594,998.5 C594.276,998.5 594.5,998.724 594.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="594,999 999,594 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M551.5,999 C551.5,999.276 551.276,999.5 551,999.5 C550.724,999.5 550.5,999.276 550.5,999 C550.5,998.724 550.724,998.5 551,998.5 C551.276,998.5 551.5,998.724 551.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="551,999 999,551 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M509.5,999 C509.5,999.276 509.276,999.5 509,999.5 C508.724,999.5 508.5,999.276 508.5,999 C508.5,998.724 508.724,998.5 509,998.5 C509.276,998.5 509.5,998.724 509.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="509,999 999,509 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="467,999 999,467 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M424.5,999 C424.5,999.276 424.276,999.5 424,999.5 C423.724,999.5 423.5,999.276 423.5,999 C423.5,998.724 423.724,998.5 424,998.5 C424.276,998.5 424.5,998.724 424.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="424,999 999,424 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="382,999 999,382 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M340.5,999 C340.5,999.276 340.276,999.5 340,999.5 C339.724,999.5 339.5,999.276 339.5,999 C339.5,998.724 339.724,998.5 340,998.5 C340.276,998.5 340.5,998.724 340.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="340,999 999,340 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M297.5,999 C297.5,999.276 297.276,999.5 297,999.5 C296.724,999.5 296.5,999.276 296.5,999 C296.5,998.724 296.724,998.5 297,998.5 C297.276,998.5 297.5,998.724 297.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="297,999 999,297 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M255.5,999 C255.5,999.276 255.276,999.5 255,999.5 C254.724,999.5 254.5,999.276 254.5,999 C254.5,998.724 254.724,998.5 255,998.5 C255.276,998.5 255.5,998.724 255.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="255,999 999,255 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M213.5,999 C213.5,999.276 213.276,999.5 213,999.5 C212.724,999.5 212.5,999.276 212.5,999 C212.5,998.724 212.724,998.5 213,998.5 C213.276,998.5 213.5,998.724 213.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="213,999 999,213 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M170.5,999 C170.5,999.276 170.276,999.5 170,999.5 C169.724,999.5 169.5,999.276 169.5,999 C169.5,998.724 169.724,998.5 170,998.5 C170.276,998.5 170.5,998.724 170.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="170,999 999,170 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M128.5,999 C128.5,999.276 128.276,999.5 128,999.5 C127.724,999.5 127.5,999.276 127.5,999 C127.5,998.724 127.724,998.5 128,998.5 C128.276,998.5 128.5,998.724 128.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="128,999 999,128 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M86.5,999 C86.5,999.276 86.2761,999.5 86,999.5 C85.7239,999.5 85.5,999.276 85.5,999 C85.5,998.724 85.7239,998.5 86,998.5 C86.2761,998.5 86.5,998.724 86.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="86,999 999,86 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M43.5,999 C43.5,999.276 43.2761,999.5 43,999.5 C42.7239,999.5 42.5,999.276 42.5,999 C42.5,998.724 42.7239,998.5 43,998.5 C43.2761,998.5 43.5,998.724 43.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="43,999 999,43 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,999 C1.5,999.276 1.27614,999.5 1,999.5 C0.723858,999.5 0.5,999.276 0.5,999 C0.5,998.724 0.723858,998.5 1,998.5 C1.27614,998.5 1.5,998.724 1.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,999 999,1 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,957 957,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M957.5,1 C957.5,1.27614 957.276,1.5 957,1.5 C956.724,1.5 956.5,1.27614 956.5,1 C956.5,0.723858 956.724,0.5 957,0.5 C957.276,0.5 957.5,0.723858 957.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,914 914,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M914.5,1 C914.5,1.27614 914.276,1.5 914,1.5 C913.724,1.5 913.5,1.27614 913.5,1 C913.5,0.723858 913.724,0.5 914,0.5 C914.276,0.5 914.5,0.723858 914.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,872 872,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M872.5,1 C872.5,1.27614 872.276,1.5 872,1.5 C871.724,1.5 871.5,1.27614 871.5,1 C871.5,0.723858 871.724,0.5 872,0.5 C872.276,0.5 872.5,0.723858 872.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,830 830,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M830.5,1 C830.5,1.27614 830.276,1.5 830,1.5 C829.724,1.5 829.5,1.27614 829.5,1 C829.5,0.723858 829.724,0.5 830,0.5 C830.276,0.5 830.5,0.723858 830.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,787 787,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M787.5,1 C787.5,1.27614 787.276,1.5 787,1.5 C786.724,1.5 786.5,1.27614 786.5,1 C786.5,0.723858 786.724,0.5 787,0.5 C787.276,0.5 787.5,0.723858 787.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,745 745,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M745.5,1 C745.5,1.27614 745.276,1.5 745,1.5 C744.724,1.5 744.5,1.27614 744.5,1 C744.5,0.723858 744.724,0.5 745,0.5 C745.276,0.5 745.5,0.723858 745.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,703 703,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M703.5,1 C703.5,1.27614 703.276,1.5 703,1.5 C702.724,1.5 702.5,1.27614 702.5,1 C702.5,0.723858 702.724,0.5 703,0.5 C703.276,0.5 703.5,0.723858 703.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,660 660,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M660.5,1 C660.5,1.27614 660.276,1.5 660,1.5 C659.724,1.5 659.5,1.27614 659.5,1 C659.5,0.723858 659.724,0.5 660,0.5 C660.276,0.5 660.5,0.723858 660.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,618 618,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M618.5,1 C618.5,1.27614 618.276,1.5 618,1.5 C617.724,1.5 617.5,1.27614 617.5,1 C617.5,0.723858 617.724,0.5 618,0.5 C618.276,0.5 618.5,0.723858 618.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,576 576,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M576.5,1 C576.5,1.27614 576.276,1.5 576,1.5 C575.724,1.5 575.5,1.27614 575.5,1 C575.5,0.723858 575.724,0.5 576,0.5 C576.276,0.5 576.5,0.723858 576.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,533 533,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M533.5,1 C533.5,1.27614 533.276,1.5 533,1.5 C532.724,1.5 532.5,1.27614 532.5,1 C532.5,0.723858 532.724,0.5 533,0.5 C533.276,0.5 533.5,0.723858 533.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,491 491,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M491.5,1 C491.5,1.27614 491.276,1.5 491,1.5 C490.724,1.5 490.5,1.27614 490.5,1 C490.5,0.723858 490.724,0.5 491,0.5 C491.276,0.5 491.5,0.723858 491.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,449 C1.5,449.276 1.27614,449.5 1,449.5 C0.723858,449.5 0.5,449.276 0.5,449 C0.5,448.724 0.723858,448.5 1,448.5 C1.27614,448.5 1.5,448.724 1.5,449 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,449 449,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M449.5,1 C449.5,1.27614 449.276,1.5 449,1.5 C448.724,1.5 448.5,1.27614 448.5,1 C448.5,0.723858 448.724,0.5 449,0.5 C449.276,0.5 449.5,0.723858 449.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,406 406,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M406.5,1 C406.5,1.27614 406.276,1.5 406,1.5 C405.724,1.5 405.5,1.27614 405.5,1 C405.5,0.723858 405.724,0.5 406,0.5 C406.276,0.5 406.5,0.723858 406.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,364 364,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364.5,1 C364.5,1.27614 364.276,1.5 364,1.5 C363.724,1.5 363.5,1.27614 363.5,1 C363.5,0.723858 363.724,0.5 364,0.5 C364.276,0.5 364.5,0.723858 364.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,322 C1.5,322.276 1.27614,322.5 1,322.5 C0.723858,322.5 0.5,322.276 0.5,322 C0.5,321.724 0.723858,321.5 1,321.5 C1.27614,321.5 1.5,321.724 1.5,322 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,322 322,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M322.5,1 C322.5,1.27614 322.276,1.5 322,1.5 C321.724,1.5 321.5,1.27614 321.5,1 C321.5,0.723858 321.724,0.5 322,0.5 C322.276,0.5 322.5,0.723858 322.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,279 279,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M279.5,1 C279.5,1.27614 279.276,1.5 279,1.5 C278.724,1.5 278.5,1.27614 278.5,1 C278.5,0.723858 278.724,0.5 279,0.5 C279.276,0.5 279.5,0.723858 279.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,237 237,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M237.5,1 C237.5,1.27614 237.276,1.5 237,1.5 C236.724,1.5 236.5,1.27614 236.5,1 C236.5,0.723858 236.724,0.5 237,0.5 C237.276,0.5 237.5,0.723858 237.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,195 195,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M195.5,1 C195.5,1.27614 195.276,1.5 195,1.5 C194.724,1.5 194.5,1.27614 194.5,1 C194.5,0.723858 194.724,0.5 195,0.5 C195.276,0.5 195.5,0.723858 195.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,152 152,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M152.5,1 C152.5,1.27614 152.276,1.5 152,1.5 C151.724,1.5 151.5,1.27614 151.5,1 C151.5,0.723858 151.724,0.5 152,0.5 C152.276,0.5 152.5,0.723858 152.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,110 C1.5,110.276 1.27614,110.5 1,110.5 C0.723858,110.5 0.5,110.276 0.5,110 C0.5,109.724 0.723858,109.5 1,109.5 C1.27614,109.5 1.5,109.724 1.5,110 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,110 110,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M110.5,1 C110.5,1.27614 110.276,1.5 110,1.5 C109.724,1.5 109.5,1.27614 109.5,1 C109.5,0.723858 109.724,0.5 110,0.5 C110.276,0.5 110.5,0.723858 110.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,67 67,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M67.5,1 C67.5,1.27614 67.2761,1.5 67,1.5 C66.7239,1.5 66.5,1.27614 66.5,1 C66.5,0.723858 66.7239,0.5 67,0.5 C67.2761,0.5 67.5,0.723858 67.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,25 25,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M25.5,1 C25.5,1.27614 25.2761,1.5 25,1.5 C24.7239,1.5 24.5,1.27614 24.5,1 C24.5,0.723858 24.7239,0.5 25,0.5 C25.2761,0.5 25.5,0.723858 25.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,7 993,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M993.5,1 C993.5,1.27614 993.276,1.5 993,1.5 C992.724,1.5 992.5,1.27614 992.5,1 C992.5,0.723858 992.724,0.5 993,0.5 C993.276,0.5 993.5,0.723858 993.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,49 951,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M951.5,1 C951.5,1.27614 951.276,1.5 951,1.5 C950.724,1.5 950.5,1.27614 950.5,1 C950.5,0.723858 950.724,0.5 951,0.5 C951.276,0.5 951.5,0.723858 951.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,92 908,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M908.5,1 C908.5,1.27614 908.276,1.5 908,1.5 C907.724,1.5 907.5,1.27614 907.5,1 C907.5,0.723858 907.724,0.5 908,0.5 C908.276,0.5 908.5,0.723858 908.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,134 866,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M866.5,1 C866.5,1.27614 866.276,1.5 866,1.5 C865.724,1.5 865.5,1.27614 865.5,1 C865.5,0.723858 865.724,0.5 866,0.5 C866.276,0.5 866.5,0.723858 866.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,176 824,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M824.5,1 C824.5,1.27614 824.276,1.5 824,1.5 C823.724,1.5 823.5,1.27614 823.5,1 C823.5,0.723858 823.724,0.5 824,0.5 C824.276,0.5 824.5,0.723858 824.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,219 781,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M781.5,1 C781.5,1.27614 781.276,1.5 781,1.5 C780.724,1.5 780.5,1.27614 780.5,1 C780.5,0.723858 780.724,0.5 781,0.5 C781.276,0.5 781.5,0.723858 781.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,261 739,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M739.5,1 C739.5,1.27614 739.276,1.5 739,1.5 C738.724,1.5 738.5,1.27614 738.5,1 C738.5,0.723858 738.724,0.5 739,0.5 C739.276,0.5 739.5,0.723858 739.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,303 697,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M697.5,1 C697.5,1.27614 697.276,1.5 697,1.5 C696.724,1.5 696.5,1.27614 696.5,1 C696.5,0.723858 696.724,0.5 697,0.5 C697.276,0.5 697.5,0.723858 697.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,346 654,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M654.5,1 C654.5,1.27614 654.276,1.5 654,1.5 C653.724,1.5 653.5,1.27614 653.5,1 C653.5,0.723858 653.724,0.5 654,0.5 C654.276,0.5 654.5,0.723858 654.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,388 612,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M612.5,1 C612.5,1.27614 612.276,1.5 612,1.5 C611.724,1.5 611.5,1.27614 611.5,1 C611.5,0.723858 611.724,0.5 612,0.5 C612.276,0.5 612.5,0.723858 612.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,430 570,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M570.5,1 C570.5,1.27614 570.276,1.5 570,1.5 C569.724,1.5 569.5,1.27614 569.5,1 C569.5,0.723858 569.724,0.5 570,0.5 C570.276,0.5 570.5,0.723858 570.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,473 527,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M527.5,1 C527.5,1.27614 527.276,1.5 527,1.5 C526.724,1.5 526.5,1.27614 526.5,1 C526.5,0.723858 526.724,0.5 527,0.5 C527.276,0.5 527.5,0.723858 527.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,515 485,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M485.5,1 C485.5,1.27614 485.276,1.5 485,1.5 C484.724,1.5 484.5,1.27614 484.5,1 C484.5,0.723858 484.724,0.5 485,0.5 C485.276,0.5 485.5,0.723858 485.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,557 443,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M443.5,1 C443.5,1.27614 443.276,1.5 443,1.5 C442.724,1.5 442.5,1.27614 442.5,1 C442.5,0.723858 442.724,0.5 443,0.5 C443.276,0.5 443.5,0.723858 443.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,600 400,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M400.5,1 C400.5,1.27614 400.276,1.5 400,1.5 C399.724,1.5 399.5,1.27614 399.5,1 C399.5,0.723858 399.724,0.5 400,0.5 C400.276,0.5 400.5,0.723858 400.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,642 358,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M358.5,1 C358.5,1.27614 358.276,1.5 358,1.5 C357.724,1.5 357.5,1.27614 357.5,1 C357.5,0.723858 357.724,0.5 358,0.5 C358.276,0.5 358.5,0.723858 358.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,684 316,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M316.5,1 C316.5,1.27614 316.276,1.5 316,1.5 C315.724,1.5 315.5,1.27614 315.5,1 C315.5,0.723858 315.724,0.5 316,0.5 C316.276,0.5 316.5,0.723858 316.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,727 273,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M273.5,1 C273.5,1.27614 273.276,1.5 273,1.5 C272.724,1.5 272.5,1.27614 272.5,1 C272.5,0.723858 272.724,0.5 273,0.5 C273.276,0.5 273.5,0.723858 273.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,769 231,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M231.5,1 C231.5,1.27614 231.276,1.5 231,1.5 C230.724,1.5 230.5,1.27614 230.5,1 C230.5,0.723858 230.724,0.5 231,0.5 C231.276,0.5 231.5,0.723858 231.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,811 189,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M189.5,1 C189.5,1.27614 189.276,1.5 189,1.5 C188.724,1.5 188.5,1.27614 188.5,1 C188.5,0.723858 188.724,0.5 189,0.5 C189.276,0.5 189.5,0.723858 189.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,854 146,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M146.5,1 C146.5,1.27614 146.276,1.5 146,1.5 C145.724,1.5 145.5,1.27614 145.5,1 C145.5,0.723858 145.724,0.5 146,0.5 C146.276,0.5 146.5,0.723858 146.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,896 104,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M104.5,1 C104.5,1.27614 104.276,1.5 104,1.5 C103.724,1.5 103.5,1.27614 103.5,1 C103.5,0.723858 103.724,0.5 104,0.5 C104.276,0.5 104.5,0.723858 104.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,938 62,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M62.5,1 C62.5,1.27614 62.2761,1.5 62,1.5 C61.7239,1.5 61.5,1.27614 61.5,1 C61.5,0.723858 61.7239,0.5 62,0.5 C62.2761,0.5 62.5,0.723858 62.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,981 19,1 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M19.5,1 C19.5,1.27614 19.2761,1.5 19,1.5 C18.7239,1.5 18.5,1.27614 18.5,1 C18.5,0.723858 18.7239,0.5 19,0.5 C19.2761,0.5 19.5,0.723858 19.5,1 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M975.5,999 C975.5,999.276 975.276,999.5 975,999.5 C974.724,999.5 974.5,999.276 974.5,999 C974.5,998.724 974.724,998.5 975,998.5 C975.276,998.5 975.5,998.724 975.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="975,999 1,25 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M933.5,999 C933.5,999.276 933.276,999.5 933,999.5 C932.724,999.5 932.5,999.276 932.5,999 C932.5,998.724 932.724,998.5 933,998.5 C933.276,998.5 933.5,998.724 933.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="933,999 1,67 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,67 C1.5,67.2761 1.27614,67.5 1,67.5 C0.723858,67.5 0.5,67.2761 0.5,67 C0.5,66.7239 0.723858,66.5 1,66.5 C1.27614,66.5 1.5,66.7239 1.5,67 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="890,999 1,110 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M848.5,999 C848.5,999.276 848.276,999.5 848,999.5 C847.724,999.5 847.5,999.276 847.5,999 C847.5,998.724 847.724,998.5 848,998.5 C848.276,998.5 848.5,998.724 848.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="848,999 1,152 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M805.5,999 C805.5,999.276 805.276,999.5 805,999.5 C804.724,999.5 804.5,999.276 804.5,999 C804.5,998.724 804.724,998.5 805,998.5 C805.276,998.5 805.5,998.724 805.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="805,999 1,195 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M763.5,999 C763.5,999.276 763.276,999.5 763,999.5 C762.724,999.5 762.5,999.276 762.5,999 C762.5,998.724 762.724,998.5 763,998.5 C763.276,998.5 763.5,998.724 763.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="763,999 1,237 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M721.5,999 C721.5,999.276 721.276,999.5 721,999.5 C720.724,999.5 720.5,999.276 720.5,999 C720.5,998.724 720.724,998.5 721,998.5 C721.276,998.5 721.5,998.724 721.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="721,999 1,279 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="678,999 1,322 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1.5,322 C1.5,322.276 1.27614,322.5 1,322.5 C0.723858,322.5 0.5,322.276 0.5,322 C0.5,321.724 0.723858,321.5 1,321.5 C1.27614,321.5 1.5,321.724 1.5,322 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M636.5,999 C636.5,999.276 636.276,999.5 636,999.5 C635.724,999.5 635.5,999.276 635.5,999 C635.5,998.724 635.724,998.5 636,998.5 C636.276,998.5 636.5,998.724 636.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="636,999 1,364 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M594.5,999 C594.5,999.276 594.276,999.5 594,999.5 C593.724,999.5 593.5,999.276 593.5,999 C593.5,998.724 593.724,998.5 594,998.5 C594.276,998.5 594.5,998.724 594.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="594,999 1,406 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="551,999 1,449 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="509,999 1,491 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M467.5,999 C467.5,999.276 467.276,999.5 467,999.5 C466.724,999.5 466.5,999.276 466.5,999 C466.5,998.724 466.724,998.5 467,998.5 C467.276,998.5 467.5,998.724 467.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="467,999 1,533 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M424.5,999 C424.5,999.276 424.276,999.5 424,999.5 C423.724,999.5 423.5,999.276 423.5,999 C423.5,998.724 423.724,998.5 424,998.5 C424.276,998.5 424.5,998.724 424.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="424,999 1,576 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M382.5,999 C382.5,999.276 382.276,999.5 382,999.5 C381.724,999.5 381.5,999.276 381.5,999 C381.5,998.724 381.724,998.5 382,998.5 C382.276,998.5 382.5,998.724 382.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="382,999 1,618 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="340,999 1,660 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M297.5,999 C297.5,999.276 297.276,999.5 297,999.5 C296.724,999.5 296.5,999.276 296.5,999 C296.5,998.724 296.724,998.5 297,998.5 C297.276,998.5 297.5,998.724 297.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="297,999 1,703 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="255,999 1,745 " />
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M213.5,999 C213.5,999.276 213.276,999.5 213,999.5 C212.724,999.5 212.5,999.276 212.5,999 C212.5,998.724 212.724,998.5 213,998.5 C213.276,998.5 213.5,998.724 213.5,999 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="213,999 1,787 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="170,999 1,830 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="128,999 1,872 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="86,999 1,914 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="43,999 1,957 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,1 1,999 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="1,999 999,999 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,999 999,1 " />
+<polyline fill="none" vector-effect="non-scaling-stroke" points="999,1 1,1 " />
+</g>
+</g>
+</svg>

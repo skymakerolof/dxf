@@ -1,4 +1,5 @@
 {
+  "esnext": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
@@ -12,15 +13,20 @@
   "eqnull": true,
   "node": true,
   "loopfunc": true,
-  "indent": 2,
-  "trailing": true,
   "globals": {
     "describe": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
     "it": false,
+    "assert": true,
     "window": false,
     "document": false,
     "requestAnimationFrame": false,
-    "THREE": false,
-    "Stats": false
+    "Worker": false,
+    "postMessage": false,
+    "onmessage": true,
+    "atob": false
   }
 }
