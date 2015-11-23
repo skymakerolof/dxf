@@ -38,6 +38,8 @@
   },
   "dependencies": {
     "b-spline": "^1.0.5",
+    "lodash.isarray": "^3.0.4",
+    "lodash.isstring": "^3.0.1",
     "pretty-data": "^0.40.0"
   }
 }

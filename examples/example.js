@@ -3,14 +3,11 @@ var path = require('path');
 
 var dxf = require('..');
 var floorPlan1 = fs.readFileSync(path.join(__dirname, 'floorplan1.dxf'), 'utf-8');
+var collection = dxf.parseString(floorPlan1);
 
-var parser = dxf.createParser();
-var collector = new dxf.createCollector(parser);
-parser.parseString(floorPlan1);
-
-console.log(collector.header);
-console.log(collector.blocks);
-console.log(collector.lines);
-console.log(collector.lwpolylines);
-console.log(collector.circles);
-console.log(collector.arcs);
+console.log(collection.header);
+console.log(collection.blocks);
+console.log(collection.lines);
+console.log(collection.lwpolylines);
+console.log(collection.circles);
+console.log(collection.arcs);
