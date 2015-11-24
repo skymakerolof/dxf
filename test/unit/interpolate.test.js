@@ -7,25 +7,19 @@ var interpolate = dxf.interpolate;
 describe('Interpolation', function() {
 
   it('can be created for line entities', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
+    var lines = interpolate(collection.gatherDisplayEntities());
     assert.equal(lines.length, 11);
     assert.deepEqual(lines[0], [ [ 0, 0 ], [ 100, 0 ] ]);
   });
 
   it('can be created for lwpolylines', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/lwpolylines.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
+    var lines = interpolate(collection.gatherDisplayEntities());
     assert.equal(lines.length, 2);
     assert.deepEqual(lines[0], [
       [
@@ -48,13 +42,10 @@ describe('Interpolation', function() {
   });
 
   it('can be created for circles, ellipses and arcs', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
+    var lines = interpolate(collection.gatherDisplayEntities());
     assert.equal(lines.length, 5);
     assert.deepEqual(lines[0].length, 73);
     assert.deepEqual(lines[1].length, 73);
@@ -64,13 +55,10 @@ describe('Interpolation', function() {
   });
 
   it('can be created for splines', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/splines.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
+    var lines = interpolate(collection.gatherDisplayEntities());
     assert.equal(lines.length, 3);
     assert.deepEqual(lines[0].length, 100);
     assert.deepEqual(lines[1].length, 100);
@@ -78,30 +66,20 @@ describe('Interpolation', function() {
   });
 
   it('can be created for layers', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/layers.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
+    var lines = interpolate(collection.gatherDisplayEntities());
     assert.equal(lines.length, 9);
   });
 
   it('can be created for blocks', function() {
-    var parser = dxf.createParser();
-
-    var collector = dxf.createCollector(parser);
-    parser.parseString(
+    var collection = dxf.parseString(
       fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8'));
 
-    var lines = interpolate(collector);
-    assert.equal(lines.length, 10);
-    assert.equal(lines[0].length, 2);
-    assert.equal(lines[1].length, 2);
-    assert.equal(lines[2].length, 2);
-    assert.equal(lines[3].length, 2);
-    assert.equal(lines[4].length, 73);
+    var polylines = interpolate(collection.gatherDisplayEntities());
+
+    assert.equal(polylines.length, 10);
   });
 
 });
