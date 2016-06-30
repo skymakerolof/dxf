@@ -25,5 +25,6 @@ describe('svg entities', function() {
   createTest('layers');
   createTest('blocks');
   createTest('hatches');
+  createTest('spline_entities');
 
 });

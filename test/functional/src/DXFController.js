@@ -15,7 +15,7 @@ class DXFController extends Controller {
       cameraPosition: {
         x: 0,
         y: 0,
-        z: 10,
+        z: 5,
       },
       cameraUp: {
         x: 0,

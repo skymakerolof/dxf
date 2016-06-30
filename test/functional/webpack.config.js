@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    'entities.test': "./test/functional/src/entities.test.js",
+    'entities.test': "./src/entities.test.js",
+    'ref.test': "./src/ref.test.js",
   },
   module: {
     loaders: [
@@ -12,10 +13,10 @@ module.exports = {
     ],
   },
   output: {
-    path: 'test/functional/lib/',
+    path: 'lib/',
     filename: "[name].bundle.js"
   },
-  devtool: "#source-map",
+  devtool: "eval",
   node: {
     net: 'empty',
     dns: 'empty',
