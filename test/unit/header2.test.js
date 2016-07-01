@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8');
 
-describe.only('header2', () => {
+describe('header2', () => {
 
   it('can parse the header', () => {
     const parsed = lib.parseString(dfxContents);
