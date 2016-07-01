@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
 
-describe.only('blocks2', () => {
+describe('blocks2', () => {
 
   it('can parse the blocks', () => {
     const blocks = lib.parseString(dfxContents).blocks;
