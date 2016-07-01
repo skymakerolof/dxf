@@ -2,7 +2,7 @@ var assert = require('chai').assert;
 
 var BB = require('../../').BoundingBox;
 
-describe('BoundingBox', function() {
+describe.skip('BoundingBox', function() {
 
   it('is initialized', function() {
     var bb = new BB();

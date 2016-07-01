@@ -3,7 +3,7 @@ var assert = require('chai').assert;
 
 var dxf = require('../..');
 
-describe('Collection', function() {
+describe.skip('Collection', function() {
 
   it('can parsed from a string', function() {
     var collection = dxf.parseString(

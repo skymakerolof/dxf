@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8');
 
-describe.only('CIRCLE ELLIPSE ARC', () => {
+describe('CIRCLE ELLIPSE ARC', () => {
 
   it('can be parsed', () => {
     const entities = lib.parseString(dfxContents).entities;

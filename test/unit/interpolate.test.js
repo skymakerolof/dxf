@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var dxf = require('../..');
 var interpolate = dxf.interpolate;
 
-describe('Interpolation', function() {
+describe.skip('Interpolation', function() {
 
   it('can be created for line entities', function() {
     var collection = dxf.parseString(

@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var dxf = require('../..');
 var dxfContents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
 
-describe('blocks', function() {
+describe.skip('blocks', function() {
 
   it('can parsed from a string', function() {
     var parser = dxf.createParser();

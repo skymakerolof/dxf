@@ -3,7 +3,7 @@ var assert = require('chai').assert;
 
 var dxf = require('../..');
 
-describe('shapes', function() {
+describe.skip('shapes', function() {
 
   describe('polylines', function() {
 
