@@ -6,9 +6,9 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
 
-describe('blocks2', () => {
+describe('BLOCK', () => {
 
-  it('can parse the blocks', () => {
+  it('can be parsed', () => {
     const blocks = lib.parseString(dfxContents).blocks;
     assert.deepEqual(blocks.length, 3);
     assert.deepEqual(blocks[0], {
