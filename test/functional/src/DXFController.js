@@ -1,33 +1,22 @@
-let trip = require('triptych');
-let $ = trip.$;
-let ThreeJSScene = trip.scenes.ThreeJSScene;
-let Controller = trip.Controller;
+'use strict';
 
-let DXFModel = require('./DXFModel');
-let DXFView = require('./DXFView');
+const tripcore = require('trip.core');
+const trip3 = require('trip.three');
+const Controller = tripcore.Controller;
+
+const DXFModel = require('./DXFModel');
+const DXFView = require('./DXFView');
 
 class DXFController extends Controller {
 
   constructor(contents, selector) {
     super(new DXFModel(contents));
 
-    var threeJSSceneOptions = {
-      cameraPosition: {
-        x: 0,
-        y: 0,
-        z: 5,
-      },
-      cameraUp: {
-        x: 0,
-        y: 1,
-        z: 0,
-      },
-      disableRotate: true,
-    };
-    var threeJSScene = new ThreeJSScene($(selector), threeJSSceneOptions);
-    this.addView(threeJSScene, DXFView);
+    const scene = new trip3.Scene(selector, {});
+    scene.setOrthoZPos();
+    this.addView(scene, DXFView);
     setTimeout(() => {
-      threeJSScene.zoomTo2DExtents();
+      scene.zoomToExtents();
     });
   }
 

@@ -1,6 +1,8 @@
-let trip = require('triptych');
-let THREE = trip.THREE;
-let ThreeJSView = trip.views.ThreeJSView;
+'use strict';
+
+const trip3 = require('trip.three');
+const THREE = trip3.THREE;
+const ThreeJSView = trip3.View;
 
 class DXFView extends ThreeJSView {
 
@@ -13,11 +15,11 @@ class DXFView extends ThreeJSView {
 
   render() {
     this.model.polylines.forEach((polyline) => {
-      var geometry = new THREE.Geometry();
+      const geometry = new THREE.Geometry();
       geometry.vertices = polyline.map((xy) => {
         return new THREE.Vector3(xy[0], xy[1], 0);
       });
-      var line = new THREE.Line(geometry, this.material);
+      const line = new THREE.Line(geometry, this.material);
       this.sceneObject.add(line);
     });
   }

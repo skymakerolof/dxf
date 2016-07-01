@@ -6,7 +6,7 @@ var dxfContents = fs.readFileSync(__dirname + '/../resources/empty.dxf', 'utf-8'
 
 describe('No included blocks', function() {
 
-  it.only('can parsed from a string', function() {
+  it('can parsed from a string', function() {
     const parser = dxf.createParser();
     const acc = dxf.createAccumulator(parser);
 
@@ -25,7 +25,7 @@ describe('No included blocks', function() {
 
     const collection = acc.collection;
     const displayEntities = collection.gatherDisplayEntities();
-    // console.log(displayEntities);
+    console.log(displayEntities);
 
 
   });
