@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/entities.dxf', 'utf-8');
 
-describe.skip('All Entities', () => {
+describe('All Entities', () => {
 
   it('can be parsed', () => {
     const entities = lib.parseString(dfxContents).entities;
