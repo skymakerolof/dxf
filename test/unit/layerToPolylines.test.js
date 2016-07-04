@@ -5,7 +5,7 @@ const assert = require('chai').assert;
 const keys = require('lodash.keys');
 
 const lib = require('../..');
-const layerToPolyline = lib.layerToPolyline;
+const layerToPolylines = lib.layerToPolylines;
 
 describe('Layer To Lines', () => {
 
@@ -15,9 +15,9 @@ describe('Layer To Lines', () => {
     const byLayer = lib.gatherByLayer(parsed);
     assert.deepEqual(keys(byLayer), ['0']);
 
-    const lines = layerToPolyline(byLayer['0']);
-    assert.equal(lines.length, 11);
-    assert.deepEqual(lines[0], [ [ 0, 0 ], [ 100, 0 ] ]);
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.equal(polylines.length, 11);
+    assert.deepEqual(polylines[0], [ [ 0, 0 ], [ 100, 0 ] ]);
   });
 
   it('supports LWPOLYLINE', () => {
@@ -27,16 +27,16 @@ describe('Layer To Lines', () => {
     const byLayer = lib.gatherByLayer(parsed);
     assert.deepEqual(keys(byLayer), ['0']);
 
-    const lines = layerToPolyline(byLayer['0']);
-    assert.equal(lines.length, 2);
-    assert.deepEqual(lines[0], [
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.equal(polylines.length, 2);
+    assert.deepEqual(polylines[0], [
       [ 10, 40],
       [ 70, 0],
       [ 80, 20],
       [ 50, 60],
       [ 10, 40],
     ]);
-    assert.deepEqual(lines[1], [
+    assert.deepEqual(polylines[1], [
       [ 10, 60 ],
       [ 0, 90 ],
       [ 30, 80 ],
@@ -53,13 +53,13 @@ describe('Layer To Lines', () => {
     const byLayer = lib.gatherByLayer(parsed);
     assert.deepEqual(keys(byLayer), ['0']);
 
-    const lines = layerToPolyline(byLayer['0']);
-    assert.equal(lines.length, 5);
-    assert.deepEqual(lines[0].length, 73);
-    assert.deepEqual(lines[1].length, 39);
-    assert.deepEqual(lines[2].length, 40);
-    assert.deepEqual(lines[3].length, 18);
-    assert.deepEqual(lines[4].length, 73);
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.equal(polylines.length, 5);
+    assert.deepEqual(polylines[0].length, 73);
+    assert.deepEqual(polylines[1].length, 39);
+    assert.deepEqual(polylines[2].length, 40);
+    assert.deepEqual(polylines[3].length, 18);
+    assert.deepEqual(polylines[4].length, 73);
   });
 
   it('supports SPLINE', () => {
@@ -68,10 +68,20 @@ describe('Layer To Lines', () => {
     const byLayer = lib.gatherByLayer(parsed);
     assert.deepEqual(keys(byLayer), ['0']);
 
-    const lines = layerToPolyline(byLayer['0']);
-    assert.equal(lines.length, 2);
-    assert.deepEqual(lines[0].length, 100);
-    assert.deepEqual(lines[1].length, 100);
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.equal(polylines.length, 2);
+    assert.deepEqual(polylines[0].length, 100);
+    assert.deepEqual(polylines[1].length, 100);
+  });
+
+  it.only('supports BLOCK with INSERT', () => {
+    const parsed = lib.parseString(
+      fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8'));
+    const byLayer = lib.gatherByLayer(parsed);
+    assert.deepEqual(keys(byLayer), ['0']);
+
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.equal(polylines.length, 10);
   });
 
 });
