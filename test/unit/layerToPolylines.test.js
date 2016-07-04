@@ -74,7 +74,7 @@ describe('Layer To Lines', () => {
     assert.deepEqual(polylines[1].length, 100);
   });
 
-  it.only('supports BLOCK with INSERT', () => {
+  it('supports BLOCK with INSERT', () => {
     const parsed = lib.parseString(
       fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8'));
     const byLayer = lib.gatherByLayer(parsed);
