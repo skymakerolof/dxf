@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/blocks2.dxf', 'utf-8');
 
-describe.only('All Entities', () => {
+describe('All Entities', () => {
 
   it('can be parsed', () => {
     const result = lib.parseString(dfxContents);
@@ -16,7 +16,7 @@ describe.only('All Entities', () => {
         console.log('BLOCK', b);
       }
     });
-    
+
     result.entities.forEach((e) => {
       if (e.type === 'INSERT') {
         console.log('INSERT', e);
