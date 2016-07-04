@@ -19,11 +19,11 @@ function createTest(type) {
 }
 
 describe('svg entities', function() {
-  createTest('lines');
-  createTest('lwpolylines');
-  createTest('circlesellipsesarcs');
-  createTest('splines');
-  createTest('blocks');
-  createTest('layers');
+  // createTest('lines');
+  // createTest('lwpolylines');
+  // createTest('circlesellipsesarcs');
+  // createTest('splines');
+  // createTest('blocks');
+  // createTest('layers');
   createTest('supported_entities');
 });

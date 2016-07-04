@@ -25,10 +25,10 @@ describe('Gather By Layer', () => {
     const contents = fs.readFileSync(__dirname + '/../resources/blocks2.dxf', 'utf-8');
     const parsed = lib.parseString(contents);
     const byLayer = lib.gatherByLayer(parsed);
-    assert.equal(byLayer['0'].length, 11);
+    assert.equal(byLayer['entities'].length, 11);
 
     assert.deepEqual(
-      byLayer['0'][0].transforms,
+      byLayer['entities'][0].transforms,
       [
         { x: 0, y: 0, xScale: 1, yScale: 1, rotation: 0 },
         { x: 175, y: 25, xScale: 1, yScale: 1, rotation: 0 },
