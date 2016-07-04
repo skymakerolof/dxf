@@ -9,6 +9,9 @@ function createTest(type) {
       fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8'));
     const byLayer = lib.gatherByLayer(parsed);
 
+    console.log('>>>', byLayer);
+    console.log('>>>', byLayer.entities[0].vertices);
+
     let polylines = [];
     for (let layer in byLayer) {
       polylines = polylines.concat(lib.layerToPolylines(byLayer[layer]));
@@ -25,5 +28,6 @@ describe('svg entities', function() {
   // createTest('splines');
   // createTest('blocks');
   // createTest('layers');
-  createTest('supported_entities');
+  // createTest('supported_entities');
+  createTest('tmp');
 });

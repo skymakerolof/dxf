@@ -46,6 +46,7 @@
     "lodash.isstring": "^3.0.1",
     "pretty-data": "^0.40.0",
     "trip.core": "^0.5.3",
-    "trip.three": "^0.4.3"
+    "trip.three": "^0.4.3",
+    "vecks": "^2.0.0"
   }
 }
