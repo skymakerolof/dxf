@@ -18,6 +18,7 @@ describe('SPLINE', () => {
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       closed: false,
+      flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 10, y: 10, z: 0},
@@ -39,6 +40,7 @@ describe('SPLINE', () => {
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       closed: false,
+      flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 30, y: 30, z: 0},

@@ -46,11 +46,13 @@ describe('BLOCK', () => {
       xref: '',
       y: 0,
     });
-    assert.deepEqual(entities3.length, 4);
+    assert.deepEqual(entities3.length, 6);
     assert.deepEqual(entities3[0].type, 'LINE');
     assert.deepEqual(entities3[1].type, 'LINE');
     assert.deepEqual(entities3[2].type, 'LINE');
     assert.deepEqual(entities3[3].type, 'LINE');
+    assert.deepEqual(entities3[4].type, 'ARC');
+    assert.deepEqual(entities3[5].type, 'MTEXT');
 
 
     const entities4 = blocks[4].entities;
@@ -61,10 +63,12 @@ describe('BLOCK', () => {
       xref: '',
       y: 0,
     });
-    assert.deepEqual(entities4.length, 3);
+    assert.deepEqual(entities4.length, 5);
     assert.deepEqual(entities4[0].type, 'LINE');
     assert.deepEqual(entities4[1].type, 'LINE');
     assert.deepEqual(entities4[2].type, 'LINE');
+    assert.deepEqual(entities4[3].type, 'MTEXT');
+    assert.deepEqual(entities4[4].type, 'ELLIPSE');
 
   });
 
