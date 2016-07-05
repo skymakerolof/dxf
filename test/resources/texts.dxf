@@ -1,5 +1,5 @@
 999
-dxfrw 0.6.1
+dxfrw 0.6.3
   0
 SECTION
   2
@@ -31,9 +31,9 @@ $EXTMIN
   9
 $EXTMAX
  10
-139.1666666666681
+0
  20
-13.3333333333338
+0
  30
 0
   9
@@ -801,6 +801,10 @@ $PEXTMAX
  30
 0
   9
+$GRIDMODE
+ 70
+    1
+  9
 $SNAPSTYLE
  70
     0
@@ -813,9 +817,9 @@ $PLIMMIN
   9
 $PLIMMAX
  10
-210
+12
  20
-297
+9
   9
 $UNITMODE
  70
@@ -947,7 +951,7 @@ $INTERSECTIONCOLOR
   9
 $DIMASSOC
 280
-    0
+    1
   9
 $PROJECTNAME
   1
@@ -1111,9 +1115,9 @@ AcDbViewportTableRecord
  21
 1
  12
-160.25
+206.8173963109242
  22
-71.375
+146.2345226440879
  13
 0
  23
@@ -1139,9 +1143,9 @@ AcDbViewportTableRecord
  37
 0
  40
-180.25
+375.1960038125454
  41
-2.173370319001387
+1.749443207126949
  42
 50
  43
@@ -2265,6 +2269,62 @@ AcDbSymbolTableRecord
 100
 AcDbTextStyleTableRecord
   2
+unicode
+ 70
+    0
+ 40
+0
+ 41
+1
+ 50
+0
+ 71
+    0
+ 42
+1
+  3
+unicode
+  4
+
+  0
+STYLE
+  5
+4B
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+iso
+ 70
+    0
+ 40
+0
+ 41
+1
+ 50
+0
+ 71
+    0
+ 42
+1
+  3
+iso
+  4
+
+  0
+STYLE
+  5
+4C
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
 Standard
  70
     0
@@ -2341,7 +2401,7 @@ ACAD
   0
 APPID
   5
-4B
+4D
 330
 9
 100
@@ -2373,7 +2433,7 @@ AcDbDimStyleTable
   0
 DIMSTYLE
 105
-4C
+4E
 330
 A
 100
@@ -2402,12 +2462,14 @@ Standard
 0
  48
 0
+ 49
+1
 140
 2.5
 141
 0.09
 142
-0
+2.5
 143
 25.4
 144
@@ -2435,7 +2497,7 @@ Standard
  77
     0
  78
-    0
+    1
  79
     0
 170
@@ -2459,7 +2521,7 @@ Standard
 179
     0
 271
-    4
+    2
 272
     4
 273
@@ -2473,7 +2535,7 @@ Standard
 277
     2
 278
-   46
+    0
 279
     0
 280
@@ -2495,7 +2557,7 @@ Standard
 289
     3
 340
-Standard
+standard
 341
 
 371
@@ -2645,7 +2707,7 @@ ENTITIES
   0
 MTEXT
   5
-4D
+4F
 100
 AcDbEntity
   8
@@ -2661,21 +2723,67 @@ AcDbMText
  10
 0
  20
-0
+20
  30
 0
  40
-10
+20
  41
-139.1666666666681
+121.6666624266237
+ 71
+    1
+ 72
+    1
+  1
+ISO TEXT
+  7
+iso
+210
+0
+220
+0
+230
+1
+ 50
+0
+ 73
+    2
+ 44
+1
+  0
+MTEXT
+  5
+50
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbMText
+ 10
+0
+ 20
+100
+ 30
+0
+ 40
+30
+ 41
+282.5000000000001
  71
     7
  72
     1
   1
-The quick brown fox
+UNICODE TEXT
   7
-
+unicode
 210
 0
 220

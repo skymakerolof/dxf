@@ -1,29 +1,30 @@
-var fs = require('fs');
-// var assert = require('chai').assert;
+'use strict';
 
-var dxf = require('../..');
+const fs = require('fs');
+const lib = require('../..');
 
 function createTest(type) {
   it(type, function() {
-    var dxfString = fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8');
+    const parsed = lib.parseString(
+      fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8'));
+    const byLayer = lib.gatherByLayer(parsed);
 
-    var collection = dxf.parseString(dxfString);
-    var interpolated = dxf.interpolate(collection.gatherDisplayEntities());
-    var svg = dxf.toSVG(interpolated);
+    let polylines = [];
+    for (let layer in byLayer) {
+      polylines = polylines.concat(lib.layerToPolylines(byLayer[layer]));
+    }
+    const svg = lib.toSVG(polylines);
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   });
 }
 
 describe('svg entities', function() {
-
   createTest('lines');
   createTest('lwpolylines');
   createTest('circlesellipsesarcs');
   createTest('splines');
-  createTest('texts');
-  createTest('dimensions');
-  createTest('layers');
   createTest('blocks');
-  createTest('hatches');
-
+  createTest('layers');
+  createTest('supported_entities');
+  createTest('empty');
 });
