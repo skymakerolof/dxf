@@ -70,8 +70,8 @@ describe('Layer To Lines', () => {
 
     const polylines = layerToPolylines(byLayer['0']);
     assert.equal(polylines.length, 2);
-    assert.deepEqual(polylines[0].length, 100);
-    assert.deepEqual(polylines[1].length, 100);
+    assert.deepEqual(polylines[0].length, 101);
+    assert.deepEqual(polylines[1].length, 101);
   });
 
   it('supports BLOCK with INSERT', () => {

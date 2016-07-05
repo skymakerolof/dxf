@@ -34,4 +34,18 @@ describe('Arc for LWPOLYLINE', () => {
     ]);
   });
 
+  it('can be created for negative bulge', () => {
+    const from = [10, 0];
+    const to = [0, 0];
+    const bulge = -Math.tan(Math.PI*3/2/4);
+
+    assert.deepEqual(createArcForLWPolyine(from, to, bulge, 45), [
+      [ 12.071067811865476, -5.000000000000001 ],
+      [ 9.999999999999998, -10 ],
+      [ 4.999999999999999, -12.071067811865474 ],
+      [ -8.881784197001252e-16, -9.999999999999998 ],
+      [ -2.0710678118654746, -4.999999999999998 ],
+    ]);
+  });
+
 });
