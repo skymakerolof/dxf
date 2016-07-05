@@ -41,7 +41,7 @@ gulp.task('clean:output', function () {
 });
 
 
-gulp.task('functional', ['clean:output'], function() {
+gulp.task('functional', ['unit', 'clean:output'], function() {
   return gulp.src(functionalTestFiles)
     .pipe(mocha({}));
 });
@@ -53,8 +53,7 @@ gulp.task('test', ['jshint', 'jscs', 'unit', 'functional']);
 gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
-  // gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
-  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
+  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'functional']);
 });

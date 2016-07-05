@@ -8,7 +8,7 @@ const dfxContents = fs.readFileSync(__dirname + '/../resources/entities.dxf', 'u
 
 describe('All Entities', () => {
 
-  it('can be parsed', () => {
+  it('can be parsed or ignored silently', () => {
     const result = lib.parseString(dfxContents);
     assert.equal(result.blocks.length, 78);
     assert.equal(result.entities.length, 116);

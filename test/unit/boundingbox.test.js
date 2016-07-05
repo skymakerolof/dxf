@@ -1,8 +1,9 @@
 var assert = require('chai').assert;
 
-var BB = require('../../').BoundingBox;
+const lib = require('../..');
+var BB = lib.BoundingBox;
 
-describe.skip('BoundingBox', function() {
+describe('BoundingBox', function() {
 
   it('is initialized', function() {
     var bb = new BB();
