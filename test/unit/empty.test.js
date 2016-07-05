@@ -1,33 +1,20 @@
-var fs = require('fs');
-var assert = require('chai').assert;
+const fs = require('fs');
+const assert = require('chai').assert;
+const keys = require('lodash.keys');
 
-var dxf = require('../..');
-var dxfContents = fs.readFileSync(__dirname + '/../resources/empty.dxf', 'utf-8');
+const lib = require('../..');
 
-describe.skip('Empty', function() {
+const dxfContents = fs.readFileSync(__dirname + '/../resources/empty.dxf', 'utf-8');
+
+describe('Empty', function() {
 
   it('can parsed from a string', function() {
-    const parser = dxf.createParser();
-    const acc = dxf.createAccumulator(parser);
+    const parsed = lib.parseString(dxfContents);
+    assert.equal(parsed.blocks.length, 78);
+    assert.equal(parsed.entities.length, 0);
 
-    const blocks = [];
-    const inserts = [];
-    parser.on('block', function(block) {
-      blocks.push(block);
-    });
-    parser.on('insert', function(block) {
-      blocks.push(block);
-    });
-    parser.parseString(dxfContents);
-
-    assert.equal(blocks.length, 38);
-    assert.equal(inserts.length, 0);
-
-    const collection = acc.collection;
-    const displayEntities = collection.gatherDisplayEntities();
-    console.log(displayEntities);
-
-
+    const byLayer = lib.gatherByLayer(parsed);
+    assert.deepEqual(keys(byLayer), []);
   });
 
 });
