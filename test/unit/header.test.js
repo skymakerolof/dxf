@@ -1,22 +1,16 @@
-var fs = require('fs');
-var assert = require('chai').assert;
+'use strict';
 
-var dxf = require('../..');
-var dfxContents = fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8');
+const fs = require('fs');
+const assert = require('chai').assert;
+const lib = require('../..');
 
-describe('header', function() {
+const dfxContents = fs.readFileSync(__dirname + '/../resources/lines.dxf', 'utf-8');
 
-  it('can parsed from a string', function() {
-    var parser = dxf.createParser();
+describe('header2', () => {
 
-    var header;
-    parser.on('header', function(h) {
-      header = h;
-    });
-
-    parser.parseString(dfxContents);
-
-    assert.deepEqual(header, {
+  it('can parse the header', () => {
+    const parsed = lib.parseString(dfxContents);
+    assert.deepEqual(parsed.header, {
       "extMin": {
         "x": 0,
         "y": 0,
@@ -28,7 +22,6 @@ describe('header', function() {
         "z": 0
       },
     });
-
   });
 
 });

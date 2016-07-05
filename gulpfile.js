@@ -1,13 +1,14 @@
-var gulp = require('gulp');
-var path = require('path');
-var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
-var jscsStylish = require('gulp-jscs-stylish');
-var mocha = require('gulp-mocha');
+const gulp = require('gulp');
+const path = require('path');
+const jshint = require('gulp-jshint');
+const jscs = require('gulp-jscs');
+const jscsStylish = require('gulp-jscs-stylish');
+const mocha = require('gulp-mocha');
+const del = require('del');
 
-var srcFiles = path.join('lib', '**', '*.js');
-var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
-var functionalTestFiles = path.join('test', 'functional', '*.test.js');
+const srcFiles = path.join('lib', '**', '*.js');
+const unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
+const functionalTestFiles = path.join('test', 'functional', '*.test.js');
 
 // ----- Individual Tasks -----
 
@@ -33,7 +34,14 @@ gulp.task('unit', function() {
     .pipe(mocha({}));
 });
 
-gulp.task('functional', ['unit'], function() {
+gulp.task('clean:output', function () {
+  return del([
+    'test/functional/output/*',
+  ]);
+});
+
+
+gulp.task('functional', ['unit', 'clean:output'], function() {
   return gulp.src(functionalTestFiles)
     .pipe(mocha({}));
 });
@@ -46,7 +54,6 @@ gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
   gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
-  // gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'functional']);
 });
