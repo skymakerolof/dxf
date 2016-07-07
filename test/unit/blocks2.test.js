@@ -13,6 +13,7 @@ describe('BLOCK', () => {
     assert.deepEqual(blocks.length, 5);
     assert.deepEqual(blocks[0], {
       name: '*Model_Space',
+      entities: [],
       x: 0,
       xref: '',
       y: 0,
@@ -20,6 +21,7 @@ describe('BLOCK', () => {
     });
     assert.deepEqual(blocks[1], {
       name: '*Paper_Space',
+      entities: [],      
       x: 0,
       xref: '',
       y: 0,
