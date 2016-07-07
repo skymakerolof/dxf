@@ -21,7 +21,7 @@ describe('Reference files dont\'t generate errors', () => {
     };
   };
 
-  // it('entities.dxf', createTest('entities.dxf'));
+  it('entities.dxf', createTest('entities.dxf'));
   it('Ceco.NET-Architecture-Tm-53.dxf', createTest('Ceco.NET-Architecture-Tm-53.dxf'));
 
 });
