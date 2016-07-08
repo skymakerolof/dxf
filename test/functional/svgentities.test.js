@@ -27,4 +27,7 @@ describe('svg entities', function() {
   createTest('layers');
   createTest('supported_entities');
   createTest('empty');
+  createTest('floorplan');
+  createTest('Ceco.NET-Architecture-Tm-53');
+  createTest('polylines');
 });
