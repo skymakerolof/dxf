@@ -6,7 +6,7 @@ const lib = require('../..');
 
 const dfxContents = fs.readFileSync(__dirname + '/../resources/blocks2.dxf', 'utf-8');
 
-describe('BLOCK', () => {
+describe('BLOCK 2', () => {
 
   it('can be parsed', () => {
     const blocks = lib.parseString(dfxContents).blocks;
@@ -21,7 +21,7 @@ describe('BLOCK', () => {
     });
     assert.deepEqual(blocks[1], {
       name: '*Paper_Space',
-      entities: [],      
+      entities: [],
       x: 0,
       xref: '',
       y: 0,

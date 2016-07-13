@@ -24,6 +24,7 @@ describe('svg entities', function() {
   createTest('circlesellipsesarcs');
   createTest('splines');
   createTest('blocks');
+  createTest('blocks2');
   createTest('layers');
   createTest('supported_entities');
   createTest('empty');

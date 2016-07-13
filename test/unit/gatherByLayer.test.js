@@ -30,8 +30,8 @@ describe('Gather By Layer', () => {
     assert.deepEqual(
       byLayer['entities'][0].transforms,
       [
-        { x: 0, y: 0, xScale: 1, yScale: 1, rotation: 0 },
-        { x: 175, y: 25, xScale: 1, yScale: 1, rotation: 0 },
+        { x: 0, y: 0, xScale: 2, yScale: 2, rotation: 0 },
+        { x: 175, y: 25, xScale: 0.5, yScale: 0.5, rotation: 0 },
       ]);
   });
 
