@@ -47,6 +47,19 @@ describe('Layer To Lines', () => {
     ]);
   });
 
+  it('address the observed closed LWPOLYLINE transform bug', () => {
+
+    // There was a bug with LW polyline where the duplicated point
+    // used for closing it was no copied by mutated multiple times
+    const parsed = lib.parseString(
+      fs.readFileSync(__dirname + '/../resources/closedlwpolylinebug.dxf', 'utf-8'));
+    const byLayer = lib.gatherByLayer(parsed);
+    const polylines = layerToPolylines(byLayer['0']);
+    assert.deepEqual(polylines, [
+      [[ 30, 40 ], [ 50, 40 ], [ 50, 70 ], [ 30, 40 ]]
+    ]);
+  });
+
   it('supports CIRCLE, ELLIPSE, ARC', () => {
     const parsed = lib.parseString(
       fs.readFileSync(__dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8'));
