@@ -1,6 +1,6 @@
 {
   "name": "dxf",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "engines": {
