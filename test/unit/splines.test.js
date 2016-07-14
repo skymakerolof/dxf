@@ -32,6 +32,9 @@ describe('SPLINE', () => {
       numberOfControlPoints: 4,
       numberOfFitPoints: 0,
       numberOfKnots: 8,
+      extrusionX: 0,
+      extrusionY: 0,
+      extrusionZ: 0,
     });
 
     assert.deepEqual(entities[1], {
@@ -58,6 +61,9 @@ describe('SPLINE', () => {
       numberOfControlPoints: 8,
       numberOfFitPoints: 0,
       numberOfKnots: 12,
+      extrusionX: 0,
+      extrusionY: 0,
+      extrusionZ: 0,
     });
   });
 
