@@ -11,24 +11,25 @@ describe('Gather By Layer', () => {
     const parsed = lib.parseString(contents);
     const byLayer = lib.gatherByLayer(parsed);
 
-    assert.equal(byLayer['0'].length, 11);
+    assert.equal(byLayer['0'].entities.length, 11);
+    assert.deepEqual(byLayer['0'].color, [255, 255, 255]);
   });
 
   it('entities from inserted blocks', () => {
     const contents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
     const parsed = lib.parseString(contents);
     const byLayer = lib.gatherByLayer(parsed);
-    assert.equal(byLayer['0'].length, 10);
+    assert.equal(byLayer['0'].entities.length, 10);
   });
 
   it('for blocks that contain inserts', () => {
     const contents = fs.readFileSync(__dirname + '/../resources/blocks2.dxf', 'utf-8');
     const parsed = lib.parseString(contents);
     const byLayer = lib.gatherByLayer(parsed);
-    assert.equal(byLayer['entities'].length, 11);
+    assert.equal(byLayer['entities'].entities.length, 11);
 
     assert.deepEqual(
-      byLayer['entities'][0].transforms,
+      byLayer['entities'].entities[0].transforms,
       [
         { x: 0, y: 0, xScale: 2, yScale: 2, rotation: 0 },
         { x: 175, y: 25, xScale: 0.5, yScale: 0.5, rotation: 0 },

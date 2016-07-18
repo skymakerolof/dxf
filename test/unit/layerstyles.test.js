@@ -8,7 +8,7 @@ const lib = require('../..');
 const dfxContents = fs.readFileSync(
   __dirname + '/../resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8');
 
-describe.only('Layer Styles', () => {
+describe('Layer Styles', () => {
 
   it('can be parsed', () => {
     const result = lib.parseString(dfxContents);
@@ -25,6 +25,7 @@ describe.only('Layer Styles', () => {
       Defpoints: {colorNumber: 7},
       topography: {colorNumber: 132},
       plants: {colorNumber: 83},
+      'Ceco.NET 53': { colorNumber: 254 },
     };
 
     const reduced = {};
