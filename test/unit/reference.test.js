@@ -7,10 +7,11 @@ const readContents = (filename) => {
   return fs.readFileSync(__dirname + '/../resources/' + filename, 'utf-8');
 };
 
-describe('Reference files dont\'t generate errors', () => {
+describe('Reference files dont\'t generate errors', function() {
 
-  const createTest = (filename) => {
-    return () => {
+  const createTest = function(filename) {
+    return function() {
+      this.timeout(5000);
       const parsed = lib.parseString(readContents(filename));
       const entities = lib.denormalise(parsed);
       entities.forEach(e => {
