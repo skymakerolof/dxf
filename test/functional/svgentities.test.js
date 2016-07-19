@@ -7,8 +7,7 @@ function createTest(type) {
   it(type, function() {
     const parsed = lib.parseString(
       fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8'));
-    const byLayer = lib.gatherByLayer(parsed);
-    const svg = lib.toSVG(byLayer);
+    const svg = lib.toSVG(parsed);
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   });
 }
@@ -16,6 +15,7 @@ function createTest(type) {
 describe('svg entities', function() {
   createTest('lines');
   createTest('lwpolylines');
+  createTest('polylines');
   createTest('circlesellipsesarcs');
   createTest('splines');
   createTest('blocks');
@@ -24,6 +24,5 @@ describe('svg entities', function() {
   createTest('supported_entities');
   createTest('empty');
   createTest('floorplan');
-  createTest('polylines');
   createTest('Ceco.NET-Architecture-Tm-53');
 });
