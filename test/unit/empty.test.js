@@ -1,6 +1,7 @@
+'use strict';
+
 const fs = require('fs');
 const assert = require('chai').assert;
-const keys = require('lodash.keys');
 
 const lib = require('../..');
 
@@ -13,8 +14,8 @@ describe('Empty', function() {
     assert.equal(parsed.blocks.length, 78);
     assert.equal(parsed.entities.length, 0);
 
-    const byLayer = lib.gatherByLayer(parsed);
-    assert.deepEqual(keys(byLayer), []);
+    const entities = lib.denormalise(parsed);
+    assert.deepEqual(entities, []);
   });
 
 });
