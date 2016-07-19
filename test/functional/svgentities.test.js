@@ -8,12 +8,7 @@ function createTest(type) {
     const parsed = lib.parseString(
       fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8'));
     const byLayer = lib.gatherByLayer(parsed);
-
-    let polylines = [];
-    for (let layer in byLayer) {
-      polylines = polylines.concat(lib.layerToPolylines(byLayer[layer]));
-    }
-    const svg = lib.toSVG(polylines);
+    const svg = lib.toSVG(byLayer);
     fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8');
   });
 }
@@ -29,6 +24,6 @@ describe('svg entities', function() {
   createTest('supported_entities');
   createTest('empty');
   createTest('floorplan');
-  createTest('Ceco.NET-Architecture-Tm-53');
   createTest('polylines');
+  createTest('Ceco.NET-Architecture-Tm-53');
 });
