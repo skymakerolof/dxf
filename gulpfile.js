@@ -7,6 +7,7 @@ const mocha = require('gulp-mocha');
 const del = require('del');
 
 const srcFiles = path.join('lib', '**', '*.js');
+const exampleFiles = path.join('examples', '**', '*.js');
 const unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
 const functionalTestFiles = path.join('test', 'functional', '*.test.js');
 
@@ -17,14 +18,14 @@ gulp.task('clearconsole', function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src([srcFiles, unitTestFiles])
+  return gulp.src([srcFiles, exampleFiles, unitTestFiles])
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('jscs', function() {
-  return gulp.src([srcFiles, unitTestFiles])
+  return gulp.src([srcFiles, exampleFiles, unitTestFiles])
     .pipe(jscs())
     .pipe(jscsStylish());
 });
@@ -54,6 +55,7 @@ gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
   gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
+  gulp.watch(exampleFiles, ['clearconsole', 'jshint', 'jscs']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'functional']);
 });
