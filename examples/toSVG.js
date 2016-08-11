@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const keys = require('lodash.keys');
 
 const dxf = require('..');
 const parsed = dxf.parseString(fs.readFileSync(
@@ -9,4 +8,4 @@ const parsed = dxf.parseString(fs.readFileSync(
 
 // Open this SVG in your browser or other SVG viewer
 const svg = dxf.toSVG(parsed);
-  fs.writeFileSync(__dirname + '/example.svg', svg, 'utf-8');
+fs.writeFileSync(__dirname + '/example.svg', svg, 'utf-8');
