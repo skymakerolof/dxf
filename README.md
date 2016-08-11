@@ -40,3 +40,8 @@ Running
 ```$ gulp test```
 
 will execute the unit tests and functional tests, which generate SVGs for reference DXF files. You can view these SVGs (located in test/functional/output) in a browser or other SVG viewer to see what is supported.
+
+### Contributors
+
+- Liam Mitchell https://github.com/LiamKarlMitchell
+- Artur Zochniak https://github.com/arjamizo
