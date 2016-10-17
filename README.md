@@ -25,6 +25,14 @@ There are some examples in the ```examples/``` directory that show how to use th
 1. Denormalise the entities into an array using ```dxf.denormalize()```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalizing will create the *resulting* entities with the block transforms applied.
 1. (Optional) Create an SVG using ```dxf.toSVG()```. Please refer to the SVG section below regarding limitations.
 
+## Running the Examples
+
+To run the Group By Layer example:
+`npm run ex:group`
+
+To run the SVG output example (this will output `./examples/example.svg`):
+`npm run ex:svg`
+
 ## SVG
 
 The initial aim of this library was to support rendering of the main geometric components, not dimensions, text, hatches and styles. There is a mechanism for converting the parsed entities to SVG, but they are **all converted to polylines**, and if you look at the resulting SVG files when running the functional tests, you will see that all entities are rendered as paths.

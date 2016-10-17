@@ -5,7 +5,7 @@ const keys = require('lodash.keys');
 
 const dxf = require('..');
 const parsed = dxf.parseString(fs.readFileSync(
-  '../test/resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8'));
+  './test/resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8'));
 
 // Denormalise the entities out of the parsed structure - block transforms
 // are added to the entities in this step

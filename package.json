@@ -7,7 +7,9 @@
     "node": ">=4.4.7"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "ex:group": "node ./examples/groupByLayer.js",
+    "ex:svg": "node ./examples/toSVG.js"
   },
   "repository": {
     "type": "git",
