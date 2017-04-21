@@ -47,7 +47,7 @@
     "lodash.clonedeep": "^3.0.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
-    "pretty-data": "^0.40.0",
+    "pretty-data": "shvelo/pretty-data",
     "trip.core": "^0.5.3",
     "trip.three": "^0.4.3",
     "vecks": "^2.0.0"
