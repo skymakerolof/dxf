@@ -2,8 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import { assert } from 'chai'
 
-import entityToPolyline from '../../src/entityToPolyline'
-import { parseString, denormalise } from '../../src'
+import { parseString, denormalise, entityToPolyline } from '../../src'
 
 describe('Entity To Polyline', () => {
   it('supports LINE', () => {
