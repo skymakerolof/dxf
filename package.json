@@ -14,9 +14,7 @@
     "functional:watch": "npm run unit -- --watch",
     "test": "npm run lint && npm run unit && npm run functional",
     "compile": "babel --optional runtime -d lib/ src/",
-    "prepare": "npm run compile",
-    "ex:group": "node ./examples/groupByLayer.js",
-    "ex:svg": "node ./examples/toSVG.js"
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",

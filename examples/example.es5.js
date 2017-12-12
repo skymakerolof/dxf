@@ -1,6 +1,5 @@
-'use strict'
-
 const fs = require('fs')
+const join = require('path').join
 
 const dxf = require('..')
 const parsed = dxf.parseString(fs.readFileSync(
@@ -19,3 +18,8 @@ console.log('[layer : number of entities]')
 Object.keys(groups).forEach(layer => {
   console.log(layer, ':', groups[layer].length)
 })
+
+// Open this SVG in your browser or other SVG viewer
+const svg = dxf.toSVG(parsed)
+fs.writeFileSync(join(__dirname, '/example.es5.svg'), svg, 'utf-8')
+console.log('\nSVG written')
