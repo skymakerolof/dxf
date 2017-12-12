@@ -53,3 +53,4 @@ will execute the unit tests and functional tests, which generate SVGs for refere
 
 - Liam Mitchell https://github.com/LiamKarlMitchell
 - Artur Zochniak https://github.com/arjamizo
+- Andy Werner https://github.com/Gallore
