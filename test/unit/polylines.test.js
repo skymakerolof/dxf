@@ -1,16 +1,14 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const assert = require('chai').assert;
-const lib = require('../..');
-
-const dfxContents = fs.readFileSync(__dirname + '/../resources/polylines.dxf', 'utf-8');
+import { parseString } from '../../src'
+const dxfContents = fs.readFileSync(join(__dirname, '/../resources/polylines.dxf'), 'utf-8')
 
 describe('POLYLINE', () => {
-
   it('can be parsed', () => {
-    const entities = lib.parseString(dfxContents).entities;
-    assert.deepEqual(entities.length, 2);
+    const entities = parseString(dxfContents).entities
+    assert.deepEqual(entities.length, 2)
     assert.deepEqual(entities[0], {
       closed: true,
       layer: 'DXF',
@@ -23,10 +21,8 @@ describe('POLYLINE', () => {
         { x: 14, y: 20.00000000000011, z: 0 },
         { x: 20, y: 14.00000000000002, z: 0 },
         { x: 279.9999999999999, y: 14, z: 0 },
-        { x: 286, y: 20.00000000000011, z: 0 },
+        { x: 286, y: 20.00000000000011, z: 0 }
       ]
-    });
-
-  });
-
-});
+    })
+  })
+})

@@ -1,15 +1,20 @@
 {
   "name": "dxf",
-  "version": "2.4.3",
+  "version": "3.0.0",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "engines": {
-    "node": ">=4.4.7"
+    "node": ">=6.9.0"
   },
   "scripts": {
-    "test": "gulp test",
-    "ex:group": "node ./examples/groupByLayer.js",
-    "ex:svg": "node ./examples/toSVG.js"
+    "lint": "standard",
+    "unit": "mocha --compilers js:babel-register --recursive test/unit/**",
+    "unit:watch": "npm run unit -- --watch",
+    "functional": "rimraf test/functional/output/* && mocha --compilers js:babel-register --recursive test/functional/**",
+    "functional:watch": "npm run unit -- --watch",
+    "test": "npm run lint && npm run unit && npm run functional",
+    "compile": "babel --optional runtime -d lib/ src/",
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -17,7 +22,8 @@
   },
   "keywords": [
     "DXF",
-    "Parser"
+    "Parser",
+    "SVG"
   ],
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
@@ -26,21 +32,13 @@
   },
   "homepage": "https://github.com/bjnortier/dxf",
   "devDependencies": {
-    "babel-core": "^6.5.2",
-    "babel-loader": "^6.2.2",
-    "babel-preset-es2015": "^6.5.0",
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
     "chai": "^3.4.0",
-    "del": "^2.2.1",
-    "gulp": "^3.9.1",
-    "gulp-jscs": "^3.0.2",
-    "gulp-jscs-stylish": "^1.2.1",
-    "gulp-jshint": "^1.12.0",
-    "gulp-mocha": "^2.1.3",
-    "jshint-stylish": "^2.0.1",
-    "lodash.keys": "^4.0.7",
     "mocha": "^2.3.3",
-    "raw-loader": "^0.5.1",
-    "webpack": "^1.12.4"
+    "rimraf": "^2.6.2",
+    "standard": "^10.0.3"
   },
   "dependencies": {
     "b-spline": "^1.0.5",
@@ -48,8 +46,18 @@
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
     "pretty-data": "^0.40.0",
-    "trip.core": "^0.5.3",
-    "trip.three": "^0.4.3",
-    "vecks": "^2.0.0"
+    "vecks": "^3.4.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after"
+    ],
+    "ignore": [
+      "lib/"
+    ]
   }
 }

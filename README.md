@@ -4,9 +4,11 @@
 
 DXF parser for node/browser.
 
-Uses some ES6 features (classes, let, const, arrows). If you need to use this library in a browser without support for these features, you can use Webpack + Babel to package it.
+Uses several ES6 features in the source code (import, classes, let, const, arrows) but is packaged using babel so you can use it legacy JS environments.
 
-V2.0 is a complete rewrite from the first attempt to write it in a SAX style, which wasn't really appropriate for a document with nested references (e.g inserts referencing blocks, nested inserts).
+Version 2.0 is a complete rewrite from the first attempt to write it in a SAX style, which wasn't really appropriate for a document with nested references (e.g inserts referencing blocks, nested inserts).
+
+Version 3.0 converted the codebase to use [standard JS](https://standardjs.com), ES6 imports, stop using Gulp, and updated & removed some dependencies.
 
 At this point in time, the important geometric entities are supported, but notably:
 
@@ -16,22 +18,21 @@ At this point in time, the important geometric entities are supported, but notab
 
 and some others are **parsed**, but are **not supported for SVG rendering** (see section below on SVG rendering)
 
-
 ## Getting started
 
-There are some examples in the ```examples/``` directory that show how to use the library, but there are 3 basic steps:
+There is an ES5 and ES6 example in the ```examples/``` directory that show how to use the library, but there are 3 basic steps:
 
-1. Parse the DXF contents using ```dxf.parseString()```. This will return an object representation of the DXF contents.
-1. Denormalise the entities into an array using ```dxf.denormalize()```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalizing will create the *resulting* entities with the block transforms applied.
-1. (Optional) Create an SVG using ```dxf.toSVG()```. Please refer to the SVG section below regarding limitations.
+1. Parse the DXF contents using ```dxf.parseString(<contents>)```. This will return an object representation of the DXF contents.
+1. Denormalise the entities into an array using ```dxf.denormalize(<parsed>)```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalizing will create the *resulting* entities with the block transforms applied.
+1. (Optional) Create an SVG using ```dxf.toSVG(<parsed>)```. Please refer to the SVG section below regarding limitations.
 
 ## Running the Examples
 
-To run the Group By Layer example:
-`npm run ex:group`
+ES5:
+`$ node examples/example.es5.js`
 
-To run the SVG output example (this will output `./examples/example.svg`):
-`npm run ex:svg`
+ES6:
+`$ babel-node examples/example.es6.js`
 
 ## SVG
 
@@ -45,7 +46,7 @@ Here's an example you will find in the functional test output:
 
 Running
 
-```$ gulp test```
+```$ npm test```
 
 will execute the unit tests and functional tests, which generate SVGs for reference DXF files. You can view these SVGs (located in test/functional/output) in a browser or other SVG viewer to see what is supported.
 
