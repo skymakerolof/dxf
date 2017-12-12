@@ -8,6 +8,7 @@ import denormalise from './denormalise'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 import toSVG from './toSVG'
 import colors from './util/colors'
+import entityToPolyline from './entityToPolyline'
 
 const toLines = (string) => {
   const lines = string.split(/\r\n|\r|\n/g)
@@ -98,4 +99,12 @@ export const parseString = (string) => {
   return result
 }
 
-export { config, colors, BoundingBox, denormalise, groupEntitiesByLayer, toSVG }
+export {
+  config,
+  colors,
+  BoundingBox,
+  denormalise,
+  groupEntitiesByLayer,
+  toSVG,
+  entityToPolyline
+}
