@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = function (tuples) {
+export default (tuples) => {
   let state
   const header = {}
 

@@ -1,6 +1,4 @@
-'use strict'
-
-const logger = require('../util/logger')
+import logger from '../util/logger'
 
 const layerHandler = (tuples) => {
   return tuples.reduce((layer, tuple) => {
@@ -92,7 +90,7 @@ const tableHandler = (tuples, tableType, handler) => {
   }, {})
 }
 
-module.exports = function (tuples) {
+export default (tuples) => {
   let tableGroups = []
   let tableTuples
   tuples.forEach((tuple) => {
@@ -110,12 +108,11 @@ module.exports = function (tuples) {
 
   let stylesTuples = []
   let layersTuples = []
-  let ltypesTuples = []
   tableGroups.forEach(group => {
     if (group[0][1] === 'STYLE') {
       stylesTuples = group
     } else if (group[0][1] === 'LTYPE') {
-      ltypesTuples = group
+      logger.warn('LTYPE in tables not supported')
     } else if (group[0][1] === 'LAYER') {
       layersTuples = group
     }

@@ -1,12 +1,14 @@
-const fs = require('fs')
-const lib = require('../..')
+import fs from 'fs'
+import { join } from 'path'
+
+import { parseString, toSVG } from '../../src'
 
 function createTest (type) {
   it(type, function () {
-    const parsed = lib.parseString(
-      fs.readFileSync(__dirname + '/../resources/' + type + '.dxf', 'utf-8'))
-    const svg = lib.toSVG(parsed)
-    fs.writeFileSync(__dirname + '/output/' + type + '.output.svg', svg, 'utf-8')
+    const parsed = parseString(
+      fs.readFileSync(join(__dirname, '/../resources/', type + '.dxf'), 'utf-8'))
+    const svg = toSVG(parsed)
+    fs.writeFileSync(join(__dirname, '/output/', type + '.output.svg'), svg, 'utf-8')
   })
 }
 
@@ -16,7 +18,7 @@ describe('svg entities', function () {
   createTest('polylines')
   createTest('circlesellipsesarcs')
   createTest('splines')
-  createTest('blocks')
+  createTest('blocks1')
   createTest('blocks2')
   createTest('layers')
   createTest('supported_entities')
