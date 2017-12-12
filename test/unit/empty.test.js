@@ -1,21 +1,17 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const assert = require('chai').assert;
+import { parseString, denormalise } from '../../src'
+const dxfContents = fs.readFileSync(join(__dirname, '/../resources/empty.dxf'), 'utf-8')
 
-const lib = require('../..');
+describe('Empty', () => {
+  it('can parsed from a string', () => {
+    const parsed = parseString(dxfContents)
+    assert.equal(parsed.blocks.length, 78)
+    assert.equal(parsed.entities.length, 0)
 
-const dxfContents = fs.readFileSync(__dirname + '/../resources/empty.dxf', 'utf-8');
-
-describe('Empty', function() {
-
-  it('can parsed from a string', function() {
-    const parsed = lib.parseString(dxfContents);
-    assert.equal(parsed.blocks.length, 78);
-    assert.equal(parsed.entities.length, 0);
-
-    const entities = lib.denormalise(parsed);
-    assert.deepEqual(entities, []);
-  });
-
-});
+    const entities = denormalise(parsed)
+    assert.deepEqual(entities, [])
+  })
+})

@@ -1,16 +1,14 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const assert = require('chai').assert;
-const lib = require('../..');
-
-const dfxContents = fs.readFileSync(__dirname + '/../resources/splines.dxf', 'utf-8');
+import { parseString } from '../../src'
+const dxfContents = fs.readFileSync(join(__dirname, '/../resources/splines.dxf'), 'utf-8')
 
 describe('SPLINE', () => {
-
   it('can be parsed', () => {
-    const entities = lib.parseString(dfxContents).entities;
-    assert.deepEqual(entities.length, 2);
+    const entities = parseString(dxfContents).entities
+    assert.deepEqual(entities.length, 2)
 
     assert.deepEqual(entities[0], {
       type: 'SPLINE',
@@ -21,10 +19,10 @@ describe('SPLINE', () => {
       flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
-        { x: 10, y: 10, z: 0},
-        { x: 50, y: 10, z: 0},
-        { x: 80, y: 40, z: 0},
-        { x: 90, y: 20, z: 0},
+        {x: 10, y: 10, z: 0},
+        {x: 50, y: 10, z: 0},
+        {x: 80, y: 40, z: 0},
+        {x: 90, y: 20, z: 0}
       ],
       degree: 3,
       knotTolerance: 1e-7,
@@ -34,8 +32,8 @@ describe('SPLINE', () => {
       numberOfKnots: 8,
       extrusionX: 0,
       extrusionY: 0,
-      extrusionZ: 0,
-    });
+      extrusionZ: 0
+    })
 
     assert.deepEqual(entities[1], {
       type: 'SPLINE',
@@ -46,14 +44,14 @@ describe('SPLINE', () => {
       flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
-        { x: 30, y: 30, z: 0},
-        { x: 30, y: 50, z: 0},
-        { x: 85, y: 55, z: 0},
-        { x: 90, y: 80, z: 0},
-        { x: 30, y: 50, z: 0},
-        { x: 20, y: 80, z: 0},
-        { x: 55, y: 100, z: 0},
-        { x: 90, y: 90, z: 0},
+        {x: 30, y: 30, z: 0},
+        {x: 30, y: 50, z: 0},
+        {x: 85, y: 55, z: 0},
+        {x: 90, y: 80, z: 0},
+        {x: 30, y: 50, z: 0},
+        {x: 20, y: 80, z: 0},
+        {x: 55, y: 100, z: 0},
+        {x: 90, y: 90, z: 0}
       ],
       degree: 3,
       knotTolerance: 1e-7,
@@ -63,8 +61,7 @@ describe('SPLINE', () => {
       numberOfKnots: 12,
       extrusionX: 0,
       extrusionY: 0,
-      extrusionZ: 0,
-    });
-  });
-
-});
+      extrusionZ: 0
+    })
+  })
+})

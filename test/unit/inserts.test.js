@@ -1,16 +1,14 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const assert = require('chai').assert;
-const lib = require('../..');
-
-const dfxContents = fs.readFileSync(__dirname + '/../resources/blocks.dxf', 'utf-8');
+import { parseString } from '../../src'
+const dxfContents = fs.readFileSync(join(__dirname, '/../resources/blocks1.dxf'), 'utf-8')
 
 describe('INSERT', () => {
-
   it('can be parsed', () => {
-    const entities = lib.parseString(dfxContents).entities;
-    assert.equal(entities.length, 2);
+    const entities = parseString(dxfContents).entities
+    assert.equal(entities.length, 2)
 
     assert.deepEqual(entities[0], {
       type: 'INSERT',
@@ -28,8 +26,8 @@ describe('INSERT', () => {
       z: 0,
       xscale: 1,
       yscale: 1,
-      zscale: 0,
-    });
+      zscale: 0
+    })
 
     assert.deepEqual(entities[1], {
       type: 'INSERT',
@@ -47,9 +45,7 @@ describe('INSERT', () => {
       z: 0,
       xscale: 2,
       yscale: 1,
-      zscale: 0,
-    });
-
-  });
-
-});
+      zscale: 0
+    })
+  })
+})
