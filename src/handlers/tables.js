@@ -19,7 +19,7 @@ const layerHandler = (tuples) => {
         layer.flags = value
         break
       case 290:
-        layer.plot = parseInt(value) === 0 ? false : true
+        layer.plot = parseInt(value) === 0
         break
       case 370:
         layer.lineWeightEnum = value
