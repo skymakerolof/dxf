@@ -4,6 +4,7 @@ const layerHandler = (tuples) => {
   return tuples.reduce((layer, tuple) => {
     const type = tuple[0]
     const value = tuple[1]
+    // https://www.autodesk.com/techpubs/autocad/acad2000/dxf/layer_dxf_04.htm
     switch (type) {
       case 2:
         layer.name = value
@@ -17,7 +18,10 @@ const layerHandler = (tuples) => {
       case 70:
         layer.flags = value
         break
-      case 390:
+      case 290:
+        layer.plot = parseInt(value) === 0
+        break
+      case 370:
         layer.lineWeightEnum = value
         break
       default:
