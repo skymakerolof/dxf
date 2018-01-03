@@ -34,10 +34,8 @@ Node ES5:
 Node ES6:
 `$ babel-node examples/example.es6.js`
 
-Browser (loading a DXF will output in the console):
+Browser:
 `$ open examples/dxf.html`
-
-
 
 ## SVG
 

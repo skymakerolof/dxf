@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-      <meta charset="UTF-8">
+      <meta charset='UTF-8'>
       <title>DXF Browser Example</title>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js'></script>
       <script>
 
       </script>
   </head>
   <body>
-    <input type='file' id="file"/>
+    <input type='file' id='file'/>
+    <div>Number of entities:<span id='numberOfEntities'>-</span></div>
     <script>
+      var numberOfEntities = document.getElementById('numberOfEntities')
+      var fileInput = document.getElementById('file')
       window.requirejs(['../dist/dxf'], function(dxf) {
-        var fileInput = document.getElementById("file")
         fileInput.addEventListener('change', function(event) {
           var file = event.target.files[0]
           var reader = new FileReader()
-          reader.onload = (function() {
-            return function(e) {
-              if (e.target.readyState === 2) {
-                var dxfContents = e.target.result
-                var parsed = dxf.parseString(dxfContents)
-                var entities = dxf.denormalise(parsed)
-                console.log('number of DXF entities:', entities.length)
-              }
+          numberOfEntities.innerHTML = 'reading'
+          reader.onload = function(e) {
+            if (e.target.readyState === 2) {
+              var dxfContents = e.target.result
+              var parsed = dxf.parseString(dxfContents)
+              var entities = dxf.denormalise(parsed)
+              numberOfEntities.innerHTML = entities.length
             }
-          })()
-          // Read in the file as a data URL.
+          }
           reader.readAsBinaryString(file)
         })
       });
