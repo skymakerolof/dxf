@@ -14,7 +14,8 @@
     "functional:watch": "npm run unit -- --watch",
     "test": "npm run lint && npm run unit && npm run functional",
     "compile": "babel --optional runtime -d lib/ src/",
-    "prepare": "npm run compile"
+    "dist": "browserify lib/index.js --standalone dxf -o dist/dxf.js",
+    "prepare": "npm run compile && npm run dist"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-preset-es2015": "^6.22.0",
+    "browserify": "^14.5.0",
     "chai": "^3.4.0",
     "mocha": "^2.3.3",
     "rimraf": "^2.6.2",
@@ -57,7 +59,8 @@
       "after"
     ],
     "ignore": [
-      "lib/"
+      "lib/",
+      "dist/"
     ]
   }
 }
