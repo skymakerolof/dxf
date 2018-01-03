@@ -28,11 +28,16 @@ There is an ES5 and ES6 example in the ```examples/``` directory that show how t
 
 ## Running the Examples
 
-ES5:
+Node ES5:
 `$ node examples/example.es5.js`
 
-ES6:
+Node ES6:
 `$ babel-node examples/example.es6.js`
+
+Browser (loading a DXF will output in the console):
+`$ open examples/dxf.html`
+
+
 
 ## SVG
 
