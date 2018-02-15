@@ -54,6 +54,19 @@ describe('Entity To Polyline', () => {
     ])
   })
 
+  // https://github.com/bjnortier/dxf/issues/20
+  it('warns on a LWPOLYLINE with a single vertex', () => {
+    const polyline = entityToPolyline({
+      type: 'LWPOLYLINE',
+      vertices: [ { x: 294.598692, y: 168.66373 } ],
+      layer: '0',
+      colorNumber: 7,
+      closed: true,
+      transforms: []
+    })
+    assert.deepEqual(polyline, [])
+  })
+
   it('supports CIRCLE, ELLIPSE, ARC', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/circlesellipsesarcs.dxf'), 'utf-8'))
