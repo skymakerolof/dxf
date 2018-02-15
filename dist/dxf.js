@@ -264,7 +264,12 @@ module.exports = function (entity) {
       }
     }
     if (entity.closed) {
-      polyline.push([polyline[0][0], polyline[0][1]]);
+      if (polyline.length) {
+        polyline.push([polyline[0][0], polyline[0][1]]);
+      } else {
+        // https://github.com/bjnortier/dxf/issues/20
+        logger.warn('"closed" polyline with ony one vertex');
+      }
     }
   }
 
