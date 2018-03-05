@@ -1741,7 +1741,7 @@ exports.default = function (parsed) {
   svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"';
   svgString += ' preserveAspectRatio="xMinYMin meet"';
   svgString += ' viewBox="' + (-1 + bbox.minX) + ' ' + -1 + ' ' + (bbox.width + 2) + ' ' + (bbox.height + 2) + '"';
-  svgString += ' width="100%" height="100%">' + paths + '</svg>';
+  svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>';
   return _prettyData.pd.xml(svgString);
 };
 },{"./BoundingBox":1,"./denormalise":3,"./entityToPolyline":4,"./util/colors":25,"./util/logger":27,"pretty-data":42}],25:[function(require,module,exports){
