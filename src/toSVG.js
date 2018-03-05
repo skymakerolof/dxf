@@ -74,6 +74,6 @@ export default (parsed) => {
     (-1) + ' ' +
     (bbox.width + 2) + ' ' +
     (bbox.height + 2) + '"'
-  svgString += ' width="100%" height="100%">' + paths + '</svg>'
+  svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>'
   return pd.xml(svgString)
 }
