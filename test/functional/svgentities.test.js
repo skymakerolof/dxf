@@ -25,4 +25,5 @@ describe('svg entities', function () {
   createTest('empty')
   createTest('floorplan')
   createTest('Ceco.NET-Architecture-Tm-53')
+  createTest('issue21')
 })
