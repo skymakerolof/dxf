@@ -64,7 +64,10 @@ describe('Entity To Polyline', () => {
       closed: true,
       transforms: []
     })
-    assert.deepEqual(polyline, [])
+    assert.deepEqual(polyline, [
+      [294.598692, 168.66373],
+      [294.598692, 168.66373]
+    ])
   })
 
   it('supports CIRCLE, ELLIPSE, ARC', () => {
