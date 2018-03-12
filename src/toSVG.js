@@ -60,7 +60,7 @@ export default (parsed) => {
     }
 
     const p2 = polyline.map(function (p) {
-      return [p[0], bbox.maxY - p[1]]
+      return [p[0], -p[1]]
     })
     paths.push(polylineToPath(rgb, p2))
   })
@@ -70,10 +70,10 @@ export default (parsed) => {
   svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"'
   svgString += ' preserveAspectRatio="xMinYMin meet"'
   svgString += ' viewBox="' +
-    (-1 + bbox.minX) + ' ' +
-    (-1) + ' ' +
-    (bbox.width + 2) + ' ' +
-    (bbox.height + 2) + '"'
+    (bbox.minX) + ' ' +
+    (-bbox.maxY) + ' ' +
+    (bbox.width) + ' ' +
+    (bbox.height) + '"'
   svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>'
   return pd.xml(svgString)
 }
