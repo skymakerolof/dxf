@@ -1,16 +1,14 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const assert = require('chai').assert;
-const lib = require('../..');
-
-const dfxContents = fs.readFileSync(__dirname + '/../resources/circlesellipsesarcs.dxf', 'utf-8');
+import { parseString } from '../../src'
+const dxfContents = fs.readFileSync(join(__dirname, '/../resources/circlesellipsesarcs.dxf'), 'utf-8')
 
 describe('CIRCLE ELLIPSE ARC', () => {
-
   it('can be parsed', () => {
-    const entities = lib.parseString(dfxContents).entities;
-    assert.deepEqual(entities.length, 5);
+    const entities = parseString(dxfContents).entities
+    assert.deepEqual(entities.length, 5)
 
     assert.deepEqual(entities[0], {
       type: 'ELLIPSE',
@@ -25,8 +23,8 @@ describe('CIRCLE ELLIPSE ARC', () => {
       majorZ: 0,
       x: 140,
       y: 50,
-      z: 0,
-    });
+      z: 0
+    })
     assert.deepEqual(entities[1], {
       type: 'ELLIPSE',
       axisRatio: 0.5205479452054796,
@@ -40,8 +38,8 @@ describe('CIRCLE ELLIPSE ARC', () => {
       majorZ: 0,
       x: 130,
       y: 180,
-      z: 0,
-    });
+      z: 0
+    })
     assert.deepEqual(entities[2], {
       type: 'ARC',
       layer: '0',
@@ -51,8 +49,8 @@ describe('CIRCLE ELLIPSE ARC', () => {
       endAngle: 0.19739555984988089,
       x: 50,
       y: 140,
-      r: 50,
-    });
+      r: 50
+    })
     assert.deepEqual(entities[3], {
       type: 'ARC',
       layer: '0',
@@ -62,8 +60,8 @@ describe('CIRCLE ELLIPSE ARC', () => {
       endAngle: 0.540419500270584,
       x: 0,
       y: 210,
-      r: 58.309518948453,
-    });
+      r: 58.309518948453
+    })
     assert.deepEqual(entities[4], {
       type: 'CIRCLE',
       layer: '0',
@@ -71,9 +69,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
       colorNumber: 256,
       x: 20,
       y: 30,
-      r: 40,
-    });
-
-  });
-
-});
+      r: 40
+    })
+  })
+})

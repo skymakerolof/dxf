@@ -1,21 +1,17 @@
-'use strict';
+import fs from 'fs'
+import { join } from 'path'
+import { assert } from 'chai'
 
-const fs = require('fs');
-const keys = require('lodash.keys');
-const assert = require('chai').assert;
-
-const lib = require('../..');
+import { parseString, denormalise, groupEntitiesByLayer } from '../../src'
 
 describe('Group entities', () => {
-
   it('by layer', () => {
+    const parsed = parseString(
+      fs.readFileSync(join(__dirname, '../resources/floorplan.dxf'), 'utf-8'))
+    const entities = denormalise(parsed)
+    const byLayer = groupEntitiesByLayer(entities)
 
-    const parsed = lib.parseString(
-      fs.readFileSync(__dirname + '/../resources/floorplan.dxf', 'utf-8'));
-    const entities = lib.denormalise(parsed);
-    const byLayer = lib.groupEntitiesByLayer(entities);
-
-    assert.deepEqual(keys(byLayer), [
+    assert.deepEqual(Object.keys(byLayer), [
       '0',
       'A-DIMS-1',
       'A-NOTE',
@@ -33,13 +29,12 @@ describe('Group entities', () => {
       'xref-Bishop-Overland-08$0$S-SLAB',
       'xref-Bishop-Overland-08$0$TEMP',
       'xref-Bishop-Overland-08$0$A-FIXTURE'
-    ]);
+    ])
 
-    const layerEntityCounts = keys(byLayer).map(layer => {
-      return byLayer[layer].length;
-    });
+    const layerEntityCounts = Object.keys(byLayer).map(layer => {
+      return byLayer[layer].length
+    })
     assert.deepEqual(layerEntityCounts,
-      [2, 55, 131, 45, 1, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2]);
-  });
-
-});
+      [2, 55, 131, 45, 1, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2])
+  })
+})

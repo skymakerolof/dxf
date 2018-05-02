@@ -2,7 +2,8 @@ node_modules/
 test/functional/output/*.output.svg
 test/functional/lib/
 test/resources/#*
-examples/example.svg
+examples/example.es5.svg
+examples/example.es6.svg
 .DS_Store
 *~
 #*

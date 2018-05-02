@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+      <meta charset='UTF-8'>
+      <title>DXF Browser Example</title>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js'></script>
+      <script>
+
+      </script>
+  </head>
+  <body>
+    <input type='file' id='file'/>
+    <div>Number of entities:<span id='numberOfEntities'>-</span></div>
+    <script>
+      var numberOfEntities = document.getElementById('numberOfEntities')
+      var fileInput = document.getElementById('file')
+      window.requirejs(['../dist/dxf'], function(dxf) {
+        fileInput.addEventListener('change', function(event) {
+          var file = event.target.files[0]
+          var reader = new FileReader()
+          numberOfEntities.innerHTML = 'reading'
+          reader.onload = function(e) {
+            if (e.target.readyState === 2) {
+              var dxfContents = e.target.result
+              var parsed = dxf.parseString(dxfContents)
+              var entities = dxf.denormalise(parsed)
+              numberOfEntities.innerHTML = entities.length
+            }
+          }
+          reader.readAsBinaryString(file)
+        })
+      });
+    </script>
+  </body>
+</html>
