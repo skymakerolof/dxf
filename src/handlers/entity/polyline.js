@@ -9,6 +9,8 @@ export const process = (tuples) => {
     switch (type) {
       case 70:
         entity.closed = (value & 1) === 1
+        entity.polygonMesh = (value & 16) === 16
+        entity.polyfaceMesh = (value & 64) === 64
         break
       case 39:
         entity.thickness = value
