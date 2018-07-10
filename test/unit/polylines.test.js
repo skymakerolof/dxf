@@ -12,6 +12,8 @@ describe('POLYLINE', () => {
     assert.deepEqual(entities[0], {
       closed: true,
       layer: 'DXF',
+      polyfaceMesh: false,
+      polygonMesh: false,
       type: 'POLYLINE',
       vertices: [
         { x: 286, y: 279.9999999999999, z: 0 },
