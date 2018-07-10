@@ -59,3 +59,6 @@ will execute the unit tests and functional tests, which generate SVGs for refere
 - Artur Zochniak https://github.com/arjamizo
 - Andy Werner https://github.com/Gallore
 - Ivan Baktsheev https://github.com/apla
+- Jeff Chen https://github.com/jeffontheground
+- Markko Paas https://github.com/markkopaas
+- Kim Lokøy https://github.com/klokoy

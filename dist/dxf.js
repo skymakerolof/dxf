@@ -252,24 +252,24 @@ module.exports = function (entity) {
 
   if (entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') {
     polyline = [];
-    for (var i = 0, il = entity.vertices.length; i < il - 1; ++i) {
-      var from = [entity.vertices[i].x, entity.vertices[i].y];
-      var to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y];
-      polyline.push(from);
-      if (entity.vertices[i].bulge) {
-        polyline = polyline.concat(createArcForLWPolyine(from, to, entity.vertices[i].bulge));
+    if (entity.vertices.length) {
+      if (entity.closed) {
+        entity.vertices = entity.vertices.concat(entity.vertices[0]);
       }
-      if (i === il - 2) {
-        polyline.push(to);
+      for (var i = 0, il = entity.vertices.length; i < il - 1; ++i) {
+        var from = [entity.vertices[i].x, entity.vertices[i].y];
+        var to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y];
+        polyline.push(from);
+        if (entity.vertices[i].bulge) {
+          polyline = polyline.concat(createArcForLWPolyine(from, to, entity.vertices[i].bulge));
+        }
+        // The last iteration of the for loop
+        if (i === il - 2) {
+          polyline.push(to);
+        }
       }
-    }
-    if (entity.closed) {
-      if (polyline.length) {
-        polyline.push([polyline[0][0], polyline[0][1]]);
-      } else {
-        // https://github.com/bjnortier/dxf/issues/20
-        logger.warn('"closed" polyline with ony one vertex');
-      }
+    } else {
+      logger.warn('Polyline entity with no vertices');
     }
   }
 
@@ -1731,7 +1731,7 @@ exports.default = function (parsed) {
     }
 
     var p2 = polyline.map(function (p) {
-      return [p[0], bbox.maxY - p[1]];
+      return [p[0], -p[1]];
     });
     paths.push(polylineToPath(rgb, p2));
   });
@@ -1740,8 +1740,8 @@ exports.default = function (parsed) {
   svgString += '<svg xmlns="http://www.w3.org/2000/svg"';
   svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"';
   svgString += ' preserveAspectRatio="xMinYMin meet"';
-  svgString += ' viewBox="' + (-1 + bbox.minX) + ' ' + -1 + ' ' + (bbox.width + 2) + ' ' + (bbox.height + 2) + '"';
-  svgString += ' width="100%" height="100%">' + paths + '</svg>';
+  svgString += ' viewBox="' + bbox.minX + ' ' + -bbox.maxY + ' ' + bbox.width + ' ' + bbox.height + '"';
+  svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>';
   return _prettyData.pd.xml(svgString);
 };
 },{"./BoundingBox":1,"./denormalise":3,"./entityToPolyline":4,"./util/colors":25,"./util/logger":27,"pretty-data":42}],25:[function(require,module,exports){
