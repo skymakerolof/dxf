@@ -116,7 +116,9 @@ module.exports = function (entity) {
 
   if ((entity.type === 'LWPOLYLINE') || (entity.type === 'POLYLINE')) {
     polyline = []
-    if (entity.vertices.length) {
+    if (entity.polygonMesh || entity.polyfaceMesh) {
+      // Do not attempt to render meshes
+    } else if (entity.vertices.length) {
       if (entity.closed) {
         entity.vertices = entity.vertices.concat(entity.vertices[0])
       }
