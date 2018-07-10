@@ -116,25 +116,25 @@ module.exports = function (entity) {
 
   if ((entity.type === 'LWPOLYLINE') || (entity.type === 'POLYLINE')) {
     polyline = []
-    for (let i = 0, il = entity.vertices.length; i < il - 1; ++i) {
-      const from = [entity.vertices[i].x, entity.vertices[i].y]
-      const to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y]
-      polyline.push(from)
-      if (entity.vertices[i].bulge) {
-        polyline = polyline.concat(
-          createArcForLWPolyine(from, to, entity.vertices[i].bulge))
+    if (entity.vertices.length) {
+      if (entity.closed) {
+        entity.vertices = entity.vertices.concat(entity.vertices[0])
       }
-      if (i === il - 2) {
-        polyline.push(to)
+      for (let i = 0, il = entity.vertices.length; i < il - 1; ++i) {
+        const from = [entity.vertices[i].x, entity.vertices[i].y]
+        const to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y]
+        polyline.push(from)
+        if (entity.vertices[i].bulge) {
+          polyline = polyline.concat(
+            createArcForLWPolyine(from, to, entity.vertices[i].bulge))
+        }
+        // The last iteration of the for loop
+        if (i === il - 2) {
+          polyline.push(to)
+        }
       }
-    }
-    if (entity.closed) {
-      if (polyline.length) {
-        polyline.push([polyline[0][0], polyline[0][1]])
-      } else {
-        // https://github.com/bjnortier/dxf/issues/20
-        logger.warn('"closed" polyline with ony one vertex')
-      }
+    } else {
+      logger.warn('Polyline entity with no vertices')
     }
   }
 
