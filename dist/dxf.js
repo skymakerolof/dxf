@@ -252,7 +252,9 @@ module.exports = function (entity) {
 
   if (entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') {
     polyline = [];
-    if (entity.vertices.length) {
+    if (entity.polygonMesh || entity.polyfaceMesh) {
+      // Do not attempt to render meshes
+    } else if (entity.vertices.length) {
       if (entity.closed) {
         entity.vertices = entity.vertices.concat(entity.vertices[0]);
       }
@@ -1072,6 +1074,8 @@ var process = exports.process = function process(tuples) {
     switch (type) {
       case 70:
         entity.closed = (value & 1) === 1;
+        entity.polygonMesh = (value & 16) === 16;
+        entity.polyfaceMesh = (value & 64) === 64;
         break;
       case 39:
         entity.thickness = value;
