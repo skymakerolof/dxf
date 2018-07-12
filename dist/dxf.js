@@ -311,12 +311,24 @@ module.exports = function (entity) {
     var controlPoints = entity.controlPoints.map(function (p) {
       return [p.x, p.y];
     });
-    var order = entity.degree + 1;
+    var degree = entity.degree;
     var knots = entity.knots;
     polyline = [];
-    for (var t = 0; t <= 100; t += 1) {
-      var p = bspline(t / 100, order, controlPoints, knots);
-      polyline.push(p);
+    // In trying to keep the polyline size to a reasonable value,
+    // the number of interpolated points is proportional to the
+    // number of control points
+    var numInterpolations = controlPoints.length * 100;
+
+    for (var t = 0; t <= numInterpolations; t += 1) {
+      // https://github.com/bjnortier/dxf/issues/28
+      // b-spline interpolation can fail due to a floating point
+      // error - ignore these until the lib is fixed
+      try {
+        var p = bspline(t / numInterpolations, degree, controlPoints, knots);
+        polyline.push(p);
+      } catch (e) {
+        // ignore this point
+      }
     }
   }
 
@@ -1857,14 +1869,14 @@ module.exports.error = error;
 },{"../config":2}],28:[function(require,module,exports){
 
 
-function interpolate(t, order, points, knots, weights, result) {
+function interpolate(t, degree, points, knots, weights, result) {
 
   var i,j,s,l;              // function-scoped iteration variables
   var n = points.length;    // points count
   var d = points[0].length; // point dimensionality
 
-  if(order < 2) throw new Error('order must be at least 2 (linear)');
-  if(order > n) throw new Error('order must be less than point count');
+  if(degree < 1) throw new Error('degree must be at least 1 (linear)');
+  if(degree > (n-1)) throw new Error('degree must be less than or equal to point count - 1');
 
   if(!weights) {
     // build weight vector of length [n]
@@ -1875,18 +1887,18 @@ function interpolate(t, order, points, knots, weights, result) {
   }
 
   if(!knots) {
-    // build knot vector of length [n + order]
+    // build knot vector of length [n + degree + 1]
     var knots = [];
-    for(i=0; i<n+order; i++) {
+    for(i=0; i<n+degree+1; i++) {
       knots[i] = i;
     }
   } else {
-    if(knots.length !== n+order) throw new Error('bad knot vector length');
+    if(knots.length !== n+degree+1) throw new Error('bad knot vector length');
   }
 
   var domain = [
-    order-1,
-    knots.length-1 - (order-1)
+    degree,
+    knots.length-1 - degree
   ];
 
   // remap t to the domain where the spline is defined
@@ -1913,12 +1925,12 @@ function interpolate(t, order, points, knots, weights, result) {
     v[i][d] = weights[i];
   }
 
-  // l (level) goes from 1 to the curve order
+  // l (level) goes from 1 to the curve degree + 1
   var alpha;
-  for(l=1; l<=order; l++) {
+  for(l=1; l<=degree+1; l++) {
     // build level l of the pyramid
-    for(i=s; i>s-order+l; i--) {
-      alpha = (t - knots[i]) / (knots[i+order-l] - knots[i]);
+    for(i=s; i>s-degree-1+l; i--) {
+      alpha = (t - knots[i]) / (knots[i+degree+1-l] - knots[i]);
 
       // interpolate each component
       for(j=0; j<d+1; j++) {

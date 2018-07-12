@@ -42,7 +42,7 @@
     "standard": "^10.0.3"
   },
   "dependencies": {
-    "b-spline": "^1.0.5",
+    "b-spline": "^2.0.1",
     "lodash.clonedeep": "^3.0.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
