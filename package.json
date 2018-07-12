@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "standard",
-    "unit": "mocha --compilers js:babel-register --recursive test/unit/**",
+    "unit": "mocha --require babel-core/register --recursive test/unit/**",
     "unit:watch": "npm run unit -- --watch",
     "functional": "rimraf test/functional/output/* && mocha --compilers js:babel-register --recursive test/functional/**",
     "functional:watch": "npm run unit -- --watch",
@@ -34,7 +34,6 @@
   "homepage": "https://github.com/bjnortier/dxf",
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.22.0",
     "browserify": "^14.5.0",
     "chai": "^3.4.0",
     "mocha": "^5.2.0",
@@ -43,6 +42,7 @@
   },
   "dependencies": {
     "b-spline": "^2.0.1",
+    "babel-preset-env": "^1.7.0",
     "lodash.clonedeep": "^3.0.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
