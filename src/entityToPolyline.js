@@ -196,12 +196,24 @@ module.exports = function (entity) {
     const controlPoints = entity.controlPoints.map(function (p) {
       return [p.x, p.y]
     })
-    const order = entity.degree + 1
+    const degree = entity.degree
     const knots = entity.knots
     polyline = []
-    for (let t = 0; t <= 100; t += 1) {
-      const p = bspline(t / 100, order, controlPoints, knots)
-      polyline.push(p)
+    // In trying to keep the polyline size to a reasonable value,
+    // the number of interpolated points is proportional to the
+    // number of control points
+    const numInterpolations = controlPoints.length * 100
+
+    for (let t = 0; t <= numInterpolations; t += 1) {
+      // https://github.com/bjnortier/dxf/issues/28
+      // b-spline interpolation can fail due to a floating point
+      // error - ignore these until the lib is fixed
+      try {
+        const p = bspline(t / numInterpolations, degree, controlPoints, knots)
+        polyline.push(p)
+      } catch (e) {
+        // ignore this point
+      }
     }
   }
 
