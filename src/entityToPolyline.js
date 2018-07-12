@@ -199,8 +199,12 @@ module.exports = function (entity) {
     const order = entity.degree + 1
     const knots = entity.knots
     polyline = []
-    for (let t = 0; t <= 100; t += 1) {
-      const p = bspline(t / 100, order, controlPoints, knots)
+    // In trying to keep the polyline size to a reasonable value,
+    // the number of interpolated points is proportional to the
+    // number of control points
+    const numInterpolations = controlPoints.length * 100
+    for (let t = 0; t <= numInterpolations; t += 1) {
+      const p = bspline(t / numInterpolations, order, controlPoints, knots)
       polyline.push(p)
     }
   }
