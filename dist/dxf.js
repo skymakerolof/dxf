@@ -102,9 +102,15 @@ module.exports = {
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var cloneDeep = require('lodash.clonedeep');
+var _lodash = require('lodash.clonedeep');
 
-var logger = require('./util/logger');
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _logger = require('./util/logger');
+
+var _logger2 = _interopRequireDefault(_logger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = function (parseResult) {
   var blocksByName = parseResult.blocks.reduce(function (acc, b) {
@@ -119,7 +125,7 @@ module.exports = function (parseResult) {
         var insert = e;
         var block = blocksByName[insert.block];
         if (!block) {
-          logger.error('no block found for insert. block:', insert.block);
+          _logger2.default.error('no block found for insert. block:', insert.block);
           return;
         }
         var t = {
@@ -134,7 +140,7 @@ module.exports = function (parseResult) {
 
         // Use the insert layer
         var blockEntities = block.entities.map(function (be) {
-          var be2 = cloneDeep(be);
+          var be2 = (0, _lodash2.default)(be);
           be2.layer = insert.layer;
           return be2;
         });
@@ -144,7 +150,7 @@ module.exports = function (parseResult) {
         // The transforms are reversed so they occur in
         // order of application - i.e. the transform of the
         // top-level insert is applied last
-        var e2 = cloneDeep(e);
+        var e2 = (0, _lodash2.default)(e);
         e2.transforms = transforms.slice().reverse();
         current.push(e2);
       }
@@ -156,6 +162,10 @@ module.exports = function (parseResult) {
 };
 },{"./util/logger":27,"lodash.clonedeep":39}],4:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _bSpline = require('b-spline');
 
@@ -232,7 +242,7 @@ var interpolateEllipse = function interpolateEllipse(cx, cy, rx, ry, start, end,
  * @param knots the knot vector
  * @returns the polyline
  */
-var interpolateBSpline = function interpolateBSpline(controlPoints, degree, knots) {
+var interpolateBSpline = function interpolateBSpline(controlPoints, degree, knots, interpolationsPerSplineSegment) {
   var polyline = [];
   var controlPointsForLib = controlPoints.map(function (p) {
     return [p.x, p.y];
@@ -247,16 +257,16 @@ var interpolateBSpline = function interpolateBSpline(controlPoints, degree, knot
     }
   }
 
-  var numInterpolationsperSegment = 25;
+  interpolationsPerSplineSegment = interpolationsPerSplineSegment || 25;
   for (var i = 1; i < segmentTs.length; ++i) {
     var uMin = segmentTs[i - 1];
     var uMax = segmentTs[i];
-    for (var _k = 0; _k <= numInterpolationsperSegment; ++_k) {
+    for (var _k = 0; _k <= interpolationsPerSplineSegment; ++_k) {
       // https://github.com/bjnortier/dxf/issues/28
       // b-spline interpolation can fail due to a floating point
       // error - ignore these until the lib is fixed
       try {
-        var u = _k / numInterpolationsperSegment * (uMax - uMin) + uMin;
+        var u = _k / interpolationsPerSplineSegment * (uMax - uMin) + uMin;
         var t = (u - domain[0]) / (domain[1] - domain[0]);
         var p = (0, _bSpline2.default)(t, degree, controlPointsForLib, knots);
         polyline.push(p);
@@ -307,7 +317,9 @@ var applyTransforms = function applyTransforms(polyline, transforms) {
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
  * of primitive objects (ellispe, spline etc.)
  */
-module.exports = function (entity) {
+
+exports.default = function (entity, options) {
+  options = options || {};
   var polyline = void 0;
 
   if (entity.type === 'LINE') {
@@ -372,7 +384,7 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'SPLINE') {
-    polyline = interpolateBSpline(entity.controlPoints, entity.degree, entity.knots);
+    polyline = interpolateBSpline(entity.controlPoints, entity.degree, entity.knots, options.interpolationsPerSplineSegment);
   }
 
   if (!polyline) {
@@ -1886,16 +1898,20 @@ module.exports = function (from, to, bulge, resolution) {
 },{"vecks":51}],27:[function(require,module,exports){
 'use strict';
 
-var config = require('../config');
+var _config = require('../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function info() {
-  if (config.verbose) {
+  if (_config2.default.verbose) {
     console.info.apply(undefined, arguments);
   }
 }
 
 function warn() {
-  if (config.verbose) {
+  if (_config2.default.verbose) {
     console.warn.apply(undefined, arguments);
   }
 }
@@ -1904,7 +1920,7 @@ function error() {
   console.error.apply(undefined, arguments);
 }
 
-module.exports.config = config;
+module.exports.config = _config2.default;
 module.exports.info = info;
 module.exports.warn = warn;
 module.exports.error = error;
