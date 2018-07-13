@@ -157,14 +157,23 @@ module.exports = function (parseResult) {
 },{"./util/logger":27,"lodash.clonedeep":39}],4:[function(require,module,exports){
 'use strict';
 
-var bspline = require('b-spline');
+var _bSpline = require('b-spline');
 
-var logger = require('./util/logger');
+var _bSpline2 = _interopRequireDefault(_bSpline);
 
-var createArcForLWPolyine = require('./util/createArcForLWPolyline');
+var _logger = require('./util/logger');
+
+var _logger2 = _interopRequireDefault(_logger);
+
+var _createArcForLWPolyline = require('./util/createArcForLWPolyline');
+
+var _createArcForLWPolyline2 = _interopRequireDefault(_createArcForLWPolyline);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Rotate a set of points
+ * Rotate a set of points.
+ *
  * @param points the points
  * @param angle the rotation angle
  */
@@ -175,6 +184,7 @@ var rotate = function rotate(points, angle) {
 };
 
 /**
+ * Interpolate an ellipse
  * @param cx center X
  * @param cy center Y
  * @param rx radius X
@@ -182,7 +192,7 @@ var rotate = function rotate(points, angle) {
  * @param start start angle in radians
  * @param start end angle in radians
  */
-var interpolateElliptic = function interpolateElliptic(cx, cy, rx, ry, start, end, rotationAngle) {
+var interpolateEllipse = function interpolateEllipse(cx, cy, rx, ry, start, end, rotationAngle) {
   if (end < start) {
     end += Math.PI * 2;
   }
@@ -211,6 +221,60 @@ var interpolateElliptic = function interpolateElliptic(cx, cy, rx, ry, start, en
   return points;
 };
 
+/**
+ * Interpolate a b-spline. The algorithm examins the knot vector
+ * to create segments for interpolation. The parameterisation value
+ * is re-normalised back to [0,1] as that is what the lib expects (
+ * and t i de-normalised in the b-spline library)
+ *
+ * @param controlPoints the control points
+ * @param degree the b-spline degree
+ * @param knots the knot vector
+ * @returns the polyline
+ */
+var interpolateBSpline = function interpolateBSpline(controlPoints, degree, knots) {
+  var polyline = [];
+  var controlPointsForLib = controlPoints.map(function (p) {
+    return [p.x, p.y];
+  });
+
+  var segmentTs = [knots[degree]];
+  var domain = [knots[degree], knots[knots.length - 1 - degree]];
+
+  for (var k = degree + 1; k < knots.length - degree; ++k) {
+    if (segmentTs[segmentTs.length - 1] !== knots[k]) {
+      segmentTs.push(knots[k]);
+    }
+  }
+
+  var numInterpolationsperSegment = 25;
+  for (var i = 1; i < segmentTs.length; ++i) {
+    var uMin = segmentTs[i - 1];
+    var uMax = segmentTs[i];
+    for (var _k = 0; _k <= numInterpolationsperSegment; ++_k) {
+      // https://github.com/bjnortier/dxf/issues/28
+      // b-spline interpolation can fail due to a floating point
+      // error - ignore these until the lib is fixed
+      try {
+        var u = _k / numInterpolationsperSegment * (uMax - uMin) + uMin;
+        var t = (u - domain[0]) / (domain[1] - domain[0]);
+        var p = (0, _bSpline2.default)(t, degree, controlPointsForLib, knots);
+        polyline.push(p);
+      } catch (e) {
+        // ignore this point
+      }
+    }
+  }
+  return polyline;
+};
+
+/**
+ * Apply the transforms to the polyline.
+ *
+ * @param polyline the polyline
+ * @param transform the transforms array
+ * @returns the transformed polyline
+ */
 var applyTransforms = function applyTransforms(polyline, transforms) {
   transforms.forEach(function (transform) {
     polyline = polyline.map(function (p) {
@@ -263,7 +327,7 @@ module.exports = function (entity) {
         var to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y];
         polyline.push(from);
         if (entity.vertices[i].bulge) {
-          polyline = polyline.concat(createArcForLWPolyine(from, to, entity.vertices[i].bulge));
+          polyline = polyline.concat((0, _createArcForLWPolyline2.default)(from, to, entity.vertices[i].bulge));
         }
         // The last iteration of the for loop
         if (i === il - 2) {
@@ -271,19 +335,19 @@ module.exports = function (entity) {
         }
       }
     } else {
-      logger.warn('Polyline entity with no vertices');
+      _logger2.default.warn('Polyline entity with no vertices');
     }
   }
 
   if (entity.type === 'CIRCLE') {
-    polyline = interpolateElliptic(entity.x, entity.y, entity.r, entity.r, 0, Math.PI * 2);
+    polyline = interpolateEllipse(entity.x, entity.y, entity.r, entity.r, 0, Math.PI * 2);
   }
 
   if (entity.type === 'ELLIPSE') {
     var rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY);
     var ry = entity.axisRatio * rx;
     var majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX);
-    polyline = interpolateElliptic(entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation);
+    polyline = interpolateEllipse(entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation);
     var flipY = entity.extrusionZ === -1;
     if (flipY) {
       polyline = polyline.map(function (p) {
@@ -295,7 +359,7 @@ module.exports = function (entity) {
   if (entity.type === 'ARC') {
     // Why on earth DXF has degree start & end angles for arc,
     // and radian start & end angles for ellipses is a mystery
-    polyline = interpolateElliptic(entity.x, entity.y, entity.r, entity.r, entity.startAngle, entity.endAngle, undefined, false);
+    polyline = interpolateEllipse(entity.x, entity.y, entity.r, entity.r, entity.startAngle, entity.endAngle, undefined, false);
 
     // I kid you not, ARCs and ELLIPSEs handle this differently,
     // as evidenced by how AutoCAD actually renders these entities
@@ -308,32 +372,11 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'SPLINE') {
-    var controlPoints = entity.controlPoints.map(function (p) {
-      return [p.x, p.y];
-    });
-    var degree = entity.degree;
-    var knots = entity.knots;
-    polyline = [];
-    // In trying to keep the polyline size to a reasonable value,
-    // the number of interpolated points is proportional to the
-    // number of control points
-    var numInterpolations = controlPoints.length * 100;
-
-    for (var t = 0; t <= numInterpolations; t += 1) {
-      // https://github.com/bjnortier/dxf/issues/28
-      // b-spline interpolation can fail due to a floating point
-      // error - ignore these until the lib is fixed
-      try {
-        var p = bspline(t / numInterpolations, degree, controlPoints, knots);
-        polyline.push(p);
-      } catch (e) {
-        // ignore this point
-      }
-    }
+    polyline = interpolateBSpline(entity.controlPoints, entity.degree, entity.knots);
   }
 
   if (!polyline) {
-    logger.warn('unsupported entity for converting to polyline:', entity.type);
+    _logger2.default.warn('unsupported entity for converting to polyline:', entity.type);
     return [];
   }
   return applyTransforms(polyline, entity.transforms);

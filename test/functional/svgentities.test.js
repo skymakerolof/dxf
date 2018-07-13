@@ -27,4 +27,7 @@ describe('svg entities', function () {
   createTest('Ceco.NET-Architecture-Tm-53')
   createTest('issue21')
   createTest('issue27')
+  createTest('issue28')
+  createTest('issue29')
+  createTest('issue29b')
 })
