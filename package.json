@@ -33,7 +33,9 @@
   },
   "homepage": "https://github.com/bjnortier/dxf",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "browserify": "^14.5.0",
     "chai": "^3.4.0",
     "mocha": "^5.2.0",
@@ -42,12 +44,11 @@
   },
   "dependencies": {
     "b-spline": "^2.0.1",
-    "babel-preset-env": "^1.7.0",
     "lodash.clonedeep": "^3.0.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
     "pretty-data": "^0.40.0",
-    "vecks": "^3.4.0"
+    "vecks": "^3.7.2"
   },
   "standard": {
     "globals": [
