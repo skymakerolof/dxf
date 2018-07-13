@@ -73,7 +73,7 @@ const interpolateEllipse = (cx, cy, rx, ry, start, end, rotationAngle) => {
  * @param knots the knot vector
  * @returns the polyline
  */
-const interpolateBSpline = (controlPoints, degree, knots) => {
+const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplineSegment) => {
   const polyline = []
   const controlPointsForLib = controlPoints.map(function (p) {
     return [p.x, p.y]
@@ -88,16 +88,16 @@ const interpolateBSpline = (controlPoints, degree, knots) => {
     }
   }
 
-  const numInterpolationsperSegment = 25
+  interpolationsPerSplineSegment = interpolationsPerSplineSegment || 25
   for (let i = 1; i < segmentTs.length; ++i) {
     const uMin = segmentTs[i - 1]
     const uMax = segmentTs[i]
-    for (let k = 0; k <= numInterpolationsperSegment; ++k) {
+    for (let k = 0; k <= interpolationsPerSplineSegment; ++k) {
       // https://github.com/bjnortier/dxf/issues/28
       // b-spline interpolation can fail due to a floating point
       // error - ignore these until the lib is fixed
       try {
-        const u = k / numInterpolationsperSegment * (uMax - uMin) + uMin
+        const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
         const t = (u - domain[0]) / (domain[1] - domain[0])
         const p = bSpline(t, degree, controlPointsForLib, knots)
         polyline.push(p)
@@ -151,7 +151,8 @@ const applyTransforms = (polyline, transforms) => {
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
  * of primitive objects (ellispe, spline etc.)
  */
-module.exports = function (entity) {
+export default (entity, options) => {
+  options = options || {}
   let polyline
 
   if (entity.type === 'LINE') {
@@ -246,7 +247,11 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'SPLINE') {
-    polyline = interpolateBSpline(entity.controlPoints, entity.degree, entity.knots)
+    polyline = interpolateBSpline(
+      entity.controlPoints,
+      entity.degree,
+      entity.knots,
+      options.interpolationsPerSplineSegment)
   }
 
   if (!polyline) {

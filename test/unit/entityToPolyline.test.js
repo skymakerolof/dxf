@@ -91,6 +91,7 @@ describe('Entity To Polyline', () => {
 
     assert.deepEqual(entityToPolyline(entities[0]).length, 26)
     assert.deepEqual(entityToPolyline(entities[1]).length, 130)
+    assert.deepEqual(entityToPolyline(entities[0], {interpolationsPerSplineSegment: 10}).length, 11)
   })
 
   it('supports BLOCK with INSERT', () => {
