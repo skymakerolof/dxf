@@ -16,7 +16,8 @@ function error () {
   console.error.apply(undefined, arguments)
 }
 
-module.exports.config = config
-module.exports.info = info
-module.exports.warn = warn
-module.exports.error = error
+export default {
+  info,
+  warn,
+  error
+}

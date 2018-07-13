@@ -5,7 +5,7 @@ import { V2 } from 'vecks'
  *
  * See diagram.png in this directory for description of points and angles used.
  */
-module.exports = (from, to, bulge, resolution) => {
+export default (from, to, bulge, resolution) => {
   // Resolution in degrees
   if (!resolution) {
     resolution = 5

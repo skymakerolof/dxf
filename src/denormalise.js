@@ -2,7 +2,7 @@ import cloneDeep from 'lodash.clonedeep'
 
 import logger from './util/logger'
 
-module.exports = (parseResult) => {
+export default (parseResult) => {
   const blocksByName = parseResult.blocks.reduce((acc, b) => {
     acc[b.name] = b
     return acc
