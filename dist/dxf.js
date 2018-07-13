@@ -1738,7 +1738,6 @@ exports.default = function (parsed) {
       throw new Error('no layer table for layer:' + entity.layer);
     }
 
-    // TODO: not sure if this prioritization is good (entity color first, layer color as fallback)
     var colorNumber = 'colorNumber' in entity ? entity.colorNumber : layerTable.colorNumber;
     var rgb = _colors2.default[colorNumber];
     if (rgb === undefined) {
@@ -1841,7 +1840,7 @@ module.exports = function (from, to, bulge, resolution) {
     return [p.x, p.y];
   });
 };
-},{"vecks":50}],27:[function(require,module,exports){
+},{"vecks":51}],27:[function(require,module,exports){
 'use strict';
 
 var config = require('../config');
@@ -3730,7 +3729,7 @@ Box2.fromPoints = function (points) {
 };
 
 exports.default = Box2;
-},{"./V2":48}],44:[function(require,module,exports){
+},{"./V2":49}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3918,7 +3917,62 @@ var Line2 = function () {
 }();
 
 exports.default = Line2;
-},{"./V2":48}],46:[function(require,module,exports){
+},{"./V2":49}],46:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _V = require('./V3');
+
+var _V2 = _interopRequireDefault(_V);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var dist = function dist(a, b) {
+  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2));
+};
+
+var Line3 = function () {
+  function Line3(a, b) {
+    _classCallCheck(this, Line3);
+
+    if ((typeof a === 'undefined' ? 'undefined' : _typeof(a)) !== 'object' || a.x === undefined || a.y === undefined || a.z === undefined) {
+      throw Error('expected first argument to have x, y and z properties');
+    }
+    if ((typeof b === 'undefined' ? 'undefined' : _typeof(b)) !== 'object' || b.x === undefined || b.y === undefined || b.y === undefined) {
+      throw Error('expected second argument to have x, y and z properties');
+    }
+    this.a = new _V2.default(a);
+    this.b = new _V2.default(b);
+  }
+
+  _createClass(Line3, [{
+    key: 'length',
+    value: function length() {
+      return this.a.sub(this.b).length();
+    }
+  }, {
+    key: 'containsPoint',
+    value: function containsPoint(point) {
+      var eps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1e-12;
+
+      return Math.abs(dist(this.a, this.b) - dist(point, this.a) - dist(point, this.b)) < eps;
+    }
+  }]);
+
+  return Line3;
+}();
+
+exports.default = Line3;
+},{"./V3":50}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3978,31 +4032,31 @@ Plane3.fromPointAndNormal = function (p, n) {
 };
 
 Plane3.fromPoints = function (points) {
-  var validCross = void 0;
+  var firstCross = void 0;
   for (var i = 0, il = points.length; i < il; ++i) {
     var ab = points[(i + 1) % il].sub(points[i]);
     var bc = points[(i + 2) % il].sub(points[(i + 1) % il]);
     var cross = ab.cross(bc);
     if (!(isNaN(cross.length()) || cross.length() === 0)) {
-      if (!validCross) {
-        validCross = cross.norm();
+      if (!firstCross) {
+        firstCross = cross.norm();
       } else {
-        var same = cross.norm().equals(validCross);
-        var opposite = cross.neg().norm().equals(validCross);
+        var same = cross.norm().equals(firstCross, 1e-6);
+        var opposite = cross.neg().norm().equals(firstCross, 1e-6);
         if (!(same || opposite)) {
           throw Error('points not on a plane');
         }
       }
     }
   }
-  if (!validCross) {
+  if (!firstCross) {
     throw Error('points not on a plane');
   }
-  return Plane3.fromPointAndNormal(points[0], validCross.norm());
+  return Plane3.fromPointAndNormal(points[0], firstCross.norm());
 };
 
 exports.default = Plane3;
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4067,7 +4121,7 @@ Quaternion.fromAxisAngle = function (axis, angle) {
 };
 
 exports.default = Quaternion;
-},{"./V3":49}],48:[function(require,module,exports){
+},{"./V3":50}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4139,7 +4193,7 @@ var V2 = function () {
 }();
 
 exports.default = V2;
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4160,6 +4214,10 @@ var V3 = function () {
       this.x = x.x;
       this.y = x.y;
       this.z = x.z;
+    } else if (x === undefined) {
+      this.x = 0;
+      this.y = 0;
+      this.z = 0;
     } else {
       this.x = x;
       this.y = y;
@@ -4169,8 +4227,11 @@ var V3 = function () {
 
   _createClass(V3, [{
     key: 'equals',
-    value: function equals(other) {
-      return this.x === other.x && this.y === other.y && this.z === other.z;
+    value: function equals(other, eps) {
+      if (eps === undefined) {
+        eps = 0;
+      }
+      return Math.abs(this.x - other.x) <= eps && Math.abs(this.y - other.y) <= eps && Math.abs(this.z - other.z) <= eps;
     }
   }, {
     key: 'length',
@@ -4218,13 +4279,13 @@ var V3 = function () {
 }();
 
 exports.default = V3;
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Line2 = exports.Quaternion = exports.Plane3 = exports.Box3 = exports.Box2 = exports.V3 = exports.V2 = undefined;
+exports.Line3 = exports.Line2 = exports.Quaternion = exports.Plane3 = exports.Box3 = exports.Box2 = exports.V3 = exports.V2 = undefined;
 
 var _V = require('./V2');
 
@@ -4254,6 +4315,10 @@ var _Line = require('./Line2');
 
 var _Line2 = _interopRequireDefault(_Line);
 
+var _Line3 = require('./Line3');
+
+var _Line4 = _interopRequireDefault(_Line3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.V2 = _V2.default;
@@ -4263,5 +4328,6 @@ exports.Box3 = _Box4.default;
 exports.Plane3 = _Plane2.default;
 exports.Quaternion = _Quaternion2.default;
 exports.Line2 = _Line2.default;
-},{"./Box2":43,"./Box3":44,"./Line2":45,"./Plane3":46,"./Quaternion":47,"./V2":48,"./V3":49}]},{},[23])(23)
+exports.Line3 = _Line4.default;
+},{"./Box2":43,"./Box3":44,"./Line2":45,"./Line3":46,"./Plane3":47,"./Quaternion":48,"./V2":49,"./V3":50}]},{},[23])(23)
 });

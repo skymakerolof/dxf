@@ -51,7 +51,6 @@ export default (parsed) => {
       throw new Error('no layer table for layer:' + entity.layer)
     }
 
-    // TODO: not sure if this prioritization is good (entity color first, layer color as fallback)
     let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
     let rgb = colors[colorNumber]
     if (rgb === undefined) {
