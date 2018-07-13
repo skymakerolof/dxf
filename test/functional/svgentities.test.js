@@ -30,4 +30,5 @@ describe('svg entities', function () {
   createTest('issue27b')
   createTest('issue27c')
   createTest('issue28')
+  createTest('issue29')
 })
