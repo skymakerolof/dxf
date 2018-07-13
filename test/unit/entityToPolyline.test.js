@@ -89,8 +89,9 @@ describe('Entity To Polyline', () => {
     const entities = denormalise(parsed)
     assert.equal(entities.length, 2)
 
-    assert.deepEqual(entityToPolyline(entities[0]).length, 401)
-    assert.deepEqual(entityToPolyline(entities[1]).length, 801)
+    assert.deepEqual(entityToPolyline(entities[0]).length, 26)
+    assert.deepEqual(entityToPolyline(entities[1]).length, 130)
+    assert.deepEqual(entityToPolyline(entities[0], {interpolationsPerSplineSegment: 10}).length, 11)
   })
 
   it('supports BLOCK with INSERT', () => {

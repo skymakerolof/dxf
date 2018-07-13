@@ -96,17 +96,30 @@ exports.default = BoundingBox;
 },{}],2:[function(require,module,exports){
 "use strict";
 
-module.exports = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   verbose: false
 };
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var cloneDeep = require('lodash.clonedeep');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var logger = require('./util/logger');
+var _lodash = require('lodash.clonedeep');
 
-module.exports = function (parseResult) {
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _logger = require('./util/logger');
+
+var _logger2 = _interopRequireDefault(_logger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (parseResult) {
   var blocksByName = parseResult.blocks.reduce(function (acc, b) {
     acc[b.name] = b;
     return acc;
@@ -119,7 +132,7 @@ module.exports = function (parseResult) {
         var insert = e;
         var block = blocksByName[insert.block];
         if (!block) {
-          logger.error('no block found for insert. block:', insert.block);
+          _logger2.default.error('no block found for insert. block:', insert.block);
           return;
         }
         var t = {
@@ -134,7 +147,7 @@ module.exports = function (parseResult) {
 
         // Use the insert layer
         var blockEntities = block.entities.map(function (be) {
-          var be2 = cloneDeep(be);
+          var be2 = (0, _lodash2.default)(be);
           be2.layer = insert.layer;
           return be2;
         });
@@ -144,7 +157,7 @@ module.exports = function (parseResult) {
         // The transforms are reversed so they occur in
         // order of application - i.e. the transform of the
         // top-level insert is applied last
-        var e2 = cloneDeep(e);
+        var e2 = (0, _lodash2.default)(e);
         e2.transforms = transforms.slice().reverse();
         current.push(e2);
       }
@@ -157,14 +170,27 @@ module.exports = function (parseResult) {
 },{"./util/logger":27,"lodash.clonedeep":39}],4:[function(require,module,exports){
 'use strict';
 
-var bspline = require('b-spline');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var logger = require('./util/logger');
+var _bSpline = require('b-spline');
 
-var createArcForLWPolyine = require('./util/createArcForLWPolyline');
+var _bSpline2 = _interopRequireDefault(_bSpline);
+
+var _logger = require('./util/logger');
+
+var _logger2 = _interopRequireDefault(_logger);
+
+var _createArcForLWPolyline = require('./util/createArcForLWPolyline');
+
+var _createArcForLWPolyline2 = _interopRequireDefault(_createArcForLWPolyline);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Rotate a set of points
+ * Rotate a set of points.
+ *
  * @param points the points
  * @param angle the rotation angle
  */
@@ -175,6 +201,7 @@ var rotate = function rotate(points, angle) {
 };
 
 /**
+ * Interpolate an ellipse
  * @param cx center X
  * @param cy center Y
  * @param rx radius X
@@ -182,7 +209,7 @@ var rotate = function rotate(points, angle) {
  * @param start start angle in radians
  * @param start end angle in radians
  */
-var interpolateElliptic = function interpolateElliptic(cx, cy, rx, ry, start, end, rotationAngle) {
+var interpolateEllipse = function interpolateEllipse(cx, cy, rx, ry, start, end, rotationAngle) {
   if (end < start) {
     end += Math.PI * 2;
   }
@@ -211,6 +238,60 @@ var interpolateElliptic = function interpolateElliptic(cx, cy, rx, ry, start, en
   return points;
 };
 
+/**
+ * Interpolate a b-spline. The algorithm examins the knot vector
+ * to create segments for interpolation. The parameterisation value
+ * is re-normalised back to [0,1] as that is what the lib expects (
+ * and t i de-normalised in the b-spline library)
+ *
+ * @param controlPoints the control points
+ * @param degree the b-spline degree
+ * @param knots the knot vector
+ * @returns the polyline
+ */
+var interpolateBSpline = function interpolateBSpline(controlPoints, degree, knots, interpolationsPerSplineSegment) {
+  var polyline = [];
+  var controlPointsForLib = controlPoints.map(function (p) {
+    return [p.x, p.y];
+  });
+
+  var segmentTs = [knots[degree]];
+  var domain = [knots[degree], knots[knots.length - 1 - degree]];
+
+  for (var k = degree + 1; k < knots.length - degree; ++k) {
+    if (segmentTs[segmentTs.length - 1] !== knots[k]) {
+      segmentTs.push(knots[k]);
+    }
+  }
+
+  interpolationsPerSplineSegment = interpolationsPerSplineSegment || 25;
+  for (var i = 1; i < segmentTs.length; ++i) {
+    var uMin = segmentTs[i - 1];
+    var uMax = segmentTs[i];
+    for (var _k = 0; _k <= interpolationsPerSplineSegment; ++_k) {
+      // https://github.com/bjnortier/dxf/issues/28
+      // b-spline interpolation can fail due to a floating point
+      // error - ignore these until the lib is fixed
+      try {
+        var u = _k / interpolationsPerSplineSegment * (uMax - uMin) + uMin;
+        var t = (u - domain[0]) / (domain[1] - domain[0]);
+        var p = (0, _bSpline2.default)(t, degree, controlPointsForLib, knots);
+        polyline.push(p);
+      } catch (e) {
+        // ignore this point
+      }
+    }
+  }
+  return polyline;
+};
+
+/**
+ * Apply the transforms to the polyline.
+ *
+ * @param polyline the polyline
+ * @param transform the transforms array
+ * @returns the transformed polyline
+ */
 var applyTransforms = function applyTransforms(polyline, transforms) {
   transforms.forEach(function (transform) {
     polyline = polyline.map(function (p) {
@@ -243,7 +324,9 @@ var applyTransforms = function applyTransforms(polyline, transforms) {
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
  * of primitive objects (ellispe, spline etc.)
  */
-module.exports = function (entity) {
+
+exports.default = function (entity, options) {
+  options = options || {};
   var polyline = void 0;
 
   if (entity.type === 'LINE') {
@@ -263,7 +346,7 @@ module.exports = function (entity) {
         var to = [entity.vertices[i + 1].x, entity.vertices[i + 1].y];
         polyline.push(from);
         if (entity.vertices[i].bulge) {
-          polyline = polyline.concat(createArcForLWPolyine(from, to, entity.vertices[i].bulge));
+          polyline = polyline.concat((0, _createArcForLWPolyline2.default)(from, to, entity.vertices[i].bulge));
         }
         // The last iteration of the for loop
         if (i === il - 2) {
@@ -271,19 +354,19 @@ module.exports = function (entity) {
         }
       }
     } else {
-      logger.warn('Polyline entity with no vertices');
+      _logger2.default.warn('Polyline entity with no vertices');
     }
   }
 
   if (entity.type === 'CIRCLE') {
-    polyline = interpolateElliptic(entity.x, entity.y, entity.r, entity.r, 0, Math.PI * 2);
+    polyline = interpolateEllipse(entity.x, entity.y, entity.r, entity.r, 0, Math.PI * 2);
   }
 
   if (entity.type === 'ELLIPSE') {
     var rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY);
     var ry = entity.axisRatio * rx;
     var majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX);
-    polyline = interpolateElliptic(entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation);
+    polyline = interpolateEllipse(entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation);
     var flipY = entity.extrusionZ === -1;
     if (flipY) {
       polyline = polyline.map(function (p) {
@@ -295,7 +378,7 @@ module.exports = function (entity) {
   if (entity.type === 'ARC') {
     // Why on earth DXF has degree start & end angles for arc,
     // and radian start & end angles for ellipses is a mystery
-    polyline = interpolateElliptic(entity.x, entity.y, entity.r, entity.r, entity.startAngle, entity.endAngle, undefined, false);
+    polyline = interpolateEllipse(entity.x, entity.y, entity.r, entity.r, entity.startAngle, entity.endAngle, undefined, false);
 
     // I kid you not, ARCs and ELLIPSEs handle this differently,
     // as evidenced by how AutoCAD actually renders these entities
@@ -308,40 +391,23 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'SPLINE') {
-    var controlPoints = entity.controlPoints.map(function (p) {
-      return [p.x, p.y];
-    });
-    var degree = entity.degree;
-    var knots = entity.knots;
-    polyline = [];
-    // In trying to keep the polyline size to a reasonable value,
-    // the number of interpolated points is proportional to the
-    // number of control points
-    var numInterpolations = controlPoints.length * 100;
-
-    for (var t = 0; t <= numInterpolations; t += 1) {
-      // https://github.com/bjnortier/dxf/issues/28
-      // b-spline interpolation can fail due to a floating point
-      // error - ignore these until the lib is fixed
-      try {
-        var p = bspline(t / numInterpolations, degree, controlPoints, knots);
-        polyline.push(p);
-      } catch (e) {
-        // ignore this point
-      }
-    }
+    polyline = interpolateBSpline(entity.controlPoints, entity.degree, entity.knots, options.interpolationsPerSplineSegment);
   }
 
   if (!polyline) {
-    logger.warn('unsupported entity for converting to polyline:', entity.type);
+    _logger2.default.warn('unsupported entity for converting to polyline:', entity.type);
     return [];
   }
   return applyTransforms(polyline, entity.transforms);
 };
 },{"./util/createArcForLWPolyline":26,"./util/logger":27,"b-spline":28}],5:[function(require,module,exports){
-'use strict';
+"use strict";
 
-module.exports = function (entities) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (entities) {
   return entities.reduce(function (acc, entity) {
     var layer = entity.layer;
     if (!acc[layer]) {
@@ -1734,18 +1800,18 @@ exports.default = function (parsed) {
   polylines.forEach(function (polyline, i) {
     var entity = entities[i];
     var layerTable = parsed.tables.layers[entity.layer];
-    if (!layerTable) {
-      throw new Error('no layer table for layer:' + entity.layer);
-    }
-
-    // TODO: not sure if this prioritization is good (entity color first, layer color as fallback)
-    var colorNumber = 'colorNumber' in entity ? entity.colorNumber : layerTable.colorNumber;
-    var rgb = _colors2.default[colorNumber];
-    if (rgb === undefined) {
-      _logger2.default.warn('Color index', colorNumber, 'invalid, defaulting to black');
+    var rgb = void 0;
+    if (layerTable) {
+      var colorNumber = 'colorNumber' in entity ? entity.colorNumber : layerTable.colorNumber;
+      rgb = _colors2.default[colorNumber];
+      if (rgb === undefined) {
+        _logger2.default.warn('Color index', colorNumber, 'invalid, defaulting to black');
+        rgb = [0, 0, 0];
+      }
+    } else {
+      _logger2.default.warn('no layer table for layer:' + entity.layer);
       rgb = [0, 0, 0];
     }
-
     var p2 = polyline.map(function (p) {
       return [p[0], -p[1]];
     });
@@ -1763,9 +1829,16 @@ exports.default = function (parsed) {
 },{"./BoundingBox":1,"./denormalise":3,"./entityToPolyline":4,"./util/colors":25,"./util/logger":27,"pretty-data":42}],25:[function(require,module,exports){
 "use strict";
 
-module.exports = [[0, 0, 0], [255, 0, 0], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 255, 255], [65, 65, 65], [128, 128, 128], [255, 0, 0], [255, 170, 170], [189, 0, 0], [189, 126, 126], [129, 0, 0], [129, 86, 86], [104, 0, 0], [104, 69, 69], [79, 0, 0], [79, 53, 53], [255, 63, 0], [255, 191, 170], [189, 46, 0], [189, 141, 126], [129, 31, 0], [129, 96, 86], [104, 25, 0], [104, 78, 69], [79, 19, 0], [79, 59, 53], [255, 127, 0], [255, 212, 170], [189, 94, 0], [189, 157, 126], [129, 64, 0], [129, 107, 86], [104, 52, 0], [104, 86, 69], [79, 39, 0], [79, 66, 53], [255, 191, 0], [255, 234, 170], [189, 141, 0], [189, 173, 126], [129, 96, 0], [129, 118, 86], [104, 78, 0], [104, 95, 69], [79, 59, 0], [79, 73, 53], [255, 255, 0], [255, 255, 170], [189, 189, 0], [189, 189, 126], [129, 129, 0], [129, 129, 86], [104, 104, 0], [104, 104, 69], [79, 79, 0], [79, 79, 53], [191, 255, 0], [234, 255, 170], [141, 189, 0], [173, 189, 126], [96, 129, 0], [118, 129, 86], [78, 104, 0], [95, 104, 69], [59, 79, 0], [73, 79, 53], [127, 255, 0], [212, 255, 170], [94, 189, 0], [157, 189, 126], [64, 129, 0], [107, 129, 86], [52, 104, 0], [86, 104, 69], [39, 79, 0], [66, 79, 53], [63, 255, 0], [191, 255, 170], [46, 189, 0], [141, 189, 126], [31, 129, 0], [96, 129, 86], [25, 104, 0], [78, 104, 69], [19, 79, 0], [59, 79, 53], [0, 255, 0], [170, 255, 170], [0, 189, 0], [126, 189, 126], [0, 129, 0], [86, 129, 86], [0, 104, 0], [69, 104, 69], [0, 79, 0], [53, 79, 53], [0, 255, 63], [170, 255, 191], [0, 189, 46], [126, 189, 141], [0, 129, 31], [86, 129, 96], [0, 104, 25], [69, 104, 78], [0, 79, 19], [53, 79, 59], [0, 255, 127], [170, 255, 212], [0, 189, 94], [126, 189, 157], [0, 129, 64], [86, 129, 107], [0, 104, 52], [69, 104, 86], [0, 79, 39], [53, 79, 66], [0, 255, 191], [170, 255, 234], [0, 189, 141], [126, 189, 173], [0, 129, 96], [86, 129, 118], [0, 104, 78], [69, 104, 95], [0, 79, 59], [53, 79, 73], [0, 255, 255], [170, 255, 255], [0, 189, 189], [126, 189, 189], [0, 129, 129], [86, 129, 129], [0, 104, 104], [69, 104, 104], [0, 79, 79], [53, 79, 79], [0, 191, 255], [170, 234, 255], [0, 141, 189], [126, 173, 189], [0, 96, 129], [86, 118, 129], [0, 78, 104], [69, 95, 104], [0, 59, 79], [53, 73, 79], [0, 127, 255], [170, 212, 255], [0, 94, 189], [126, 157, 189], [0, 64, 129], [86, 107, 129], [0, 52, 104], [69, 86, 104], [0, 39, 79], [53, 66, 79], [0, 63, 255], [170, 191, 255], [0, 46, 189], [126, 141, 189], [0, 31, 129], [86, 96, 129], [0, 25, 104], [69, 78, 104], [0, 19, 79], [53, 59, 79], [0, 0, 255], [170, 170, 255], [0, 0, 189], [126, 126, 189], [0, 0, 129], [86, 86, 129], [0, 0, 104], [69, 69, 104], [0, 0, 79], [53, 53, 79], [63, 0, 255], [191, 170, 255], [46, 0, 189], [141, 126, 189], [31, 0, 129], [96, 86, 129], [25, 0, 104], [78, 69, 104], [19, 0, 79], [59, 53, 79], [127, 0, 255], [212, 170, 255], [94, 0, 189], [157, 126, 189], [64, 0, 129], [107, 86, 129], [52, 0, 104], [86, 69, 104], [39, 0, 79], [66, 53, 79], [191, 0, 255], [234, 170, 255], [141, 0, 189], [173, 126, 189], [96, 0, 129], [118, 86, 129], [78, 0, 104], [95, 69, 104], [59, 0, 79], [73, 53, 79], [255, 0, 255], [255, 170, 255], [189, 0, 189], [189, 126, 189], [129, 0, 129], [129, 86, 129], [104, 0, 104], [104, 69, 104], [79, 0, 79], [79, 53, 79], [255, 0, 191], [255, 170, 234], [189, 0, 141], [189, 126, 173], [129, 0, 96], [129, 86, 118], [104, 0, 78], [104, 69, 95], [79, 0, 59], [79, 53, 73], [255, 0, 127], [255, 170, 212], [189, 0, 94], [189, 126, 157], [129, 0, 64], [129, 86, 107], [104, 0, 52], [104, 69, 86], [79, 0, 39], [79, 53, 66], [255, 0, 63], [255, 170, 191], [189, 0, 46], [189, 126, 141], [129, 0, 31], [129, 86, 96], [104, 0, 25], [104, 69, 78], [79, 0, 19], [79, 53, 59], [51, 51, 51], [80, 80, 80], [105, 105, 105], [130, 130, 130], [190, 190, 190], [255, 255, 255]];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = [[0, 0, 0], [255, 0, 0], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 255, 255], [65, 65, 65], [128, 128, 128], [255, 0, 0], [255, 170, 170], [189, 0, 0], [189, 126, 126], [129, 0, 0], [129, 86, 86], [104, 0, 0], [104, 69, 69], [79, 0, 0], [79, 53, 53], [255, 63, 0], [255, 191, 170], [189, 46, 0], [189, 141, 126], [129, 31, 0], [129, 96, 86], [104, 25, 0], [104, 78, 69], [79, 19, 0], [79, 59, 53], [255, 127, 0], [255, 212, 170], [189, 94, 0], [189, 157, 126], [129, 64, 0], [129, 107, 86], [104, 52, 0], [104, 86, 69], [79, 39, 0], [79, 66, 53], [255, 191, 0], [255, 234, 170], [189, 141, 0], [189, 173, 126], [129, 96, 0], [129, 118, 86], [104, 78, 0], [104, 95, 69], [79, 59, 0], [79, 73, 53], [255, 255, 0], [255, 255, 170], [189, 189, 0], [189, 189, 126], [129, 129, 0], [129, 129, 86], [104, 104, 0], [104, 104, 69], [79, 79, 0], [79, 79, 53], [191, 255, 0], [234, 255, 170], [141, 189, 0], [173, 189, 126], [96, 129, 0], [118, 129, 86], [78, 104, 0], [95, 104, 69], [59, 79, 0], [73, 79, 53], [127, 255, 0], [212, 255, 170], [94, 189, 0], [157, 189, 126], [64, 129, 0], [107, 129, 86], [52, 104, 0], [86, 104, 69], [39, 79, 0], [66, 79, 53], [63, 255, 0], [191, 255, 170], [46, 189, 0], [141, 189, 126], [31, 129, 0], [96, 129, 86], [25, 104, 0], [78, 104, 69], [19, 79, 0], [59, 79, 53], [0, 255, 0], [170, 255, 170], [0, 189, 0], [126, 189, 126], [0, 129, 0], [86, 129, 86], [0, 104, 0], [69, 104, 69], [0, 79, 0], [53, 79, 53], [0, 255, 63], [170, 255, 191], [0, 189, 46], [126, 189, 141], [0, 129, 31], [86, 129, 96], [0, 104, 25], [69, 104, 78], [0, 79, 19], [53, 79, 59], [0, 255, 127], [170, 255, 212], [0, 189, 94], [126, 189, 157], [0, 129, 64], [86, 129, 107], [0, 104, 52], [69, 104, 86], [0, 79, 39], [53, 79, 66], [0, 255, 191], [170, 255, 234], [0, 189, 141], [126, 189, 173], [0, 129, 96], [86, 129, 118], [0, 104, 78], [69, 104, 95], [0, 79, 59], [53, 79, 73], [0, 255, 255], [170, 255, 255], [0, 189, 189], [126, 189, 189], [0, 129, 129], [86, 129, 129], [0, 104, 104], [69, 104, 104], [0, 79, 79], [53, 79, 79], [0, 191, 255], [170, 234, 255], [0, 141, 189], [126, 173, 189], [0, 96, 129], [86, 118, 129], [0, 78, 104], [69, 95, 104], [0, 59, 79], [53, 73, 79], [0, 127, 255], [170, 212, 255], [0, 94, 189], [126, 157, 189], [0, 64, 129], [86, 107, 129], [0, 52, 104], [69, 86, 104], [0, 39, 79], [53, 66, 79], [0, 63, 255], [170, 191, 255], [0, 46, 189], [126, 141, 189], [0, 31, 129], [86, 96, 129], [0, 25, 104], [69, 78, 104], [0, 19, 79], [53, 59, 79], [0, 0, 255], [170, 170, 255], [0, 0, 189], [126, 126, 189], [0, 0, 129], [86, 86, 129], [0, 0, 104], [69, 69, 104], [0, 0, 79], [53, 53, 79], [63, 0, 255], [191, 170, 255], [46, 0, 189], [141, 126, 189], [31, 0, 129], [96, 86, 129], [25, 0, 104], [78, 69, 104], [19, 0, 79], [59, 53, 79], [127, 0, 255], [212, 170, 255], [94, 0, 189], [157, 126, 189], [64, 0, 129], [107, 86, 129], [52, 0, 104], [86, 69, 104], [39, 0, 79], [66, 53, 79], [191, 0, 255], [234, 170, 255], [141, 0, 189], [173, 126, 189], [96, 0, 129], [118, 86, 129], [78, 0, 104], [95, 69, 104], [59, 0, 79], [73, 53, 79], [255, 0, 255], [255, 170, 255], [189, 0, 189], [189, 126, 189], [129, 0, 129], [129, 86, 129], [104, 0, 104], [104, 69, 104], [79, 0, 79], [79, 53, 79], [255, 0, 191], [255, 170, 234], [189, 0, 141], [189, 126, 173], [129, 0, 96], [129, 86, 118], [104, 0, 78], [104, 69, 95], [79, 0, 59], [79, 53, 73], [255, 0, 127], [255, 170, 212], [189, 0, 94], [189, 126, 157], [129, 0, 64], [129, 86, 107], [104, 0, 52], [104, 69, 86], [79, 0, 39], [79, 53, 66], [255, 0, 63], [255, 170, 191], [189, 0, 46], [189, 126, 141], [129, 0, 31], [129, 86, 96], [104, 0, 25], [104, 69, 78], [79, 0, 19], [79, 53, 59], [51, 51, 51], [80, 80, 80], [105, 105, 105], [130, 130, 130], [190, 190, 190], [255, 255, 255]];
 },{}],26:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _vecks = require('vecks');
 
@@ -1774,7 +1847,7 @@ var _vecks = require('vecks');
  *
  * See diagram.png in this directory for description of points and angles used.
  */
-module.exports = function (from, to, bulge, resolution) {
+exports.default = function (from, to, bulge, resolution) {
   // Resolution in degrees
   if (!resolution) {
     resolution = 5;
@@ -1841,19 +1914,27 @@ module.exports = function (from, to, bulge, resolution) {
     return [p.x, p.y];
   });
 };
-},{"vecks":50}],27:[function(require,module,exports){
+},{"vecks":51}],27:[function(require,module,exports){
 'use strict';
 
-var config = require('../config');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _config = require('../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function info() {
-  if (config.verbose) {
+  if (_config2.default.verbose) {
     console.info.apply(undefined, arguments);
   }
 }
 
 function warn() {
-  if (config.verbose) {
+  if (_config2.default.verbose) {
     console.warn.apply(undefined, arguments);
   }
 }
@@ -1862,10 +1943,11 @@ function error() {
   console.error.apply(undefined, arguments);
 }
 
-module.exports.config = config;
-module.exports.info = info;
-module.exports.warn = warn;
-module.exports.error = error;
+exports.default = {
+  info: info,
+  warn: warn,
+  error: error
+};
 },{"../config":2}],28:[function(require,module,exports){
 
 
@@ -3730,7 +3812,7 @@ Box2.fromPoints = function (points) {
 };
 
 exports.default = Box2;
-},{"./V2":48}],44:[function(require,module,exports){
+},{"./V2":49}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3918,7 +4000,62 @@ var Line2 = function () {
 }();
 
 exports.default = Line2;
-},{"./V2":48}],46:[function(require,module,exports){
+},{"./V2":49}],46:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _V = require('./V3');
+
+var _V2 = _interopRequireDefault(_V);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var dist = function dist(a, b) {
+  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2));
+};
+
+var Line3 = function () {
+  function Line3(a, b) {
+    _classCallCheck(this, Line3);
+
+    if ((typeof a === 'undefined' ? 'undefined' : _typeof(a)) !== 'object' || a.x === undefined || a.y === undefined || a.z === undefined) {
+      throw Error('expected first argument to have x, y and z properties');
+    }
+    if ((typeof b === 'undefined' ? 'undefined' : _typeof(b)) !== 'object' || b.x === undefined || b.y === undefined || b.y === undefined) {
+      throw Error('expected second argument to have x, y and z properties');
+    }
+    this.a = new _V2.default(a);
+    this.b = new _V2.default(b);
+  }
+
+  _createClass(Line3, [{
+    key: 'length',
+    value: function length() {
+      return this.a.sub(this.b).length();
+    }
+  }, {
+    key: 'containsPoint',
+    value: function containsPoint(point) {
+      var eps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1e-12;
+
+      return Math.abs(dist(this.a, this.b) - dist(point, this.a) - dist(point, this.b)) < eps;
+    }
+  }]);
+
+  return Line3;
+}();
+
+exports.default = Line3;
+},{"./V3":50}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3978,31 +4115,31 @@ Plane3.fromPointAndNormal = function (p, n) {
 };
 
 Plane3.fromPoints = function (points) {
-  var validCross = void 0;
+  var firstCross = void 0;
   for (var i = 0, il = points.length; i < il; ++i) {
     var ab = points[(i + 1) % il].sub(points[i]);
     var bc = points[(i + 2) % il].sub(points[(i + 1) % il]);
     var cross = ab.cross(bc);
     if (!(isNaN(cross.length()) || cross.length() === 0)) {
-      if (!validCross) {
-        validCross = cross.norm();
+      if (!firstCross) {
+        firstCross = cross.norm();
       } else {
-        var same = cross.norm().equals(validCross);
-        var opposite = cross.neg().norm().equals(validCross);
+        var same = cross.norm().equals(firstCross, 1e-6);
+        var opposite = cross.neg().norm().equals(firstCross, 1e-6);
         if (!(same || opposite)) {
           throw Error('points not on a plane');
         }
       }
     }
   }
-  if (!validCross) {
+  if (!firstCross) {
     throw Error('points not on a plane');
   }
-  return Plane3.fromPointAndNormal(points[0], validCross.norm());
+  return Plane3.fromPointAndNormal(points[0], firstCross.norm());
 };
 
 exports.default = Plane3;
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4067,7 +4204,7 @@ Quaternion.fromAxisAngle = function (axis, angle) {
 };
 
 exports.default = Quaternion;
-},{"./V3":49}],48:[function(require,module,exports){
+},{"./V3":50}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4139,7 +4276,7 @@ var V2 = function () {
 }();
 
 exports.default = V2;
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4160,6 +4297,10 @@ var V3 = function () {
       this.x = x.x;
       this.y = x.y;
       this.z = x.z;
+    } else if (x === undefined) {
+      this.x = 0;
+      this.y = 0;
+      this.z = 0;
     } else {
       this.x = x;
       this.y = y;
@@ -4169,8 +4310,11 @@ var V3 = function () {
 
   _createClass(V3, [{
     key: 'equals',
-    value: function equals(other) {
-      return this.x === other.x && this.y === other.y && this.z === other.z;
+    value: function equals(other, eps) {
+      if (eps === undefined) {
+        eps = 0;
+      }
+      return Math.abs(this.x - other.x) <= eps && Math.abs(this.y - other.y) <= eps && Math.abs(this.z - other.z) <= eps;
     }
   }, {
     key: 'length',
@@ -4218,13 +4362,13 @@ var V3 = function () {
 }();
 
 exports.default = V3;
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Line2 = exports.Quaternion = exports.Plane3 = exports.Box3 = exports.Box2 = exports.V3 = exports.V2 = undefined;
+exports.Line3 = exports.Line2 = exports.Quaternion = exports.Plane3 = exports.Box3 = exports.Box2 = exports.V3 = exports.V2 = undefined;
 
 var _V = require('./V2');
 
@@ -4254,6 +4398,10 @@ var _Line = require('./Line2');
 
 var _Line2 = _interopRequireDefault(_Line);
 
+var _Line3 = require('./Line3');
+
+var _Line4 = _interopRequireDefault(_Line3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.V2 = _V2.default;
@@ -4263,5 +4411,6 @@ exports.Box3 = _Box4.default;
 exports.Plane3 = _Plane2.default;
 exports.Quaternion = _Quaternion2.default;
 exports.Line2 = _Line2.default;
-},{"./Box2":43,"./Box3":44,"./Line2":45,"./Plane3":46,"./Quaternion":47,"./V2":48,"./V3":49}]},{},[23])(23)
+exports.Line3 = _Line4.default;
+},{"./Box2":43,"./Box3":44,"./Line2":45,"./Line3":46,"./Plane3":47,"./Quaternion":48,"./V2":49,"./V3":50}]},{},[23])(23)
 });

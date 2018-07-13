@@ -47,18 +47,18 @@ export default (parsed) => {
   polylines.forEach((polyline, i) => {
     const entity = entities[i]
     const layerTable = parsed.tables.layers[entity.layer]
-    if (!layerTable) {
-      throw new Error('no layer table for layer:' + entity.layer)
-    }
-
-    // TODO: not sure if this prioritization is good (entity color first, layer color as fallback)
-    let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
-    let rgb = colors[colorNumber]
-    if (rgb === undefined) {
-      logger.warn('Color index', colorNumber, 'invalid, defaulting to black')
+    let rgb
+    if (layerTable) {
+      let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
+      rgb = colors[colorNumber]
+      if (rgb === undefined) {
+        logger.warn('Color index', colorNumber, 'invalid, defaulting to black')
+        rgb = [0, 0, 0]
+      }
+    } else {
+      logger.warn('no layer table for layer:' + entity.layer)
       rgb = [0, 0, 0]
     }
-
     const p2 = polyline.map(function (p) {
       return [p[0], -p[1]]
     })

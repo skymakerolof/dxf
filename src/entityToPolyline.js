@@ -1,13 +1,11 @@
-'use strict'
+import bSpline from 'b-spline'
 
-const bspline = require('b-spline')
-
-const logger = require('./util/logger')
-
-const createArcForLWPolyine = require('./util/createArcForLWPolyline')
+import logger from './util/logger'
+import createArcForLWPolyine from './util/createArcForLWPolyline'
 
 /**
- * Rotate a set of points
+ * Rotate a set of points.
+ *
  * @param points the points
  * @param angle the rotation angle
  */
@@ -21,6 +19,7 @@ const rotate = (points, angle) => {
 }
 
 /**
+ * Interpolate an ellipse
  * @param cx center X
  * @param cy center Y
  * @param rx radius X
@@ -28,7 +27,7 @@ const rotate = (points, angle) => {
  * @param start start angle in radians
  * @param start end angle in radians
  */
-const interpolateElliptic = (cx, cy, rx, ry, start, end, rotationAngle) => {
+const interpolateEllipse = (cx, cy, rx, ry, start, end, rotationAngle) => {
   if (end < start) {
     end += Math.PI * 2
   }
@@ -63,6 +62,60 @@ const interpolateElliptic = (cx, cy, rx, ry, start, end, rotationAngle) => {
   return points
 }
 
+/**
+ * Interpolate a b-spline. The algorithm examins the knot vector
+ * to create segments for interpolation. The parameterisation value
+ * is re-normalised back to [0,1] as that is what the lib expects (
+ * and t i de-normalised in the b-spline library)
+ *
+ * @param controlPoints the control points
+ * @param degree the b-spline degree
+ * @param knots the knot vector
+ * @returns the polyline
+ */
+const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplineSegment) => {
+  const polyline = []
+  const controlPointsForLib = controlPoints.map(function (p) {
+    return [p.x, p.y]
+  })
+
+  const segmentTs = [knots[degree]]
+  const domain = [knots[degree], knots[knots.length - 1 - degree]]
+
+  for (let k = degree + 1; k < knots.length - degree; ++k) {
+    if (segmentTs[segmentTs.length - 1] !== knots[k]) {
+      segmentTs.push(knots[k])
+    }
+  }
+
+  interpolationsPerSplineSegment = interpolationsPerSplineSegment || 25
+  for (let i = 1; i < segmentTs.length; ++i) {
+    const uMin = segmentTs[i - 1]
+    const uMax = segmentTs[i]
+    for (let k = 0; k <= interpolationsPerSplineSegment; ++k) {
+      // https://github.com/bjnortier/dxf/issues/28
+      // b-spline interpolation can fail due to a floating point
+      // error - ignore these until the lib is fixed
+      try {
+        const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
+        const t = (u - domain[0]) / (domain[1] - domain[0])
+        const p = bSpline(t, degree, controlPointsForLib, knots)
+        polyline.push(p)
+      } catch (e) {
+        // ignore this point
+      }
+    }
+  }
+  return polyline
+}
+
+/**
+ * Apply the transforms to the polyline.
+ *
+ * @param polyline the polyline
+ * @param transform the transforms array
+ * @returns the transformed polyline
+ */
 const applyTransforms = (polyline, transforms) => {
   transforms.forEach(transform => {
     polyline = polyline.map(function (p) {
@@ -98,7 +151,8 @@ const applyTransforms = (polyline, transforms) => {
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
  * of primitive objects (ellispe, spline etc.)
  */
-module.exports = function (entity) {
+export default (entity, options) => {
+  options = options || {}
   let polyline
 
   if (entity.type === 'LINE') {
@@ -141,7 +195,7 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'CIRCLE') {
-    polyline = interpolateElliptic(
+    polyline = interpolateEllipse(
       entity.x, entity.y,
       entity.r, entity.r,
       0, Math.PI * 2)
@@ -151,7 +205,7 @@ module.exports = function (entity) {
     const rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY)
     const ry = entity.axisRatio * rx
     const majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX)
-    polyline = interpolateElliptic(
+    polyline = interpolateEllipse(
       entity.x, entity.y,
       rx, ry,
       entity.startAngle,
@@ -171,7 +225,7 @@ module.exports = function (entity) {
   if (entity.type === 'ARC') {
     // Why on earth DXF has degree start & end angles for arc,
     // and radian start & end angles for ellipses is a mystery
-    polyline = interpolateElliptic(
+    polyline = interpolateEllipse(
       entity.x, entity.y,
       entity.r, entity.r,
       entity.startAngle,
@@ -193,28 +247,11 @@ module.exports = function (entity) {
   }
 
   if (entity.type === 'SPLINE') {
-    const controlPoints = entity.controlPoints.map(function (p) {
-      return [p.x, p.y]
-    })
-    const degree = entity.degree
-    const knots = entity.knots
-    polyline = []
-    // In trying to keep the polyline size to a reasonable value,
-    // the number of interpolated points is proportional to the
-    // number of control points
-    const numInterpolations = controlPoints.length * 100
-
-    for (let t = 0; t <= numInterpolations; t += 1) {
-      // https://github.com/bjnortier/dxf/issues/28
-      // b-spline interpolation can fail due to a floating point
-      // error - ignore these until the lib is fixed
-      try {
-        const p = bspline(t / numInterpolations, degree, controlPoints, knots)
-        polyline.push(p)
-      } catch (e) {
-        // ignore this point
-      }
-    }
+    polyline = interpolateBSpline(
+      entity.controlPoints,
+      entity.degree,
+      entity.knots,
+      options.interpolationsPerSplineSegment)
   }
 
   if (!polyline) {

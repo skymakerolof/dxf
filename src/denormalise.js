@@ -1,10 +1,8 @@
-'use strict'
+import cloneDeep from 'lodash.clonedeep'
 
-const cloneDeep = require('lodash.clonedeep')
+import logger from './util/logger'
 
-const logger = require('./util/logger')
-
-module.exports = (parseResult) => {
+export default (parseResult) => {
   const blocksByName = parseResult.blocks.reduce((acc, b) => {
     acc[b.name] = b
     return acc

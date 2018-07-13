@@ -1,4 +1,4 @@
-module.exports.ZERO_TRANSFORM = {
+export const ZERO_TRANSFORM = {
   x: 0,
   y: 0,
   xScale: 1,

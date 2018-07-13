@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (entities) => {
+export default (entities) => {
   return entities.reduce((acc, entity) => {
     const layer = entity.layer
     if (!acc[layer]) {
