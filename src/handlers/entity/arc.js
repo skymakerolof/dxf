@@ -23,7 +23,7 @@ export const process = (tuples) => {
         entity.r = value
         break
       case 50:
-        // Some idiot decided that ELLIPSE angles are in radians but
+        // *Someone* decided that ELLIPSE angles are in radians but
         // ARC angles are in degrees
         entity.startAngle = value / 180 * Math.PI
         break
