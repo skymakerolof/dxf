@@ -14,8 +14,8 @@
     "functional:watch": "npm run unit -- --watch",
     "test": "npm run lint && npm run unit && npm run functional",
     "compile": "babel --optional runtime -d lib/ src/",
-    "dist": "browserify lib/index.js --standalone dxf -o dist/dxf.js",
-    "prepublishOnly": "npm run compile && npm run dist"
+    "dist": "mkdir -p dist && browserify lib/index.js --standalone dxf -o dist/dxf.js",
+    "prepublishOnly": "rimraf dist/ lib/ && npm run compile && npm run dist"
   },
   "repository": {
     "type": "git",
