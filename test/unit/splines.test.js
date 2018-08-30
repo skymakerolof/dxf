@@ -19,10 +19,10 @@ describe('SPLINE', () => {
       flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
-        {x: 10, y: 10, z: 0},
-        {x: 50, y: 10, z: 0},
-        {x: 80, y: 40, z: 0},
-        {x: 90, y: 20, z: 0}
+        { x: 10, y: 10, z: 0 },
+        { x: 50, y: 10, z: 0 },
+        { x: 80, y: 40, z: 0 },
+        { x: 90, y: 20, z: 0 }
       ],
       degree: 3,
       knotTolerance: 1e-7,
@@ -44,14 +44,14 @@ describe('SPLINE', () => {
       flag: 8,
       controlPointTolerance: 1e-7,
       controlPoints: [
-        {x: 30, y: 30, z: 0},
-        {x: 30, y: 50, z: 0},
-        {x: 85, y: 55, z: 0},
-        {x: 90, y: 80, z: 0},
-        {x: 30, y: 50, z: 0},
-        {x: 20, y: 80, z: 0},
-        {x: 55, y: 100, z: 0},
-        {x: 90, y: 90, z: 0}
+        { x: 30, y: 30, z: 0 },
+        { x: 30, y: 50, z: 0 },
+        { x: 85, y: 55, z: 0 },
+        { x: 90, y: 80, z: 0 },
+        { x: 30, y: 50, z: 0 },
+        { x: 20, y: 80, z: 0 },
+        { x: 55, y: 100, z: 0 },
+        { x: 90, y: 90, z: 0 }
       ],
       degree: 3,
       knotTolerance: 1e-7,
