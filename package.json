@@ -45,8 +45,6 @@
   "dependencies": {
     "b-spline": "^2.0.1",
     "lodash.clonedeep": "^4.5.0",
-    "lodash.isarray": "^4.0.0",
-    "lodash.isstring": "^4.0.1",
     "pretty-data": "^0.40.0",
     "vecks": "^3.7.2"
   },
