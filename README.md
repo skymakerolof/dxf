@@ -26,8 +26,6 @@ There is an ES5 and ES6 example in the ```examples/``` directory that show how t
 1. Denormalise the entities into an array using ```dxf.denormalize(<parsed>)```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalizing will create the *resulting* entities with the block transforms applied.
 1. (Optional) Create an SVG using ```dxf.toSVG(<parsed>, <options>)```. Please refer to the SVG section below regarding limitations. Options supported are ```interpolationsPerSplineSegment```, with default = 25, e.g. ```dxf.toSVG(<parsed>, {interpolationsPerSplineSegment: 10})```
 
-
-
 ## Running the Examples
 
 Node ES5:
@@ -46,6 +44,25 @@ The initial aim of this library was to support rendering of the main geometric c
 Here's an example you will find in the functional test output:
 
 ![svg example image](https://cloud.githubusercontent.com/assets/57994/17583566/e00f5d78-5fb1-11e6-9030-55686f980e6f.png)
+
+## Command line
+
+There is a command-line utility (courtesy of [@Joge97](https://github.com/Joge97)) for converting DXF files to SVG:
+
+```
+$ npm i -g dxf
+$ dxf-to-svg
+
+  Usage: dxf-to-svg [options] <dxfFile> [svgFile]
+
+  Converts a dxf file to a svg file.
+
+  Options:
+
+    -V, --version  output the version number
+    -v --verbose   Verbose output
+    -h, --help     output usage information
+```
 
 ## Tests
 
