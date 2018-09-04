@@ -13,10 +13,8 @@ commander
     const parsed = parseString(fs.readFileSync(dxfFile, 'utf-8'))
 
     if (options.verbose) {
-      console.log('[layer : number of entities]')
-
       const groups = groupEntitiesByLayer(denormalise(parsed))
-
+      console.log('[layer : number of entities]')
       Object.keys(groups).forEach(layer => {
         console.log(`${layer} : ${groups[layer].length}`)
       })
