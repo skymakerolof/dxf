@@ -9,3 +9,4 @@ examples/example.es6.svg
 .DS_Store
 *~
 #*
+.idea

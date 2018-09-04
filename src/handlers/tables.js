@@ -27,7 +27,7 @@ const layerHandler = (tuples) => {
       default:
     }
     return layer
-  }, {type: 'LAYER'})
+  }, { type: 'LAYER' })
 }
 
 const styleHandler = (tuples) => {
@@ -65,7 +65,7 @@ const styleHandler = (tuples) => {
       default:
     }
     return style
-  }, {type: 'STYLE'})
+  }, { type: 'STYLE' })
 }
 
 const tableHandler = (tuples, tableType, handler) => {

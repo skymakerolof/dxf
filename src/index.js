@@ -94,7 +94,8 @@ export const parseString = (string) => {
     // In the event of empty sections
     header: {},
     blocks: [],
-    entities: []
+    entities: [],
+    tables: { layers: {}, styles: {} }
   })
   return result
 }

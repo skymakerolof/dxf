@@ -7,7 +7,7 @@ const readContents = (filename) => {
   return fs.readFileSync(join(__dirname, '/../resources/', filename), 'utf-8')
 }
 
-describe('Reference files dont\'t generate errors', function () {
+describe('Reference files don\'t generate errors', function () {
   const createTest = function (filename) {
     return function () {
       this.timeout(5000)
@@ -22,4 +22,5 @@ describe('Reference files dont\'t generate errors', function () {
 
   it('entities.dxf', createTest('entities.dxf'))
   it('Ceco.NET-Architecture-Tm-53.dxf', createTest('Ceco.NET-Architecture-Tm-53.dxf'))
+  it('openscad_export.dxf', createTest('openscad_export.dxf'))
 })
