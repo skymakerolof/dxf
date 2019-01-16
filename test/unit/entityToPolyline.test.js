@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString, denormalise, entityToPolyline } from '../../src'
 
@@ -9,20 +9,20 @@ describe('Entity To Polyline', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/lines.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 11)
+    expect(entities.length).toEqual(11)
 
     const polyline = entityToPolyline(entities[0])
-    assert.deepEqual(polyline, [ [ 0, 0 ], [ 100, 0 ] ])
+    expect(polyline).toEqual([ [ 0, 0 ], [ 100, 0 ] ])
   })
 
   it('supports LWPOLYLINE', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/lwpolylines.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 2)
+    expect(entities.length).toEqual(2)
 
     const p0 = entityToPolyline(entities[0])
-    assert.deepEqual(p0, [
+    expect(p0).toEqual([
       [10, 40],
       [70, 0],
       [80, 20],
@@ -30,7 +30,7 @@ describe('Entity To Polyline', () => {
       [10, 40]
     ])
     const p1 = entityToPolyline(entities[1])
-    assert.deepEqual(p1, [
+    expect(p1).toEqual([
       [10, 60],
       [0, 90],
       [30, 80],
@@ -47,9 +47,9 @@ describe('Entity To Polyline', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/closedlwpolylinebug.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 1)
+    expect(entities.length).toEqual(1)
     const polyline = entityToPolyline(entities[0])
-    assert.deepEqual(polyline, [
+    expect(polyline).toEqual([
       [ 30, 40 ], [ 50, 40 ], [ 50, 70 ], [ 30, 40 ]
     ])
   })
@@ -64,7 +64,7 @@ describe('Entity To Polyline', () => {
       closed: true,
       transforms: []
     })
-    assert.deepEqual(polyline, [
+    expect(polyline).toEqual([
       [294.598692, 168.66373],
       [294.598692, 168.66373]
     ])
@@ -74,30 +74,30 @@ describe('Entity To Polyline', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/circlesellipsesarcs.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 5)
+    expect(entities.length).toEqual(5)
 
-    assert.deepEqual(entityToPolyline(entities[0]).length, 73)
-    assert.deepEqual(entityToPolyline(entities[1]).length, 39)
-    assert.deepEqual(entityToPolyline(entities[2]).length, 40)
-    assert.deepEqual(entityToPolyline(entities[3]).length, 18)
-    assert.deepEqual(entityToPolyline(entities[4]).length, 73)
+    expect(entityToPolyline(entities[0]).length).toEqual(73)
+    expect(entityToPolyline(entities[1]).length).toEqual(39)
+    expect(entityToPolyline(entities[2]).length).toEqual(40)
+    expect(entityToPolyline(entities[3]).length).toEqual(18)
+    expect(entityToPolyline(entities[4]).length).toEqual(73)
   })
 
   it('supports SPLINE', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/splines.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 2)
+    expect(entities.length).toEqual(2)
 
-    assert.deepEqual(entityToPolyline(entities[0]).length, 26)
-    assert.deepEqual(entityToPolyline(entities[1]).length, 130)
-    assert.deepEqual(entityToPolyline(entities[0], { interpolationsPerSplineSegment: 10 }).length, 11)
+    expect(entityToPolyline(entities[0]).length).toEqual(26)
+    expect(entityToPolyline(entities[1]).length).toEqual(130)
+    expect(entityToPolyline(entities[0], { interpolationsPerSplineSegment: 10 }).length).toEqual(11)
   })
 
   it('supports BLOCK with INSERT', () => {
     const parsed = parseString(
       fs.readFileSync(join(__dirname, '../resources/blocks1.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
-    assert.equal(entities.length, 10)
+    expect(entities.length).toEqual(10)
   })
 })

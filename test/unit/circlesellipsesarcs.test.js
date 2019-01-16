@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/circlesellipsesarcs.dxf'), 'utf-8')
@@ -8,9 +8,9 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/circlesellips
 describe('CIRCLE ELLIPSE ARC', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    assert.deepEqual(entities.length, 5)
+    expect(entities.length).toEqual(5)
 
-    assert.deepEqual(entities[0], {
+    expect(entities[0]).toEqual({
       type: 'ELLIPSE',
       colorNumber: 256,
       layer: '0',
@@ -25,7 +25,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
       y: 50,
       z: 0
     })
-    assert.deepEqual(entities[1], {
+    expect(entities[1]).toEqual({
       type: 'ELLIPSE',
       axisRatio: 0.5205479452054796,
       colorNumber: 256,
@@ -40,7 +40,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
       y: 180,
       z: 0
     })
-    assert.deepEqual(entities[2], {
+    expect(entities[2]).toEqual({
       type: 'ARC',
       layer: '0',
       lineTypeName: 'ByLayer',
@@ -51,7 +51,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
       y: 140,
       r: 50
     })
-    assert.deepEqual(entities[3], {
+    expect(entities[3]).toEqual({
       type: 'ARC',
       layer: '0',
       lineTypeName: 'ByLayer',
@@ -62,7 +62,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
       y: 210,
       r: 58.309518948453
     })
-    assert.deepEqual(entities[4], {
+    expect(entities[4]).toEqual({
       type: 'CIRCLE',
       layer: '0',
       lineTypeName: 'ByLayer',

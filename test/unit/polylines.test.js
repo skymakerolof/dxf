@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/polylines.dxf'), 'utf-8')
@@ -8,8 +8,8 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/polylines.dxf
 describe('POLYLINE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    assert.deepEqual(entities.length, 2)
-    assert.deepEqual(entities[0], {
+    expect(entities.length).toEqual(2)
+    expect(entities[0]).toEqual({
       closed: true,
       layer: 'DXF',
       polyfaceMesh: false,

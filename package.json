@@ -39,14 +39,12 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "browserify": "^16.2.2",
-    "chai": "^4.1.2",
     "expect": "^23.6.0",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "b-spline": "^2.0.1",
     "commander": "^2.17.1",
     "lodash.clonedeep": "^4.5.0",
     "pretty-data": "^0.40.0",

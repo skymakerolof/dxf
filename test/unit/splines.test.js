@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/splines.dxf'), 'utf-8')
@@ -8,9 +8,9 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/splines.dxf')
 describe('SPLINE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    assert.deepEqual(entities.length, 2)
+    expect(entities.length).toEqual(2)
 
-    assert.deepEqual(entities[0], {
+    expect(entities[0]).toEqual({
       type: 'SPLINE',
       layer: '0',
       lineTypeName: 'ByLayer',
@@ -35,7 +35,7 @@ describe('SPLINE', () => {
       extrusionZ: 0
     })
 
-    assert.deepEqual(entities[1], {
+    expect(entities[1]).toEqual({
       type: 'SPLINE',
       layer: '0',
       lineTypeName: 'ByLayer',

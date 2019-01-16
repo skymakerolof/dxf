@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/blocks1.dxf'), 'utf-8')
@@ -8,9 +8,9 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/blocks1.dxf')
 describe('INSERT', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    assert.equal(entities.length, 2)
+    expect(entities.length).toEqual(2)
 
-    assert.deepEqual(entities[0], {
+    expect(entities[0]).toEqual({
       type: 'INSERT',
       block: 'a',
       lineTypeName: 'ByLayer',
@@ -29,7 +29,7 @@ describe('INSERT', () => {
       zscale: 0
     })
 
-    assert.deepEqual(entities[1], {
+    expect(entities[1]).toEqual({
       type: 'INSERT',
       block: 'a',
       lineTypeName: 'ByLayer',

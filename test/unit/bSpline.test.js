@@ -10,7 +10,7 @@ import interpolate from '../../src/util/bSpline'
 const tValues = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 const degree = 2
 
-describe.only('B-Spline interpolation', () => {
+describe('B-Spline interpolation', () => {
   it('uniform curve', () => {
     const points = [
       [-1.0, 0.0],

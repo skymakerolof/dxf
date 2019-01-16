@@ -1,4 +1,4 @@
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { BoundingBox as BB } from '../../src'
 
@@ -6,10 +6,10 @@ describe('BoundingBox', function () {
   it('is initialized', function () {
     const bb = new BB()
 
-    assert.equal(bb.minX, Infinity)
-    assert.equal(bb.maxX, -Infinity)
-    assert.equal(bb.maxY, -Infinity)
-    assert.equal(bb.minY, Infinity)
+    expect(bb.minX).toEqual(Infinity)
+    expect(bb.maxX).toEqual(-Infinity)
+    expect(bb.maxY).toEqual(-Infinity)
+    expect(bb.minY).toEqual(Infinity)
   })
 
   it('can expand by a point', function () {
@@ -17,34 +17,34 @@ describe('BoundingBox', function () {
 
     bb.expandByPoint(10, 30)
 
-    assert.equal(bb.minX, 10)
-    assert.equal(bb.maxX, 10)
-    assert.equal(bb.maxY, 30)
-    assert.equal(bb.minY, 30)
+    expect(bb.minX).toEqual(10)
+    expect(bb.maxX).toEqual(10)
+    expect(bb.maxY).toEqual(30)
+    expect(bb.minY).toEqual(30)
 
     bb.expandByPoint(-5, 2)
 
-    assert.equal(bb.minX, -5)
-    assert.equal(bb.maxX, 10)
-    assert.equal(bb.maxY, 30)
-    assert.equal(bb.minY, 2)
+    expect(bb.minX).toEqual(-5)
+    expect(bb.maxX).toEqual(10)
+    expect(bb.maxY).toEqual(30)
+    expect(bb.minY).toEqual(2)
 
     bb.expandByPoint(17, 7)
 
-    assert.equal(bb.minX, -5)
-    assert.equal(bb.maxX, 17)
-    assert.equal(bb.maxY, 30)
-    assert.equal(bb.minY, 2)
+    expect(bb.minX).toEqual(-5)
+    expect(bb.maxX).toEqual(17)
+    expect(bb.maxY).toEqual(30)
+    expect(bb.minY).toEqual(2)
 
     bb.expandByPoint(3, -9)
 
-    assert.equal(bb.minX, -5)
-    assert.equal(bb.maxX, 17)
-    assert.equal(bb.maxY, 30)
-    assert.equal(bb.minY, -9)
+    expect(bb.minX).toEqual(-5)
+    expect(bb.maxX).toEqual(17)
+    expect(bb.maxY).toEqual(30)
+    expect(bb.minY).toEqual(-9)
 
-    assert.equal(bb.width, 22)
-    assert.equal(bb.height, 39)
+    expect(bb.width).toEqual(22)
+    expect(bb.height).toEqual(39)
   })
 
   it('can expand by a box', function () {
@@ -57,10 +57,10 @@ describe('BoundingBox', function () {
 
     bb1.expandByBox(bb2)
 
-    assert.equal(bb1.minX, 10)
-    assert.equal(bb1.maxX, 19)
-    assert.equal(bb1.maxY, 27)
-    assert.equal(bb1.minY, -7)
+    expect(bb1.minX).toEqual(10)
+    expect(bb1.maxX).toEqual(19)
+    expect(bb1.maxY).toEqual(27)
+    expect(bb1.minY).toEqual(-7)
   })
 
   it('can expand by a translated box', function () {
@@ -71,9 +71,9 @@ describe('BoundingBox', function () {
     const bb2 = new BB()
     bb2.expandByTranslatedBox(bb1, -7, 23)
 
-    assert.equal(bb2.minX, -7)
-    assert.equal(bb2.maxX, 13)
-    assert.equal(bb2.maxY, 33)
-    assert.equal(bb2.minY, 23)
+    expect(bb2.minX).toEqual(-7)
+    expect(bb2.maxX).toEqual(13)
+    expect(bb2.maxY).toEqual(33)
+    expect(bb2.minY).toEqual(23)
   })
 })
