@@ -3,7 +3,6 @@ import tablesHandler from './handlers/tables'
 import blocksHandler from './handlers/blocks'
 import entitiesHandler from './handlers/entities'
 import config from './config'
-import BoundingBox from './BoundingBox'
 import denormalise from './denormalise'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 import toSVG from './toSVG'
@@ -103,7 +102,6 @@ export const parseString = (string) => {
 export {
   config,
   colors,
-  BoundingBox,
   denormalise,
   groupEntitiesByLayer,
   toSVG,

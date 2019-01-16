@@ -14,7 +14,7 @@
     "test:unit": "mocha --require babel-core/register --recursive test/unit/**",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:functional": "rimraf test/functional/output/* && mocha --require babel-core/register --recursive test/functional/**",
-    "test:functional:watch": "npm run unit -- --watch",
+    "test:functional:watch": "npm run test:functional -- --watch",
     "test": "npm run lint && npm run test:unit && npm run test:functional",
     "compile": "babel --optional runtime -d lib/ src/",
     "dist": "mkdir -p dist && browserify lib/index.js --standalone dxf -o dist/dxf.js",
