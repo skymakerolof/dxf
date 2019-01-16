@@ -7,10 +7,12 @@ import { round10 } from 'round10'
  * Copyright (c) 2015 Thibaut Séguy <thibaut.seguy@gmail.com>
  */
 export default (t, degree, points, knots, weights) => {
-  // var i, j, s, l // function-scoped iteration variables
   const n = points.length // points count
   const d = points[0].length // point dimensionality
 
+  if ((t < 0) || (t > 1)) {
+    throw new Error('t out of bounds [0,1]: ' + t)
+  }
   if (degree < 1) throw new Error('degree must be at least 1 (linear)')
   if (degree > (n - 1)) throw new Error('degree must be less than or equal to point count - 1')
 
@@ -42,7 +44,8 @@ export default (t, degree, points, knots, weights) => {
   const high = knots[domain[1]]
   t = t * (high - low) + low
 
-  if (t < low || t > high) throw new Error('out of bounds')
+  t = Math.max(t, low)
+  t = Math.min(t, high)
 
   // find s (the spline segment) for the [t] value provided
   let s
