@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
+import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 
 import { parseString, toSVG } from '../../src'
 
-const resources = [
+const names = [
   'lines',
   'lwpolylines',
   'polylines',
@@ -24,13 +25,36 @@ const resources = [
   'issue28',
   'issue29'
 ]
-const dxfs = resources.map(name => require(`../resources/${name}.dxf`))
+const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => toSVG(parseString(contents)))
 
-render(<div>
-  {svgs.map((svg, i) => <div
+const Thumbnail = ({ index, name, svg }) => <Link
+  to={`/${index}`}
+>
+  <div
     style={{ display: 'inline-block', margin: 20, padding: 20, backgroundColor: '#fff' }}
-    key={i}
     dangerouslySetInnerHTML={{ __html: svg }}
-  />)}
-</div>, document.getElementById('contents'))
+  />
+</Link>
+
+// All the test cases
+const All = () => <div>
+  {svgs.map((svg, i) => <Thumbnail key={i} index={i} name={names[i]} svg={svg} />)}
+</div>
+
+// One SVG only
+const One = (props) => {
+  return <div
+    style={{ backgroundColor: '#fff' }}
+    dangerouslySetInnerHTML={{ __html: svgs[props.match.params.index] }}
+  />
+}
+
+render(<HashRouter>
+  <div>
+    <Switch>
+      <Route path='/' exact component={All} />
+      <Route path='/:index' component={One} />
+    </Switch>
+  </div>
+</HashRouter>, document.getElementById('contents'))
