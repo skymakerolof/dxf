@@ -2,7 +2,8 @@ import fs from 'fs'
 import { join } from 'path'
 import expect from 'expect'
 
-import { parseString, denormalise, entityToPolyline } from '../../src'
+import { parseString, denormalise } from '../../src'
+import entityToPolyline from '../../src/entityToPolyline'
 
 describe('Entity To Polyline', () => {
   it('supports LINE', () => {

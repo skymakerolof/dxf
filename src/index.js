@@ -101,9 +101,7 @@ export const parseString = (string) => {
 
 export {
   config,
-  colors,
   denormalise,
   groupEntitiesByLayer,
-  toSVG,
-  entityToPolyline
+  toSVG
 }
