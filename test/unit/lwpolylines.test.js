@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 
@@ -9,8 +9,8 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/lwpolylines.d
 describe('LWPOLYLINE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    assert.deepEqual(entities.length, 2)
-    assert.deepEqual(entities[0], {
+    expect(entities.length).toEqual(2)
+    expect(entities[0]).toEqual({
       type: 'LWPOLYLINE',
       vertices: [
         { x: 10, y: 40 },
@@ -24,7 +24,7 @@ describe('LWPOLYLINE', () => {
       closed: true
     })
 
-    assert.deepEqual(entities[1], {
+    expect(entities[1]).toEqual({
       type: 'LWPOLYLINE',
       vertices: [
         { x: 10, y: 60 },

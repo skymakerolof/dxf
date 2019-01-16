@@ -1,7 +1,8 @@
 import fs from 'fs'
 import { join } from 'path'
 
-import { parseString, denormalise, toSVG, entityToPolyline } from '../../src'
+import { parseString, denormalise, toSVG } from '../../src'
+import entityToPolyline from '../../src/entityToPolyline'
 
 const readContents = (filename) => {
   return fs.readFileSync(join(__dirname, '/../resources/', filename), 'utf-8')

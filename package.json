@@ -1,6 +1,6 @@
 {
   "name": "dxf",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "bin": {
@@ -11,11 +11,11 @@
   },
   "scripts": {
     "lint": "standard",
-    "unit": "mocha --require babel-core/register --recursive test/unit/**",
-    "unit:watch": "npm run unit -- --watch",
-    "functional": "rimraf test/functional/output/* && mocha --require babel-core/register --recursive test/functional/**",
-    "functional:watch": "npm run unit -- --watch",
-    "test": "npm run lint && npm run unit && npm run functional",
+    "test:unit": "mocha --require babel-core/register --recursive test/unit/**",
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "test:functional": "rimraf test/functional/output/* && mocha --require babel-core/register --recursive test/functional/**",
+    "test:functional:watch": "npm run test:functional -- --watch",
+    "test": "npm run lint && npm run test:unit && npm run test:functional",
     "compile": "babel --optional runtime -d lib/ src/",
     "dist": "mkdir -p dist && browserify lib/index.js --standalone dxf -o dist/dxf.js",
     "prepublishOnly": "rimraf dist/ lib/ && npm run compile && npm run dist"
@@ -39,17 +39,17 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "browserify": "^16.2.2",
-    "chai": "^4.1.2",
+    "browserify": "^16.2.3",
+    "expect": "^23.6.0",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "b-spline": "^2.0.1",
     "commander": "^2.17.1",
     "lodash.clonedeep": "^4.5.0",
     "pretty-data": "^0.40.0",
+    "round10": "^1.0.3",
     "vecks": "^3.7.2"
   },
   "standard": {

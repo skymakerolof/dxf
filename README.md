@@ -24,7 +24,7 @@ There is an ES5 and ES6 example in the ```examples/``` directory that show how t
 
 1. Parse the DXF contents using ```dxf.parseString(<contents>)```. This will return an object representation of the DXF contents.
 1. Denormalise the entities into an array using ```dxf.denormalise(<parsed>)```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalising will create the *resulting* entities with the block transforms applied.
-1. (Optional) Create an SVG using ```dxf.toSVG(<parsed>, <options>)```. Please refer to the SVG section below regarding limitations. Options supported are ```interpolationsPerSplineSegment```, with default = 25, e.g. ```dxf.toSVG(<parsed>, {interpolationsPerSplineSegment: 10})```
+1. (Optional) Create an SVG using ```dxf.toSVG(<parsed>, <options>)```. Please refer to the SVG section below regarding limitations. Options supported are ```interpolationsPerSplineSegment```, with default = 25, e.g. ```dxf.toSVG(<parsed>, {interpolationsPerSplineSegment: 10})```. ***NB*** toSVG() includes denormalisation so it is not required.
 
 ## Running the Examples
 

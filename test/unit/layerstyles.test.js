@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(
@@ -30,6 +30,6 @@ describe('Layer Styles', () => {
       const l = result.tables.layers[name]
       reduced[name] = { colorNumber: l.colorNumber }
     })
-    assert.deepEqual(reduced, expected)
+    expect(reduced).toEqual(expected)
   })
 })

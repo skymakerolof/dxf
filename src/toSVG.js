@@ -1,6 +1,6 @@
 import { pd } from 'pretty-data'
+import { Box2 } from 'vecks'
 
-import BoundingBox from './BoundingBox'
 import denormalise from './denormalise'
 import entityToPolyline from './entityToPolyline'
 import colors from './util/colors'
@@ -36,10 +36,10 @@ export default (parsed) => {
     return entityToPolyline(e)
   })
 
-  const bbox = new BoundingBox()
+  const bbox = new Box2()
   polylines.forEach(polyline => {
     polyline.forEach(point => {
-      bbox.expandByPoint(point[0], point[1])
+      bbox.expandByPoint({ x: point[0], y: point[1] })
     })
   })
 
@@ -70,10 +70,10 @@ export default (parsed) => {
   svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"'
   svgString += ' preserveAspectRatio="xMinYMin meet"'
   svgString += ' viewBox="' +
-    (bbox.minX) + ' ' +
-    (-bbox.maxY) + ' ' +
-    (bbox.width) + ' ' +
-    (bbox.height) + '"'
+    (bbox.min.x) + ' ' +
+    (-bbox.max.y) + ' ' +
+    (bbox.max.x - bbox.min.x) + ' ' +
+    (bbox.max.y - bbox.min.y) + '"'
   svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>'
   return pd.xml(svgString)
 }

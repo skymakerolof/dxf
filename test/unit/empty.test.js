@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
-import { assert } from 'chai'
+import expect from 'expect'
 
 import { parseString, denormalise } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/empty.dxf'), 'utf-8')
@@ -8,10 +8,10 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/empty.dxf'), 
 describe('Empty', () => {
   it('can parsed from a string', () => {
     const parsed = parseString(dxfContents)
-    assert.equal(parsed.blocks.length, 78)
-    assert.equal(parsed.entities.length, 0)
+    expect(parsed.blocks.length).toEqual(78)
+    expect(parsed.entities.length).toEqual(0)
 
     const entities = denormalise(parsed)
-    assert.deepEqual(entities, [])
+    expect(entities).toEqual([])
   })
 })

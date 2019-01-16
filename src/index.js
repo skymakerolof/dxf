@@ -3,20 +3,9 @@ import tablesHandler from './handlers/tables'
 import blocksHandler from './handlers/blocks'
 import entitiesHandler from './handlers/entities'
 import config from './config'
-import BoundingBox from './BoundingBox'
 import denormalise from './denormalise'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 import toSVG from './toSVG'
-import colors from './util/colors'
-import entityToPolyline from './entityToPolyline'
-
-const toLines = (string) => {
-  const lines = string.split(/\r\n|\r|\n/g)
-  const contentLines = lines.filter((l) => {
-    return l.trim !== 'EOF'
-  })
-  return contentLines
-}
 
 // Parse the value into the native representation
 const parseValue = (type, value) => {
@@ -87,7 +76,7 @@ const reduceSection = (acc, section) => {
 }
 
 export const parseString = (string) => {
-  const lines = toLines(string)
+  const lines = string.split(/\r\n|\r|\n/g)
   const tuples = convertToTypesAndValues(lines)
   const sections = separateSections(tuples)
   const result = sections.reduce(reduceSection, {
@@ -102,10 +91,7 @@ export const parseString = (string) => {
 
 export {
   config,
-  colors,
-  BoundingBox,
   denormalise,
   groupEntitiesByLayer,
-  toSVG,
-  entityToPolyline
+  toSVG
 }

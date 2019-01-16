@@ -1,4 +1,4 @@
-import { assert } from 'chai'
+import expect from 'expect'
 
 import createArcForLWPolyine from '../../src/util/createArcForLWPolyline'
 
@@ -8,7 +8,7 @@ describe('Arc for LWPOLYLINE', () => {
     const to = [0, 0]
     const bulge = Math.tan(Math.PI / 2 / 4)
 
-    assert.deepEqual(createArcForLWPolyine(from, to, bulge, 15), [
+    expect(createArcForLWPolyine(from, to, bulge, 15)).toEqual([
       [ 8.53553390593274, 1.1237243569579451 ],
       [ 6.830127018922194, 1.8301270189221936 ],
       [ 5, 2.0710678118654755 ],
@@ -22,7 +22,7 @@ describe('Arc for LWPOLYLINE', () => {
     const to = [0, 0]
     const bulge = Math.tan(Math.PI * 3 / 2 / 4)
 
-    assert.deepEqual(createArcForLWPolyine(from, to, bulge, 45), [
+    expect(createArcForLWPolyine(from, to, bulge, 45)).toEqual([
       [ 12.071067811865476, 4.999999999999999 ],
       [ 10, 9.999999999999998 ],
       [ 5, 12.071067811865474 ],
@@ -36,7 +36,7 @@ describe('Arc for LWPOLYLINE', () => {
     const to = [0, 0]
     const bulge = -Math.tan(Math.PI * 3 / 2 / 4)
 
-    assert.deepEqual(createArcForLWPolyine(from, to, bulge, 45), [
+    expect(createArcForLWPolyine(from, to, bulge, 45)).toEqual([
       [ 12.071067811865476, -5.000000000000001 ],
       [ 9.999999999999998, -10 ],
       [ 4.999999999999999, -12.071067811865474 ],
