@@ -1,5 +1,4 @@
-import bSpline from 'b-spline'
-
+import bSpline from './util/bSpline'
 import logger from './util/logger'
 import createArcForLWPolyine from './util/createArcForLWPolyline'
 
