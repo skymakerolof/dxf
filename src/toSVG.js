@@ -65,15 +65,17 @@ export default (parsed) => {
     paths.push(polylineToPath(rgb, p2))
   })
 
+  // If the DXF is empty the bounding box will have +-Infinity values,
+  // so clamp values to zero in this case
+  const viewBox = bbox.min.x === Infinity
+    ? { x: 0, y: 0, width: 0, height: 0 }
+    : { x: bbox.min.x, y: -bbox.max.y, width: bbox.max.x - bbox.min.x, height: bbox.max.y - bbox.min.y }
+
   let svgString = '<?xml version="1.0"?>'
   svgString += '<svg xmlns="http://www.w3.org/2000/svg"'
   svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"'
   svgString += ' preserveAspectRatio="xMinYMin meet"'
-  svgString += ' viewBox="' +
-    (bbox.min.x) + ' ' +
-    (-bbox.max.y) + ' ' +
-    (bbox.max.x - bbox.min.x) + ' ' +
-    (bbox.max.y - bbox.min.y) + '"'
+  svgString += ` viewBox="${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}"`
   svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>'
   return pd.xml(svgString)
 }
