@@ -139,6 +139,11 @@ const applyTransforms = (polyline, transforms) => {
       if (transform.y) {
         p2[1] = p2[1] + transform.y
       }
+      // Observed once in a sample DXF - some cad applications
+      // use negative zscale for flipping
+      if (transform.zScale === -1) {
+        p2[0] = -p2[0]
+      }
       return p2
     })
   })

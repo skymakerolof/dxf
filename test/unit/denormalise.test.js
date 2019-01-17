@@ -25,8 +25,8 @@ describe('Denormalise', () => {
     const entities = denormalise(parsed)
     expect(entities.length).toEqual(14)
     expect(entities[3].transforms).toEqual([
-      { x: 0, y: 0, xScale: 2, yScale: 2, rotation: 0 },
-      { x: 175, y: 25, xScale: 0.5, yScale: 0.5, rotation: 0 }
+      { x: 0, y: 0, xScale: 2, yScale: 2, zScale: 0, rotation: 0 },
+      { x: 175, y: 25, xScale: 0.5, yScale: 0.5, zScale: 0, rotation: 0 }
     ])
   })
 })
