@@ -19,8 +19,8 @@ export default (parseResult) => {
           return
         }
         const t = {
-          x: insert.x + block.x,
-          y: insert.y + block.y,
+          x: -block.x + insert.x,
+          y: -block.y + insert.y,
           xScale: insert.xscale,
           yScale: insert.yscale,
           rotation: insert.rotation
