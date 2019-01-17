@@ -6,6 +6,7 @@ import config from './config'
 import denormalise from './denormalise'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 import toSVG from './toSVG'
+import colors from './util/colors'
 
 // Parse the value into the native representation
 const parseValue = (type, value) => {
@@ -93,5 +94,6 @@ export {
   config,
   denormalise,
   groupEntitiesByLayer,
-  toSVG
+  toSVG,
+  colors
 }
