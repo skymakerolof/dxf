@@ -24,6 +24,7 @@ export default (parseResult) => {
           xScale: insert.xscale,
           yScale: insert.yscale,
           zScale: insert.zscale,
+          extrusionZ: insert.extrusionZ,
           rotation: insert.rotation
         }
         // Add the insert transform and recursively add entities

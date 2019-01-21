@@ -44,13 +44,13 @@ export const process = (tuples) => {
         entity.rowCount = value
         break
       case 210:
-        entity.xExtrusion = value
+        entity.extrusionX = value
         break
       case 220:
-        entity.yExtrusion = value
+        entity.extrusionY = value
         break
       case 230:
-        entity.zExtrusion = value
+        entity.extrusionZ = value
         break
       default:
         Object.assign(entity, common(type, value))

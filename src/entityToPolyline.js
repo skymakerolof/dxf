@@ -141,7 +141,7 @@ const applyTransforms = (polyline, transforms) => {
       }
       // Observed once in a sample DXF - some cad applications
       // use negative zscale for flipping
-      if (transform.zScale === -1) {
+      if (transform.extrusionZ === -1) {
         p2[0] = -p2[0]
       }
       return p2
