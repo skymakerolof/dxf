@@ -7,10 +7,15 @@ const port = 8030
 module.exports = {
   mode: 'development',
   entry: {
-    'index': [
+    'toSVG.test': [
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
-      path.resolve(__dirname, 'index.js')
+      path.resolve(__dirname, 'toSVG.test.js')
+    ],
+    'toSVG2.test': [
+      `webpack-dev-server/client?http://localhost:${port}`,
+      'webpack/hot/dev-server',
+      path.resolve(__dirname, 'toSVG2.test.js')
     ]
   },
   output: {

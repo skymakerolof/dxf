@@ -71,11 +71,16 @@ export default (parsed) => {
     ? { x: 0, y: 0, width: 0, height: 0 }
     : { x: bbox.min.x, y: -bbox.max.y, width: bbox.max.x - bbox.min.x, height: bbox.max.y - bbox.min.y }
 
-  let svgString = '<?xml version="1.0"?>'
-  svgString += '<svg xmlns="http://www.w3.org/2000/svg"'
-  svgString += ' xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"'
-  svgString += ' preserveAspectRatio="xMinYMin meet"'
-  svgString += ` viewBox="${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}"`
-  svgString += ' width="100%" height="100%">' + paths.join('') + '</svg>'
+  const svgString = `
+<?xml version="1.0"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"'
+  preserveAspectRatio="xMinYMin meet"'
+  viewBox="${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}"
+  width="100%" height="100%"
+>
+  ${paths.join('\n')}
+</svg>`
   return pd.xml(svgString)
 }

@@ -176,6 +176,7 @@ export default (entity, options) => {
     polyline = []
     if (entity.polygonMesh || entity.polyfaceMesh) {
       // Do not attempt to render meshes
+      logger.warn('polygon and polyface meshes are not supported')
     } else if (entity.vertices.length) {
       if (entity.closed) {
         entity.vertices = entity.vertices.concat(entity.vertices[0])
