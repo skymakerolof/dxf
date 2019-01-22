@@ -5,6 +5,7 @@ import entitiesHandler from './handlers/entities'
 import config from './config'
 import denormalise from './denormalise'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
+import toPolylines from './toPolylines'
 import toSVG from './toSVG'
 import colors from './util/colors'
 
@@ -94,6 +95,7 @@ export {
   config,
   denormalise,
   groupEntitiesByLayer,
+  toPolylines,
   toSVG,
   colors
 }

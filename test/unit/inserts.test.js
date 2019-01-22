@@ -24,9 +24,9 @@ describe('INSERT', () => {
       x: 31.21320343559643,
       y: 75.35533905932738,
       z: 0,
-      xscale: 1,
-      yscale: 1,
-      zscale: 0
+      scaleX: 1,
+      scaleY: 1,
+      scaleZ: 0
     })
 
     expect(entities[1]).toEqual({
@@ -43,9 +43,9 @@ describe('INSERT', () => {
       x: 66.92130429902463,
       y: 59.34255665976439,
       z: 0,
-      xscale: 2,
-      yscale: 1,
-      zscale: 0
+      scaleX: 2,
+      scaleY: 1,
+      scaleZ: 0
     })
   })
 })

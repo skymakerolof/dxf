@@ -120,11 +120,11 @@ const applyTransforms = (polyline, transforms) => {
     polyline = polyline.map(function (p) {
       // Use a copy to avoid side effects
       let p2 = [p[0], p[1]]
-      if (transform.xScale) {
-        p2[0] = p2[0] * transform.xScale
+      if (transform.scaleX) {
+        p2[0] = p2[0] * transform.scaleX
       }
-      if (transform.yScale) {
-        p2[1] = p2[1] * transform.yScale
+      if (transform.scaleY) {
+        p2[1] = p2[1] * transform.scaleY
       }
       if (transform.rotation) {
         const angle = transform.rotation / 180 * Math.PI
@@ -141,7 +141,7 @@ const applyTransforms = (polyline, transforms) => {
       }
       // Observed once in a sample DXF - some cad applications
       // use negative zscale for flipping
-      if (transform.zScale === -1) {
+      if (transform.extrusionZ === -1) {
         p2[0] = -p2[0]
       }
       return p2
