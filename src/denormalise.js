@@ -21,9 +21,12 @@ export default (parseResult) => {
         const t = {
           x: -block.x + insert.x,
           y: -block.y + insert.y,
-          xScale: insert.xscale,
-          yScale: insert.yscale,
-          zScale: insert.zscale,
+          scaleX: insert.scaleX,
+          scaleY: insert.scaleY,
+          scaleZ: insert.scaleZ,
+          extrusionX: insert.extrusionX,
+          extrusionY: insert.extrusionY,
+          extrusionZ: insert.extrusionZ,
           rotation: insert.rotation
         }
         // Add the insert transform and recursively add entities
