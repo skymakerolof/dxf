@@ -4,6 +4,7 @@ import expect from 'expect'
 
 import { parseString, denormalise } from '../../src'
 import entityToPolyline from '../../src/entityToPolyline'
+import applyTransforms from '../../src/applyTransforms'
 
 describe('Entity To Polyline', () => {
   it('supports LINE', () => {
@@ -49,7 +50,7 @@ describe('Entity To Polyline', () => {
       fs.readFileSync(join(__dirname, '../resources/closedlwpolylinebug.dxf'), 'utf-8'))
     const entities = denormalise(parsed)
     expect(entities.length).toEqual(1)
-    const polyline = entityToPolyline(entities[0])
+    const polyline = applyTransforms(entityToPolyline(entities[0]), entities[0].transforms)
     expect(polyline).toEqual([
       [ 30, 40 ], [ 50, 40 ], [ 50, 70 ], [ 30, 40 ]
     ])
