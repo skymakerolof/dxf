@@ -1,16 +1,22 @@
 const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
+const opn = require('opn')
 
 const port = 8030
 
 module.exports = {
   mode: 'development',
   entry: {
-    'index': [
+    'toSVG.test': [
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
-      path.resolve(__dirname, 'index.js')
+      path.resolve(__dirname, 'toSVG.test.js')
+    ],
+    'toSVG2.test': [
+      `webpack-dev-server/client?http://localhost:${port}`,
+      'webpack/hot/dev-server',
+      path.resolve(__dirname, 'toSVG2.test.js')
     ]
   },
   output: {
@@ -21,7 +27,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    port
+    port,
+    after: (app, server) => {
+      opn(`http://localhost:${port}`)
+    }
   },
   resolve: {
     modules: [path.resolve('..', '..', 'node_modules'), 'node_modules']

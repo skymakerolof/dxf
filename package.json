@@ -44,6 +44,7 @@
     "browserify": "^16.2.3",
     "expect": "^24.6.0",
     "mocha": "^5.2.0",
+    "opn": "^6.0.0",
     "raw-loader": "^1.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

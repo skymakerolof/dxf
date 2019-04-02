@@ -2,12 +2,14 @@ import React from 'react'
 import { render } from 'react-dom'
 import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 
-import { parseString, toSVG } from '../../src'
+import { parseString, toSVG, config } from '../../src'
+config.verbose = true
 
 const names = [
   'lines',
   'lwpolylines',
   'polylines',
+  'squareandcircle',
   'circlesellipsesarcs',
   'splines',
   'blocks1',
