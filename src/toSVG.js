@@ -1,9 +1,9 @@
 import { pd } from 'pretty-data'
 import { Box2 } from 'vecks'
 
-import colors from './util/colors'
 import entityToPolyline from './entityToPolyline'
 import denormalise from './denormalise'
+import getRGBForEntity from './getRGBForEntity'
 import logger from './util/logger'
 
 export const rgbToColorAttribute = (rgb) => {
@@ -114,19 +114,7 @@ const entityToBoundsAndElement = (color, entity) => {
 export default (parsed) => {
   const entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce((acc, entity) => {
-    const layerTable = parsed.tables.layers[entity.layer]
-    let rgb
-    if (layerTable) {
-      let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
-      rgb = colors[colorNumber]
-      if (rgb === undefined) {
-        logger.warn('Color index', colorNumber, 'invalid, defaulting to black')
-        rgb = [0, 0, 0]
-      }
-    } else {
-      logger.warn('no layer table for layer:' + entity.layer)
-      rgb = [0, 0, 0]
-    }
+    const rgb = getRGBForEntity(parsed.tables.layers, entity)
     const result = entityToBoundsAndElement(rgbToColorAttribute(rgb), entity)
     if (result) {
       const { bbox, element } = result
