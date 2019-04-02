@@ -90,7 +90,7 @@ const circle = (color, circleEntity) => {
     x: circleEntity.x + circleEntity.r,
     y: circleEntity.y - circleEntity.r
   }]
-  const element = `<circle stroke="${color}" cx=${circleEntity.x} cy=${circleEntity.y} r=${circleEntity.r} />`
+  const element = `<circle stroke="${color}" cx="${circleEntity.x}" cy="${circleEntity.y}" r="${circleEntity.r}" />`
   return createTransformedBBoxAndElement(bboxPoints, circleEntity.transforms, element)
 }
 
@@ -142,8 +142,7 @@ export default (parsed) => {
       height: bbox.max.y - bbox.min.y
     }
 
-  return pd.xml(`
-<?xml version="1.0"?>
+  return `<?xml version="1.0"?>
 <svg
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -152,7 +151,7 @@ export default (parsed) => {
   width="100%" height="100%"
 >
   <g stroke="#000000" stroke-width="0.1%" fill="none" transform="matrix(1,0,0,-1,0,0)">
-    ${elements.join('\n')}
+    ${pd.xml(elements.join('\n'))}
   </g>
-</svg>`)
+</svg>`
 }
