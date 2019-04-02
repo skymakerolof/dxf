@@ -13,11 +13,10 @@ const rgbToColorAttribute = (rgb) => {
   }
 }
 
-const polyline = (color, entity) => {
-  const vertices = entityToPolyline(entity)
-  let bboxPoints = vertices.map(([x, y]) => ({ x, y }))
-  let element = ''
-  entity.transforms.forEach(transform => {
+const createTransformedBBoxAndElement = (bboxPoints, transforms, strokeElement) => {
+  let transformedElement = ''
+
+  const matrices = transforms.map(transform => {
     const tx = transform.x || 0
     const ty = transform.y || 0
     const sx = transform.scaleX || 1
@@ -41,30 +40,44 @@ const polyline = (color, entity) => {
       e = tx
       f = ty
     }
-    element += `<g transform="matrix(${a} ${b} ${c} ${d} ${e} ${f})">`
+    return [a, b, c, d, e, f]
+  })
 
+  matrices.forEach(([a, b, c, d, e, f]) => {
     bboxPoints = bboxPoints.map(point => ({
       x: point.x * a + point.y * c + e,
       y: point.x * b + point.y * d + f
     }))
   })
 
-  const d = vertices.reduce((acc, point, i) => {
-    acc += (i === 0) ? 'M' : 'L'
-    acc += point[0] + ',' + point[1]
-    return acc
-  }, '')
-  element += `<path stroke="${color}" d="${d}" />`
+  matrices.reverse()
+  matrices.forEach(([a, b, c, d, e, f]) => {
+    transformedElement += `<g transform="matrix(${a} ${b} ${c} ${d} ${e} ${f})">`
+  })
 
-  entity.transforms.forEach(transform => {
-    element += '</g>'
+  transformedElement += strokeElement
+
+  transforms.forEach(transform => {
+    transformedElement += '</g>'
   })
 
   const bbox = bboxPoints.reduce((acc, point) => {
     return acc.expandByPoint(point)
   }, new Box2())
 
-  return { bbox, element }
+  return { bbox, element: transformedElement }
+}
+
+const polyline = (color, entity) => {
+  const vertices = entityToPolyline(entity)
+  let bboxPoints = vertices.map(([x, y]) => ({ x, y }))
+  const d = vertices.reduce((acc, point, i) => {
+    acc += (i === 0) ? 'M' : 'L'
+    acc += point[0] + ',' + point[1]
+    return acc
+  }, '')
+  const element = `<path stroke="${color}" d="${d}" />`
+  return createTransformedBBoxAndElement(bboxPoints, entity.transforms, element)
 }
 
 const circle = (color, circleEntity) => {
@@ -81,51 +94,8 @@ const circle = (color, circleEntity) => {
     x: circleEntity.x + circleEntity.r,
     y: circleEntity.y - circleEntity.r
   }]
-
-  let element = ''
-  circleEntity.transforms.forEach(transform => {
-    const tx = transform.x || 0
-    const ty = transform.y || 0
-    const sx = transform.scaleX || 1
-    const sy = transform.scaleY || 1
-    const angle = (transform.rotation || 0) / 180 * Math.PI
-
-    const { cos, sin } = Math
-    let a, b, c, d, e, f
-    if (transform.extrusionZ === -1) {
-      a = -sx * cos(angle)
-      b = sx * sin(angle)
-      c = sy * sin(angle)
-      d = sy * cos(angle)
-      e = -tx
-      f = ty
-    } else {
-      a = sx * cos(angle)
-      b = sx * sin(angle)
-      c = -sy * sin(angle)
-      d = sy * cos(angle)
-      e = tx
-      f = ty
-    }
-    element += `<g transform="matrix(${a} ${b} ${c} ${d} ${e} ${f})">`
-
-    bboxPoints = bboxPoints.map(point => ({
-      x: point.x * a + point.y * c + e,
-      y: point.x * b + point.y * d + f
-    }))
-  })
-
-  element += `<circle stroke="${color}" cx=${circleEntity.x} cy=${circleEntity.y} r=${circleEntity.r} />`
-
-  circleEntity.transforms.forEach(transform => {
-    element += '</g>'
-  })
-
-  const bbox = bboxPoints.reduce((acc, point) => {
-    return acc.expandByPoint(point)
-  }, new Box2())
-
-  return { bbox, element }
+  const element = `<circle stroke="${color}" cx=${circleEntity.x} cy=${circleEntity.y} r=${circleEntity.r} />`
+  return createTransformedBBoxAndElement(bboxPoints, circleEntity.transforms, element)
 }
 
 const entityToBoundsAndElement = (color, entity) => {
@@ -196,7 +166,7 @@ export default (layers, entities) => {
   viewBox="${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}"
   width="100%" height="100%"
 >
-  <g stroke="#000" stroke-width="0.1%" fill="none" transform="matrix(1,0,0,-1,0,0)">
+  <g stroke="#000000" stroke-width="0.1%" fill="none" transform="matrix(1,0,0,-1,0,0)">
     ${elements.join('\n')}
   </g>
 </svg>`)
