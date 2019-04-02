@@ -21,10 +21,9 @@
           reader.onload = function(e) {
             if (e.target.readyState === 2) {
               var dxfContents = e.target.result
-              var parsed = dxf.parseString(dxfContents)
-              var entities = dxf.denormalise(parsed)
-              var svg = dxf.toSVG(parsed)
-              numberOfEntities.innerHTML = entities.length
+              var helper = new dxf.Helper(dxfContents)
+              numberOfEntities.innerHTML = helper.denormalised.length
+              const svg = helper.toSVG()
               svgContainer.innerHTML = svg
             }
           }
