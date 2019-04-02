@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 
-import { parseString, toSVG, config } from '../../src'
+import { Helper, config } from '../../src'
 config.verbose = true
 
 const names = [
@@ -29,7 +29,7 @@ const names = [
   'issue39'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
-const svgs = dxfs.map(contents => toSVG(parseString(contents)))
+const svgs = dxfs.map(contents => new Helper(contents).toSVG())
 
 const Thumbnail = ({ index, name, svg }) => <Link
   to={`/${index}`}
