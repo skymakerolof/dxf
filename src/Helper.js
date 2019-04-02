@@ -1,10 +1,10 @@
 import logger from './util/logger'
 import parseString from './parseString'
 import denormalise from './denormalise'
-import toSVG2 from './toSVG'
+import toSVG from './toSVG'
 import toPolylines from './toPolylines'
 
-export default class Hellper {
+export default class Helper {
   constructor (contents) {
     if (!(typeof contents === 'string')) {
       throw Error('Helper constructor expects a DXF string')
@@ -41,7 +41,7 @@ export default class Hellper {
   }
 
   toSVG () {
-    return toSVG2(this.parsed.tables.layers, this.denormalised)
+    return toSVG(this.parsed)
   }
 
   toPolylines () {
