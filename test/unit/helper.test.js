@@ -23,6 +23,11 @@ describe('Helper', () => {
     expect(helper.denormalised.length).toEqual(1)
   })
 
+  it('can group by layer', () => {
+    const helper = new Helper(dxfContents)
+    expect(helper.groups.Default.length).toEqual(1)
+  })
+
   it('can output an SVG', (done) => {
     const helper = new Helper(dxfContents)
     const svg = helper.toSVG()

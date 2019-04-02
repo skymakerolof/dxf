@@ -3,6 +3,7 @@ import parseString from './parseString'
 import denormalise from './denormalise'
 import toSVG from './toSVG'
 import toPolylines from './toPolylines'
+import groupEntitiesByLayer from './groupEntitiesByLayer'
 
 export default class Helper {
   constructor (contents) {
@@ -38,6 +39,17 @@ export default class Helper {
       this.denormalise()
     }
     return this._denormalised
+  }
+
+  group () {
+    this._groups = groupEntitiesByLayer(this.denormalised)
+  }
+
+  get groups () {
+    if (!this._groups) {
+      this.group()
+    }
+    return this._groups
   }
 
   toSVG () {

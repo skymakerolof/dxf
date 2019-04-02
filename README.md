@@ -8,7 +8,9 @@ Uses several ES6 features in the source code (import, classes, let, const, arrow
 
 Version 2.0 is a complete rewrite from the first attempt to write it in a SAX style, which wasn't really appropriate for a document with nested references (e.g inserts referencing blocks, nested inserts).
 
-Version 3.0 converted the codebase to use [standard JS](https://standardjs.com), ES6 imports, stop using Gulp, and updated & removed some dependencies.
+Version 3.0 converted the codebase to use [standard JS](https://standardjs.com), ES6 imports, stopped using Gulp, and updated & removed some dependencies.
+
+Version 4.x is in progress and the aim is to use native SVG elements where possible, e.g. `<circle />`, `<ellipse />` etc. 4.0 introduces the `<circle />` element.
 
 At this point in time, the important geometric entities are supported, but notably:
 
@@ -20,22 +22,44 @@ and some others are **parsed**, but are **not supported for SVG rendering** (see
 
 ## Getting started
 
-There is an ES5 and ES6 example in the ```examples/``` directory that show how to use the library, but there are 3 basic steps:
+There is an ES5 and ES6 example in the ```examples/``` directory that show how to use the library. There are exposed functions for advanced users, but for the majority of users you can use the `Helper` object to get the data you're interested in (or convert to SVG):
 
-1. Parse the DXF contents using ```dxf.parseString(<contents>)```. This will return an object representation of the DXF contents.
-1. Denormalise the entities into an array using ```dxf.denormalise(<parsed>)```. After Step 1, the entities are still in the block hierarchy of the DXF file, denormalising will create the *resulting* entities with the block transforms applied.
-1. (Optional) Create an SVG using ```dxf.toSVG(<parsed>, <options>)```. Please refer to the SVG section below regarding limitations. Options supported are ```interpolationsPerSplineSegment```, with default = 25, e.g. ```dxf.toSVG(<parsed>, {interpolationsPerSplineSegment: 10})```. ***NB*** toSVG() includes denormalisation so it is not required.
+```
+const helper = new Helper(<DXF String>)
+
+// The 1-to-1 object representation of the DXF
+console.log('parsed:', helper.parsed)
+
+// Denormalised blocks inserted with transforms applied
+console.log('denormalised:', helper.denormalised)
+
+// Create an SVG
+console.log('svg:', helper.toSVG())
+
+// Create polylines (e.g. to render in WebGL)
+console.log('polylines:', helper.toPolylines())
+```
 
 ## Running the Examples
 
-Node ES5:
-`$ node examples/example.es5.js`
+Node ES5. Will write an SVG to `examples/example.es5.svg`:
 
-Node ES6:
-`$ babel-node examples/example.es6.js`
+```
+$ node examples/example.es5.js
+```
 
-Browser:
-`$ open examples/dxf.html`
+Node ES6. Will write an SVG to `examples/example.es6.svg`:
+
+```
+$ npx babel-node examples/example.es6.js
+```
+
+Browser. Compile to a browser bundle and open the example webpage:
+
+```
+$ npm run compile
+$ open examples/dxf.html
+```
 
 ## SVG
 
@@ -70,7 +94,9 @@ Running
 
 ```$ npm test```
 
-will execute the unit tests and functional tests, which generate SVGs for reference DXF files. You can view these SVGs (located in test/functional/output) in a browser or other SVG viewer to see what is supported.
+will execute the unit tests.
+
+```$ npm run test:functional``` will run the functional tests in a browser. Please open `toSVG.html` when the file listing loads in the browser (or open `http://localhost:8030/toSVG.html#/`).
 
 ### Contributors
 
