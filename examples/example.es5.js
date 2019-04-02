@@ -1,25 +1,29 @@
 const fs = require('fs')
 const join = require('path').join
 
-const dxf = require('..')
-const parsed = dxf.parseString(fs.readFileSync(
+const Helper = require('..').Helper
+
+const helper = new Helper(fs.readFileSync(
   './test/resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8'))
 
-// Denormalise the entities out of the parsed structure - block transforms
-// are added to the entities in this step
-const entities = dxf.denormalise(parsed)
+// The parsed entities
+const { blocks, entities } = helper.parsed
+console.log(`parsed: ${blocks.length} blocks, ${entities.length} entities.\n`)
+
+// Denormalised blocks inserted with transforms applied
+console.log(`denormalised: ${helper.denormalised.length} entities.\n`)
 
 // Group entities by layer. Returns an object with layer names as
-// keys to arrays of entities
-const groups = dxf.groupEntitiesByLayer(entities)
-
-// Ouptut the groups
-console.log('[layer : number of entities]')
+// keys to arrays of entities.
+const groups = helper.groups
+console.log('grouped entities')
+console.log('----------------')
 Object.keys(groups).forEach(layer => {
-  console.log(layer, ':', groups[layer].length)
+  console.log(`${layer}: ${groups[layer].length}`)
 })
+console.log('\n')
 
-// Open this SVG in your browser or other SVG viewer
-const svg = dxf.toSVG(parsed)
+// Write the SVG
+const svg = helper.toSVG()
 fs.writeFileSync(join(__dirname, '/example.es5.svg'), svg, 'utf-8')
-console.log('\nSVG written')
+console.log('SVG written')

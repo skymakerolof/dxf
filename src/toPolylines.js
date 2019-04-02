@@ -3,6 +3,7 @@ import { Box2 } from 'vecks'
 import colors from './util/colors'
 import denormalise from './denormalise'
 import entityToPolyline from './entityToPolyline'
+import applyTransforms from './applyTransforms'
 import logger from './util/logger'
 
 export default (parsed) => {
@@ -22,7 +23,7 @@ export default (parsed) => {
       rgb = [0, 0, 0]
     }
 
-    return { rgb, vertices: entityToPolyline(entity) }
+    return { rgb, vertices: applyTransforms(entityToPolyline(entity), entity.transforms) }
   })
 
   const bbox = new Box2()
