@@ -13,7 +13,7 @@ const entities = dxf.denormalise(parsed)
 // keys to arrays of entities
 const groups = dxf.groupEntitiesByLayer(entities)
 
-// Ouptut the groups
+// Output the groups
 console.log('[layer : number of entities]')
 Object.keys(groups).forEach(layer => {
   console.log(layer, ':', groups[layer].length)
