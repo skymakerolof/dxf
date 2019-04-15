@@ -1,8 +1,6 @@
 node_modules/
 lib/
 dist/
-test/functional/output/*.output.svg
-test/functional/lib/
 test/resources/#*
 examples/example.es5.svg
 examples/example.es6.svg
