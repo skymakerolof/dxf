@@ -4,7 +4,7 @@ import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 import { pd } from 'pretty-data'
 
 import { Helper, config } from '../../src'
-import { rgbToColorAttribute } from '../../src/toSVG'
+import rgbToColorAttribute from '../../src/util/rgbToColorAttribute'
 
 config.verbose = true
 
@@ -57,6 +57,8 @@ const names = [
   'polylines',
   'squareandcircle',
   'circlesellipsesarcs',
+  'ellipticalarcs',
+  'ellipticalarcs2',
   'splines',
   'blocks1',
   'blocks2',
