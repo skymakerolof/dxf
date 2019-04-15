@@ -107,10 +107,7 @@ const rotate = (p, angle) => {
   }
 }
 
-const ellipse = (color, entity) => {
-  const rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY)
-  const ry = entity.axisRatio * rx
-  const majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX)
+const ellipseOrArc = (color, cx, cy, rx, ry, startAngle, endAngle, rotationAngle) => {
   let bboxPoints = [{
     x: rx,
     y: ry
@@ -124,62 +121,73 @@ const ellipse = (color, entity) => {
     x: -rx,
     y: ry
   }].map(p => {
-    const rotated = rotate(p, majorAxisRotation)
+    const rotated = rotate(p, rotationAngle)
     return {
-      x: entity.x + rotated.x,
-      y: entity.y + rotated.y
+      x: cx + rotated.x,
+      y: cy + rotated.y
     }
   })
-  if ((Math.abs(entity.startAngle - entity.endAngle) < 1e-9) || (Math.abs(entity.startAngle - entity.endAngle + Math.PI * 2) < 1e-9)) {
+  if ((Math.abs(startAngle - endAngle) < 1e-9) || (Math.abs(startAngle - endAngle + Math.PI * 2) < 1e-9)) {
     // Use a native <ellipse> when start and end angles are the same, and
     // arc paths with same start and end points don't render (at least on Safari)
-    const element = `<g transform="rotate(${majorAxisRotation / Math.PI * 180} ${entity.x}, ${entity.y})">
-      <ellipse cx="${entity.x}" cy="${entity.y}" rx="${rx}" ry="${ry}" />
+    const element = `<g transform="rotate(${rotationAngle / Math.PI * 180} ${cx}, ${cy})">
+      <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" />
     </g>`
-    return createTransformedBBoxAndElement(bboxPoints, entity.transforms, element)
+    return { bboxPoints, element }
   } else {
     const s1 = {
-      x: Math.cos(entity.startAngle) * rx,
-      y: Math.sin(entity.startAngle) * ry
+      x: Math.cos(startAngle) * rx,
+      y: Math.sin(startAngle) * ry
     }
-    const s2 = rotate(s1, majorAxisRotation)
+    const s2 = rotate(s1, rotationAngle)
     const startPoint = {
-      x: entity.x + s2.x,
-      y: entity.y + s2.y
+      x: cx + s2.x,
+      y: cy + s2.y
     }
     const e1 = {
-      x: Math.cos(entity.endAngle) * rx,
-      y: Math.sin(entity.endAngle) * ry
+      x: Math.cos(endAngle) * rx,
+      y: Math.sin(endAngle) * ry
     }
-    const e2 = rotate(e1, majorAxisRotation)
+    const e2 = rotate(e1, rotationAngle)
     const endPoint = {
-      x: entity.x + e2.x,
-      y: entity.y + e2.y
+      x: cx + e2.x,
+      y: cy + e2.y
     }
-    const adjustedEndAngle = entity.endAngle < entity.startAngle
-      ? entity.endAngle + Math.PI * 2
-      : entity.endAngle
-    const largeArcFlag = adjustedEndAngle - entity.startAngle < Math.PI ? 0 : 1
-    const d = `M ${startPoint.x} ${startPoint.y} A ${rx} ${ry} ${majorAxisRotation / Math.PI * 180} ${largeArcFlag} 1 ${endPoint.x} ${endPoint.y}`
+    const adjustedEndAngle = endAngle < startAngle
+      ? endAngle + Math.PI * 2
+      : endAngle
+    const largeArcFlag = adjustedEndAngle - startAngle < Math.PI ? 0 : 1
+    const d = `M ${startPoint.x} ${startPoint.y} A ${rx} ${ry} ${rotationAngle / Math.PI * 180} ${largeArcFlag} 1 ${endPoint.x} ${endPoint.y}`
     // <circle stroke="#090" fill="#090" cx="${startPoint.x}" cy="${startPoint.y}" r="2" />
     // <circle stroke-width="2" stroke="#00a" fill="none" cx="${endPoint.x}" cy="${endPoint.y}" r="3" />
-    // <circle stroke="#a00" fill="#a00" cx="${entity.x}" cy="${entity.y}" r="2" />
+    // <circle stroke="#a00" fill="#a00" cx="${cx}" cy="${cy}" r="2" />
     const element = `<g>
       <path stroke="${color}" d="${d}" />
     </g>`
-    return createTransformedBBoxAndElement(bboxPoints, entity.transforms, element)
+    return { bboxPoints, element }
   }
+}
+
+const ellipse = (color, entity) => {
+  const rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY)
+  const ry = entity.axisRatio * rx
+  const majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX)
+  const { bboxPoints, element } = ellipseOrArc(color, entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation)
+  return createTransformedBBoxAndElement(bboxPoints, entity.transforms, element)
+}
+const arc = (color, entity) => {
+  console.log('**', entity)
+  const { bboxPoints, element } = ellipseOrArc(color, entity.x, entity.y, entity.r, entity.r, entity.startAngle, entity.endAngle, 0)
+  return createTransformedBBoxAndElement(bboxPoints, entity.transforms, element)
 }
 
 const entityToBoundsAndElement = (color, entity) => {
   switch (entity.type) {
     case 'CIRCLE': return circle(color, entity)
-    case 'ELLIPSE': {
-      return ellipse(color, entity)
-    }
+    case 'ELLIPSE': return ellipse(color, entity)
+    case 'ARC': return arc(color, entity)
     case 'LINE':
     case 'LWPOLYLINE':
-    case 'ARC':
     case 'SPLINE':
     case 'POLYLINE': {
       return polyline(color, entity)
