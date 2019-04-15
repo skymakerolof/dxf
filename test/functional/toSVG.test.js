@@ -11,6 +11,8 @@ const names = [
   'polylines',
   'squareandcircle',
   'circlesellipsesarcs',
+  'ellipticalarcs',
+  'ellipticalarcs2',
   'splines',
   'blocks1',
   'blocks2',
