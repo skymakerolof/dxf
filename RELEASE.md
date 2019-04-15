@@ -1,3 +1,11 @@
+4.1.0
+- CIRCLE DXF entities now produce native <circle /> SVG elements.
+- ELLIPSE DXF entities now produce native <path d="A..."/> or <ellipse /> SVG elements.
+- ARC DXF entities now produce native <path d="A..."/> or <ellipse /> SVG elements.
+
+4.0.1
+- Browser example uses Helper
+
 4.0.0
 - Use ES6 string interpolation in SVG generation.
 - Use native SVG <circle /> elements for CIRCLE entities.
