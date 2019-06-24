@@ -63,9 +63,9 @@ $ open examples/dxf.html
 
 ## SVG
 
-Geometric elements are supported, but dimensions, text, hatches and styles (except for line colors) are *not*.
+Geometric elements are supported, but dimensions, text, hatches and styles (except for line colors) are ***not***.
 
-Native SVG elements are used as far as possible for curved entities (<circle />, <ellipse/> etc.), *except for the SPLINE entity*, which is interpolated.
+Native SVG elements are used as far as possible for curved entities (<circle />, <ellipse/> etc.), ***except for the SPLINE entity***, which is interpolated.
 
 Here's an example you will find in the functional test output:
 
