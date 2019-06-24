@@ -161,7 +161,6 @@ const entityToBoundsAndElement = (entity) => {
 }
 
 export default (parsed) => {
-  console.log(parsed)
   let entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce((acc, entity, i) => {
     const rgb = getRGBForEntity(parsed.tables.layers, entity)
