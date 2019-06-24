@@ -161,6 +161,11 @@ export default (entity, options) => {
       entity.x, entity.y,
       entity.r, entity.r,
       0, Math.PI * 2)
+    if (entity.extrusionZ === -1) {
+      polyline = polyline.map(function (p) {
+        return [-p[0], p[1]]
+      })
+    }
   }
 
   if (entity.type === 'ELLIPSE') {
@@ -173,13 +178,9 @@ export default (entity, options) => {
       entity.startAngle,
       entity.endAngle,
       majorAxisRotation)
-    const flipY = entity.extrusionZ === -1
-    if (flipY) {
+    if (entity.extrusionZ === -1) {
       polyline = polyline.map(function (p) {
-        return [
-          -(p[0] - entity.x) + entity.x,
-          p[1]
-        ]
+        return [-p[0], p[1]]
       })
     }
   }
@@ -197,13 +198,9 @@ export default (entity, options) => {
 
     // I kid you not, ARCs and ELLIPSEs handle this differently,
     // as evidenced by how AutoCAD actually renders these entities
-    const flipY = entity.extrusionZ === -1
-    if (flipY) {
+    if (entity.extrusionZ === -1) {
       polyline = polyline.map(function (p) {
-        return [
-          -p[0],
-          p[1]
-        ]
+        return [-p[0], p[1]]
       })
     }
   }
