@@ -71,6 +71,16 @@ Here's an example you will find in the functional test output:
 
 ![svg example image](https://cloud.githubusercontent.com/assets/57994/17583566/e00f5d78-5fb1-11e6-9030-55686f980e6f.png)
 
+## Interpolation
+
+The library supports outputting DXFs as interpolated polylines for custom rendering (e.g. WebGL) or other applications, by using:
+
+
+```
+> helper.toPolylines()
+```
+
+
 ## Command line
 
 There is a command-line utility (courtesy of [@Joge97](https://github.com/Joge97)) for converting DXF files to SVG:
