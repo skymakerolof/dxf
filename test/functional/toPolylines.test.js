@@ -22,7 +22,6 @@ const polylineToPath = (rgb, polyline) => {
  * Convert the interpolate polylines to SVG
  */
 const toSVG = ({ bbox, polylines }) => {
-  console.log('@@', bbox, polylines)
   const paths = polylines.map((polyline, i) => {
     const vertices = polyline.vertices.map(v => {
       return [v[0], -v[1]]
