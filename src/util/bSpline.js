@@ -44,6 +44,9 @@ export default (t, degree, points, knots, weights) => {
   const high = knots[domain[1]]
   t = t * (high - low) + low
 
+  // Clamp to the upper &  lower bounds instead of
+  // throwing an error like in the original lib
+  // https://github.com/bjnortier/dxf/issues/28
   t = Math.max(t, low)
   t = Math.min(t, high)
 

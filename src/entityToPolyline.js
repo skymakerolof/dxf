@@ -92,17 +92,10 @@ const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplin
     const uMin = segmentTs[i - 1]
     const uMax = segmentTs[i]
     for (let k = 0; k <= interpolationsPerSplineSegment; ++k) {
-      // https://github.com/bjnortier/dxf/issues/28
-      // b-spline interpolation can fail due to a floating point
-      // error - ignore these until the lib is fixed
-      try {
-        const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
-        const t = (u - domain[0]) / (domain[1] - domain[0])
-        const p = bSpline(t, degree, controlPointsForLib, knots)
-        polyline.push(p)
-      } catch (e) {
-        // ignore this point
-      }
+      const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
+      const t = (u - domain[0]) / (domain[1] - domain[0])
+      const p = bSpline(t, degree, controlPointsForLib, knots)
+      polyline.push(p)
     }
   }
   return polyline
