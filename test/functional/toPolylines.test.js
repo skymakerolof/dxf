@@ -22,7 +22,6 @@ const polylineToPath = (rgb, polyline) => {
  * Convert the interpolate polylines to SVG
  */
 const toSVG = ({ bbox, polylines }) => {
-  console.log('@@', bbox, polylines)
   const paths = polylines.map((polyline, i) => {
     const vertices = polyline.vertices.map(v => {
       return [v[0], -v[1]]
@@ -75,7 +74,8 @@ const names = [
   'issue28',
   'issue29',
   'issue39',
-  'issue42'
+  'issue42',
+  'splineA'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => toSVG(new Helper(contents).toPolylines()))

@@ -63,11 +63,23 @@ $ open examples/dxf.html
 
 ## SVG
 
-The initial aim of this library was to support rendering of the main geometric components, not dimensions, text, hatches and styles. There is a mechanism for converting the parsed entities to SVG, but they are **all converted to polylines**, and if you look at the resulting SVG files when running the functional tests, you will see that all entities are rendered as paths.
+Geometric elements are supported, but dimensions, text, hatches and styles (except for line colors) are ***not***.
+
+Native SVG elements are used as far as possible for curved entities (`<circle />`, `<ellipse/>` etc.), ***except for the SPLINE entity***, which is interpolated.
 
 Here's an example you will find in the functional test output:
 
 ![svg example image](https://cloud.githubusercontent.com/assets/57994/17583566/e00f5d78-5fb1-11e6-9030-55686f980e6f.png)
+
+## Interpolation
+
+The library supports outputting DXFs as interpolated polylines for custom rendering (e.g. WebGL) or other applications, by using:
+
+
+```
+> helper.toPolylines()
+```
+
 
 ## Command line
 
