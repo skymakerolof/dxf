@@ -175,8 +175,6 @@ const entityToBoundsAndElement = (entity) => {
       return ellipse(entity)
     case 'ARC':
       return arc(entity)
-    case 'LINE':
-    case 'LWPOLYLINE':
     case 'SPLINE': {
       if ((entity.degree === 2) || (entity.degree === 3)) {
         try {
@@ -188,6 +186,8 @@ const entityToBoundsAndElement = (entity) => {
         return polyline(entity)
       }
     }
+    case 'LINE':
+    case 'LWPOLYLINE':
     case 'POLYLINE': {
       return polyline(entity)
     }
