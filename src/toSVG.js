@@ -7,6 +7,7 @@ import getRGBForEntity from './getRGBForEntity'
 import logger from './util/logger'
 import rotate from './util/rotate'
 import rgbToColorAttribute from './util/rgbToColorAttribute'
+import toPiecewiseBezier from './util/toPiecewiseBezier'
 import transformBoundingBoxAndElement from './transformBoundingBoxAndElement'
 
 const addFlipXIfApplicable = (entity, { bbox, element }) => {
@@ -136,6 +137,32 @@ const arc = (entity) => {
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
+export const piecewiseToPaths = (k, controlPoints) => {
+  const nSegments = (controlPoints.length - 1) / (k - 1)
+  const paths = []
+  for (let i = 0; i < nSegments; ++i) {
+    const cp = controlPoints.slice(i * (k - 1))
+    if (k === 4) {
+      paths.push(`<path d="M ${cp[0].x} ${cp[0].y} C ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y} ${cp[3].x} ${cp[3].y}" />`)
+    } else if (k === 3) {
+      paths.push(`<path d="M ${cp[0].x} ${cp[0].y} Q ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y}" />`)
+    }
+  }
+  return paths
+}
+
+const bezier = (entity) => {
+  let bbox = new Box2()
+  entity.controlPoints.forEach(p => {
+    bbox = bbox.expandByPoint(p)
+  })
+  const k = entity.degree + 1
+  const piecewise = toPiecewiseBezier(k, entity.controlPoints, entity.knots)
+  const paths = piecewiseToPaths(k, piecewise.controlPoints)
+  let element = `<g>${paths.join('')}</g>`
+  return transformBoundingBoxAndElement(bbox, element, entity.transforms)
+}
+
 /**
  * Switcth the appropriate function on entity type. CIRCLE, ARC and ELLIPSE
  * produce native SVG elements, the rest produce interpolated polylines.
@@ -150,7 +177,17 @@ const entityToBoundsAndElement = (entity) => {
       return arc(entity)
     case 'LINE':
     case 'LWPOLYLINE':
-    case 'SPLINE':
+    case 'SPLINE': {
+      if ((entity.degree === 2) || (entity.degree === 3)) {
+        try {
+          return bezier(entity)
+        } catch (err) {
+          return polyline(entity)
+        }
+      } else {
+        return polyline(entity)
+      }
+    }
     case 'POLYLINE': {
       return polyline(entity)
     }

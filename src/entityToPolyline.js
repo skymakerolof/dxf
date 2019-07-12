@@ -72,7 +72,7 @@ const interpolateEllipse = (cx, cy, rx, ry, start, end, rotationAngle) => {
  * @param knots the knot vector
  * @returns the polyline
  */
-const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplineSegment) => {
+export const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplineSegment) => {
   const polyline = []
   const controlPointsForLib = controlPoints.map(function (p) {
     return [p.x, p.y]

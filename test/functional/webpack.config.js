@@ -17,6 +17,11 @@ module.exports = {
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
       path.resolve(__dirname, 'toSVG.test.js')
+    ],
+    'toBezier.test': [
+      `webpack-dev-server/client?http://localhost:${port}`,
+      'webpack/hot/dev-server',
+      path.resolve(__dirname, 'toBezier.test.js')
     ]
   },
   output: {
