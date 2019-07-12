@@ -143,9 +143,9 @@ export const piecewiseToPaths = (k, controlPoints) => {
   for (let i = 0; i < nSegments; ++i) {
     const cp = controlPoints.slice(i * (k - 1))
     if (k === 4) {
-      paths.push(`<path d="M ${cp[0].x} ${cp[0].y} C ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y} ${cp[3].x} ${cp[3].y}" />`)
+      paths.push(`<path stroke="#0b0" stroke-width="0.2%" d="M ${cp[0].x} ${cp[0].y} C ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y} ${cp[3].x} ${cp[3].y}" />`)
     } else if (k === 3) {
-      paths.push(`<path d="M ${cp[0].x} ${cp[0].y} Q ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y}" />`)
+      paths.push(`<path stroke="#0b0" stroke-width="0.2%" d="M ${cp[0].x} ${cp[0].y} Q ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y}" />`)
     }
   }
   return paths
@@ -175,19 +175,22 @@ const entityToBoundsAndElement = (entity) => {
       return ellipse(entity)
     case 'ARC':
       return arc(entity)
-    case 'LINE':
-    case 'LWPOLYLINE':
     case 'SPLINE': {
       if ((entity.degree === 2) || (entity.degree === 3)) {
         try {
           return bezier(entity)
         } catch (err) {
-          return polyline(entity)
+          const temp = polyline(entity)
+          console.error('!!', entity.degree, temp)
+          temp.element = `<g stroke="#e00" stroke-width="0.2%">${temp.element}</g>`
+          return temp
         }
       } else {
         return polyline(entity)
       }
     }
+    case 'LINE':
+    case 'LWPOLYLINE':
     case 'POLYLINE': {
       return polyline(entity)
     }
