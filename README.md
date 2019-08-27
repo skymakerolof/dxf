@@ -17,6 +17,7 @@ At this point in time, the important geometric entities are supported, but notab
  * MTEXT
  * DIMENSION
  * STYLE
+ * HATCH
 
 and some others are **parsed**, but are **not supported for SVG rendering** (see section below on SVG rendering)
 
