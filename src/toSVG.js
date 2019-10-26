@@ -62,7 +62,11 @@ const circle = (entity) => {
  * Create a a <path d="A..." /> or <ellipse /> element for the ARC or ELLIPSE
  * DXF entity (<ellipse /> if start and end point are the same).
  */
-const ellipseOrArc = (cx, cy, rx, ry, startAngle, endAngle, rotationAngle, flipX) => {
+const ellipseOrArc = (cx, cy, majorX, majorY, axisRatio, startAngle, endAngle, flipX) => {
+  const rx = Math.sqrt(majorX * majorX + majorY * majorY)
+  const ry = axisRatio * rx
+  const rotationAngle = -Math.atan2(-majorY, majorX)
+
   const bbox = [
     { x: rx, y: ry },
     { x: rx, y: ry },
@@ -115,10 +119,7 @@ const ellipseOrArc = (cx, cy, rx, ry, startAngle, endAngle, rotationAngle, flipX
  * a rotation angle
  */
 const ellipse = (entity) => {
-  const rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY)
-  const ry = entity.axisRatio * rx
-  const majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX)
-  let { bbox: bbox0, element: element0 } = ellipseOrArc(entity.x, entity.y, rx, ry, entity.startAngle, entity.endAngle, majorAxisRotation)
+  let { bbox: bbox0, element: element0 } = ellipseOrArc(entity.x, entity.y, entity.majorX, entity.majorY, entity.axisRatio, entity.startAngle, entity.endAngle)
   let { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
@@ -129,9 +130,9 @@ const ellipse = (entity) => {
 const arc = (entity) => {
   let { bbox: bbox0, element: element0 } = ellipseOrArc(
     entity.x, entity.y,
-    entity.r, entity.r,
+    entity.r, 0,
+    1,
     entity.startAngle, entity.endAngle,
-    0,
     entity.extrusionZ === -1)
   let { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
