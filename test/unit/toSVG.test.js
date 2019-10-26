@@ -17,7 +17,10 @@ const dxfsFilenames = ['elliptical-arc1.dxf',
   'elliptical-arc11.dxf',
   'elliptical-arc12.dxf',
   'elliptical-arc13.dxf',
-  'elliptical-arc14.dxf'
+  'elliptical-arc14.dxf',
+  'arc15.dxf',
+  'arc16.dxf',
+  'arc17.dxf'
 ]
 
 // Load and parse DXFs
@@ -133,5 +136,17 @@ describe('toSVG', () => {
     let svg14 = toSVG(dxfs['elliptical-arc14.dxf'])
     expect(svg14).toMatchViewbox(-55.10777094338928, -131.912470600959, 404.2155418867785, 285.82494120191797)
     expect(svg14).toMatchArc(80.13575797098328, 183.83824901758032, 160.3652081967906, 151.7760801446391, 160.3221424787954, 1, 1, 292.9345460604517, -23.32855250669232)
+
+    let svg15 = toSVG(dxfs['arc15.dxf'])
+    expect(svg15).toMatchViewbox(-13.698025332872923, -54.94802533287292, 70.89605066574585, 70.89605066574585)
+    expect(svg15).toMatchArc(44.44327281701652, 46.73192738041983, 35.44802533287292, 35.44802533287292, 0, 0, 1, -10.401676865889314, 34.42756425916292)
+
+    let svg16 = toSVG(dxfs['arc16.dxf'])
+    expect(svg16).toMatchViewbox(-14.41854547874551, -16.16854547874551, 62.83709095749103, 62.83709095749103)
+    expect(svg16).toMatchArc(4.131265300907282, -43.912181829797376, 31.41854547874551, 31.41854547874551, 0, 1, 1, -14.09320807604486, -19.759701934693545)
+
+    let svg17 = toSVG(dxfs['arc17.dxf'])
+    expect(svg17).toMatchViewbox(-53.040872435141566, -23.649355077918734, 163.53835181317228, 163.53835181317228)
+    expect(svg17).toMatchArc(46.25, 21.75, 81.76917590658614, 81.76917590658614, 0, 0, 1, -48.5, -31.25)
   })
 })
