@@ -75,7 +75,8 @@ const names = [
   'issue29',
   'issue39',
   'issue42',
-  'splineA'
+  'splineA',
+  'elliptical-arc2'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => toSVG(new Helper(contents).toPolylines()))
