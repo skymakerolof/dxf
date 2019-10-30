@@ -19,7 +19,7 @@ export const checkPinned = (k, knots) => {
   }
 }
 
-const multiplicity = (knots, index) => {
+export const multiplicity = (knots, index) => {
   let m = 1
   for (let i = index + 1; i < knots.length; ++i) {
     if (knots[i] === knots[index]) {

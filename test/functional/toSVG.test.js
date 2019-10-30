@@ -31,7 +31,8 @@ const names = [
   'issue39',
   'issue42',
   'splineA',
-  'elliptical-arc2'
+  'elliptical-arc2',
+  'issue50'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => new Helper(contents).toSVG())

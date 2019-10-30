@@ -7,7 +7,7 @@ import getRGBForEntity from './getRGBForEntity'
 import logger from './util/logger'
 import rotate from './util/rotate'
 import rgbToColorAttribute from './util/rgbToColorAttribute'
-import toPiecewiseBezier from './util/toPiecewiseBezier'
+import toPiecewiseBezier, { multiplicity } from './util/toPiecewiseBezier'
 import transformBoundingBoxAndElement from './transformBoundingBoxAndElement'
 
 const addFlipXIfApplicable = (entity, { bbox, element }) => {
@@ -194,16 +194,20 @@ const arc = (entity) => {
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
-export const piecewiseToPaths = (k, controlPoints) => {
-  const nSegments = (controlPoints.length - 1) / (k - 1)
+export const piecewiseToPaths = (k, knots, controlPoints) => {
   const paths = []
-  for (let i = 0; i < nSegments; ++i) {
-    const cp = controlPoints.slice(i * (k - 1))
+  let controlPointIndex = 0
+  let knotIndex = k
+  while (knotIndex < knots.length - k + 1) {
+    const m = multiplicity(knots, knotIndex)
+    const cp = controlPoints.slice(controlPointIndex, controlPointIndex + k)
     if (k === 4) {
       paths.push(`<path d="M ${cp[0].x} ${cp[0].y} C ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y} ${cp[3].x} ${cp[3].y}" />`)
     } else if (k === 3) {
       paths.push(`<path d="M ${cp[0].x} ${cp[0].y} Q ${cp[1].x} ${cp[1].y} ${cp[2].x} ${cp[2].y}" />`)
     }
+    controlPointIndex += m
+    knotIndex += m
   }
   return paths
 }
@@ -215,7 +219,7 @@ const bezier = (entity) => {
   })
   const k = entity.degree + 1
   const piecewise = toPiecewiseBezier(k, entity.controlPoints, entity.knots)
-  const paths = piecewiseToPaths(k, piecewise.controlPoints)
+  const paths = piecewiseToPaths(k, piecewise.knots, piecewise.controlPoints)
   let element = `<g>${paths.join('')}</g>`
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
