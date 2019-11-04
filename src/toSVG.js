@@ -266,8 +266,11 @@ export default (parsed) => {
     // Ignore entities like MTEXT that don't produce SVG elements
     if (boundsAndElement) {
       const { bbox, element } = boundsAndElement
-      acc.bbox.expandByPoint(bbox.min)
-      acc.bbox.expandByPoint(bbox.max)
+      // Ignore invalid bounding boxes
+      if (bbox.valid) {
+        acc.bbox.expandByPoint(bbox.min)
+        acc.bbox.expandByPoint(bbox.max)
+      }
       acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}">${element}</g>`)
     }
     return acc
