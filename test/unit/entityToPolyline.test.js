@@ -14,7 +14,7 @@ describe('Entity To Polyline', () => {
     expect(entities.length).toEqual(11)
 
     const polyline = entityToPolyline(entities[0])
-    expect(polyline).toEqual([ [ 0, 0 ], [ 100, 0 ] ])
+    expect(polyline).toEqual([[0, 0], [100, 0]])
   })
 
   it('supports LWPOLYLINE', () => {
@@ -52,7 +52,7 @@ describe('Entity To Polyline', () => {
     expect(entities.length).toEqual(1)
     const polyline = applyTransforms(entityToPolyline(entities[0]), entities[0].transforms)
     expect(polyline).toEqual([
-      [ 30, 40 ], [ 50, 40 ], [ 50, 70 ], [ 30, 40 ]
+      [30, 40], [50, 40], [50, 70], [30, 40]
     ])
   })
 
@@ -60,7 +60,7 @@ describe('Entity To Polyline', () => {
   it('warns on a LWPOLYLINE with a single vertex', () => {
     const polyline = entityToPolyline({
       type: 'LWPOLYLINE',
-      vertices: [ { x: 294.598692, y: 168.66373 } ],
+      vertices: [{ x: 294.598692, y: 168.66373 }],
       layer: '0',
       colorNumber: 7,
       closed: true,

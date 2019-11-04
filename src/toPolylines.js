@@ -12,7 +12,7 @@ export default (parsed) => {
     const layerTable = parsed.tables.layers[entity.layer]
     let rgb
     if (layerTable) {
-      let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
+      const colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
       rgb = colors[colorNumber]
       if (rgb === undefined) {
         logger.warn('Color index', colorNumber, 'invalid, defaulting to black')

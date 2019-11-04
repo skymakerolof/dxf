@@ -35,21 +35,25 @@ export default (bbox, element, transforms) => {
     return [a, b, c, d, e, f]
   })
 
-  let bboxPoints = [
-    { x: bbox.min.x, y: bbox.min.y },
-    { x: bbox.max.x, y: bbox.min.y },
-    { x: bbox.max.x, y: bbox.max.y },
-    { x: bbox.min.x, y: bbox.max.y }
-  ]
-  matrices.forEach(([a, b, c, d, e, f]) => {
-    bboxPoints = bboxPoints.map(point => ({
-      x: point.x * a + point.y * c + e,
-      y: point.x * b + point.y * d + f
-    }))
-  })
-  const transformedBBox = bboxPoints.reduce((acc, point) => {
-    return acc.expandByPoint(point)
-  }, new Box2())
+  // Only transform the bounding box is it is valid (i.e. not Infinity)
+  let transformedBBox = new Box2()
+  if (bbox.valid) {
+    let bboxPoints = [
+      { x: bbox.min.x, y: bbox.min.y },
+      { x: bbox.max.x, y: bbox.min.y },
+      { x: bbox.max.x, y: bbox.max.y },
+      { x: bbox.min.x, y: bbox.max.y }
+    ]
+    matrices.forEach(([a, b, c, d, e, f]) => {
+      bboxPoints = bboxPoints.map(point => ({
+        x: point.x * a + point.y * c + e,
+        y: point.x * b + point.y * d + f
+      }))
+    })
+    transformedBBox = bboxPoints.reduce((acc, point) => {
+      return acc.expandByPoint(point)
+    }, new Box2())
+  }
 
   matrices.reverse()
   matrices.forEach(([a, b, c, d, e, f]) => {

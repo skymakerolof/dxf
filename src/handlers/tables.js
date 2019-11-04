@@ -95,7 +95,7 @@ const tableHandler = (tuples, tableType, handler) => {
 }
 
 export default (tuples) => {
-  let tableGroups = []
+  const tableGroups = []
   let tableTuples
   tuples.forEach((tuple) => {
     // const type = tuple[0];

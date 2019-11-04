@@ -10,7 +10,7 @@ describe('Layer Styles', () => {
   it('can be parsed', () => {
     const result = parseString(dxfContents)
     const expected = {
-      '0': { colorNumber: 7 },
+      0: { colorNumber: 7 },
       'wall high': { colorNumber: 5 },
       'wall low': { colorNumber: 140 },
       texture: { colorNumber: 253 },
