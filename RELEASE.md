@@ -1,3 +1,6 @@
+4.3.0
+- #51 Fix bug when transforming empty bounding box
+
 4.2.4
 - #50 Fix knot piecewise beziers
 
