@@ -95,7 +95,7 @@ const Thumbnail = ({ index, name, svg }) => (
 )
 
 Thumbnail.propTypes = {
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   svg: PropTypes.string.isRequired
 }

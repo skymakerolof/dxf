@@ -8,7 +8,7 @@ import logger from './util/logger'
 import rotate from './util/rotate'
 import rgbToColorAttribute from './util/rgbToColorAttribute'
 import toPiecewiseBezier, { multiplicity } from './util/toPiecewiseBezier'
-import transformBoundingBoxAndElement from './transformBoundingBoxAndElement'
+import transformBoundingBoxAndElement from './util/transformBoundingBoxAndElement'
 
 const addFlipXIfApplicable = (entity, { bbox, element }) => {
   if (entity.extrusionZ === -1) {
@@ -276,18 +276,18 @@ export default (parsed) => {
     elements: []
   })
 
-  const viewBox = bbox.min.x === Infinity
+  const viewBox = bbox.valid
     ? {
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0
-    }
-    : {
       x: bbox.min.x,
       y: -bbox.max.y,
       width: bbox.max.x - bbox.min.x,
       height: bbox.max.y - bbox.min.y
+    }
+    : {
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 0
     }
   return `<?xml version="1.0"?>
 <svg
