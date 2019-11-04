@@ -50,7 +50,7 @@ export default (tuples) => {
     const entityType = tuples[0][1]
     const contentTuples = tuples.slice(1)
 
-    if (handlers.hasOwnProperty(entityType)) {
+    if (handlers[entityType] !== undefined) {
       const e = handlers[entityType].process(contentTuples)
       // "POLYLINE" cannot be parsed in isolation, it is followed by
       // N "VERTEX" entities and ended with a "SEQEND" entity.

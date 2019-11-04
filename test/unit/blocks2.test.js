@@ -27,7 +27,7 @@ describe('BLOCK 2', () => {
     })
 
     const entities2 = blocks[2].entities
-    delete (blocks[2]['entities'])
+    delete (blocks[2].entities)
     expect(blocks[2]).toEqual({
       name: 'block_insert',
       x: 0,
@@ -39,7 +39,7 @@ describe('BLOCK 2', () => {
     expect(entities2[1].type).toEqual('INSERT')
 
     const entities3 = blocks[3].entities
-    delete (blocks[3]['entities'])
+    delete (blocks[3].entities)
     expect(blocks[3]).toEqual({
       name: 'block01',
       x: 0,
@@ -55,7 +55,7 @@ describe('BLOCK 2', () => {
     expect(entities3[5].type).toEqual('MTEXT')
 
     const entities4 = blocks[4].entities
-    delete (blocks[4]['entities'])
+    delete (blocks[4].entities)
     expect(blocks[4]).toEqual({
       name: 'block02',
       x: 0,

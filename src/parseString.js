@@ -21,7 +21,7 @@ const convertToTypesAndValues = (contentLines) => {
   let state = 'type'
   let type
   const typesAndValues = []
-  for (let line of contentLines) {
+  for (const line of contentLines) {
     if (state === 'type') {
       type = parseInt(line, 10)
       state = 'value'

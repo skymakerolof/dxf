@@ -39,41 +39,44 @@ const polylineToPath = (polyline) => {
   return <path d={d} />
 }
 
-const result = toPiecewiseBezier(k, controlPoints, knots)
-const interpolated1 = interpolateBSpline(result.controlPoints, k - 1, result.knots)
-const paths = piecewiseToPaths(k, result.controlPoints, k.knots)
+const piecewise = toPiecewiseBezier(k, controlPoints, knots)
+const interpolated1 = interpolateBSpline(piecewise.controlPoints, k - 1, piecewise.knots)
+const paths = piecewiseToPaths(k, piecewise.knots, piecewise.controlPoints, k.knots)
 
-render(<HashRouter>
-  <div>
-    <svg
-      preserveAspectRatio='xMinYMin meet'
-      viewBox={viewBox}
-      width='200'
-      height='400'
-    >
-      <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
-        {polylineToPath(interpolated0)}
-      </g>
-    </svg>
-    <svg
-      preserveAspectRatio='xMinYMin meet'
-      viewBox={viewBox}
-      width='200'
-      height='400'
-    >
-      <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
-        {polylineToPath(interpolated1)}
-      </g>
-    </svg>
-    <svg
-      preserveAspectRatio='xMinYMin meet'
-      viewBox={viewBox}
-      width='200'
-      height='400'
-    >
-      <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'
-        dangerouslySetInnerHTML={{ __html: paths }}
-      />
-    </svg>
-  </div>
-</HashRouter>, document.getElementById('contents'))
+render(
+  <HashRouter>
+    <div>
+      <svg
+        preserveAspectRatio='xMinYMin meet'
+        viewBox={viewBox}
+        width='200'
+        height='400'
+      >
+        <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
+          {polylineToPath(interpolated0)}
+        </g>
+      </svg>
+      <svg
+        preserveAspectRatio='xMinYMin meet'
+        viewBox={viewBox}
+        width='200'
+        height='400'
+      >
+        <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
+          {polylineToPath(interpolated1)}
+        </g>
+      </svg>
+      <svg
+        preserveAspectRatio='xMinYMin meet'
+        viewBox={viewBox}
+        width='200'
+        height='400'
+      >
+        <g
+          stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'
+          dangerouslySetInnerHTML={{ __html: paths }}
+        />
+      </svg>
+    </div>
+  </HashRouter>,
+  document.getElementById('contents'))

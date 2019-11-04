@@ -56,7 +56,7 @@ export const process = (tuples) => {
     const type = tuple[0]
     const value = tuple[1]
 
-    if (simpleCodes.hasOwnProperty(type)) {
+    if (simpleCodes[type] !== undefined) {
       entity[simpleCodes[type]] = value
     } else if ((type === 1) || (type === 3)) {
       entity.string += value

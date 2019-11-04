@@ -44,7 +44,7 @@ const polyline = (entity) => {
  * Create a <circle /> element for the CIRCLE entity.
  */
 const circle = (entity) => {
-  let bbox0 = new Box2()
+  const bbox0 = new Box2()
     .expandByPoint({
       x: entity.x + entity.r,
       y: entity.y + entity.r
@@ -53,8 +53,8 @@ const circle = (entity) => {
       x: entity.x - entity.r,
       y: entity.y - entity.r
     })
-  let element0 = `<circle cx="${entity.x}" cy="${entity.y}" r="${entity.r}" />`
-  let { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
+  const element0 = `<circle cx="${entity.x}" cy="${entity.y}" r="${entity.r}" />`
+  const { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
@@ -117,7 +117,7 @@ const bboxEllipseOrArc = (cx, cy, majorX, majorY, axisRatio, startAngle, endAngl
   while (endAngle <= startAngle) endAngle += Math.PI * 2
 
   // When rotated, the extrema of the ellipse will be found at these angles
-  let angles = []
+  const angles = []
 
   if (Math.abs(majorX) < 1e-12 || Math.abs(majorY) < 1e-12) {
     // Special case for majorX or majorY = 0
@@ -145,18 +145,18 @@ const bboxEllipseOrArc = (cx, cy, majorX, majorY, axisRatio, startAngle, endAngl
   angles.push(endAngle)
 
   // Compute points lying on the unit circle at these angles
-  let pts = angles.map(a => ({
+  const pts = angles.map(a => ({
     x: Math.cos(a),
     y: Math.sin(a)
   }))
 
   // Transformation matrix, formed by the major and minor axes
-  let M =
+  const M =
     [[majorX, -majorY * axisRatio],
       [majorY, majorX * axisRatio]]
 
   // Rotate, scale, and translate points
-  let rotatedPts = pts.map(p => ({
+  const rotatedPts = pts.map(p => ({
     x: p.x * M[0][0] + p.y * M[0][1] + cx,
     y: p.x * M[1][0] + p.y * M[1][1] + cy
   }))
@@ -175,8 +175,8 @@ const bboxEllipseOrArc = (cx, cy, majorX, majorY, axisRatio, startAngle, endAngl
  * a rotation angle
  */
 const ellipse = (entity) => {
-  let { bbox: bbox0, element: element0 } = ellipseOrArc(entity.x, entity.y, entity.majorX, entity.majorY, entity.axisRatio, entity.startAngle, entity.endAngle)
-  let { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
+  const { bbox: bbox0, element: element0 } = ellipseOrArc(entity.x, entity.y, entity.majorX, entity.majorY, entity.axisRatio, entity.startAngle, entity.endAngle)
+  const { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
@@ -184,13 +184,13 @@ const ellipse = (entity) => {
  * An ARC is an ellipse with equal radii
  */
 const arc = (entity) => {
-  let { bbox: bbox0, element: element0 } = ellipseOrArc(
+  const { bbox: bbox0, element: element0 } = ellipseOrArc(
     entity.x, entity.y,
     entity.r, 0,
     1,
     entity.startAngle, entity.endAngle,
     entity.extrusionZ === -1)
-  let { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
+  const { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
@@ -220,7 +220,7 @@ const bezier = (entity) => {
   const k = entity.degree + 1
   const piecewise = toPiecewiseBezier(k, entity.controlPoints, entity.knots)
   const paths = piecewiseToPaths(k, piecewise.knots, piecewise.controlPoints)
-  let element = `<g>${paths.join('')}</g>`
+  const element = `<g>${paths.join('')}</g>`
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
@@ -259,7 +259,7 @@ const entityToBoundsAndElement = (entity) => {
 }
 
 export default (parsed) => {
-  let entities = denormalise(parsed)
+  const entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce((acc, entity, i) => {
     const rgb = getRGBForEntity(parsed.tables.layers, entity)
     const boundsAndElement = entityToBoundsAndElement(entity)
