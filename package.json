@@ -1,6 +1,6 @@
 {
   "name": "dxf",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "bin": {
@@ -62,7 +62,7 @@
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
     "rimraf": "^2.6.2",
-    "webpack": "^4.28.4",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "xml2js": "^0.4.19"
