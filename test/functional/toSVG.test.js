@@ -23,6 +23,8 @@ const names = [
   'floorplan',
   'Ceco.NET-Architecture-Tm-53',
   'openscad_export',
+  'splineA',
+  'elliptical-arc2',
   'issue21',
   'issue27a',
   'issue27b',
@@ -31,9 +33,8 @@ const names = [
   'issue29',
   'issue39',
   'issue42',
-  'splineA',
-  'elliptical-arc2',
-  'issue50'
+  'issue50',
+  'issue52'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => new Helper(contents).toSVG())

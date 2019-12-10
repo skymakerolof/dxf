@@ -19,8 +19,8 @@ export default (parseResult) => {
           return
         }
         const t = {
-          x: -block.x + insert.x,
-          y: -block.y + insert.y,
+          x: insert.x,
+          y: insert.y,
           scaleX: insert.scaleX,
           scaleY: insert.scaleY,
           scaleZ: insert.scaleZ,
@@ -37,6 +37,42 @@ export default (parseResult) => {
         const blockEntities = block.entities.map((be) => {
           const be2 = cloneDeep(be)
           be2.layer = insert.layer
+          // https://github.com/bjnortier/dxf/issues/52
+          // See Issue 52. If we don't modify the
+          // entity coordinates here it creates an issue with the
+          // transformation matrices (which are only applied AFTER
+          // block insertion modifications has been applied).
+          switch (be2.type) {
+            case 'LINE': {
+              be2.start.x -= block.x
+              be2.start.y -= block.y
+              be2.end.x -= block.x
+              be2.end.y -= block.y
+              break
+            }
+            case 'LWPOLYLINE':
+            case 'POLYLINE': {
+              be2.vertices.forEach(v => {
+                v.x -= block.x
+                v.y -= block.y
+              })
+              break
+            }
+            case 'CIRCLE':
+            case 'ELLIPSE':
+            case 'ARC': {
+              be2.x -= block.x
+              be2.y -= block.y
+              break
+            }
+            case 'SPLINE': {
+              be2.controlPoints.forEach(cp => {
+                cp.x -= block.x
+                cp.y -= block.y
+              })
+              break
+            }
+          }
           return be2
         })
         current = current.concat(gatherEntities(blockEntities, transforms2))

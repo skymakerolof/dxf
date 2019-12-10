@@ -1,6 +1,6 @@
 {
   "name": "dxf",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "bin": {
@@ -41,6 +41,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.5.5",
+    "acorn": "^6.0.0",
     "babel-loader": "^8.0.5",
     "browserify": "^16.2.3",
     "eslint": "^6.5.1",
