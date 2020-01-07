@@ -15,7 +15,7 @@
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:functional": "cd test/functional && webpack-dev-server",
     "test": "npm run test:lint && npm run test:unit",
-    "compile": "babel --optional runtime -d lib/ src/",
+    "compile": "babel -d lib/ src/",
     "dist": "mkdir -p dist && browserify lib/index.js --standalone dxf -o dist/dxf.js",
     "prepublishOnly": "rimraf dist/ lib/ && npm run compile && npm run dist"
   },
