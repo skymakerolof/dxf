@@ -2,6 +2,7 @@ import headerHandler from './handlers/header'
 import tablesHandler from './handlers/tables'
 import blocksHandler from './handlers/blocks'
 import entitiesHandler from './handlers/entities'
+import logger from './util/logger'
 
 // Parse the value into the native representation
 const parseValue = (type, value) => {
@@ -67,6 +68,7 @@ const reduceSection = (acc, section) => {
       acc.entities = entitiesHandler(contentTuples)
       break
     default:
+      logger.warn(`Unsupported section: ${sectionType}`)
   }
   return acc
 }
