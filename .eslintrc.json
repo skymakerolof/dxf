@@ -27,6 +27,7 @@
     "plugins": [
         "react", "babel"
     ],
+    "parser": "babel-eslint",
     "rules": {
       "jest/valid-describe": 0
     },
