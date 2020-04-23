@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
-const opn = require('opn')
+const open = require('open')
 
 const port = 8030
 
@@ -34,7 +34,7 @@ module.exports = {
   devServer: {
     port,
     after: (app, server) => {
-      opn(`http://localhost:${port}`)
+      open(`http://localhost:${port}`)
     }
   },
   resolve: {
