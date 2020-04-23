@@ -19,11 +19,11 @@ export default (parseResult) => {
           return
         }
 
-        const rowCount = insert.rowCount != null ? insert.rowCount : 1
-        const columnCount = insert.columnCount != null ? insert.columnCount : 1
-        const rowSpacing = insert.rowSpacing != null ? insert.rowSpacing : 0
-        const columnSpacing = insert.columnSpacing != null ? insert.columnSpacing : 0
-        const rotation = insert.rotation != null ? insert.rotation : 0
+        const rowCount = insert.rowCount !== null ? insert.rowCount : 1
+        const columnCount = insert.columnCount !== null ? insert.columnCount : 1
+        const rowSpacing = insert.rowSpacing !== null ? insert.rowSpacing : 0
+        const columnSpacing = insert.columnSpacing !== null ? insert.columnSpacing : 0
+        const rotation = insert.rotation !== null ? insert.rotation : 0
 
         // It appears that the rectangular array is affected by rotation, but NOT by scale.
         let rowVec, colVec
