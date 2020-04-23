@@ -27,7 +27,7 @@ describe('BLOCK', () => {
     })
 
     const entities2 = blocks[2].entities
-    delete (blocks[2]['entities'])
+    delete (blocks[2].entities)
     expect(blocks[2]).toEqual({
       name: 'a',
       x: 0,

@@ -7,41 +7,50 @@ export default (tuples) => {
     const value = tuple[1]
 
     switch (value) {
+      case '$MEASUREMENT': {
+        state = 'measurement'
+        break
+      }
+      case '$INSUNITS': {
+        state = 'insUnits'
+        break
+      }
       case '$EXTMIN':
         header.extMin = {}
         state = 'extMin'
-        return
+        break
       case '$EXTMAX':
         header.extMax = {}
         state = 'extMax'
-        return
+        break
       default:
-        if (state === 'extMin') {
-          switch (type) {
-            case 10:
-              header.extMin.x = value
-              break
-            case 20:
-              header.extMin.y = value
-              break
-            case 30:
-              header.extMin.z = value
-              state = undefined
-              break
+        switch (state) {
+          case 'extMin':
+          case 'extMax': {
+            switch (type) {
+              case 10:
+                header[state].x = value
+                break
+              case 20:
+                header[state].y = value
+                break
+              case 30:
+                header[state].z = value
+                state = undefined
+                break
+            }
+            break
           }
-        }
-        if (state === 'extMax') {
-          switch (type) {
-            case 10:
-              header.extMax.x = value
-              break
-            case 20:
-              header.extMax.y = value
-              break
-            case 30:
-              header.extMax.z = value
-              state = undefined
-              break
+          case 'measurement':
+          case 'insUnits': {
+            switch (type) {
+              case 70: {
+                header[state] = value
+                state = undefined
+                break
+              }
+            }
+            break
           }
         }
     }

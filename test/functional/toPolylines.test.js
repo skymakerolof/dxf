@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { render } from 'react-dom'
 import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 import { pd } from 'pretty-data'
@@ -35,7 +36,7 @@ const toSVG = ({ bbox, polylines }) => {
     ? { x: 0, y: 0, width: 0, height: 0 }
     : { x: bbox.min.x, y: -bbox.max.y, width: bbox.max.x - bbox.min.x, height: bbox.max.y - bbox.min.y }
 
-  let svgString = `
+  const svgString = `
 <?xml version="1.0"?>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +68,8 @@ const names = [
   'floorplan',
   'Ceco.NET-Architecture-Tm-53',
   'openscad_export',
+  'splineA',
+  'elliptical-arc2',
   'issue21',
   'issue27a',
   'issue27b',
@@ -75,38 +78,57 @@ const names = [
   'issue29',
   'issue39',
   'issue42',
-  'splineA'
+  'issue50',
+  'issue52',
+  'issue53'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => toSVG(new Helper(contents).toPolylines()))
 
-const Thumbnail = ({ index, name, svg }) => <Link
-  to={`/${index}`}
->
-  <div
-    style={{ display: 'inline-block', margin: 20, padding: 20, backgroundColor: '#fff' }}
-    dangerouslySetInnerHTML={{ __html: svg }}
-  />
-</Link>
+const Thumbnail = ({ index, name, svg }) => (
+  <Link
+    to={`/${index}`}
+  >
+    <div
+      style={{ display: 'inline-block', margin: 20, padding: 20, backgroundColor: '#fff' }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  </Link>
+)
+
+Thumbnail.propTypes = {
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  svg: PropTypes.string.isRequired
+}
 
 // All the test cases
-const All = () => <div>
-  {svgs.map((svg, i) => <Thumbnail key={i} index={i} name={names[i]} svg={svg} />)}
-</div>
+const All = () => (
+  <div>
+    {svgs.map((svg, i) => <Thumbnail key={i} index={i} name={names[i]} svg={svg} />)}
+  </div>
+)
 
 // One SVG only
 const One = (props) => {
-  return <div
-    style={{ backgroundColor: '#fff' }}
-    dangerouslySetInnerHTML={{ __html: svgs[props.match.params.index] }}
-  />
+  return (
+    <div
+      style={{ backgroundColor: '#fff' }}
+      dangerouslySetInnerHTML={{ __html: svgs[props.match.params.index] }}
+    />
+  )
 }
 
-render(<HashRouter>
-  <div>
-    <Switch>
-      <Route path='/' exact component={All} />
-      <Route path='/:index' component={One} />
-    </Switch>
-  </div>
-</HashRouter>, document.getElementById('contents'))
+One.propTypes = {
+  match: PropTypes.object.isRequired
+}
+
+render(
+  <HashRouter>
+    <div>
+      <Switch>
+        <Route path='/' exact component={All} />
+        <Route path='/:index' component={One} />
+      </Switch>
+    </div>
+  </HashRouter>, document.getElementById('contents'))

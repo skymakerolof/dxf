@@ -4,7 +4,7 @@ import logger from './util/logger'
 export default (layers, entity) => {
   const layerTable = layers[entity.layer]
   if (layerTable) {
-    let colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
+    const colorNumber = ('colorNumber' in entity) ? entity.colorNumber : layerTable.colorNumber
     const rgb = colors[colorNumber]
     if (rgb) {
       return rgb

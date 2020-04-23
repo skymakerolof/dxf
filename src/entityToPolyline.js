@@ -93,7 +93,10 @@ export const interpolateBSpline = (controlPoints, degree, knots, interpolationsP
     const uMax = segmentTs[i]
     for (let k = 0; k <= interpolationsPerSplineSegment; ++k) {
       const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
-      const t = (u - domain[0]) / (domain[1] - domain[0])
+      // Clamp t to 0, 1 to handle numerical precision issues
+      let t = (u - domain[0]) / (domain[1] - domain[0])
+      t = Math.max(t, 0)
+      t = Math.min(t, 1)
       const p = bSpline(t, degree, controlPointsForLib, knots)
       polyline.push(p)
     }

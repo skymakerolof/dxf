@@ -1,3 +1,25 @@
+4.3.0
+- #51 Fix bug when transforming empty bounding box
+
+4.2.4
+- #50 Fix knot piecewise beziers
+
+4.2.3
+- More accurate bounding boxes for arcs and ellipses (#48)
+
+4.2.2
+- Bump eslint-utils from 1.3.1 to 1.4.2
+- Add HATCH to unsupported SVG entities in README
+
+4.2.1
+- Use main lodash package due to security issue(s)
+
+4.2.0
+- README updates
+
+4.1.1
+- #issue42 support entities that have extrusionZ === -1 defined on the entity itself (as opposed to the transform).
+
 4.1.0
 - CIRCLE DXF entities now produce native <circle /> SVG elements.
 - ELLIPSE DXF entities now produce native <path d="A..."/> or <ellipse /> SVG elements.

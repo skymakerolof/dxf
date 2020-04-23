@@ -11,6 +11,7 @@ import spline from './entity/spline'
 import solid from './entity/solid'
 import mtext from './entity/mtext'
 import insert from './entity/insert'
+import threeDFace from './entity/threeDFace'
 
 const handlers = [
   point,
@@ -24,7 +25,8 @@ const handlers = [
   spline,
   solid,
   mtext,
-  insert
+  insert,
+  threeDFace
 ].reduce((acc, mod) => {
   acc[mod.TYPE] = mod
   return acc
@@ -50,7 +52,7 @@ export default (tuples) => {
     const entityType = tuples[0][1]
     const contentTuples = tuples.slice(1)
 
-    if (handlers.hasOwnProperty(entityType)) {
+    if (handlers[entityType] !== undefined) {
       const e = handlers[entityType].process(contentTuples)
       // "POLYLINE" cannot be parsed in isolation, it is followed by
       // N "VERTEX" entities and ended with a "SEQEND" entity.

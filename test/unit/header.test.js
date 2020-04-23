@@ -9,15 +9,17 @@ describe('header', () => {
   it('can parse the header', () => {
     const parsed = parseString(dxfContents)
     expect(parsed.header).toEqual({
-      'extMin': {
-        'x': 0,
-        'y': 0,
-        'z': 0
+      measurement: 1,
+      insUnits: 4,
+      extMin: {
+        x: 0,
+        y: 0,
+        z: 0
       },
-      'extMax': {
-        'x': 100,
-        'y': 99.2820323027551,
-        'z': 0
+      extMax: {
+        x: 100,
+        y: 99.2820323027551,
+        z: 0
       }
     })
   })
