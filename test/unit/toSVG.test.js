@@ -20,7 +20,8 @@ const dxfsFilenames = ['elliptical-arc1.dxf',
   'elliptical-arc14.dxf',
   'arc15.dxf',
   'arc16.dxf',
-  'arc17.dxf'
+  'arc17.dxf',
+  'squircle2.dxf'
 ]
 
 // Load and parse DXFs
@@ -74,6 +75,21 @@ expect.extend({
       return {
         pass: false,
         message: () => `expected ${received} to contain 'path d="M ${a} ${b} A ${c} ${d} ${e} ${f} ${g} ${h} ${i}"'`
+      }
+    }
+  },
+  toBePolyline (received) {
+    const re = /path d="([ML][-0-9.e]+,[-0-9.e]+)+"/
+    const result = re.exec(received)
+    if (result) {
+      return {
+        pass: true,
+        message: () => `expected ${received} to not be a path containing only M and L commands`
+      }
+    } else {
+      return {
+        pass: false,
+        message: () => `expected ${received} to be a path containing only M and L commands`
       }
     }
   }
@@ -148,5 +164,10 @@ describe('toSVG', () => {
     const svg17 = toSVG(dxfs['arc17.dxf'])
     expect(svg17).toMatchViewbox(-48.5, -23.649355077918734, 94.75, 54.899355077918806)
     expect(svg17).toMatchArc(46.25, 21.75, 81.76917590658614, 81.76917590658614, 0, 0, 1, -48.5, -31.25)
+  })
+
+  it('splines with weights should use polyline, not bezier', () => {
+    const squircle2 = toSVG(dxfs['squircle2.dxf'])
+    expect(squircle2).toBePolyline()
   })
 })

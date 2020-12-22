@@ -237,7 +237,8 @@ const entityToBoundsAndElement = (entity) => {
     case 'ARC':
       return arc(entity)
     case 'SPLINE': {
-      if ((entity.degree === 2) || (entity.degree === 3)) {
+      const hasWeights = entity.weights && entity.weights.some(w => w !== 1)
+      if (((entity.degree === 2) || (entity.degree === 3)) && !hasWeights) {
         try {
           return bezier(entity)
         } catch (err) {
