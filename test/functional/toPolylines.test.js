@@ -83,7 +83,8 @@ const names = [
   'issue53',
   'threeDFaces',
   'array-rotated',
-  'arrayed-holes'
+  'arrayed-holes',
+  'squircle2'
 ]
 const dxfs = names.map(name => require(`../resources/${name}.dxf`))
 const svgs = dxfs.map(contents => toSVG(new Helper(contents).toPolylines()))
