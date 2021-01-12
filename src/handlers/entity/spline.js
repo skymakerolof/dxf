@@ -24,6 +24,11 @@ export const process = (tuples) => {
       case 40:
         entity.knots.push(value)
         break
+      case 41:
+        // Only create weights if needed
+        if (!entity.weights) entity.weights = []
+        entity.weights.push(value)
+        break
       case 42:
         entity.knotTolerance = value
         break

@@ -5,6 +5,9 @@ import expect from 'expect'
 import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/splines.dxf'), 'utf-8')
 
+// A spline containing control point weights
+const dxfSquircle = fs.readFileSync(join(__dirname, '/../resources/squircle2.dxf'), 'utf-8')
+
 describe('SPLINE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
@@ -63,5 +66,22 @@ describe('SPLINE', () => {
       extrusionY: 0,
       extrusionZ: 0
     })
+  })
+
+  it('parses control weights', () => {
+    const entities = parseString(dxfSquircle).entities
+    expect(entities.length).toEqual(1)
+
+    expect(entities[0].weights).toEqual([
+      1,
+      0.7071067811865476,
+      1,
+      0.7071067811865476,
+      1,
+      0.7071067811865476,
+      1,
+      0.7071067811865476,
+      1
+    ])
   })
 })
