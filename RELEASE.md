@@ -1,3 +1,6 @@
+4.4.4
+- Fix typo in README
+
 4.3.0
 - #51 Fix bug when transforming empty bounding box
 
