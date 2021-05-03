@@ -1,6 +1,6 @@
 {
   "name": "dxf",
-  "version": "4.4.4",
+  "version": "4.5.4",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
   "bin": {
@@ -73,7 +73,6 @@
     "commander": "^2.20.3",
     "lodash": "^4.17.15",
     "pretty-data": "^0.40.0",
-    "round10": "^1.0.3",
     "vecks": "^3.9.0"
   },
   "standard": {
