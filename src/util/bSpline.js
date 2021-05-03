@@ -1,4 +1,4 @@
-import { round10 } from 'round10'
+import round10 from './round10'
 
 /**
  * Copied and ported to code standard as the b-spline library is not maintained any longer.
