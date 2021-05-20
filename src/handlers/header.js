@@ -23,6 +23,10 @@ export default (tuples) => {
         header.extMax = {}
         state = 'extMax'
         break
+      case '$DIMASZ':
+        header.dimArrowSize = {}
+        state = 'dimArrowSize'
+        break
       default:
         switch (state) {
           case 'extMin':
@@ -52,6 +56,17 @@ export default (tuples) => {
             }
             break
           }
+          case 'dimArrowSize':
+            {
+              switch (type) {
+                case 40: {
+                  header[state] = value
+                  state = undefined
+                  break
+                }
+              }
+              break
+            }
         }
     }
   })
