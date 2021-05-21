@@ -57,16 +57,16 @@ export default (tuples) => {
             break
           }
           case 'dimArrowSize':
-            {
-              switch (type) {
-                case 40: {
-                  header[state] = value
-                  state = undefined
-                  break
-                }
+          {
+            switch (type) {
+              case 40: {
+                header[state] = value
+                state = undefined
+                break
               }
-              break
             }
+            break
+          }
         }
     }
   })

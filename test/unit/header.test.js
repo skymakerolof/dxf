@@ -21,7 +21,7 @@ describe('header', () => {
         y: 99.2820323027551,
         z: 0
       },
-      dimArrowSize: 144,
+      dimArrowSize: 2.5
     })
   })
 })
