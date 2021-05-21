@@ -35,7 +35,7 @@ describe('Group entities', () => {
       return byLayer[layer].length
     })
     expect(layerEntityCounts).toEqual([
-      2, 55, 131, 45, 1, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2
+      2, 118, 131, 45, 1, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2
     ])
   })
 })
