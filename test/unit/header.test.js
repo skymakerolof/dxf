@@ -20,7 +20,8 @@ describe('header', () => {
         x: 100,
         y: 99.2820323027551,
         z: 0
-      }
+      },
+      dimArrowSize: 2.5
     })
   })
 })

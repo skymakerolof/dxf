@@ -12,6 +12,7 @@ import solid from './entity/solid'
 import mtext from './entity/mtext'
 import insert from './entity/insert'
 import threeDFace from './entity/threeDFace'
+import dimension from './entity/dimension'
 
 const handlers = [
   point,
@@ -26,6 +27,7 @@ const handlers = [
   solid,
   mtext,
   insert,
+  dimension,
   threeDFace
 ].reduce((acc, mod) => {
   acc[mod.TYPE] = mod
