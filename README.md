@@ -124,3 +124,4 @@ will execute the unit tests.
 - Teja https://github.com/hungerpirat
 - Jakob Pallhuber https://github.com/Joge97
 - Eric Mansfield https://github.com/ericman314
+- Kristofer https://github.com/kriffe
