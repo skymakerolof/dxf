@@ -13,10 +13,10 @@ describe('Group entities', () => {
 
     expect(Object.keys(byLayer)).toEqual([
       '0',
-      'A-DIMS-1',
       'A-NOTE',
-      'ANNTEXT',
       'A-TEXT',
+      'A-DIMS-1',
+      'ANNTEXT',
       'xref-Bishop-Overland-08$0$A-WALL',
       'xref-Bishop-Overland-08$0$A-CASE-1',
       'xref-Bishop-Overland-08$0$A-OPENING',
@@ -35,7 +35,7 @@ describe('Group entities', () => {
       return byLayer[layer].length
     })
     expect(layerEntityCounts).toEqual([
-      2, 118, 131, 45, 1, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2
+      2, 183, 31, 118, 52, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2
     ])
   })
 })

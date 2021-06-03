@@ -6,7 +6,7 @@ import { parseString } from '../../src'
 const dxfContents = fs.readFileSync(join(__dirname, '/../resources/texts-in-block.dxf'), 'utf-8')
 
 describe('TEXT', () => {
-  it.only('can be parsed', () => {
+  it('can be parsed', () => {
     const result = parseString(dxfContents)
     const entities = result.entities
     const blocks = result.blocks
