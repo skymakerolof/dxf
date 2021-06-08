@@ -95,7 +95,7 @@ export const process = (tuples) => {
   })
 }
 
-/*
+/**
  * From DXF Reference for DIMENSION
  * Values 0-6 are integer values that represent the dimension type. Values 32, 64, and 128
  * are bit values, which are added to the integer values (value 32 is always set in R13 and
