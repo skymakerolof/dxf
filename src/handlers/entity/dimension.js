@@ -90,8 +90,7 @@ export const process = (tuples) => {
     measureEnd: { x: 0, y: 0, z: 0 },
     textMidpoint: { x: 0, y: 0, z: 0 },
     attachementPoint: 1,
-    dimensionType: 0,
-    extrudeDirection: { x: 0, y: 0, z: 1 }
+    dimensionType: 0
   })
 }
 
