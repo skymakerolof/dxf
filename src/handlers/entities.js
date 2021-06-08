@@ -13,6 +13,7 @@ import mtext from './entity/mtext'
 import insert from './entity/insert'
 import threeDFace from './entity/threeDFace'
 import dimension from './entity/dimension'
+import text from './entity/text'
 
 const handlers = [
   point,
@@ -26,6 +27,7 @@ const handlers = [
   spline,
   solid,
   mtext,
+  text,
   insert,
   dimension,
   threeDFace
