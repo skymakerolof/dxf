@@ -51,7 +51,6 @@ describe('DIMENSION', () => {
       textMidpoint: { x: 88.15777111112607, y: 121.3576419471065, z: 0 },
       measureStart: { x: 187.8323741464143, y: 148.1076419471065, z: 0 },
       measureEnd: { x: 109.5740206784428, y: 94.60764194710634, z: 0 },
-      extrudeDirection: { x: 0, y: 0, z: 1 },
       rotation: 90,
       layer: '0'
     })
