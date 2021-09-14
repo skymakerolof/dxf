@@ -4,6 +4,7 @@ import { Box2 } from 'vecks'
 import entityToPolyline from './entityToPolyline'
 import denormalise from './denormalise'
 import getRGBForEntity from './getRGBForEntity'
+import getOpacityForEntity from './getOpacityForEntity'
 import logger from './util/logger'
 import rotate from './util/rotate'
 import rgbToColorAttribute from './util/rgbToColorAttribute'
@@ -11,7 +12,8 @@ import toPiecewiseBezier, { multiplicity } from './util/toPiecewiseBezier'
 import transformBoundingBoxAndElement from './util/transformBoundingBoxAndElement'
 
 const addFlipXIfApplicable = (entity, { bbox, element }) => {
-  if (entity.extrusionZ === -1) {
+  // workaround: flipping horizontally does not apply to ellipse
+  if (entity.extrusionZ === -1 && entity.type !== 'ELLIPSE') {
     return {
       bbox: new Box2()
         .expandByPoint({ x: -bbox.min.x, y: bbox.min.y })
@@ -30,14 +32,22 @@ const addFlipXIfApplicable = (entity, { bbox, element }) => {
  */
 const polyline = (entity) => {
   const vertices = entityToPolyline(entity)
-  const bbox = vertices.reduce((acc, [x, y]) => acc.expandByPoint({ x, y }), new Box2())
+  const bbox0 = vertices.reduce((acc, [x, y]) => acc.expandByPoint({ x, y }), new Box2())
   const d = vertices.reduce((acc, point, i) => {
     acc += (i === 0) ? 'M' : 'L'
     acc += point[0] + ',' + point[1]
     return acc
   }, '')
-  // Empirically it appears that flipping horzontally does not apply to polyline
-  return transformBoundingBoxAndElement(bbox, `<path d="${d}" />`, entity.transforms)
+  const element0 = `<path d="${d}" />`
+  // workaround: apply flipping horizontally to lwpolyline
+  if (entity.type === 'LWPOLYLINE') {
+    const { bbox, element } = addFlipXIfApplicable(entity, { bbox: bbox0, element: element0 })
+    return transformBoundingBoxAndElement(bbox, element, entity.transforms)
+  } else {
+    // Empirically it appears that flipping horizontally does not apply to polyline
+    const { bbox, element } = { bbox: bbox0, element: element0 }
+    return transformBoundingBoxAndElement(bbox, element, entity.transforms)
+  }
 }
 
 /**
@@ -263,6 +273,7 @@ export default (parsed) => {
   const entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce((acc, entity, i) => {
     const rgb = getRGBForEntity(parsed.tables.layers, entity)
+    const opacity = getOpacityForEntity(entity)
     const boundsAndElement = entityToBoundsAndElement(entity)
     // Ignore entities like MTEXT that don't produce SVG elements
     if (boundsAndElement) {
@@ -272,7 +283,7 @@ export default (parsed) => {
         acc.bbox.expandByPoint(bbox.min)
         acc.bbox.expandByPoint(bbox.max)
       }
-      acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}">${element}</g>`)
+      acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}" stroke-opacity="${opacity}">${element}</g>`)
     }
     return acc
   }, {
