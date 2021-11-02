@@ -272,7 +272,10 @@ export default (parsed) => {
         acc.bbox.expandByPoint(bbox.min)
         acc.bbox.expandByPoint(bbox.max)
       }
-      acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}">${element}</g>`)
+      // Add layer as property
+      entity.layer ? 
+        acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}" layer="${entity.layer}">${element}</g>`) :
+        acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}">${element}</g>`);
     }
     return acc
   }, {
