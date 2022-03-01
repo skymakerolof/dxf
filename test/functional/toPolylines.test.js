@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { render } from 'react-dom'
 import { HashRouter, Switch, Route, Link } from 'react-router-dom'
-import { pd } from 'pretty-data'
 
 import { Helper, config } from '../../src'
 import rgbToColorAttribute from '../../src/util/rgbToColorAttribute'
@@ -48,7 +47,7 @@ const toSVG = ({ bbox, polylines }) => {
   >
     ${paths.join('\n')}
 </svg>`
-  return pd.xml(svgString)
+  return svgString
 }
 
 const names = [

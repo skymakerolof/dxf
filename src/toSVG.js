@@ -1,4 +1,3 @@
-import { pd } from 'pretty-data'
 import { Box2 } from 'vecks'
 
 import entityToPolyline from './entityToPolyline'
@@ -302,7 +301,7 @@ export default (parsed) => {
   width="100%" height="100%"
 >
   <g stroke="#000000" stroke-width="0.1%" fill="none" transform="matrix(1,0,0,-1,0,0)">
-    ${pd.xml(elements.join('\n'))}
+    ${elements.join('\n')}
   </g>
 </svg>`
 }

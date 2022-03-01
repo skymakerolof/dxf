@@ -72,7 +72,6 @@
   "dependencies": {
     "commander": "^2.20.3",
     "lodash": "^4.17.15",
-    "pretty-data": "^0.40.0",
     "vecks": "^3.9.0"
   },
   "standard": {
