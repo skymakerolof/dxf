@@ -1,3 +1,6 @@
+4.6.2
+- Remove importing unused parts of lodash
+
 4.4.4
 - Fix typo in README
 
