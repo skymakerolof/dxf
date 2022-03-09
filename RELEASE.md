@@ -1,3 +1,6 @@
+4.6.3
+- Remove dependency on pretty-data (#85)
+
 4.6.2
 - Remove import of unused parts of lodash
 
