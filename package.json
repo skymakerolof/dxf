@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bjnortier/dxf.git"
+    "url": "git://github.com/skymakerolof/dxf.git"
   },
   "keywords": [
     "DXF",
@@ -31,9 +31,9 @@
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bjnortier/dxf/issues"
+    "url": "https://github.com/skymakerolof/dxf/issues"
   },
-  "homepage": "https://github.com/bjnortier/dxf",
+  "homepage": "https://github.com/skymakerolof/dxf",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
