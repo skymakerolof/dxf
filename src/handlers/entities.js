@@ -14,6 +14,7 @@ import insert from './entity/insert'
 import threeDFace from './entity/threeDFace'
 import dimension from './entity/dimension'
 import text from './entity/text'
+import attrib from './entity/attrib'
 
 const handlers = [
   point,
@@ -28,6 +29,7 @@ const handlers = [
   solid,
   mtext,
   text,
+  attrib,
   insert,
   dimension,
   threeDFace
