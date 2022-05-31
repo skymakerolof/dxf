@@ -272,7 +272,13 @@ export default (parsed) => {
         acc.bbox.expandByPoint(bbox.min)
         acc.bbox.expandByPoint(bbox.max)
       }
-      acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}">${element}</g>`)
+      let strokeDashArray = ''
+
+      if (entity.lineTypeName && entity.lineTypeName.toLowerCase() !== 'continuous') {
+        strokeDashArray = 'stroke-dasharray="5,5"'
+      }
+
+      acc.elements.push(`<g stroke="${rgbToColorAttribute(rgb)}" ${strokeDashArray}>${element}</g>`)
     }
     return acc
   }, {
