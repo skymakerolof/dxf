@@ -2,6 +2,7 @@ import headerHandler from './handlers/header'
 import tablesHandler from './handlers/tables'
 import blocksHandler from './handlers/blocks'
 import entitiesHandler from './handlers/entities'
+import objectsHandler from './handlers/objects'
 import logger from './util/logger'
 
 // Parse the value into the native representation
@@ -67,6 +68,9 @@ const reduceSection = (acc, section) => {
     case 'ENTITIES':
       acc.entities = entitiesHandler(contentTuples)
       break
+    case 'OBJECTS':
+      acc.objects = objectsHandler(contentTuples)
+      break
     default:
       logger.warn(`Unsupported section: ${sectionType}`)
   }
@@ -82,6 +86,7 @@ export default (string) => {
     header: {},
     blocks: [],
     entities: [],
+    objects: {},
     tables: { layers: {}, styles: {} }
   })
   return result

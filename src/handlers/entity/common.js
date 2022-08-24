@@ -29,6 +29,12 @@ export default (type, value) => {
       return {
         colorNumber: value
       }
+    case 67:
+      // Paper space or sheet.
+      // Absent or zero indicates entity is in model space. 1 indicates entity is in paper space (optional)
+      return value === 0 ? {} : {
+        paperSpace: value
+      }
     case 210:
       return {
         extrusionX: value
@@ -40,6 +46,10 @@ export default (type, value) => {
     case 230:
       return {
         extrusionZ: value
+      }
+    case 410:
+      return {
+        layout: value
       }
     default:
       return {}
