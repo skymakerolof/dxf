@@ -40,10 +40,9 @@ export default (tuples) => {
         case 30:
           block.z = value
           break
-        case 67: { 
-            if( value !== 0 ) 
-              block.paperSpace = value 
-          } break
+        case 67:
+          { if( value !== 0 ) block.paperSpace = value }
+          break
         case 410:
           block.layout = value
           break
