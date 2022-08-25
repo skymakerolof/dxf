@@ -1,6 +1,6 @@
 
 export default (tuples) => {
-	let state = 'IDLE'
+	let state
 	let objects = {
 		layouts: []
 	}
@@ -15,7 +15,7 @@ export default (tuples) => {
 	  if (value === 'LAYOUT') {
 		state = 'layout'
 		layout = {}
-		objects.layouts.push( layout )
+		objects.layouts.push(layout)
 	  }
 	  if( state === 'layout' && type !== 0 ) {
 		//wait until AcDbLayout shows up
@@ -28,31 +28,31 @@ export default (tuples) => {
 		switch ( type ) {
 			case 1: { layout.name = value; } break;
 			case 5: { layout.handle = value; } break;
-			case 10: { layout.minLimitX = value; } break;
-			case 20: { layout.minLimitY = value; } break;
-			case 11: { layout.maxLimitX = value; } break;
-			case 21: { layout.maxLimitY = value; } break;
-			case 12: { layout.x = value; } break;
-			case 22: { layout.y = value; } break;
-			case 32: { layout.z = value; } break;
-			case 14: { layout.minX = value; } break;
-			case 24: { layout.minY = value; } break;
-			case 34: { layout.minZ = value; } break;
-			case 15: { layout.maxX = value; } break;
-			case 25: { layout.maxY = value; } break;
-			case 35: { layout.maxZ = value; } break;
+			case 10: { layout.minLimitX = parseFloat( value ); } break;
+			case 20: { layout.minLimitY = parseFloat( value ); } break;
+			case 11: { layout.maxLimitX = parseFloat( value ); } break;
+			case 21: { layout.maxLimitY = parseFloat( value ); } break;
+			case 12: { layout.x = parseFloat( value ); } break;
+			case 22: { layout.y = parseFloat( value ); } break;
+			case 32: { layout.z = parseFloat( value ); } break;
+			case 14: { layout.minX = parseFloat( value ); } break;
+			case 24: { layout.minY = parseFloat( value ); } break;
+			case 34: { layout.minZ = parseFloat( value ); } break;
+			case 15: { layout.maxX = parseFloat( value ); } break;
+			case 25: { layout.maxY = parseFloat( value ); } break;
+			case 35: { layout.maxZ = parseFloat( value ); } break;
 			case 70: { layout.flag = value === 1 ? 'PSLTSCALE' : 'LIMCHECK' ; } break;
 			case 71: { layout.tabOrder = value; } break;
-			case 146: { layout.elevation = value; } break;
-			case 13: { layout.ucsX = value; } break;
-			case 23: { layout.ucsY = value; } break;
-			case 33: { layout.ucsZ = value; } break;
-			case 16: { layout.ucsXaxisZ = value; } break;
-			case 26: { layout.ucsXaxisY = value; } break;
-			case 36: { layout.ucsXaxisZ = value; } break;
-			case 17: { layout.ucsYaxisZ = value; } break;
-			case 27: { layout.ucsYaxisY = value; } break;
-			case 37: { layout.ucsYaxisZ = value; } break;
+			case 146: { layout.elevation = parseFloat( value ); } break;
+			case 13: { layout.ucsX = parseFloat( value ); } break;
+			case 23: { layout.ucsY = parseFloat( value ); } break;
+			case 33: { layout.ucsZ = parseFloat( value ); } break;
+			case 16: { layout.ucsXaxisX = parseFloat( value ); } break;
+			case 26: { layout.ucsXaxisY = parseFloat( value ); } break;
+			case 36: { layout.ucsXaxisZ = parseFloat( value ); } break;
+			case 17: { layout.ucsYaxisX = parseFloat( value ); } break;
+			case 27: { layout.ucsYaxisY = parseFloat( value ); } break;
+			case 37: { layout.ucsYaxisZ = parseFloat( value ); } break;
 			case 76: { 
 				switch ( value ) {
 					case 0: { layout.ucsType = 'NOT ORTHOGRAPHIC'; } break;
