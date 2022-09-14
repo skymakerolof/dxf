@@ -1,5 +1,10 @@
 export default (type, value) => {
   switch (type) {
+    case 5: {
+      return {
+        handle: value
+      }
+    }
     case 6:
       // Linetype name (present if not BYLAYER).
       // The special name BYBLOCK indicates a
@@ -34,6 +39,16 @@ export default (type, value) => {
       // Absent or zero indicates entity is in model space. 1 indicates entity is in paper space (optional)
       return value === 0 ? {} : {
         paperSpace: value
+      }
+    case 68:
+      // Identifies whether viewport is on but fully off screen, is not active, or is off
+      return {
+        viewportOn: value
+      }
+    case 69:
+      // Viewport identification number
+      return {
+        viewport: value
       }
     case 210:
       return {
