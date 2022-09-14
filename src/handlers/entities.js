@@ -9,6 +9,7 @@ import arc from './entity/arc'
 import ellipse from './entity/ellipse'
 import spline from './entity/spline'
 import solid from './entity/solid'
+import hatch from './entity/hatch'
 import mtext from './entity/mtext'
 import insert from './entity/insert'
 import threeDFace from './entity/threeDFace'
@@ -27,6 +28,7 @@ const handlers = [
   ellipse,
   spline,
   solid,
+  hatch,
   mtext,
   text,
   insert,
