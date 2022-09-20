@@ -56,17 +56,7 @@ export const process = (tuples) => {
     const type = tuple[0]
     const value = tuple[1]
 
-    if (simpleCodes[type] !== undefined) {
-      entity[simpleCodes[type]] = value
-    } else if ((type === 1) || (type === 3)) {
-      entity.string += value
-    } else if (type === 50) {
-      // Rotation angle in radians
-      entity.xAxisX = Math.cos(value)
-      entity.xAxisY = Math.sin(value)
-    } else {
-      Object.assign(entity, common(type, value))
-    }
+    assign( entity, type, value )
 
     return entity
   }, {
@@ -75,4 +65,20 @@ export const process = (tuples) => {
   })
 }
 
-export default { TYPE, process }
+export const assign = (entity, type, value) => {
+  if (simpleCodes[type] !== undefined) {
+    entity[simpleCodes[type]] = value
+  } else if ((type === 1) || (type === 3)) {
+    entity.string += value
+  } else if (type === 50) {
+    // Rotation angle in radians
+    entity.xAxisX = Math.cos(value)
+    entity.xAxisY = Math.sin(value)
+  } else {
+    Object.assign(entity, common(type, value))
+  }
+
+  return entity
+}
+
+export default { TYPE, process, assign }
