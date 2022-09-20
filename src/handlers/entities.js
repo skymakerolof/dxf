@@ -11,6 +11,8 @@ import spline from './entity/spline'
 import solid from './entity/solid'
 import hatch from './entity/hatch'
 import mtext from './entity/mtext'
+import attdef from './entity/attdef'
+import attrib from './entity/attrib'
 import insert from './entity/insert'
 import threeDFace from './entity/threeDFace'
 import dimension from './entity/dimension'
@@ -30,6 +32,8 @@ const handlers = [
   solid,
   hatch,
   mtext,
+  attdef,
+  attrib,
   text,
   insert,
   dimension,
