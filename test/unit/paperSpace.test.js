@@ -8,7 +8,7 @@ const dxfContents = fs.readFileSync(join(__dirname, '/../resources/testModelPape
 describe('PAPERSPACE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    let circle = entities.find( e => e.type === 'CIRCLE' )
+    const circle = entities.find(e => e.type === 'CIRCLE')
 
     expect(circle.paperSpace).toEqual(1)
   })
