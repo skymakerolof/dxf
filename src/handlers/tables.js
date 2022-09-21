@@ -185,7 +185,6 @@ const vPortHandler = (tuples) => {
       center: {},
       lowerLeft: {},
       upperRight: {},
-      center: {},
       snap: {},
       snapSpacing: {},
       gridSpacing: {},
