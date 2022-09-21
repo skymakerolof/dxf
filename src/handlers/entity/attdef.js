@@ -211,7 +211,8 @@ export const assign = (entity, type, value) => {
             break
           case 'AcDbXrecord':
             {
-              if (typeof entity.mTextFlag === 'undefined') entity.mTextFlag
+              if (typeof entity.mTextFlag === 'undefined')
+                entity.mTextFlag = value
               else if (typeof entity.isReallyLocked === 'undefined')
                 entity.isReallyLocked = value
               else entity.secondaryAttdefCount = value
