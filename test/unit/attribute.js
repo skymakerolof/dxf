@@ -12,7 +12,6 @@ describe('ATTRIBUTE', () => {
   it('can be parsed', () => {
     const _parsed = parseString(dxfContents)
     const attribute = _parsed.entities.find((e) => e.type === 'ATTRIB')
-    const attdef = _parsed.blocks[5].entities.find((e) => e.type === 'ATTDEF')
 
     expect(attribute).toEqual({
       type: 'ATTRIB',
