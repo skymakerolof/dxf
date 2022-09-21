@@ -18,10 +18,7 @@ const simpleCodes = {
   7: 'styleName',
   71: 'mirror',
   72: 'hAlign',
-  73: 'vAlign',
-  210: 'extX',
-  220: 'extY',
-  230: 'extZ'
+  73: 'vAlign'
 }
 
 // const EXCEPTION_STRINGS = ['\\A1;', '%%u']
@@ -31,11 +28,7 @@ export const process = (tuples) => {
     const type = tuple[0]
     const value = tuple[1]
 
-    if (simpleCodes[type] !== undefined) {
-      entity[simpleCodes[type]] = value
-    } else {
-      Object.assign(entity, common(type, value))
-    }
+    assign(entity, type, value)
 
     return entity
   }, {
@@ -44,4 +37,12 @@ export const process = (tuples) => {
   })
 }
 
-export default { TYPE, process }
+export const assign = ( entity, type, value ) => {
+  if (simpleCodes[type] !== undefined) {
+    entity[simpleCodes[type]] = value
+  } else {
+    Object.assign(entity, common(type, value))
+  }
+}
+
+export default { TYPE, process, assign }
