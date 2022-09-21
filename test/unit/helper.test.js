@@ -5,7 +5,10 @@ import { parseString } from 'xml2js'
 import { Box2 } from 'vecks'
 
 import { Helper } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/1x1rectangle.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/1x1rectangle.dxf'),
+  'utf-8',
+)
 
 describe('Helper', () => {
   it('should be constructed with a string', () => {
@@ -44,10 +47,20 @@ describe('Helper', () => {
   it('can output polylines', () => {
     const helper = new Helper(dxfContents)
     const { bbox, polylines } = helper.toPolylines()
-    expect(bbox.equals(new Box2({ x: 0, y: 0 }, { x: 10, y: 10 }))).toEqual(true)
-    expect(polylines).toEqual([{
-      rgb: [0, 0, 79],
-      vertices: [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]]
-    }])
+    expect(bbox.equals(new Box2({ x: 0, y: 0 }, { x: 10, y: 10 }))).toEqual(
+      true,
+    )
+    expect(polylines).toEqual([
+      {
+        rgb: [0, 0, 79],
+        vertices: [
+          [0, 0],
+          [10, 0],
+          [10, 10],
+          [0, 10],
+          [0, 0],
+        ],
+      },
+    ])
   })
 })

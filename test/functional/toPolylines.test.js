@@ -11,7 +11,7 @@ config.verbose = true
 const polylineToPath = (rgb, polyline) => {
   const colorAttrib = rgbToColorAttribute(rgb)
   const d = polyline.reduce(function (acc, point, i) {
-    acc += (i === 0) ? 'M' : 'L'
+    acc += i === 0 ? 'M' : 'L'
     acc += point[0] + ',' + point[1]
     return acc
   }, '')
@@ -23,7 +23,7 @@ const polylineToPath = (rgb, polyline) => {
  */
 const toSVG = ({ bbox, polylines }) => {
   const paths = polylines.map((polyline, i) => {
-    const vertices = polyline.vertices.map(v => {
+    const vertices = polyline.vertices.map((v) => {
       return [v[0], -v[1]]
     })
     return polylineToPath(polyline.rgb, vertices)
@@ -31,9 +31,15 @@ const toSVG = ({ bbox, polylines }) => {
 
   // If the DXF is empty the bounding box will have +-Infinity values,
   // so clamp values to zero in this case
-  const viewBox = bbox.min.x === Infinity
-    ? { x: 0, y: 0, width: 0, height: 0 }
-    : { x: bbox.min.x, y: -bbox.max.y, width: bbox.max.x - bbox.min.x, height: bbox.max.y - bbox.min.y }
+  const viewBox =
+    bbox.min.x === Infinity
+      ? { x: 0, y: 0, width: 0, height: 0 }
+      : {
+          x: bbox.min.x,
+          y: -bbox.max.y,
+          width: bbox.max.x - bbox.min.x,
+          height: bbox.max.y - bbox.min.y,
+        }
 
   const svgString = `
 <?xml version="1.0"?>
@@ -83,17 +89,20 @@ const names = [
   'threeDFaces',
   'array-rotated',
   'arrayed-holes',
-  'squircle2'
+  'squircle2',
 ]
-const dxfs = names.map(name => require(`../resources/${name}.dxf`))
-const svgs = dxfs.map(contents => toSVG(new Helper(contents).toPolylines()))
+const dxfs = names.map((name) => require(`../resources/${name}.dxf`))
+const svgs = dxfs.map((contents) => toSVG(new Helper(contents).toPolylines()))
 
 const Thumbnail = ({ index, name, svg }) => (
-  <Link
-    to={`/${index}`}
-  >
+  <Link to={`/${index}`}>
     <div
-      style={{ display: 'inline-block', margin: 20, padding: 20, backgroundColor: '#fff' }}
+      style={{
+        display: 'inline-block',
+        margin: 20,
+        padding: 20,
+        backgroundColor: '#fff',
+      }}
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   </Link>
@@ -102,13 +111,15 @@ const Thumbnail = ({ index, name, svg }) => (
 Thumbnail.propTypes = {
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  svg: PropTypes.string.isRequired
+  svg: PropTypes.string.isRequired,
 }
 
 // All the test cases
 const All = () => (
   <div>
-    {svgs.map((svg, i) => <Thumbnail key={i} index={i} name={names[i]} svg={svg} />)}
+    {svgs.map((svg, i) => (
+      <Thumbnail key={i} index={i} name={names[i]} svg={svg} />
+    ))}
   </div>
 )
 
@@ -123,7 +134,7 @@ const One = (props) => {
 }
 
 One.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
 }
 
 render(
@@ -134,4 +145,6 @@ render(
         <Route path='/:index' component={One} />
       </Switch>
     </div>
-  </HashRouter>, document.getElementById('contents'))
+  </HashRouter>,
+  document.getElementById('contents'),
+)

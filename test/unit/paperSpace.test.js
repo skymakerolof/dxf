@@ -3,12 +3,15 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/testModelPaperSpace.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/testModelPaperSpace.dxf'),
+  'utf-8',
+)
 
 describe('PAPERSPACE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
-    const circle = entities.find(e => e.type === 'CIRCLE')
+    const circle = entities.find((e) => e.type === 'CIRCLE')
 
     expect(circle.paperSpace).toEqual(1)
   })

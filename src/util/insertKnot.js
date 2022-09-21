@@ -54,7 +54,7 @@ export default (k, controlPoints, knots, newKnot) => {
     } else {
       bHat[j] = {
         x: (1 - alpha) * b[j - 1].x + alpha * b[j].x,
-        y: (1 - alpha) * b[j - 1].y + alpha * b[j].y
+        y: (1 - alpha) * b[j - 1].y + alpha * b[j].y,
       }
     }
   }

@@ -3,8 +3,9 @@ import { join } from 'path'
 
 import { Helper } from '../src'
 
-const helper = new Helper(fs.readFileSync(
-  './test/resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8'))
+const helper = new Helper(
+  fs.readFileSync('./test/resources/Ceco.NET-Architecture-Tm-53.dxf', 'utf-8'),
+)
 
 // The parsed entities
 const { blocks, entities } = helper.parsed
@@ -18,7 +19,7 @@ console.log(`denormalised: ${helper.denormalised.length} entities.\n`)
 const groups = helper.groups
 console.log('grouped entities')
 console.log('----------------')
-Object.keys(groups).forEach(layer => {
+Object.keys(groups).forEach((layer) => {
   console.log(`${layer}: ${groups[layer].length}`)
 })
 console.log('\n')

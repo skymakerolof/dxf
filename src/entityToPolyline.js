@@ -12,7 +12,7 @@ const rotate = (points, angle) => {
   return points.map(function (p) {
     return [
       p[0] * Math.cos(angle) - p[1] * Math.sin(angle),
-      p[1] * Math.cos(angle) + p[0] * Math.sin(angle)
+      p[1] * Math.cos(angle) + p[0] * Math.sin(angle),
     ]
   })
 }
@@ -35,18 +35,12 @@ const interpolateEllipse = (cx, cy, rx, ry, start, end, rotationAngle) => {
 
   // Start point
   let points = []
-  const dTheta = Math.PI * 2 / 72
+  const dTheta = (Math.PI * 2) / 72
   const EPS = 1e-6
   for (let theta = start; theta < end - EPS; theta += dTheta) {
-    points.push([
-      Math.cos(theta) * rx,
-      Math.sin(theta) * ry
-    ])
+    points.push([Math.cos(theta) * rx, Math.sin(theta) * ry])
   }
-  points.push([
-    Math.cos(end) * rx,
-    Math.sin(end) * ry
-  ])
+  points.push([Math.cos(end) * rx, Math.sin(end) * ry])
 
   // ----- Rotate -----
   if (rotationAngle) {
@@ -72,7 +66,13 @@ const interpolateEllipse = (cx, cy, rx, ry, start, end, rotationAngle) => {
  * @param knots the knot vector
  * @returns the polyline
  */
-export const interpolateBSpline = (controlPoints, degree, knots, interpolationsPerSplineSegment, weights) => {
+export const interpolateBSpline = (
+  controlPoints,
+  degree,
+  knots,
+  interpolationsPerSplineSegment,
+  weights,
+) => {
   const polyline = []
   const controlPointsForLib = controlPoints.map(function (p) {
     return [p.x, p.y]
@@ -92,7 +92,7 @@ export const interpolateBSpline = (controlPoints, degree, knots, interpolationsP
     const uMin = segmentTs[i - 1]
     const uMax = segmentTs[i]
     for (let k = 0; k <= interpolationsPerSplineSegment; ++k) {
-      const u = k / interpolationsPerSplineSegment * (uMax - uMin) + uMin
+      const u = (k / interpolationsPerSplineSegment) * (uMax - uMin) + uMin
       // Clamp t to 0, 1 to handle numerical precision issues
       let t = (u - domain[0]) / (domain[1] - domain[0])
       t = Math.max(t, 0)
@@ -115,18 +115,12 @@ export default (entity, options) => {
 
   if (entity.type === 'LINE') {
     polyline = [
-      [
-        entity.start.x,
-        entity.start.y
-      ],
-      [
-        entity.end.x,
-        entity.end.y
-      ]
+      [entity.start.x, entity.start.y],
+      [entity.end.x, entity.end.y],
     ]
   }
 
-  if ((entity.type === 'LWPOLYLINE') || (entity.type === 'POLYLINE')) {
+  if (entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') {
     polyline = []
     if (entity.polygonMesh || entity.polyfaceMesh) {
       // Do not attempt to render meshes
@@ -140,7 +134,8 @@ export default (entity, options) => {
         polyline.push(from)
         if (entity.vertices[i].bulge) {
           polyline = polyline.concat(
-            createArcForLWPolyine(from, to, entity.vertices[i].bulge))
+            createArcForLWPolyine(from, to, entity.vertices[i].bulge),
+          )
         }
         // The last iteration of the for loop
         if (i === il - 2) {
@@ -154,9 +149,13 @@ export default (entity, options) => {
 
   if (entity.type === 'CIRCLE') {
     polyline = interpolateEllipse(
-      entity.x, entity.y,
-      entity.r, entity.r,
-      0, Math.PI * 2)
+      entity.x,
+      entity.y,
+      entity.r,
+      entity.r,
+      0,
+      Math.PI * 2,
+    )
     if (entity.extrusionZ === -1) {
       polyline = polyline.map(function (p) {
         return [-p[0], p[1]]
@@ -165,15 +164,20 @@ export default (entity, options) => {
   }
 
   if (entity.type === 'ELLIPSE') {
-    const rx = Math.sqrt(entity.majorX * entity.majorX + entity.majorY * entity.majorY)
+    const rx = Math.sqrt(
+      entity.majorX * entity.majorX + entity.majorY * entity.majorY,
+    )
     const ry = entity.axisRatio * rx
     const majorAxisRotation = -Math.atan2(-entity.majorY, entity.majorX)
     polyline = interpolateEllipse(
-      entity.x, entity.y,
-      rx, ry,
+      entity.x,
+      entity.y,
+      rx,
+      ry,
       entity.startAngle,
       entity.endAngle,
-      majorAxisRotation)
+      majorAxisRotation,
+    )
     if (entity.extrusionZ === -1) {
       polyline = polyline.map(function (p) {
         return [-p[0], p[1]]
@@ -185,12 +189,15 @@ export default (entity, options) => {
     // Why on earth DXF has degree start & end angles for arc,
     // and radian start & end angles for ellipses is a mystery
     polyline = interpolateEllipse(
-      entity.x, entity.y,
-      entity.r, entity.r,
+      entity.x,
+      entity.y,
+      entity.r,
+      entity.r,
       entity.startAngle,
       entity.endAngle,
       undefined,
-      false)
+      false,
+    )
 
     // I kid you not, ARCs and ELLIPSEs handle this differently,
     // as evidenced by how AutoCAD actually renders these entities
@@ -207,7 +214,8 @@ export default (entity, options) => {
       entity.degree,
       entity.knots,
       options.interpolationsPerSplineSegment,
-      entity.weights)
+      entity.weights,
+    )
   }
 
   if (!polyline) {

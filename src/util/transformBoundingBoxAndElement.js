@@ -7,13 +7,13 @@ import { Box2 } from 'vecks'
  */
 export default (bbox, element, transforms) => {
   let transformedElement = ''
-  const matrices = transforms.map(transform => {
+  const matrices = transforms.map((transform) => {
     // Create the transformation matrix
     const tx = transform.x || 0
     const ty = transform.y || 0
     const sx = transform.scaleX || 1
     const sy = transform.scaleY || 1
-    const angle = (transform.rotation || 0) / 180 * Math.PI
+    const angle = ((transform.rotation || 0) / 180) * Math.PI
     const { cos, sin } = Math
     let a, b, c, d, e, f
     // In DXF an extrusionZ value of -1 denote a tranform around the Y axis.
@@ -42,12 +42,12 @@ export default (bbox, element, transforms) => {
       { x: bbox.min.x, y: bbox.min.y },
       { x: bbox.max.x, y: bbox.min.y },
       { x: bbox.max.x, y: bbox.max.y },
-      { x: bbox.min.x, y: bbox.max.y }
+      { x: bbox.min.x, y: bbox.max.y },
     ]
     matrices.forEach(([a, b, c, d, e, f]) => {
-      bboxPoints = bboxPoints.map(point => ({
+      bboxPoints = bboxPoints.map((point) => ({
         x: point.x * a + point.y * c + e,
-        y: point.x * b + point.y * d + f
+        y: point.x * b + point.y * d + f,
       }))
     })
     transformedBBox = bboxPoints.reduce((acc, point) => {
@@ -60,7 +60,7 @@ export default (bbox, element, transforms) => {
     transformedElement += `<g transform="matrix(${a} ${b} ${c} ${d} ${e} ${f})">`
   })
   transformedElement += element
-  matrices.forEach(transform => {
+  matrices.forEach((transform) => {
     transformedElement += '</g>'
   })
 

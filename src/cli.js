@@ -15,12 +15,16 @@ commander
     if (options.verbose) {
       const groups = groupEntitiesByLayer(denormalise(parsed))
       console.log('[layer : number of entities]')
-      Object.keys(groups).forEach(layer => {
+      Object.keys(groups).forEach((layer) => {
         console.log(`${layer} : ${groups[layer].length}`)
       })
     }
 
-    fs.writeFileSync(svgFile || `${dxfFile.split('.').slice(0, -1).join('.')}.svg`, toSVG(parsed), 'utf-8')
+    fs.writeFileSync(
+      svgFile || `${dxfFile.split('.').slice(0, -1).join('.')}.svg`,
+      toSVG(parsed),
+      'utf-8',
+    )
   })
   .parse(process.argv)
 

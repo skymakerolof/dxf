@@ -4,7 +4,10 @@ import expect from 'expect'
 
 import { parseString } from '../../src'
 
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/lwpolylines.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/lwpolylines.dxf'),
+  'utf-8',
+)
 
 describe('LWPOLYLINE', () => {
   it('can be parsed', () => {
@@ -16,18 +19,18 @@ describe('LWPOLYLINE', () => {
         { x: 10, y: 40 },
         { x: 70, y: 0 },
         { x: 80, y: 20 },
-        { x: 50, y: 60 }
+        { x: 50, y: 60 },
       ],
       layer: '0',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
-      handle: "4D",
-      closed: true
+      handle: '4D',
+      closed: true,
     })
 
     expect(entities[1]).toEqual({
       type: 'LWPOLYLINE',
-      handle: "4E",
+      handle: '4E',
       vertices: [
         { x: 10, y: 60 },
         { x: 0, y: 90 },
@@ -35,12 +38,12 @@ describe('LWPOLYLINE', () => {
         { x: 20, y: 110 },
         { x: 50, y: 80 },
         { x: 40, y: 120 },
-        { x: 60, y: 100 }
+        { x: 60, y: 100 },
       ],
       layer: '0',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
-      closed: false
+      closed: false,
     })
   })
 })

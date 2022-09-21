@@ -38,7 +38,7 @@ const handlers = [
   insert,
   dimension,
   threeDFace,
-  viewport
+  viewport,
 ].reduce((acc, mod) => {
   acc[mod.TYPE] = mod
   return acc

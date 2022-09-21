@@ -39,17 +39,20 @@ const names = [
   'threeDFaces',
   'array-rotated',
   'arrayed-holes',
-  'squircle2'
+  'squircle2',
 ]
-const dxfs = names.map(name => require(`../resources/${name}.dxf`))
-const svgs = dxfs.map(contents => new Helper(contents).toSVG())
+const dxfs = names.map((name) => require(`../resources/${name}.dxf`))
+const svgs = dxfs.map((contents) => new Helper(contents).toSVG())
 
 const Thumbnail = ({ index, name, svg }) => (
-  <Link
-    to={`/${index}`}
-  >
+  <Link to={`/${index}`}>
     <div
-      style={{ display: 'inline-block', margin: 20, padding: 20, backgroundColor: '#fff' }}
+      style={{
+        display: 'inline-block',
+        margin: 20,
+        padding: 20,
+        backgroundColor: '#fff',
+      }}
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   </Link>
@@ -58,13 +61,15 @@ const Thumbnail = ({ index, name, svg }) => (
 Thumbnail.propTypes = {
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  svg: PropTypes.string.isRequired
+  svg: PropTypes.string.isRequired,
 }
 
 // All the test cases
 const All = () => (
   <div>
-    {svgs.map((svg, i) => <Thumbnail key={i} index={i} name={names[i]} svg={svg} />)}
+    {svgs.map((svg, i) => (
+      <Thumbnail key={i} index={i} name={names[i]} svg={svg} />
+    ))}
   </div>
 )
 
@@ -79,7 +84,7 @@ const One = (props) => {
 }
 
 One.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
 }
 
 render(
@@ -90,4 +95,6 @@ render(
         <Route path='/:index' component={One} />
       </Switch>
     </div>
-  </HashRouter>, document.getElementById('contents'))
+  </HashRouter>,
+  document.getElementById('contents'),
+)

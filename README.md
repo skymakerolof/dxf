@@ -14,16 +14,16 @@ Version 4.x is in progress and the aim is to use native SVG elements where possi
 
 At this point in time, the important geometric entities are supported, but notably:
 
- * MTEXT
- * DIMENSION
- * STYLE
- * HATCH
+- MTEXT
+- DIMENSION
+- STYLE
+- HATCH
 
 and some others are **parsed**, but are **not supported for SVG rendering** (see section below on SVG rendering)
 
 ## Getting started
 
-There is an ES5 and ES6 example in the ```examples/``` directory that show how to use the library. There are exposed functions for advanced users, but for the majority of users you can use the `Helper` object to get the data you're interested in (or convert to SVG):
+There is an ES5 and ES6 example in the `examples/` directory that show how to use the library. There are exposed functions for advanced users, but for the majority of users you can use the `Helper` object to get the data you're interested in (or convert to SVG):
 
 ```
 const helper = new Helper(<DXF String>)
@@ -64,9 +64,9 @@ $ open examples/dxf.html
 
 ## SVG
 
-Geometric elements are supported, but dimensions, text, hatches and styles (except for line colors) are ***not***.
+Geometric elements are supported, but dimensions, text, hatches and styles (except for line colors) are **_not_**.
 
-Native SVG elements are used as far as possible for curved entities (`<circle />`, `<ellipse/>` etc.), ***except for the SPLINE entity***, which is interpolated.
+Native SVG elements are used as far as possible for curved entities (`<circle />`, `<ellipse/>` etc.), **_except for the SPLINE entity_**, which is interpolated.
 
 Here's an example you will find in the functional test output:
 
@@ -76,11 +76,9 @@ Here's an example you will find in the functional test output:
 
 The library supports outputting DXFs as interpolated polylines for custom rendering (e.g. WebGL) or other applications, by using:
 
-
 ```
 > helper.toPolylines()
 ```
-
 
 ## Command line
 
@@ -105,11 +103,11 @@ $ dxf-to-svg
 
 Running
 
-```$ npm test```
+`$ npm test`
 
 will execute the unit tests.
 
-```$ npm run test:functional``` will run the functional tests in a browser. Please open `toSVG.html` when the file listing loads in the browser (or open `http://localhost:8030/toSVG.html#/`).
+`$ npm run test:functional` will run the functional tests in a browser. Please open `toSVG.html` when the file listing loads in the browser (or open `http://localhost:8030/toSVG.html#/`).
 
 ### Contributors
 

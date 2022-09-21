@@ -7,11 +7,11 @@ import logger from './util/logger'
 
 // Parse the value into the native representation
 const parseValue = (type, value) => {
-  if ((type >= 10) && (type < 60)) {
+  if (type >= 10 && type < 60) {
     return parseFloat(value, 10)
-  } else if ((type >= 210) && (type < 240)) {
+  } else if (type >= 210 && type < 240) {
     return parseFloat(value, 10)
-  } else if ((type >= 60) && (type < 100)) {
+  } else if (type >= 60 && type < 100) {
     return parseInt(value, 10)
   } else {
     return value
@@ -38,9 +38,9 @@ const convertToTypesAndValues = (contentLines) => {
 const separateSections = (tuples) => {
   let sectionTuples
   return tuples.reduce((sections, tuple) => {
-    if ((tuple[0] === 0) && (tuple[1] === 'SECTION')) {
+    if (tuple[0] === 0 && tuple[1] === 'SECTION') {
       sectionTuples = []
-    } else if ((tuple[0] === 0) && (tuple[1] === 'ENDSEC')) {
+    } else if (tuple[0] === 0 && tuple[1] === 'ENDSEC') {
       sections.push(sectionTuples)
       sectionTuples = undefined
     } else if (sectionTuples !== undefined) {
@@ -87,7 +87,7 @@ export default (string) => {
     blocks: [],
     entities: [],
     objects: { layouts: [] },
-    tables: { layers: {}, styles: {} }
+    tables: { layers: {}, styles: {} },
   })
   return result
 }

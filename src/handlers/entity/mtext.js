@@ -48,27 +48,30 @@ const simpleCodes = {
   79: 'columnAutoheight',
   48: 'columnWidth',
   49: 'columnGutter',
-  50: 'columnHeights'
+  50: 'columnHeights',
 }
 
 export const process = (tuples) => {
-  return tuples.reduce((entity, tuple) => {
-    const type = tuple[0]
-    const value = tuple[1]
+  return tuples.reduce(
+    (entity, tuple) => {
+      const type = tuple[0]
+      const value = tuple[1]
 
-    assign( entity, type, value )
+      assign(entity, type, value)
 
-    return entity
-  }, {
-    type: TYPE,
-    string: ''
-  })
+      return entity
+    },
+    {
+      type: TYPE,
+      string: '',
+    },
+  )
 }
 
 export const assign = (entity, type, value) => {
   if (simpleCodes[type] !== undefined) {
     entity[simpleCodes[type]] = value
-  } else if ((type === 1) || (type === 3)) {
+  } else if (type === 1 || type === 3) {
     entity.string += value
   } else if (type === 50) {
     // Rotation angle in radians

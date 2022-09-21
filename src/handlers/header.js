@@ -56,8 +56,7 @@ export default (tuples) => {
             }
             break
           }
-          case 'dimArrowSize':
-          {
+          case 'dimArrowSize': {
             switch (type) {
               case 40: {
                 header[state] = value

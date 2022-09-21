@@ -3,7 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/circlesellipsesarcs.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/circlesellipsesarcs.dxf'),
+  'utf-8',
+)
 
 describe('CIRCLE ELLIPSE ARC', () => {
   it('can be parsed', () => {
@@ -12,7 +15,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
 
     expect(entities[0]).toEqual({
       type: 'ELLIPSE',
-      handle: "4D",
+      handle: '4D',
       colorNumber: 256,
       layer: '0',
       lineTypeName: 'ByLayer',
@@ -24,11 +27,11 @@ describe('CIRCLE ELLIPSE ARC', () => {
       majorZ: 0,
       x: 140,
       y: 50,
-      z: 0
+      z: 0,
     })
     expect(entities[1]).toEqual({
       type: 'ELLIPSE',
-      handle: "4E",
+      handle: '4E',
       axisRatio: 0.5205479452054796,
       colorNumber: 256,
       layer: '0',
@@ -40,41 +43,41 @@ describe('CIRCLE ELLIPSE ARC', () => {
       majorZ: 0,
       x: 130,
       y: 180,
-      z: 0
+      z: 0,
     })
     expect(entities[2]).toEqual({
       type: 'ARC',
       layer: '0',
-      handle: "4F",
+      handle: '4F',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       startAngle: 3.141592653589793,
       endAngle: 0.19739555984988089,
       x: 50,
       y: 140,
-      r: 50
+      r: 50,
     })
     expect(entities[3]).toEqual({
       type: 'ARC',
       layer: '0',
-      handle: "50",
+      handle: '50',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       startAngle: 5.355890089177973,
       endAngle: 0.540419500270584,
       x: 0,
       y: 210,
-      r: 58.309518948453
+      r: 58.309518948453,
     })
     expect(entities[4]).toEqual({
       type: 'CIRCLE',
       layer: '0',
-      handle: "51",
+      handle: '51',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       x: 20,
       y: 30,
-      r: 40
+      r: 40,
     })
   })
 })

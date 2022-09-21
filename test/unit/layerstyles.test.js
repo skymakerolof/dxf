@@ -3,8 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(
-  __dirname, '/../resources/Ceco.NET-Architecture-Tm-53.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/Ceco.NET-Architecture-Tm-53.dxf'),
+  'utf-8',
+)
 
 describe('Layer Styles', () => {
   it('can be parsed', () => {
@@ -22,11 +24,11 @@ describe('Layer Styles', () => {
       Defpoints: { colorNumber: 7 },
       topography: { colorNumber: 132 },
       plants: { colorNumber: 83 },
-      'Ceco.NET 53': { colorNumber: 254 }
+      'Ceco.NET 53': { colorNumber: 254 },
     }
 
     const reduced = {}
-    Object.keys(result.tables.layers).forEach(name => {
+    Object.keys(result.tables.layers).forEach((name) => {
       const l = result.tables.layers[name]
       reduced[name] = { colorNumber: l.colorNumber }
     })

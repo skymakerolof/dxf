@@ -34,45 +34,53 @@ export default (from, to, bulge, resolution) => {
   const c = a.add(ab.multiply(0.5))
 
   // Distance from center of arc to line between form and to points
-  const lengthCD = Math.abs((lengthAB / 2) / Math.tan(theta / 2))
+  const lengthCD = Math.abs(lengthAB / 2 / Math.tan(theta / 2))
   const normAB = ab.norm()
 
   let d
   if (theta < Math.PI) {
     const normDC = new V2(
       normAB.x * Math.cos(Math.PI / 2) - normAB.y * Math.sin(Math.PI / 2),
-      normAB.y * Math.cos(Math.PI / 2) + normAB.x * Math.sin(Math.PI / 2))
+      normAB.y * Math.cos(Math.PI / 2) + normAB.x * Math.sin(Math.PI / 2),
+    )
     // D is the center of the arc
     d = c.add(normDC.multiply(-lengthCD))
   } else {
     const normCD = new V2(
       normAB.x * Math.cos(Math.PI / 2) - normAB.y * Math.sin(Math.PI / 2),
-      normAB.y * Math.cos(Math.PI / 2) + normAB.x * Math.sin(Math.PI / 2))
+      normAB.y * Math.cos(Math.PI / 2) + normAB.x * Math.sin(Math.PI / 2),
+    )
     // D is the center of the arc
     d = c.add(normCD.multiply(lengthCD))
   }
 
   // Add points between start start and eng angle relative
   // to the center point
-  const startAngle = Math.atan2(b.y - d.y, b.x - d.x) / Math.PI * 180
-  let endAngle = Math.atan2(a.y - d.y, a.x - d.x) / Math.PI * 180
+  const startAngle = (Math.atan2(b.y - d.y, b.x - d.x) / Math.PI) * 180
+  let endAngle = (Math.atan2(a.y - d.y, a.x - d.x) / Math.PI) * 180
   if (endAngle < startAngle) {
     endAngle += 360
   }
   const r = b.sub(d).length()
 
-  const startInter = Math.floor(startAngle / resolution) * resolution + resolution
+  const startInter =
+    Math.floor(startAngle / resolution) * resolution + resolution
   const endInter = Math.ceil(endAngle / resolution) * resolution - resolution
 
   const points = []
   for (let i = startInter; i <= endInter; i += resolution) {
-    points.push(d.add(new V2(
-      Math.cos(i / 180 * Math.PI) * r,
-      Math.sin(i / 180 * Math.PI) * r)))
+    points.push(
+      d.add(
+        new V2(
+          Math.cos((i / 180) * Math.PI) * r,
+          Math.sin((i / 180) * Math.PI) * r,
+        ),
+      ),
+    )
   }
   // Maintain the right ordering to join the from and to points
   if (bulge < 0) {
     points.reverse()
   }
-  return points.map(p => [p.x, p.y])
+  return points.map((p) => [p.x, p.y])
 }

@@ -7,7 +7,8 @@ import { parseString, denormalise, groupEntitiesByLayer } from '../../src'
 describe('Group entities', () => {
   it('by layer', () => {
     const parsed = parseString(
-      fs.readFileSync(join(__dirname, '../resources/floorplan.dxf'), 'utf-8'))
+      fs.readFileSync(join(__dirname, '../resources/floorplan.dxf'), 'utf-8'),
+    )
     const entities = denormalise(parsed)
     const byLayer = groupEntitiesByLayer(entities)
 
@@ -29,14 +30,14 @@ describe('Group entities', () => {
       'xref-Bishop-Overland-08$0$S-SLAB',
       'xref-Bishop-Overland-08$0$TEMP',
       'xref-Bishop-Overland-08$0$A-FIXTURE',
-      "View Port"
+      'View Port',
     ])
 
-    const layerEntityCounts = Object.keys(byLayer).map(layer => {
+    const layerEntityCounts = Object.keys(byLayer).map((layer) => {
       return byLayer[layer].length
     })
     expect(layerEntityCounts).toEqual([
-      4, 183, 31, 131, 52, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2,1
+      4, 183, 31, 131, 52, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2, 1,
     ])
   })
 })

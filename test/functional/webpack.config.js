@@ -11,34 +11,32 @@ module.exports = {
     'toPolylines.test': [
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
-      path.resolve(__dirname, 'toPolylines.test.js')
+      path.resolve(__dirname, 'toPolylines.test.js'),
     ],
     'toSVG.test': [
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
-      path.resolve(__dirname, 'toSVG.test.js')
+      path.resolve(__dirname, 'toSVG.test.js'),
     ],
     'toBezier.test': [
       `webpack-dev-server/client?http://localhost:${port}`,
       'webpack/hot/dev-server',
-      path.resolve(__dirname, 'toBezier.test.js')
-    ]
+      path.resolve(__dirname, 'toBezier.test.js'),
+    ],
   },
   output: {
     path: path.resolve(__dirname),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     port,
     after: (app, server) => {
       open(`http://localhost:${port}`)
-    }
+    },
   },
   resolve: {
-    modules: [path.resolve('..', '..', 'node_modules'), 'node_modules']
+    modules: [path.resolve('..', '..', 'node_modules'), 'node_modules'],
   },
   module: {
     rules: [
@@ -48,23 +46,23 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/react', '@babel/env']
-            }
-          }
+              presets: ['@babel/react', '@babel/env'],
+            },
+          },
         ],
         include: [
           fs.realpathSync(path.resolve(__dirname)),
-          fs.realpathSync(path.resolve(__dirname, '..', '..', 'src'))
-        ]
+          fs.realpathSync(path.resolve(__dirname, '..', '..', 'src')),
+        ],
       },
       {
         test: /\.dxf$/,
         use: [
           {
-            loader: 'raw-loader'
-          }
-        ]
-      }
-    ]
-  }
+            loader: 'raw-loader',
+          },
+        ],
+      },
+    ],
+  },
 }

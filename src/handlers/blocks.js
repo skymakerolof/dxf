@@ -23,7 +23,7 @@ export default (tuples) => {
       }
       entitiesTuples = undefined
       state = undefined
-    } else if ((state === 'block') && (type !== 0)) {
+    } else if (state === 'block' && type !== 0) {
       switch (type) {
         case 1:
           block.xref = value
@@ -41,7 +41,9 @@ export default (tuples) => {
           block.z = value
           break
         case 67:
-          { if( value !== 0 ) block.paperSpace = value }
+          {
+            if (value !== 0) block.paperSpace = value
+          }
           break
         case 410:
           block.layout = value
@@ -49,7 +51,7 @@ export default (tuples) => {
         default:
           break
       }
-    } else if ((state === 'block') && (type === 0)) {
+    } else if (state === 'block' && type === 0) {
       state = 'entities'
       entitiesTuples.push(tuple)
     } else if (state === 'entities') {

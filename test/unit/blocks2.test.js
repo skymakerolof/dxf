@@ -3,7 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/blocks2.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/blocks2.dxf'),
+  'utf-8',
+)
 
 describe('BLOCK 2', () => {
   it('can be parsed', () => {
@@ -15,7 +18,7 @@ describe('BLOCK 2', () => {
       x: 0,
       xref: '',
       y: 0,
-      z: 0
+      z: 0,
     })
     expect(blocks[1]).toEqual({
       name: '*Paper_Space',
@@ -23,28 +26,28 @@ describe('BLOCK 2', () => {
       x: 0,
       xref: '',
       y: 0,
-      z: 0
+      z: 0,
     })
 
     const entities2 = blocks[2].entities
-    delete (blocks[2].entities)
+    delete blocks[2].entities
     expect(blocks[2]).toEqual({
       name: 'block_insert',
       x: 0,
       xref: '',
-      y: 0
+      y: 0,
     })
     expect(entities2.length).toEqual(2)
     expect(entities2[0].type).toEqual('INSERT')
     expect(entities2[1].type).toEqual('INSERT')
 
     const entities3 = blocks[3].entities
-    delete (blocks[3].entities)
+    delete blocks[3].entities
     expect(blocks[3]).toEqual({
       name: 'block01',
       x: 0,
       xref: '',
-      y: 0
+      y: 0,
     })
     expect(entities3.length).toEqual(6)
     expect(entities3[0].type).toEqual('LINE')
@@ -55,12 +58,12 @@ describe('BLOCK 2', () => {
     expect(entities3[5].type).toEqual('MTEXT')
 
     const entities4 = blocks[4].entities
-    delete (blocks[4].entities)
+    delete blocks[4].entities
     expect(blocks[4]).toEqual({
       name: 'block02',
       x: 0,
       xref: '',
-      y: 0
+      y: 0,
     })
     expect(entities4.length).toEqual(5)
     expect(entities4[0].type).toEqual('LINE')

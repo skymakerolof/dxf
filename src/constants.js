@@ -3,5 +3,5 @@ export const ZERO_TRANSFORM = {
   y: 0,
   xScale: 1,
   yScale: 1,
-  rotation: 0
+  rotation: 0,
 }

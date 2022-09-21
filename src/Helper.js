@@ -6,7 +6,7 @@ import toPolylines from './toPolylines'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 
 export default class Helper {
-  constructor (contents) {
+  constructor(contents) {
     if (!(typeof contents === 'string')) {
       throw Error('Helper constructor expects a DXF string')
     }
@@ -15,48 +15,48 @@ export default class Helper {
     this._denormalised = null
   }
 
-  parse () {
+  parse() {
     this._parsed = parseString(this._contents)
     logger.info('parsed:', this.parsed)
     return this._parsed
   }
 
-  get parsed () {
+  get parsed() {
     if (this._parsed === null) {
       this.parse()
     }
     return this._parsed
   }
 
-  denormalise () {
+  denormalise() {
     this._denormalised = denormalise(this.parsed)
     logger.info('denormalised:', this._denormalised)
     return this._denormalised
   }
 
-  get denormalised () {
+  get denormalised() {
     if (!this._denormalised) {
       this.denormalise()
     }
     return this._denormalised
   }
 
-  group () {
+  group() {
     this._groups = groupEntitiesByLayer(this.denormalised)
   }
 
-  get groups () {
+  get groups() {
     if (!this._groups) {
       this.group()
     }
     return this._groups
   }
 
-  toSVG () {
+  toSVG() {
     return toSVG(this.parsed)
   }
 
-  toPolylines () {
+  toPolylines() {
     return toPolylines(this.parsed)
   }
 }

@@ -1,23 +1,23 @@
 import config from '../config'
 
-function info () {
+function info() {
   if (config.verbose) {
     console.info.apply(undefined, arguments)
   }
 }
 
-function warn () {
+function warn() {
   if (config.verbose) {
     console.warn.apply(undefined, arguments)
   }
 }
 
-function error () {
+function error() {
   console.error.apply(undefined, arguments)
 }
 
 export default {
   info,
   warn,
-  error
+  error,
 }

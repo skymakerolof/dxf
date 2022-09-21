@@ -1,4 +1,3 @@
-
 /**
  * Apply the transforms to the polyline.
  *
@@ -7,7 +6,7 @@
  * @returns the transformed polyline
  */
 export default (polyline, transforms) => {
-  transforms.forEach(transform => {
+  transforms.forEach((transform) => {
     polyline = polyline.map(function (p) {
       // Use a copy to avoid side effects
       let p2 = [p[0], p[1]]
@@ -18,10 +17,10 @@ export default (polyline, transforms) => {
         p2[1] = p2[1] * transform.scaleY
       }
       if (transform.rotation) {
-        const angle = transform.rotation / 180 * Math.PI
+        const angle = (transform.rotation / 180) * Math.PI
         p2 = [
           p2[0] * Math.cos(angle) - p2[1] * Math.sin(angle),
-          p2[1] * Math.cos(angle) + p2[0] * Math.sin(angle)
+          p2[1] * Math.cos(angle) + p2[0] * Math.sin(angle),
         ]
       }
       if (transform.x) {

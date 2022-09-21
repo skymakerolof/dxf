@@ -3,7 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/blocks1.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/blocks1.dxf'),
+  'utf-8',
+)
 
 describe('INSERT', () => {
   it('can be parsed', () => {
@@ -15,7 +18,7 @@ describe('INSERT', () => {
       block: 'a',
       lineTypeName: 'ByLayer',
       layer: '0',
-      handle: "55",
+      handle: '55',
       colorNumber: 256,
       columnCount: 1,
       columnSpacing: 1,
@@ -27,7 +30,7 @@ describe('INSERT', () => {
       z: 0,
       scaleX: 1,
       scaleY: 1,
-      scaleZ: 0
+      scaleZ: 0,
     })
 
     expect(entities[1]).toEqual({
@@ -35,7 +38,7 @@ describe('INSERT', () => {
       block: 'a',
       lineTypeName: 'ByLayer',
       layer: '0',
-      handle: "56",
+      handle: '56',
       colorNumber: 256,
       columnCount: 1,
       columnSpacing: 2,
@@ -47,7 +50,7 @@ describe('INSERT', () => {
       z: 0,
       scaleX: 2,
       scaleY: 1,
-      scaleZ: 0
+      scaleZ: 0,
     })
   })
 })

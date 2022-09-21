@@ -10,7 +10,7 @@ describe('Insert knot', () => {
       { x: 10, y: 10 },
       { x: 0, y: 10 },
       { x: 0, y: 20 },
-      { x: 10, y: 20 }
+      { x: 10, y: 20 },
     ]
     const k = 4
     const knots = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
@@ -28,7 +28,7 @@ describe('Insert knot', () => {
       { x: 6.666666666666668, y: 10 },
       { x: 0, y: 10 },
       { x: 0, y: 20 },
-      { x: 10, y: 20 }
+      { x: 10, y: 20 },
     ])
     expect(newSpline.knots).toEqual([0, 0, 0, 0, 1, 1, 2, 3, 3, 3, 3])
   })

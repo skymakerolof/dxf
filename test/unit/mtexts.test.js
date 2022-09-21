@@ -3,7 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/texts.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/texts.dxf'),
+  'utf-8',
+)
 
 describe('MTEXT', () => {
   it('can be parsed', () => {
@@ -15,7 +18,7 @@ describe('MTEXT', () => {
       layer: '0',
       string: 'ISO TEXT',
       styleName: 'iso',
-      handle: "4F",
+      handle: '4F',
       colorNumber: 256,
       nominalTextHeight: 20,
       x: 0,
@@ -30,7 +33,7 @@ describe('MTEXT', () => {
       lineSpacingFactor: 1,
       lineSpacingStyle: 2,
       lineTypeName: 'ByLayer',
-      refRectangleWidth: 121.6666624266237
+      refRectangleWidth: 121.6666624266237,
     })
     expect(entities[1]).toEqual({
       type: 'MTEXT',
@@ -45,14 +48,14 @@ describe('MTEXT', () => {
       extrusionX: 0,
       extrusionY: 0,
       extrusionZ: 1,
-      handle: "50",
+      handle: '50',
       attachmentPoint: 7,
       columnHeights: 0,
       drawingDirection: 1,
       lineSpacingFactor: 1,
       lineSpacingStyle: 2,
       lineTypeName: 'ByLayer',
-      refRectangleWidth: 282.5000000000001
+      refRectangleWidth: 282.5000000000001,
     })
   })
 })

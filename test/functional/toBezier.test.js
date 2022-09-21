@@ -12,7 +12,7 @@ const controlPoints = [
   { x: 10, y: 10 },
   { x: 0, y: 10 },
   { x: 0, y: 20 },
-  { x: 10, y: 20 }
+  { x: 10, y: 20 },
 ]
 const k = 4
 const knots = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
@@ -32,7 +32,7 @@ const interpolated0 = interpolateBSpline(controlPoints, k - 1, knots)
 
 const polylineToPath = (polyline) => {
   const d = polyline.reduce(function (acc, point, i) {
-    acc += (i === 0) ? 'M' : 'L'
+    acc += i === 0 ? 'M' : 'L'
     acc += point[0] + ',' + point[1]
     return acc
   }, '')
@@ -40,8 +40,17 @@ const polylineToPath = (polyline) => {
 }
 
 const piecewise = toPiecewiseBezier(k, controlPoints, knots)
-const interpolated1 = interpolateBSpline(piecewise.controlPoints, k - 1, piecewise.knots)
-const paths = piecewiseToPaths(k, piecewise.knots, piecewise.controlPoints, k.knots)
+const interpolated1 = interpolateBSpline(
+  piecewise.controlPoints,
+  k - 1,
+  piecewise.knots,
+)
+const paths = piecewiseToPaths(
+  k,
+  piecewise.knots,
+  piecewise.controlPoints,
+  k.knots,
+)
 
 render(
   <HashRouter>
@@ -52,7 +61,12 @@ render(
         width='200'
         height='400'
       >
-        <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
+        <g
+          stroke='#000'
+          fill='none'
+          strokeWidth='0.1'
+          transform='matrix(1,0,0,-1,0,0)'
+        >
           {polylineToPath(interpolated0)}
         </g>
       </svg>
@@ -62,7 +76,12 @@ render(
         width='200'
         height='400'
       >
-        <g stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'>
+        <g
+          stroke='#000'
+          fill='none'
+          strokeWidth='0.1'
+          transform='matrix(1,0,0,-1,0,0)'
+        >
           {polylineToPath(interpolated1)}
         </g>
       </svg>
@@ -73,10 +92,14 @@ render(
         height='400'
       >
         <g
-          stroke='#000' fill='none' strokeWidth='0.1' transform='matrix(1,0,0,-1,0,0)'
+          stroke='#000'
+          fill='none'
+          strokeWidth='0.1'
+          transform='matrix(1,0,0,-1,0,0)'
           dangerouslySetInnerHTML={{ __html: paths }}
         />
       </svg>
     </div>
   </HashRouter>,
-  document.getElementById('contents'))
+  document.getElementById('contents'),
+)

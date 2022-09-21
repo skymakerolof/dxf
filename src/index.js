@@ -15,5 +15,5 @@ export {
   toPolylines,
   toSVG,
   colors,
-  Helper
+  Helper,
 }

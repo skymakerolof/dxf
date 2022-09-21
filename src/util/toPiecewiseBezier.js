@@ -56,7 +56,10 @@ export const computeInsertions = (k, knots) => {
 export default (k, controlPoints, knots) => {
   checkPinned(k, knots)
   const insertions = computeInsertions(k, knots)
-  return insertions.reduce((acc, tNew) => {
-    return insertKnot(k, acc.controlPoints, acc.knots, tNew)
-  }, { controlPoints, knots })
+  return insertions.reduce(
+    (acc, tNew) => {
+      return insertKnot(k, acc.controlPoints, acc.knots, tNew)
+    },
+    { controlPoints, knots },
+  )
 }

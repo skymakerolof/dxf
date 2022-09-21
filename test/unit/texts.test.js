@@ -3,7 +3,10 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/texts-in-block.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/texts-in-block.dxf'),
+  'utf-8',
+)
 
 describe('TEXT', () => {
   it('can be parsed', () => {
@@ -15,12 +18,16 @@ describe('TEXT', () => {
     expect(entities[0].type).toEqual('INSERT')
     expect(blocks.length).toEqual(17)
 
-    const entityBlocks = blocks.filter(block => block.name === entities[0].block)
+    const entityBlocks = blocks.filter(
+      (block) => block.name === entities[0].block,
+    )
     expect(entityBlocks.length).toEqual(1)
     expect(entityBlocks[0].entities.length).toEqual(7)
-    const texts = entityBlocks[0].entities.filter(item => item.type === 'TEXT')
+    const texts = entityBlocks[0].entities.filter(
+      (item) => item.type === 'TEXT',
+    )
     expect(texts[0]).toEqual({
-      handle: "40",
+      handle: '40',
       type: 'TEXT',
       string: 'FIRST FLOOR PLAN',
       layer: 'PEN45',
@@ -30,7 +37,7 @@ describe('TEXT', () => {
       y: -6695.714851337092,
       z: 0,
       textHeight: 23.8125,
-      styleName: 'textstyle11'
+      styleName: 'textstyle11',
     })
   })
 })

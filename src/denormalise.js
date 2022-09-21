@@ -28,8 +28,8 @@ export default (parseResult) => {
         // It appears that the rectangular array is affected by rotation, but NOT by scale.
         let rowVec, colVec
         if (rowCount > 1 || columnCount > 1) {
-          const cos = Math.cos(rotation * Math.PI / 180)
-          const sin = Math.sin(rotation * Math.PI / 180)
+          const cos = Math.cos((rotation * Math.PI) / 180)
+          const sin = Math.sin((rotation * Math.PI) / 180)
           rowVec = { x: -sin * rowSpacing, y: cos * rowSpacing }
           colVec = { x: cos * columnSpacing, y: sin * columnSpacing }
         } else {
@@ -50,7 +50,7 @@ export default (parseResult) => {
               extrusionX: insert.extrusionX,
               extrusionY: insert.extrusionY,
               extrusionZ: insert.extrusionZ,
-              rotation: insert.rotation
+              rotation: insert.rotation,
             }
             // Add the insert transform and recursively add entities
             const transforms2 = transforms.slice(0)
@@ -75,7 +75,7 @@ export default (parseResult) => {
                 }
                 case 'LWPOLYLINE':
                 case 'POLYLINE': {
-                  be2.vertices.forEach(v => {
+                  be2.vertices.forEach((v) => {
                     v.x -= block.x
                     v.y -= block.y
                   })
@@ -89,7 +89,7 @@ export default (parseResult) => {
                   break
                 }
                 case 'SPLINE': {
-                  be2.controlPoints.forEach(cp => {
+                  be2.controlPoints.forEach((cp) => {
                     cp.x -= block.x
                     cp.y -= block.y
                   })

@@ -1,3 +1,3 @@
 export default {
-  verbose: false
+  verbose: false,
 }

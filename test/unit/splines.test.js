@@ -3,10 +3,16 @@ import { join } from 'path'
 import expect from 'expect'
 
 import { parseString } from '../../src'
-const dxfContents = fs.readFileSync(join(__dirname, '/../resources/splines.dxf'), 'utf-8')
+const dxfContents = fs.readFileSync(
+  join(__dirname, '/../resources/splines.dxf'),
+  'utf-8',
+)
 
 // A spline containing control point weights
-const dxfSquircle = fs.readFileSync(join(__dirname, '/../resources/squircle2.dxf'), 'utf-8')
+const dxfSquircle = fs.readFileSync(
+  join(__dirname, '/../resources/squircle2.dxf'),
+  'utf-8',
+)
 
 describe('SPLINE', () => {
   it('can be parsed', () => {
@@ -14,19 +20,19 @@ describe('SPLINE', () => {
     expect(entities.length).toEqual(2)
 
     expect(entities[0]).toEqual({
-      type: 'SPLINE',      
+      type: 'SPLINE',
       layer: '0',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       closed: false,
       flag: 8,
-      handle: "4D",
+      handle: '4D',
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 10, y: 10, z: 0 },
         { x: 50, y: 10, z: 0 },
         { x: 80, y: 40, z: 0 },
-        { x: 90, y: 20, z: 0 }
+        { x: 90, y: 20, z: 0 },
       ],
       degree: 3,
       knotTolerance: 1e-7,
@@ -36,7 +42,7 @@ describe('SPLINE', () => {
       numberOfKnots: 8,
       extrusionX: 0,
       extrusionY: 0,
-      extrusionZ: 0
+      extrusionZ: 0,
     })
 
     expect(entities[1]).toEqual({
@@ -46,7 +52,7 @@ describe('SPLINE', () => {
       colorNumber: 256,
       closed: false,
       flag: 8,
-      handle: "4E",
+      handle: '4E',
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 30, y: 30, z: 0 },
@@ -56,7 +62,7 @@ describe('SPLINE', () => {
         { x: 30, y: 50, z: 0 },
         { x: 20, y: 80, z: 0 },
         { x: 55, y: 100, z: 0 },
-        { x: 90, y: 90, z: 0 }
+        { x: 90, y: 90, z: 0 },
       ],
       degree: 3,
       knotTolerance: 1e-7,
@@ -66,7 +72,7 @@ describe('SPLINE', () => {
       numberOfKnots: 12,
       extrusionX: 0,
       extrusionY: 0,
-      extrusionZ: 0
+      extrusionZ: 0,
     })
   })
 
@@ -75,15 +81,8 @@ describe('SPLINE', () => {
     expect(entities.length).toEqual(1)
 
     expect(entities[0].weights).toEqual([
-      1,
-      0.7071067811865476,
-      1,
-      0.7071067811865476,
-      1,
-      0.7071067811865476,
-      1,
-      0.7071067811865476,
-      1
+      1, 0.7071067811865476, 1, 0.7071067811865476, 1, 0.7071067811865476, 1,
+      0.7071067811865476, 1,
     ])
   })
 })
