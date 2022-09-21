@@ -27,8 +27,10 @@ export const process = (tuples) => {
 
 export const assign = (entity, type, value) => {
   switch (type) {
-    case 100:
+    case 100: {
       entity.subclassMarker = value
+      break
+    }
     case 1:
       switch (entity.subclassMarker) {
         case 'AcDbText':

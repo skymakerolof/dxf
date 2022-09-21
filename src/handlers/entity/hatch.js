@@ -26,7 +26,7 @@ export const process = (tuples) => {
           {
             if (status === 'IDLE') entity.elevation.x = parseFloat(value)
             else if (status === 'POLYLINE' && isPolyline) {
-              let point = { x: parseFloat(value), y: 0 }
+              const point = { x: parseFloat(value), y: 0 }
               loop.entities[0].points.push(point)
             } else if (status === 'SEED') {
               if (!seed) {
@@ -69,19 +69,19 @@ export const process = (tuples) => {
           break
         case 91:
           {
-            //LOOP COUNT
+            // LOOP COUNT
             entity.boundary.count = parseFloat(value)
           }
           break
         case 92:
           {
-            //0 = Default; 1 = External; 2 = Polyline; 4 = Derived; 8 = Textbox; 16 = Outermost
+            // 0 = Default; 1 = External; 2 = Polyline; 4 = Derived; 8 = Textbox; 16 = Outermost
             loop = { references: [], entities: [] }
             entity.boundary.loops.push(loop)
             loop.type = parseFloat(value)
             isPolyline = (loop.type & 2) === 2
             if (isPolyline) {
-              let ent = {
+              const ent = {
                 type: 'POLYLINE',
                 points: [],
               }
@@ -115,8 +115,8 @@ export const process = (tuples) => {
           break
         case 72:
           {
-            //!Polyline --> 1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
-            //Polyline -->  bulge
+            // !Polyline --> 1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
+            // Polyline -->  bulge
             drawType = parseFloat(value)
             loop[isPolyline ? 'bulge' : 'edgeType'] = drawType
             if (!isPolyline) {
@@ -133,17 +133,17 @@ export const process = (tuples) => {
           break
         case 75:
           {
-            //END OF BOUNDARY PATH DATA
-            status === 'IDLE'
+            // END OF BOUNDARY PATH DATA
+            status = 'IDLE'
 
-            //0 = Hatch “odd parity” area (Normal style)
-            //1 = Hatch outermost area only (Outer style)
-            //2 = Hatch through entire area (Ignore style)
+            // 0 = Hatch “odd parity” area (Normal style)
+            // 1 = Hatch outermost area only (Outer style)
+            // 2 = Hatch through entire area (Ignore style)
             entity.style = parseFloat(value)
           }
           break
         case 76:
-          //0 = User-defined; 1 = Predefined; 2 = Custom
+          // 0 = User-defined; 1 = Predefined; 2 = Custom
           entity.hatchType = parseFloat(value)
           break
         case 97:
@@ -200,7 +200,7 @@ export const process = (tuples) => {
             parseFloat(value) === 0 ? 'SOLID' : 'GRADIENT'
           break
         case 453:
-          //0 = Solid; 2 = Gradient
+          // 0 = Solid; 2 = Gradient
           entity.color.count = parseFloat(value)
           break
         case 460:
@@ -235,7 +235,7 @@ export default { TYPE, process }
 function createDrawEntity(type) {
   if (isPolyline) return {}
 
-  //1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
+  // 1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
   switch (type) {
     case 1:
       return {
@@ -328,6 +328,7 @@ function fillDrawEntity(type, drawType, value) {
           }
           break
       }
+      break
     }
     case 11:
       {
@@ -358,6 +359,7 @@ function fillDrawEntity(type, drawType, value) {
           }
           break
       }
+      break
     }
     case 40:
       {

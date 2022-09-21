@@ -1,6 +1,6 @@
 export default (tuples) => {
   let state
-  let objects = {
+  const objects = {
     layouts: [],
   }
   let layout = {}
@@ -17,7 +17,7 @@ export default (tuples) => {
       objects.layouts.push(layout)
     }
     if (state === 'layout' && type !== 0) {
-      //wait until AcDbLayout shows up
+      // wait until AcDbLayout shows up
       switch (type) {
         case 100:
           {
@@ -27,7 +27,7 @@ export default (tuples) => {
       }
     }
     if (state === 'AcDbLayout' && type !== 0) {
-      //save layout attributes
+      // save layout attributes
       switch (type) {
         case 1:
           {
