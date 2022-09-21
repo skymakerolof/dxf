@@ -203,7 +203,7 @@ export const process = (tuples) => {
           //0 = Solid; 2 = Gradient
           entity.color.count = parseFloat(value)
           break
-        case 461:
+        case 460:
           entity.color.rotation = value
           break
         case 461:
