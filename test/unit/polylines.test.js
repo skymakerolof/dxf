@@ -9,8 +9,9 @@ describe('POLYLINE', () => {
   it('can be parsed', () => {
     const entities = parseString(dxfContents).entities
     expect(entities.length).toEqual(2)
-    expect(entities[0]).toEqual({
+    expect(entities[0]).toEqual({      
       closed: true,
+      handle: "6F",
       layer: 'DXF',
       polyfaceMesh: false,
       polygonMesh: false,

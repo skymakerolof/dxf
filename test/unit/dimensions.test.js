@@ -19,6 +19,7 @@ describe('DIMENSION', () => {
       type: 'DIMENSION',
       block: '*D1',
       dimensionType: 0,
+      handle: "5C",
       attachementPoint: 5,
       start: { x: 90, y: 20, z: 0 },
       textMidpoint: { x: 50, y: 21.875, z: 0 },
@@ -43,6 +44,7 @@ describe('DIMENSION', () => {
 
     expect(dimensions[0]).toEqual({
       type: 'DIMENSION',
+      handle: "3026C",
       dimensionType: 0,
       uniqueBlockReference: true,
       userDefinedLocation: true,

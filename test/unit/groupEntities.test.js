@@ -28,14 +28,15 @@ describe('Group entities', () => {
       'xref-Bishop-Overland-08$0$A-FOOTPRINT',
       'xref-Bishop-Overland-08$0$S-SLAB',
       'xref-Bishop-Overland-08$0$TEMP',
-      'xref-Bishop-Overland-08$0$A-FIXTURE'
+      'xref-Bishop-Overland-08$0$A-FIXTURE',
+      "View Port"
     ])
 
     const layerEntityCounts = Object.keys(byLayer).map(layer => {
       return byLayer[layer].length
     })
     expect(layerEntityCounts).toEqual([
-      2, 183, 31, 118, 52, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2
+      4, 183, 31, 131, 52, 177, 199, 159, 1, 26, 87, 27, 8, 5, 1, 3, 2,1
     ])
   })
 })

@@ -12,6 +12,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
 
     expect(entities[0]).toEqual({
       type: 'ELLIPSE',
+      handle: "4D",
       colorNumber: 256,
       layer: '0',
       lineTypeName: 'ByLayer',
@@ -27,6 +28,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
     })
     expect(entities[1]).toEqual({
       type: 'ELLIPSE',
+      handle: "4E",
       axisRatio: 0.5205479452054796,
       colorNumber: 256,
       layer: '0',
@@ -43,6 +45,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
     expect(entities[2]).toEqual({
       type: 'ARC',
       layer: '0',
+      handle: "4F",
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       startAngle: 3.141592653589793,
@@ -54,6 +57,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
     expect(entities[3]).toEqual({
       type: 'ARC',
       layer: '0',
+      handle: "50",
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       startAngle: 5.355890089177973,
@@ -65,6 +69,7 @@ describe('CIRCLE ELLIPSE ARC', () => {
     expect(entities[4]).toEqual({
       type: 'CIRCLE',
       layer: '0',
+      handle: "51",
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       x: 20,

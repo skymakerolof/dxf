@@ -14,12 +14,13 @@ describe('SPLINE', () => {
     expect(entities.length).toEqual(2)
 
     expect(entities[0]).toEqual({
-      type: 'SPLINE',
+      type: 'SPLINE',      
       layer: '0',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
       closed: false,
       flag: 8,
+      handle: "4D",
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 10, y: 10, z: 0 },
@@ -45,6 +46,7 @@ describe('SPLINE', () => {
       colorNumber: 256,
       closed: false,
       flag: 8,
+      handle: "4E",
       controlPointTolerance: 1e-7,
       controlPoints: [
         { x: 30, y: 30, z: 0 },

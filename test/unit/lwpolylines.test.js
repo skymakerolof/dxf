@@ -21,11 +21,13 @@ describe('LWPOLYLINE', () => {
       layer: '0',
       lineTypeName: 'ByLayer',
       colorNumber: 256,
+      handle: "4D",
       closed: true
     })
 
     expect(entities[1]).toEqual({
       type: 'LWPOLYLINE',
+      handle: "4E",
       vertices: [
         { x: 10, y: 60 },
         { x: 0, y: 90 },
