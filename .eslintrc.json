@@ -30,7 +30,6 @@
   "plugins": ["react", "babel"],
   "parser": "babel-eslint",
   "rules": {
-    "jest/valid-describe": 0,
     "no-lone-blocks": "off"
   },
   "settings": {
