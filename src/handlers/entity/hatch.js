@@ -26,8 +26,8 @@ export const process = (tuples) => {
           {
             if (status === 'IDLE') entity.elevation.x = parseFloat(value)
             else if (status === 'POLYLINE' && isPolyline) {
-              const point = { x: parseFloat(value), y: 0 }
-              loop.entities[0].points.push(point)
+              const v = { x: parseFloat(value), y: 0, bulge: 0 }
+              loop.entities[0].vertices.push(v)
             } else if (status === 'SEED') {
               if (!seed) {
                 seed = { x: 0, y: 0 }
@@ -41,7 +41,7 @@ export const process = (tuples) => {
           {
             if (status === 'IDLE') entity.elevation.y = parseFloat(value)
             else if (status === 'POLYLINE' && isPolyline) {
-              loop.entities[0].points[loop.entities[0].points.length - 1].y =
+              loop.entities[0].vertices[loop.entities[0].vertices.length - 1].y =
                 parseFloat(value)
             } else if (status === 'SEED') {
               seed.y = parseFloat(value)
@@ -83,7 +83,7 @@ export const process = (tuples) => {
             if (isPolyline) {
               const ent = {
                 type: 'POLYLINE',
-                points: [],
+                vertices: [],
               }
               loop.entities.push(ent)
               status = 'POLYLINE'
@@ -109,16 +109,16 @@ export const process = (tuples) => {
           break
         case 42:
           {
-            if (isPolyline) loop.bulge = value
+            if (isPolyline) loop.entities[0].vertices[loop.entities[0].vertices.length-1].bulge = value
             else fillDrawEntity(type, drawType, parseFloat(value))
           }
           break
         case 72:
           {
             // !Polyline --> 1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
-            // Polyline -->  bulge
+            // Polyline -->  hasBulge
             drawType = parseFloat(value)
-            loop[isPolyline ? 'bulge' : 'edgeType'] = drawType
+            loop[isPolyline ? 'hasBulge' : 'edgeType'] = drawType
             if (!isPolyline) {
               drawEntity = createDrawEntity(drawType)
               loop.entities.push(drawEntity)
@@ -127,7 +127,7 @@ export const process = (tuples) => {
           break
         case 73:
           {
-            if (status === 'IDLE' || isPolyline) loop.closed = value
+            if (status === 'IDLE' || isPolyline) loop.entities[0].closed = value
             else fillDrawEntity(type, drawType, parseFloat(value))
           }
           break
@@ -269,7 +269,7 @@ function createDrawEntity(type) {
         rational: 0,
         periodic: 0,
         knots: { count: 0, knots: [] },
-        points: { count: 0, point: { x: 0, y: 0 } },
+        controlPoints: { count: 0, point: { x: 0, y: 0 } },
         weights: 1,
       }
   }
@@ -299,7 +299,7 @@ function fillDrawEntity(type, drawType, value) {
             break
           case 4:
             {
-              drawEntity.points.point.x = value
+              drawEntity.controlPoints.point.x = value
             }
             break
         }
@@ -324,7 +324,7 @@ function fillDrawEntity(type, drawType, value) {
           break
         case 4:
           {
-            drawEntity.points.point.y = value
+            drawEntity.controlPoints.point.y = value
           }
           break
       }
@@ -484,7 +484,7 @@ function fillDrawEntity(type, drawType, value) {
         switch (drawType) {
           case 4:
             {
-              drawEntity.points.count = value
+              drawEntity.controlPoints.count = value
             }
             break
         }
