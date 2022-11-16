@@ -116,9 +116,9 @@ export const process = (tuples) => {
         case 72:
           {
             // !Polyline --> 1 = Line; 2 = Circular arc; 3 = Elliptic arc; 4 = Spline
-            // Polyline -->  bulge
+            // Polyline -->  hasBulge
             drawType = parseFloat(value)
-            loop[isPolyline ? 'bulge' : 'edgeType'] = drawType
+            loop[isPolyline ? 'hasBulge' : 'edgeType'] = drawType
             if (!isPolyline) {
               drawEntity = createDrawEntity(drawType)
               loop.entities.push(drawEntity)
