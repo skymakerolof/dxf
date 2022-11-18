@@ -269,7 +269,7 @@ function createDrawEntity(type) {
         rational: 0,
         periodic: 0,
         knots: { count: 0, knots: [] },
-        points: { count: 0, point: { x: 0, y: 0 } },
+        controlPoints: { count: 0, point: { x: 0, y: 0 } },
         weights: 1,
       }
   }
@@ -299,7 +299,7 @@ function fillDrawEntity(type, drawType, value) {
             break
           case 4:
             {
-              drawEntity.points.point.x = value
+              drawEntity.controlPoints.point.x = value
             }
             break
         }
@@ -324,7 +324,7 @@ function fillDrawEntity(type, drawType, value) {
           break
         case 4:
           {
-            drawEntity.points.point.y = value
+            drawEntity.controlPoints.point.y = value
           }
           break
       }
@@ -484,7 +484,7 @@ function fillDrawEntity(type, drawType, value) {
         switch (drawType) {
           case 4:
             {
-              drawEntity.points.count = value
+              drawEntity.controlPoints.count = value
             }
             break
         }
