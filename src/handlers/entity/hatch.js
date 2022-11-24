@@ -127,7 +127,7 @@ export const process = (tuples) => {
           break
         case 73:
           {
-            if (status === 'IDLE' || isPolyline) loop.closed = value
+            if (status === 'IDLE' || isPolyline) loop.entities[0].closed = value
             else fillDrawEntity(type, drawType, parseFloat(value))
           }
           break
