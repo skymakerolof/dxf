@@ -25,7 +25,7 @@ export const process = (tuples) => {
         case 10:
           {
             if (status === 'IDLE') entity.elevation.x = parseFloat(value)
-            else if (status === 'POLYLINE' && isPolyline) {
+            else if (status === 'POLYLINE') {
               const point = { x: parseFloat(value), y: 0 }
               loop.entities[0].points.push(point)
             } else if (status === 'SEED') {
@@ -40,7 +40,7 @@ export const process = (tuples) => {
         case 20:
           {
             if (status === 'IDLE') entity.elevation.y = parseFloat(value)
-            else if (status === 'POLYLINE' && isPolyline) {
+            else if (status === 'POLYLINE') {
               loop.entities[0].points[loop.entities[0].points.length - 1].y =
                 parseFloat(value)
             } else if (status === 'SEED') {
