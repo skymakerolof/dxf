@@ -3,75 +3,77 @@ import logger from '../util/logger'
 const ltypeHandler = (tuples) => {
   let element = null
   let offset = null
-  return tuples.reduce((layer, tuple) => {
-    const type = tuple[0]
-    const value = tuple[1]
-    //https://documentation.help/AutoCAD-DXF/WS1a9193826455f5ff18cb41610ec0a2e719-7a4f.htm
-    switch (type) {
-      case 2:
-        layer.name = value
-        break
-      case 3:
-        layer.description = value
-        break
-      case 70:
-        //Standard flag values (bit-coded values):
-        //  16 = If set, table entry is externally dependent on an xref
-        //  32 = If both this bit and bit 16 are set, the externally dependent xref has been successfully resolved
-        //  64 = If set, the table entry was referenced by at least one entity in the drawing the last time the drawing was edited. (This flag is for the benefit of AutoCAD commands. It can be ignored by most programs that read DXF files and need not be set by programs that write DXF files)
-        layer.flag = value
-        break
-      case 72:
-        //Alignment code (value is always 65, the ASCII code for A):
-        layer.alignment = value
-        break
-      case 73:
-        layer.elementCount = parseInt(value)
-        break
-      case 40:
-        layer.patternLength = value
-        break
-      case 49: {
-          element = Object.create({ scales: [], offset: [] });
-          element.length = value
-          layer.pattern.push( element );
-        }
-        break
-      case 74:
-        //Complex linetype element type (one per element). Default is 0 (no embedded shape/text) (bit-coded values)
-        //  1 = If set, code 50 specifies an absolute rotation; if not set, code 50 specifies a relative rotation
-        //  2 = Embedded element is a text string
-        //  4 = Embedded element is a shape
-        element.shape = value
-        break
-      case 75:
-        element.shapeNumber = value
-        break
-      case 340:
-        element.styleHandle = value
-        break
-      case 46:
-        element.scales.push( value )
-        break
-      case 50:
-        element.rotation = value
-        break
-      case 44:
-        offset = Object.create( { x: value, y: 0 } )
-        element.offset.push( offset )
-        break
-      case 45:
-        offset.y = value
-        break
-      case 9:
-        element.text = value
-        break
-      default:
-    }
-    return layer
-  }, { type: 'LTYPE',
-        pattern: []
-  })
+  return tuples.reduce(
+    (layer, tuple) => {
+      const type = tuple[0]
+      const value = tuple[1]
+      // https://documentation.help/AutoCAD-DXF/WS1a9193826455f5ff18cb41610ec0a2e719-7a4f.htm
+      switch (type) {
+        case 2:
+          layer.name = value
+          break
+        case 3:
+          layer.description = value
+          break
+        case 70:
+          // Standard flag values (bit-coded values):
+          //  16 = If set, table entry is externally dependent on an xref
+          //  32 = If both this bit and bit 16 are set, the externally dependent xref has been successfully resolved
+          //  64 = If set, the table entry was referenced by at least one entity in the drawing the last time the drawing was edited. (This flag is for the benefit of AutoCAD commands. It can be ignored by most programs that read DXF files and need not be set by programs that write DXF files)
+          layer.flag = value
+          break
+        case 72:
+          // Alignment code (value is always 65, the ASCII code for A):
+          layer.alignment = value
+          break
+        case 73:
+          layer.elementCount = parseInt(value)
+          break
+        case 40:
+          layer.patternLength = value
+          break
+        case 49:
+          {
+            element = Object.create({ scales: [], offset: [] })
+            element.length = value
+            layer.pattern.push(element)
+          }
+          break
+        case 74:
+          // Complex linetype element type (one per element). Default is 0 (no embedded shape/text) (bit-coded values)
+          //  1 = If set, code 50 specifies an absolute rotation; if not set, code 50 specifies a relative rotation
+          //  2 = Embedded element is a text string
+          //  4 = Embedded element is a shape
+          element.shape = value
+          break
+        case 75:
+          element.shapeNumber = value
+          break
+        case 340:
+          element.styleHandle = value
+          break
+        case 46:
+          element.scales.push(value)
+          break
+        case 50:
+          element.rotation = value
+          break
+        case 44:
+          offset = Object.create({ x: value, y: 0 })
+          element.offset.push(offset)
+          break
+        case 45:
+          offset.y = value
+          break
+        case 9:
+          element.text = value
+          break
+        default:
+      }
+      return layer
+    },
+    { type: 'LTYPE', pattern: [] },
+  )
 }
 
 const layerHandler = (tuples) => {
@@ -330,6 +332,6 @@ export default (tuples) => {
     layers: tableHandler(layersTuples, 'LAYER', layerHandler),
     styles: tableHandler(stylesTuples, 'STYLE', styleHandler),
     vports: tableHandler(vPortTuples, 'VPORT', vPortHandler),
-    ltypes: tableHandler(ltypeTuples,'LTYPE', ltypeHandler)
+    ltypes: tableHandler(ltypeTuples, 'LTYPE', ltypeHandler),
   }
 }

@@ -87,7 +87,7 @@ export default (string) => {
     blocks: [],
     entities: [],
     objects: { layouts: [] },
-    tables: { layers: {}, styles: {}, ltypes: {}}
+    tables: { layers: {}, styles: {}, ltypes: {} },
   })
   return result
 }

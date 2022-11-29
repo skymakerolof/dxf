@@ -8,7 +8,7 @@ var drawType = 0
 var isPolyline = false
 var seed = null
 var loop = { references: [], entities: [] }
-var polyPoint = null;
+var polyPoint = null
 
 export const process = (tuples) => {
   return tuples.reduce(
@@ -27,7 +27,11 @@ export const process = (tuples) => {
           {
             if (status === 'IDLE') entity.elevation.x = parseFloat(value)
             else if (status === 'POLYLINE') {
-              polyPoint = Object.create( { x: parseFloat(value), y: 0, bulge: 0 } );
+              polyPoint = Object.create({
+                x: parseFloat(value),
+                y: 0,
+                bulge: 0,
+              })
               loop.entities[0].points.push(polyPoint)
             } else if (status === 'SEED') {
               if (!seed) {
@@ -41,8 +45,7 @@ export const process = (tuples) => {
         case 20:
           {
             if (status === 'IDLE') entity.elevation.y = parseFloat(value)
-            else if (status === 'POLYLINE')
-              polyPoint.y =parseFloat(value)
+            else if (status === 'POLYLINE') polyPoint.y = parseFloat(value)
             else if (status === 'SEED') {
               seed.y = parseFloat(value)
               seed = null
@@ -109,8 +112,7 @@ export const process = (tuples) => {
           break
         case 42:
           {
-            if (isPolyline) 
-              polyPoint.bulge = parseFloat( value ) 
+            if (isPolyline) polyPoint.bulge = parseFloat(value)
             else fillDrawEntity(type, drawType, parseFloat(value))
           }
           break
