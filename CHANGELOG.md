@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/skymakerolof/dxf/compare/v4.7.0...v5.0.0) (2022-12-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Hatch:** Renamed hatch split property points to controlPoints
+* **Hatch:** Renamed polyline "has bulge flag" from bulge to hasBulge
+
+### Features
+
+* **Hatch:** rename hatch->spline points to controlPoints ([#117](https://github.com/skymakerolof/dxf/issues/117)) ([70e9a5d](https://github.com/skymakerolof/dxf/commit/70e9a5d46906f2f1984366df24adf80fd97c454b))
+* LTYPE table parsing ([#121](https://github.com/skymakerolof/dxf/issues/121)) ([6178746](https://github.com/skymakerolof/dxf/commit/6178746ee887eb1fbacb060cfc952d07d5264173))
+
+
+### Bug Fixes
+
+* **Hatch:** bulge value for each point instead of only writing it in the loop level ([#122](https://github.com/skymakerolof/dxf/issues/122)) ([879808c](https://github.com/skymakerolof/dxf/commit/879808cde1d369b36c731b85ac4596f7ed032efe))
+* **Hatch:** rename bulge to hasBulge ([#118](https://github.com/skymakerolof/dxf/issues/118)) ([3cf60c6](https://github.com/skymakerolof/dxf/commit/3cf60c6a1f5cc1711a315222a87a75fc5677041a))
+
 ## [4.7.0](https://github.com/skymakerolof/dxf/compare/v4.6.3...v4.7.0) (2022-09-22)
 
 ### Features
