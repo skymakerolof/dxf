@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/skymakerolof/dxf/compare/v5.0.0...v5.0.1) (2023-06-08)
+
+
+### Bug Fixes
+
+* hatch with polyline points only returning y coordinate ([#132](https://github.com/skymakerolof/dxf/issues/132)) ([948dbbc](https://github.com/skymakerolof/dxf/commit/948dbbcd5e03ac064020b9c1d0b231dced895e7a)), closes [#130](https://github.com/skymakerolof/dxf/issues/130)
+
 ## [5.0.0](https://github.com/skymakerolof/dxf/compare/v4.7.0...v5.0.0) (2022-12-05)
 
 
