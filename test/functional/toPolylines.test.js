@@ -91,7 +91,7 @@ const names = [
   'arrayed-holes',
   'squircle2',
 ]
-const dxfs = names.map((name) => require(`../resources/${name}.dxf`))
+const dxfs = names.map((name) => require(`../resources/${name}.dxf`).default)
 const svgs = dxfs.map((contents) => toSVG(new Helper(contents).toPolylines()))
 
 const Thumbnail = ({ index, name, svg }) => (

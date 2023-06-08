@@ -154,9 +154,9 @@ function parseBitCombinationsFromValue(value) {
   }
   return {
     dimensionType: value,
-    uniqueBlockReference: uniqueBlockReference,
-    ordinateType: ordinateType,
-    userDefinedLocation: userDefinedLocation,
+    uniqueBlockReference,
+    ordinateType,
+    userDefinedLocation,
   }
 }
 

@@ -1,7 +1,5 @@
-const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
-const open = require('open')
 
 const port = 8030
 
@@ -28,12 +26,11 @@ module.exports = {
     path: path.resolve(__dirname),
     filename: '[name].bundle.js',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     port,
-    after: (app, server) => {
-      open(`http://localhost:${port}`)
-    },
+    open: true,
+    hot: true,
+    static: [{ directory: path.join(__dirname) }],
   },
   resolve: {
     modules: [path.resolve('..', '..', 'node_modules'), 'node_modules'],

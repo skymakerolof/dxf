@@ -21,14 +21,17 @@
     "afterEach": "readonly"
   },
   "parserOptions": {
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "babel"],
-  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "parser": "@babel/eslint-parser",
   "rules": {
     "no-lone-blocks": "off"
   },

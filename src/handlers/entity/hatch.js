@@ -2,13 +2,13 @@ import common from './common'
 
 export const TYPE = 'HATCH'
 
-var status = 'IDLE'
-var drawEntity = {}
-var drawType = 0
-var isPolyline = false
-var seed = null
-var loop = { references: [], entities: [] }
-var polyPoint = null
+let status = 'IDLE'
+let drawEntity = {}
+let drawType = 0
+let isPolyline = false
+let seed = null
+let loop = { references: [], entities: [] }
+let polyPoint = null
 
 export const process = (tuples) => {
   return tuples.reduce(
