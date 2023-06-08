@@ -27,11 +27,11 @@ export const process = (tuples) => {
           {
             if (status === 'IDLE') entity.elevation.x = parseFloat(value)
             else if (status === 'POLYLINE') {
-              polyPoint = Object.create({
+              polyPoint = {
                 x: parseFloat(value),
                 y: 0,
                 bulge: 0,
-              })
+              }
               loop.entities[0].points.push(polyPoint)
             } else if (status === 'SEED') {
               if (!seed) {
