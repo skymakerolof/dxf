@@ -108,6 +108,7 @@ export const process = (tuples) => {
         case 94:
         case 95:
         case 96:
+			if( drawType === 4 ) status = 'SPLINE'
           fillDrawEntity(type, drawType, parseFloat(value))
           break
         case 42:
@@ -272,7 +273,7 @@ function createDrawEntity(type) {
         rational: 0,
         periodic: 0,
         knots: { count: 0, knots: [] },
-        controlPoints: { count: 0, point: { x: 0, y: 0 } },
+        controlPoints: { count: 0, points: [] },
         weights: 1,
       }
   }
@@ -302,7 +303,7 @@ function fillDrawEntity(type, drawType, value) {
             break
           case 4:
             {
-              drawEntity.controlPoints.point.x = value
+              drawEntity.controlPoints.points.push( { x: value, y: 0 } )
             }
             break
         }
@@ -327,7 +328,7 @@ function fillDrawEntity(type, drawType, value) {
           break
         case 4:
           {
-            drawEntity.controlPoints.point.y = value
+            drawEntity.controlPoints.points[ drawEntity.controlPoints.points.length - 1].y = value
           }
           break
       }
