@@ -1,5 +1,12 @@
 export const TYPE = 'VERTEX'
 
+const ensureFaces = (entity) => {
+  entity.faces = entity.faces || []
+  if('x' in entity && !entity.x) delete entity.x
+  if('y' in entity && !entity.y) delete entity.y
+  if('z' in entity && !entity.z) delete entity.z
+}
+
 export const process = (tuples) => {
   return tuples.reduce((entity, tuple) => {
     const type = tuple[0]
@@ -17,6 +24,21 @@ export const process = (tuples) => {
       case 42:
         entity.bulge = value
         break
+      case 71:
+        ensureFaces(entity)
+        entity.faces[0] = value
+        break;
+      case 72:
+        ensureFaces(entity)
+        entity.faces[1] = value
+        break;
+      case 73:
+        ensureFaces(entity)
+        entity.faces[2] = value
+        break;
+      case 74:
+        ensureFaces(entity)
+        entity.faces[3] = value
       default:
         break
     }
