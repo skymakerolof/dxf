@@ -27,18 +27,19 @@ export const process = (tuples) => {
       case 71:
         ensureFaces(entity)
         entity.faces[0] = value
-        break;
+        break
       case 72:
         ensureFaces(entity)
         entity.faces[1] = value
-        break;
+        break
       case 73:
         ensureFaces(entity)
         entity.faces[2] = value
-        break;
+        break
       case 74:
         ensureFaces(entity)
         entity.faces[3] = value
+        break
       default:
         break
     }
