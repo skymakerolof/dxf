@@ -2,9 +2,9 @@ export const TYPE = 'VERTEX'
 
 const ensureFaces = (entity) => {
   entity.faces = entity.faces || []
-  if('x' in entity && !entity.x) delete entity.x
-  if('y' in entity && !entity.y) delete entity.y
-  if('z' in entity && !entity.z) delete entity.z
+  if ('x' in entity && !entity.x) delete entity.x
+  if ('y' in entity && !entity.y) delete entity.y
+  if ('z' in entity && !entity.z) delete entity.z
 }
 
 export const process = (tuples) => {
