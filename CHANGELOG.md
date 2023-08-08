@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/skymakerolof/dxf/compare/v5.0.1...v5.1.0) (2023-08-08)
+
+
+### Features
+
+* add support for polyfaceMesh outline rendering ([#138](https://github.com/skymakerolof/dxf/issues/138)) ([38fd3a6](https://github.com/skymakerolof/dxf/commit/38fd3a695644f1b142789d1d3e3828ee8a458d1f))
+
+
+### Bug Fixes
+
+* spline boundary path data ([#134](https://github.com/skymakerolof/dxf/issues/134)) ([4ea2312](https://github.com/skymakerolof/dxf/commit/4ea2312892ef73eed3690fc772ec0f2f8619beef))
+
 ### [5.0.1](https://github.com/skymakerolof/dxf/compare/v5.0.0...v5.0.1) (2023-06-08)
 
 
