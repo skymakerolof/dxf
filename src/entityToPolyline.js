@@ -104,6 +104,65 @@ export const interpolateBSpline = (
   return polyline
 }
 
+export const polyfaceOutline = (entity) => {
+  const vertices = []
+  const faces = []
+
+  for (const v of entity.vertices) {
+    if (v.faces) {
+      const face = { indices: [], hiddens: [] }
+      for (const i of v.faces) {
+        if (i === 0) {
+          break
+        }
+        // Negative indices signify hidden edges
+        face.indices.push(i < 0 ? -i - 1 : i - 1)
+        face.hiddens.push(i < 0)
+      }
+      if ([3, 4].includes(face.indices.length)) faces.push(face)
+    } else {
+      vertices.push({ x: v.x, y: v.y })
+    }
+  }
+
+  // If a segment starts at the end of a previous line, continue it
+  const polylines = []
+  const segment = (a, b) => {
+    for (const prev of polylines) {
+      if (prev.slice(-1)[0] === a) {
+        return prev.push(b)
+      }
+    }
+    polylines.push([a, b])
+  }
+
+  for (const face of faces) {
+    for (let beg = 0; beg < face.indices.length; beg++) {
+      if (face.hiddens[beg]) {
+        continue
+      }
+      const end = (beg + 1) % face.indices.length
+      segment(face.indices[beg], face.indices[end])
+    }
+  }
+
+  // Sometimes segments are not sequential, in that case
+  // we need to find if they can mend gaps between others
+  for (const a of polylines) {
+    for (const b of polylines) {
+      if (a !== b && a[0] === b.slice(-1)[0]) {
+        b.push(...a.slice(1))
+        a.splice(0, a.length)
+        break
+      }
+    }
+  }
+
+  return polylines
+    .filter((l) => l.length)
+    .map((l) => l.map((i) => vertices[i]).map((v) => [v.x, v.y]))
+}
+
 /**
  * Convert a parsed DXF entity to a polyline. These can be used to render the
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
@@ -122,8 +181,11 @@ export default (entity, options) => {
 
   if (entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') {
     polyline = []
-    if (entity.polygonMesh || entity.polyfaceMesh) {
-      // Do not attempt to render meshes
+    if (entity.polyfaceMesh) {
+      // Only return the first polyline because we can't return many
+      polyline.push(...polyfaceOutline(entity)[0])
+    } else if (entity.polygonMesh) {
+      // Do not attempt to render polygon meshes
     } else if (entity.vertices.length) {
       if (entity.closed) {
         entity.vertices = entity.vertices.concat(entity.vertices[0])
