@@ -56,6 +56,9 @@ export default (tuples) => {
       currentEntityTuples = []
       entityGroups.push(currentEntityTuples)
     }
+    if (currentEntityTuples === undefined) {
+      return
+    }
     currentEntityTuples.push(tuple)
   })
 
