@@ -27,10 +27,10 @@ describe('DXF to coloured polylines', () => {
         layer: {
           colorNumber: 5,
           flags: 0,
-          lineTypeName: "Continuous",
-          lineWeightEnum: "    -3",
-          name: "Layer 03",
-          type: "LAYER",
+          lineTypeName: 'Continuous',
+          lineWeightEnum: '    -3',
+          name: 'Layer 03',
+          type: 'LAYER',
         },
         vertices: [
           [10, 5],
@@ -113,10 +113,10 @@ describe('DXF to coloured polylines', () => {
         layer: {
           colorNumber: 1,
           flags: 0,
-          lineTypeName: "Continuous",
-          lineWeightEnum: "    -3",
-          name: "Layer 01",
-          type: "LAYER"
+          lineTypeName: 'Continuous',
+          lineWeightEnum: '    -3',
+          name: 'Layer 01',
+          type: 'LAYER',
         },
         vertices: [
           [0, 0],
@@ -144,10 +144,10 @@ describe('DXF to coloured polylines', () => {
         layer: {
           colorNumber: 7,
           flags: 0,
-          lineTypeName: "Continuous",
-          lineWeightEnum: "    -3",
-          name: "0",
-          type: "LAYER"
+          lineTypeName: 'Continuous',
+          lineWeightEnum: '    -3',
+          name: '0',
+          type: 'LAYER',
         },
         vertices: [
           [57.77920885855337, 1.403981252993389],
@@ -172,10 +172,10 @@ describe('DXF to coloured polylines', () => {
         layer: {
           colorNumber: 7,
           flags: 0,
-          lineTypeName: "Continuous",
-          lineWeightEnum: "    -3",
-          name: "0",
-          type: "LAYER"
+          lineTypeName: 'Continuous',
+          lineWeightEnum: '    -3',
+          name: '0',
+          type: 'LAYER',
         },
         vertices: [
           [32.20820885855346, 61.94798125299326],
