@@ -84,9 +84,6 @@ export default (tuples) => {
       } else if (entityType === 'SEQEND') {
         currentPolyline = undefined
       } else {
-        if (entityType === 'OLE2FRAME') {
-          e.data = e.data.join('')
-        }
         // All other entities
         entities.push(e)
       }

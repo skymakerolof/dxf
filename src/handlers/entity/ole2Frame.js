@@ -44,7 +44,7 @@ export const process = (tuples) => {
           entity.length = value
           break
         case 310:
-          entity.data.push(value)
+          entity.data += value
           break
         default:
           Object.assign(entity, common(type, value))
@@ -54,7 +54,7 @@ export const process = (tuples) => {
     },
     {
       type: TYPE,
-      data: [],
+      data: '',
     },
   )
 }
