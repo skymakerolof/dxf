@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/skymakerolof/dxf/compare/v5.2.0...v5.3.0) (2025-09-01)
+
+
+### Features
+
+* ole2frame entity ([#150](https://github.com/skymakerolof/dxf/issues/150)) ([4a00841](https://github.com/skymakerolof/dxf/commit/4a008417b5bc49a39c841f5845db4c80a980cc1d))
+
 ## [5.2.0](https://github.com/skymakerolof/dxf/compare/v5.1.1...v5.2.0) (2024-11-04)
 
 ### [5.1.1](https://github.com/skymakerolof/dxf/compare/v5.1.0...v5.1.1) (2024-08-30)

@@ -19,6 +19,7 @@ import dimension from './entity/dimension'
 import text from './entity/text'
 import viewport from './entity/viewport'
 import table from './entity/table.js';
+import ole2Frame from './entity/ole2Frame'
 
 const handlers = [
   point,
@@ -41,6 +42,7 @@ const handlers = [
   threeDFace,
   viewport,
   table,
+  ole2Frame,
 ].reduce((acc, mod) => {
   acc[mod.TYPE] = mod
   return acc
