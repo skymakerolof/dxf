@@ -18,7 +18,7 @@ import threeDFace from './entity/threeDFace'
 import dimension from './entity/dimension'
 import text from './entity/text'
 import viewport from './entity/viewport'
-import table from './entity/table.js';
+import table from './entity/table.js'
 import ole2Frame from './entity/ole2Frame'
 
 const handlers = [
