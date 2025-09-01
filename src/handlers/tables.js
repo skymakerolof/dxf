@@ -280,7 +280,7 @@ const tableHandler = (tuples, tableType, handler) => {
     if ((type === 0 || type === 2) && value === tableType) {
       tableRowTuples = []
       tableRowsTuples.push(tableRowTuples)
-    } else {
+    } else if (tableRowTuples !== undefined) {
       tableRowTuples.push(tuple)
     }
   })
@@ -307,7 +307,7 @@ export default (tuples) => {
       tableGroups.push(tableTuples)
     } else if (value === 'ENDTAB') {
       tableGroups.push(tableTuples)
-    } else {
+    } else if (tableTuples !== undefined) {
       tableTuples.push(tuple)
     }
   })
