@@ -58,7 +58,9 @@ export default (tuples) => {
       currentEntityTuples = []
       entityGroups.push(currentEntityTuples)
     }
-    currentEntityTuples.push(tuple)
+    if(typeof currentEntityTuples !== 'undefined'){
+      currentEntityTuples.push(tuple)
+    }
   })
 
   let currentPolyline
