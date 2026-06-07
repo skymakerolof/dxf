@@ -112,4 +112,107 @@ describe('Denormalise', () => {
       rotation: 120,
     })
   })
+
+  it('uses the insert layer by default', () => {
+    const parsed = {
+      blocks: [
+        {
+          name: 'DESK',
+          x: 0,
+          y: 0,
+          entities: [
+            {
+              type: 'LINE',
+              layer: 'DESK_A',
+              start: { x: 0, y: 0 },
+              end: { x: 10, y: 0 },
+            },
+          ],
+        },
+      ],
+      entities: [
+        {
+          type: 'INSERT',
+          block: 'DESK',
+          layer: 'FURNITURE',
+          x: 100,
+          y: 200,
+        },
+      ],
+    }
+
+    const entities = denormalise(parsed)
+
+    expect(entities[0].layer).toEqual('FURNITURE')
+  })
+
+  it('preserves explicit block entity layers when preserveBlockEntityLayers is true', () => {
+    const parsed = {
+      blocks: [
+        {
+          name: 'DESK',
+          x: 0,
+          y: 0,
+          entities: [
+            {
+              type: 'LINE',
+              layer: 'DESK_A',
+              start: { x: 0, y: 0 },
+              end: { x: 10, y: 0 },
+            },
+          ],
+        },
+      ],
+      entities: [
+        {
+          type: 'INSERT',
+          block: 'DESK',
+          layer: 'FURNITURE',
+          x: 100,
+          y: 200,
+        },
+      ],
+    }
+
+    const entities = denormalise(parsed, {
+      preserveBlockEntityLayers: true,
+    })
+
+    expect(entities[0].layer).toEqual('DESK_A')
+  })
+
+  it('uses the insert layer for layer 0 block entities when preserving block layers', () => {
+    const parsed = {
+      blocks: [
+        {
+          name: 'DESK',
+          x: 0,
+          y: 0,
+          entities: [
+            {
+              type: 'LINE',
+              layer: '0',
+              start: { x: 0, y: 0 },
+              end: { x: 10, y: 0 },
+            },
+          ],
+        },
+      ],
+      entities: [
+        {
+          type: 'INSERT',
+          block: 'DESK',
+          layer: 'FURNITURE',
+          x: 100,
+          y: 200,
+        },
+      ],
+    }
+
+    const entities = denormalise(parsed, {
+      preserveBlockEntityLayers: true,
+    })
+
+    expect(entities[0].layer).toEqual('FURNITURE')
+  })
 })
