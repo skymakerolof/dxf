@@ -6,13 +6,14 @@ import toPolylines from './toPolylines'
 import groupEntitiesByLayer from './groupEntitiesByLayer'
 
 export default class Helper {
-  constructor(contents) {
+  constructor(contents, options = {}) {
     if (!(typeof contents === 'string')) {
       throw Error('Helper constructor expects a DXF string')
     }
     this._contents = contents
     this._parsed = null
     this._denormalised = null
+    this._options = options
   }
 
   parse() {
@@ -28,8 +29,9 @@ export default class Helper {
     return this._parsed
   }
 
-  denormalise() {
-    this._denormalised = denormalise(this.parsed)
+  denormalise(options = this._options) {
+    this._denormalised = denormalise(this.parsed, options)
+    this._groups = null
     logger.info('denormalised:', this._denormalised)
     return this._denormalised
   }

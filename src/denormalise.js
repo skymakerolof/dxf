@@ -2,7 +2,26 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import logger from './util/logger'
 
-export default (parseResult) => {
+const DEFAULT_LAYER = '0'
+
+const resolveInsertedEntityLayer = (
+  entityLayer,
+  insertLayer,
+  preserveBlockEntityLayers,
+) => {
+  if (!preserveBlockEntityLayers) {
+    return insertLayer
+  }
+
+  const layer = entityLayer ?? DEFAULT_LAYER
+  const resolvedInsertLayer = insertLayer ?? DEFAULT_LAYER
+
+  return layer === DEFAULT_LAYER ? resolvedInsertLayer : layer
+}
+
+export default (parseResult, options = {}) => {
+  const { preserveBlockEntityLayers = false } = options
+
   const blocksByName = parseResult.blocks.reduce((acc, b) => {
     acc[b.name] = b
     return acc
@@ -59,7 +78,11 @@ export default (parseResult) => {
             // Use the insert layer
             const blockEntities = block.entities.map((be) => {
               const be2 = cloneDeep(be)
-              be2.layer = insert.layer
+              be2.layer = resolveInsertedEntityLayer(
+                be2.layer,
+                insert.layer,
+                preserveBlockEntityLayers,
+              )
               // https://github.com/bjnortier/dxf/issues/52
               // See Issue 52. If we don't modify the
               // entity coordinates here it creates an issue with the
